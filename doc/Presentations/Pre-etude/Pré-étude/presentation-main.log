@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.12.7)  14 DEC 2022 09:47
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.12.7)  14 DEC 2022 14:35
  restricted system commands enabled.
 **presentation-main.tex
 (./presentation-main.tex
@@ -1526,7 +1526,7 @@ Overfull \vbox (18.66748pt too high) detected at line 116
 [4
 
 <./Images/pre-etude.drawio.png>]
-Overfull \vbox (2.18741pt too high) detected at line 133
+Overfull \vbox (3.32622pt too high) detected at line 133
  []
 
 [5
@@ -1657,7 +1657,7 @@ a-Light.otf><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pf
 b><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texli
 ve/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2022/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on presentation-main.pdf (17 pages, 1782510 bytes).
+Output written on presentation-main.pdf (17 pages, 1782498 bytes).
 
 PDF statistics: 495 PDF objects out of 1000 (max. 8388607)
  410 compressed objects within 5 object streams
