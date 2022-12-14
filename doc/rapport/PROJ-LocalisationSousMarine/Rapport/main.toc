@@ -1,0 +1,21 @@
+\babel@toc {french}{}\relax 
+\contentsline {section}{\numberline {1}Caractéristiques du projet}{3}{}%
+\contentsline {subsection}{\numberline {1.1}Description}{3}{}%
+\contentsline {subsection}{\numberline {1.2}Aperçu}{3}{}%
+\contentsline {subsection}{\numberline {1.3}Tâches à réaliser}{4}{}%
+\contentsline {subsection}{\numberline {1.4}Description des blocs}{5}{}%
+\contentsline {subsection}{\numberline {1.5}Jalons principaux}{6}{}%
+\contentsline {subsection}{\numberline {1.6}Livrable}{6}{}%
+\contentsline {section}{\numberline {2}Pré-étude}{7}{}%
+\contentsline {subsection}{\numberline {2.1}Fonctionnement du système}{7}{}%
+\contentsline {subsubsection}{\numberline {2.1.1}Schéma bloc}{7}{}%
+\contentsline {subsection}{\numberline {2.2}Choix des composants importants}{9}{}%
+\contentsline {subsubsection}{\numberline {2.2.1}Senseur absolu}{9}{}%
+\contentsline {subsubsection}{\numberline {2.2.2}Capteur de pression}{11}{}%
+\contentsline {subsubsection}{\numberline {2.2.3}Affichage}{11}{}%
+\contentsline {subsubsection}{\numberline {2.2.4}Carte SD}{12}{}%
+\contentsline {subsubsection}{\numberline {2.2.5}Real Time Clock}{13}{}%
+\contentsline {subsubsection}{\numberline {2.2.6}Microcontrôleur}{14}{}%
+\contentsline {subsubsection}{\numberline {2.2.7}Batterie, charge et régulation}{15}{}%
+\contentsline {subsection}{\numberline {2.3}Estimation des coûts}{16}{}%
+\contentsline {subsection}{\numberline {2.4}Conclusion et perspectives}{17}{}%

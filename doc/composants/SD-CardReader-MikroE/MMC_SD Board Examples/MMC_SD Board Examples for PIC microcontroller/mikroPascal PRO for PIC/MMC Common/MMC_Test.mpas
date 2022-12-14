@@ -1,0 +1,160 @@
+{*
+ * Project name:
+     Mmc_Test (MMC Library Example)
+ * Copyright:
+     (c) MikroElektronika, 2005-2010
+ * Revision History:
+     20081016:
+       - initial release;
+     20101102:  
+       - added active comments;       
+ * Description:
+     MMC library test. Upon flashing, insert a MMC/SD card
+     ( http://en.wikipedia.org/wiki/MultiMediaCard ) into the
+     module, when you should receive the "Init-OK" message.
+     Then, you can experiment with MMC read and write functions,
+     and observe the results through the Usart Terminal.
+ * Test configuration:
+     MCU:             PIC18F4520
+                      http://ww1.microchip.com/downloads/en/DeviceDoc/39631E.pdf
+     Dev.Board:       EasyPIC6
+                      http://www.mikroe.com/eng/products/view/297/easypic6-development-system/
+     Oscillator:      HS-PLL, 8.00000 MHz
+     Ext. Modules:    ac:MMC-SD_Board on PORTC
+     SW:              mikroPascal PRO for PIC
+                      http://www.mikroe.com/eng/products/view/10/mikropascal-pro-for-pic/
+ * NOTES:
+     - Connect RS232 cable and turn on RS232 switches SW7.1 and SW8.1 (board specific).
+     - This is NOT an example for working with FILES on a MMC/SD memory module.
+     - This example should work both for MMC and SD media types.
+ *}
+
+// if defined, we have a debug messages on PC terminal
+program MMC_Test;
+
+{$DEFINE RS232_debug}
+
+var MMC_chip_select : sbit at LATC0_bit;            // for writing to output pin always use latch (PIC18 family)
+var MMC_chip_select_direction : sbit at TRISC0_bit;
+
+const FILL_CHAR = 'm';
+var   i, SectorNo : word;
+var   mmc_error : byte;
+var   data_ok : bit;
+
+// Variables for MMC routines
+  SectorData : array[512] of byte;        // Buffer for MMC sector reading/writing
+  data_for_registers : array[16] of byte; // buffer for CID and CSD registers
+  
+// UART write text and new line (carriage return + line feed)
+procedure UART_Write_Line( var uart_text : string );
+  begin
+    UART1_Write_Text(uart_text);
+    UART1_Write(13);
+    UART1_Write(10);
+  end;
+
+// Display byte in hex
+procedure printhex( i : byte );
+var high, low : byte;
+  begin
+    high := i and 0xF0;               // High nibble
+    high := high shr 4;
+    high := high + '0';
+    if ( high > '9' ) then
+      high := high + 7;
+    low := (i and 0x0F) + '0';        // Low nibble
+    if ( low > '9' ) then
+      low := low + 7 ;
+
+    UART1_Write(high);
+    UART1_Write(low);
+  end;
+
+begin
+
+  ADCON1 := ADCON1 or 0x0F;                  // Configure AN pins as digital
+  CMCON  := CMCON or 7;                      // Turn off comparators
+  Delay_ms(2000);
+   // Initialize UART1 module
+  UART1_Init(19200);
+  Delay_ms(10);
+
+  UART_Write_Line('PIC-Started');        // PIC present report
+  
+  // Initialize SPI1 module
+  SPI1_Init_Advanced(_SPI_MASTER_OSC_DIV64, _SPI_DATA_SAMPLE_MIDDLE, _SPI_CLK_IDLE_LOW, _SPI_LOW_2_HIGH);
+
+  // initialise a MMC card
+    mmc_error := Mmc_Init();
+    if ( mmc_error = 0 ) then
+      UART_Write_Line('MMC Init-OK')     // If MMC present report
+    else
+      UART_Write_Line('MMC Init-error'); // If error report
+
+    // Fill MMC buffer with same characters
+    for i := 0 to 511 do
+      SectorData[i] := FILL_CHAR;
+
+    // Choose sector
+    SectorNo := 590;
+
+    // Write sector
+    mmc_error := Mmc_Write_Sector(SectorNo, SectorData);
+    if ( mmc_error = 0 ) then
+      UART_Write_Line('Write-OK')
+    else  // if there are errors.....
+      UART_Write_Line('Write-Error');
+
+    // Reading of CID register
+    mmc_error := Mmc_Read_Cid(data_for_registers);
+    if ( mmc_error = 0 ) then
+      begin
+        UART1_Write_Text('CID : ');
+        for i := 0 to 15 do
+          printhex(data_for_registers[i]);
+        UART_Write_Line('  ');
+      end
+    else
+      UART_Write_Line('CID-error');
+
+    // Reading of CSD register
+    mmc_error := Mmc_Read_Csd(data_for_registers);
+    if ( mmc_error = 0 ) then
+      begin
+        UART1_Write_Text('CSD : ');
+        for i := 0 to 15 do
+          printhex(data_for_registers[i]);
+        UART_Write_Line('  ');
+      end
+    else
+      UART_Write_Line('CSD-error');
+
+    // Read sector
+    mmc_error := Mmc_Read_Sector(SectorNo, SectorData);
+    if ( mmc_error = 0 ) then
+      begin
+        UART_Write_Line('Read-OK');
+        // Chech data match
+        data_ok := 1;
+        for i := 0 to 511 do
+          begin
+            UART1_Write(SectorData[i]);
+           if (SectorData[i] <> FILL_CHAR) then
+              begin
+                data_ok := 0;
+                break;
+              end;
+          end;
+
+        if ( data_ok <> 0 ) then
+          UART_Write_Line('Content-OK')
+        else
+          UART_Write_Line('Content-Error');
+      end
+    else  // if there are errors.....
+      UART_Write_Line('Read-Error');
+
+    // Signal test end
+    UART_Write_Line('Test End.');
+  end.

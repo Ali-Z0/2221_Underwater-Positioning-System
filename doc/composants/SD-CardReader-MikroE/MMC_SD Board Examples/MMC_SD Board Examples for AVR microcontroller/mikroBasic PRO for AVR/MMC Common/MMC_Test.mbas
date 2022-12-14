@@ -1,0 +1,141 @@
+' *
+' * Project name:
+'     Mmc_Test (MMC Library Example)
+' * Copyright:
+'     (c) MikroElektronika, 2005-2010.
+' * Revision History:
+'     20081016:
+'       - initial release;
+' * Description:
+'     MMC library test. Upon flashing, insert a MMC/SD card into the
+'     module, when you should receive
+'     the "Init-OK" message. Then, you can experiment with MMC read and write
+'     sub functions, and observe the results through the Usart Terminal.
+' * Test configuration:
+'     MCU:             ATmega16
+'                      http://www.atmel.com/dyn/resources/prod_documents/doc2466.pdf
+'     Dev.Board:       EasyAVR6
+'                      http://www.mikroe.com/eng/products/view/321/easyavr6-development-system/
+'     Oscillator:      External Clock 08.0000 MHz
+'     Ext. Modules:    ac:MMC-SD_Board on PORTB
+'     SW:              mikroBasic PRO for AVR
+'                      http://www.mikroe.com/eng/products/view/226/mikrobasic-pro-for-avr/
+' * NOTES:
+'     - Be sure to connect the RS232 cable and set the jumpers properly!
+'     - This is NOT an example for working with FILES on a MMC/SD memory module!
+'     - This example should work both for MMC and SD media types!
+' *
+
+program MMC_Test
+
+' if defined, we have a debug messages on PC terminal
+#DEFINE RS232_debug
+
+dim MMC_chip_select as sbit at PORTB0_bit
+dim MMC_chip_select_direction as sbit at DDB0_bit
+
+' universal variables
+dim  k, i as word ' universal for loops and other stuff
+
+' Variables for MMC routines
+  dData as byte[512]          ' Buffer for MMC sector reading/writing
+  data_for_registers as byte[16]   ' buffer for CID and CSD registers
+
+' Display byte in hex
+sub procedure printhex(dim i as byte)
+dim bHi, bLo as byte
+  bHi = i and 0xF0               ' High nibble
+  bHi = bHi >> 4
+  bHi = bHi + "0"
+  if (bHi>"9") then
+    bHi = bHi + 7
+  end if
+  bLo = (i and 0x0F) + "0"       ' Low nibble
+  if (bLo>"9") then
+    bLo = bLo+7
+  end if
+  UART1_Write(bHi)
+  UART1_Write(bLo)
+end sub
+
+main:
+  DDRC = 255
+  PORTC = 0
+  #IFDEF RS232_debug
+    UART1_Init(19200)
+  #ENDIF
+
+  Delay_ms(10)
+  DDRA = 255
+  PORTA = 1
+
+  #IFDEF RS232_debug
+    UART1_Write_Text("AVR-Started") ' If AVR present report
+    UART1_Write(13)
+    UART1_Write(10)
+  #ENDIF
+
+  ' Beffore all, we must initialise a MMC card
+  SPI1_Init_Advanced(_SPI_MASTER, _SPI_FCY_DIV2, _SPI_CLK_LO_LEADING)
+  Spi_Rd_Ptr = @SPI1_Read
+
+  i = Mmc_Init()
+  PORTC = i
+  #IFDEF RS232_debug
+    if(i = 0) then
+      UART1_Write_Text("MMC Init-OK") ' If MMC present report
+      UART1_Write(13)
+      UART1_Write(10)
+    end if
+    if(i) then
+      UART1_Write_Text("MMC Init-error") ' If error report
+      UART1_Write(13)
+      UART1_Write(10)
+    end if
+  #ENDIF
+
+  for i=0 to 511
+    dData[i] = "E" ' Fill MMC buffer with same characters
+  next i
+  i = Mmc_Write_Sector(55, dData)
+
+  #IFDEF RS232_debug
+  if(i = 0) then
+    UART1_Write_Text("Write-OK")
+  else  ' if there are errors.....
+    UART1_Write_Text("Write-Error")
+  end if
+  UART1_Write(13)
+  UART1_Write(10)
+  #ENDIF
+
+
+  ' Reading of CID and CSD register on MMC card.....
+  #IFDEF RS232_debug
+  i = Mmc_Read_Cid(data_for_registers)
+  if (i = 0) then
+    for k=0 to 15
+      printhex(data_for_registers[k])
+      if(k <> 15) then
+        UART1_Write("-")
+      end if
+    next k
+      UART1_Write(13)
+  else
+    UART1_Write_Text("CID-error")
+  end if
+    i = Mmc_Read_Csd(data_for_registers)
+    if(i = 0) then
+      for k=0 to 15
+        printhex(data_for_registers[k])
+        if(k <> 15) then
+          UART1_Write("-")
+        end if
+      next K
+      UART1_Write(13)
+      UART1_Write(10)
+    else
+        UART1_Write_Text("CSD-error")
+    end if
+  #ENDIF
+end.

@@ -1,0 +1,281 @@
+{*
+ * Project name:
+     Mmc_Fat16_Test (Demonstration on usage of Mmc_Fat16 library)
+ * Copyright:
+     (c) Mikroelektronika, 2005-2010.
+ * Revision History:
+     20100610:
+       - initial release;
+ * Description:
+     This project consists of several blocks that demonstrate various aspects of
+     usage of the Mmc_Fat16 library. These are:
+     - Creation of new file and writing down to it;
+     - Opening existing file and re-writing it (writing from start-of-file);
+     - Opening existing file and appending data to it (writing from end-of-file);
+     - Opening a file and reading data from it (sending it to USART terminal);
+     - Creating and modifying several files at once;
+     - Reading file contents;
+     - Deleting file(s);
+     - Creating the swap file (see Help for details);
+ * Test configuration:
+     MCU:             ATxmega128A1
+                      http://www.atmel.com/dyn/resources/prod_documents/doc8067.pdf
+     Dev.Board:       XMEGA-Reaady board, 
+                      http://www.mikroe.com/eng/products/view/579/xmega-ready-board/
+     Oscillator:      Internal Clock 32.0000 MHz
+     Ext. Modules:    ac:MMC-SD_Board on PORTB
+     SW:              mikroPascal PRO for AVR
+                      http://www.mikroe.com/eng/products/view/227/mikropascal-pro-for-avr/
+ * NOTES:
+     - Make sure that MMC card is properly formatted (to FAT16 or just FAT)
+       before testing it on this example.
+     - This example expects MMC card to be inserted before reset, otherwise,
+       the FAT_ERROR message is displayed.
+ *}
+
+program MMC_FAT_Test;
+
+var
+  Mmc_Chip_Select : sbit at PORTC_OUT.B0;
+  Mmc_Chip_Select_Direction : sbit at PORTC_DIR.B0;
+
+const LINE_LEN = 43;
+
+var
+  err_txt : string[20];
+  file_contents : string[LINE_LEN];
+
+  filename : string[14];                         // File names
+
+  character : byte;
+  loop, loop2 : byte;
+  size : longint;
+
+  buffer : array[512] of byte;
+
+// UART write text and new line (carriage return + line feed)
+procedure UARTC0_Write_Line( var uart_text : string);
+  begin
+    UARTC0_Write_Text(uart_text);
+    UARTC0_Write(13);
+    UARTC0_Write(10);
+  end;
+
+//-------------- Creates new file and writes some data to it
+procedure M_Create_New_File();
+begin
+  filename[7] := 'A';                            // Set filename for single-file tests
+  Mmc_Fat_Set_File_Date(2005,6,21,10,35,0);      // Set file date & time info
+  Mmc_Fat_Assign(filename, 0xA0);                // Will not find file and then create file
+  Mmc_Fat_Rewrite;                               // To clear file and start with new data
+  for loop:=1 to 99 do                           //  We want 5 files on the MMC card
+    begin
+      UARTC0_Write('.');
+      file_contents[0] := loop div 10 + 48;
+      file_contents[1] := loop mod 10 + 48;
+      Mmc_Fat_Write(file_contents, LINE_LEN-1);  // write data to the assigned file
+    end;
+end;
+
+//-------------- Creates many new files and writes data to them
+procedure M_Create_Multiple_Files();
+begin
+  for loop2 := 'B' to 'Z' do
+    begin
+      UARTC0_Write(loop2);                        // signal the progress
+      filename[7] := loop2;                      // set filename
+      Mmc_Fat_Set_File_Date(2005,6,21,10,35,0);  // Set file date & time info
+      Mmc_Fat_Assign(filename, 0xA0);            // find existing file or create a new one
+      Mmc_Fat_Rewrite;                           // To clear file and start with new data
+      for loop := 1 to 44 do
+        begin
+          file_contents[0] := byte(loop div 10 + 48);
+          file_contents[1] := byte(loop mod 10 + 48);
+          Mmc_Fat_Write(file_contents, LINE_LEN-1); // write data to the assigned file
+        end;
+    end;
+end;
+
+//-------------- Opens an existing file and rewrites it
+procedure M_Open_File_Rewrite();
+ begin
+  filename[7] := 'C';                            // Set filename for single-file tests
+  Mmc_Fat_Assign(filename, 0);
+  Mmc_Fat_Rewrite;
+  for loop := 1 to 55 do
+   begin
+    file_contents[0] := byte(loop div 10 + 48);
+    file_contents[1] := byte(loop mod 10 + 48);
+    Mmc_Fat_Write(file_contents, 42);            // write data to the assigned file
+   end;
+ end;
+
+//-------------- Opens an existing file and appends data to it
+//               (and alters the date/time stamp)
+procedure M_Open_File_Append();
+ begin
+   filename[7] := 'B';
+   Mmc_Fat_Assign(filename, 0);
+   Mmc_Fat_Set_File_Date(2009, 1, 23 ,17, 22, 0);
+   Mmc_Fat_Append();                             // Prepare file for append
+   file_contents := ' for mikroElektronika 2009'; // Prepare file for append
+   file_contents[26] := 10;                      // LF
+   Mmc_Fat_Write(file_contents, 27);             // Write data to assigned file
+ end;
+
+//-------------- Opens an existing file, reads data from it and puts it to USART
+procedure M_Open_File_Read();
+begin
+  filename[7] := 'B';
+  Mmc_Fat_Assign(filename, 0);
+  Mmc_Fat_Reset(size);                           // To read file, procedure returns size of file
+  while size > 0 do
+    begin
+      Mmc_Fat_Read(character);
+      UARTC0_Write(character);                    // Write data to UART
+      Dec(size);
+    end;
+end;
+
+//-------------- Deletes a file. If file doesn't exist, it will first be created
+//               and then deleted.
+procedure M_Delete_File();
+begin
+  filename[7] := 'F';
+  Mmc_Fat_Assign(filename, 0);
+  Mmc_Fat_Delete;
+end;
+
+//-------------- Tests whether file exists, and if so sends its creation date
+//               and file size via USART
+procedure M_Test_File_Exist;
+var
+  fsize: longint;
+  year: word;
+  month, day, hour, minute: byte;
+  outstr: string[12];
+begin
+  filename[7] := 'B';
+  if Mmc_Fat_Assign(filename, 0) <> 0 then
+  begin
+    //--- file has been found - get its date
+    Mmc_Fat_Get_File_Date(year,month,day,hour,minute);
+    UARTC0_Write_Text(' created: ');
+    WordToStr(year, outstr);
+    UARTC0_Write_Text(outstr);
+    ByteToStr(month, outstr);
+    UARTC0_Write_Text(outstr);
+    WordToStr(day, outstr);
+    UARTC0_Write_Text(outstr);
+    WordToStr(hour, outstr);
+    UARTC0_Write_Text(outstr);
+    WordToStr(minute, outstr);
+    UARTC0_Write_Text(outstr);
+    
+    //--- file has been found - get its modified date
+    Mmc_Fat_Get_File_Date_Modified(year, month, day, hour, minute);
+    UARTC0_Write_Text(' modified: ');
+    WordToStr(year, outstr);
+    UARTC0_Write_Text(outstr);
+    ByteToStr(month, outstr);
+    UARTC0_Write_Text(outstr);
+    WordToStr(day, outstr);
+    UARTC0_Write_Text(outstr);
+    WordToStr(hour, outstr);
+    UARTC0_Write_Text(outstr);
+    WordToStr(minute, outstr);
+    UARTC0_Write_Text(outstr);
+
+    //--- get file size
+    fsize := Mmc_Fat_Get_File_Size;
+    LongWordToStr(longint(fsize), outstr);
+    UARTC0_Write_Line(outstr);
+  end
+  else
+    begin
+      //--- file was not found - signal it
+      UARTC0_Write(0x55);
+      Delay_ms(1000);
+      UARTC0_Write(0x55);
+    end;
+end;
+
+//-------------- Tries to create a swap file, whose size will be at least 100
+//               sectors (see Help for details)
+procedure M_Create_Swap_File() ;
+  var  i : word;
+
+  begin
+    for i:=0 to 511 do
+      Buffer[i] := i;
+
+    size := Mmc_Fat_Get_Swap_File(5000, 'mikroE.txt', 0x20);   // see help on this procedure for details
+
+    if (size <> 0) then
+      begin
+        LongIntToStr(size, err_txt);
+        UARTC0_Write_Line(err_txt);
+
+        for i:=0 to 4999 do
+          begin
+            Mmc_Write_Sector(size, Buffer);
+            Inc(size);
+            UARTC0_Write('.');
+          end;
+      end;
+  end;
+
+procedure SetInternalOsc();
+begin
+  OSC_CTRL := 0x02;          // 32MHz internal RC oscillator
+
+  while RC32MRDY_bit = 0 do
+    ;
+
+  CPU_CCP := 0xD8;
+  CLK_CTRL := 1;             // set system clock to 32MHz internal RC oscillator
+end;
+
+
+//-------------- Main. Uncomment the function(s) to test the desired operation(s)
+begin
+  err_txt := 'FAT16 not found';
+  file_contents := 'XX MMC/SD FAT16 library by Anton Rieckert#';
+  file_contents[41] := 10;                                     // newline
+  filename := 'MIKRO00xTXT';
+
+  SetInternalOsc();     // set internal 32 MHz oscillator
+
+  // Initialize UART1 module and set pointer(s) to UART1 functions
+  UARTC0_Init(19200);
+  Delay_ms(10);
+
+  UARTC0_Write_Line('AVR-Started');                             // AVR present report
+  
+  //--- Init the FAT library
+  SPIC_Init_Advanced(_SPI_MASTER, _SPI_FCY_DIV128, _SPI_CLK_LO_LEADING);
+    
+  // use fat16 quick format instead of init routine if a formatting is needed
+  if Mmc_Fat_Init() = 0 then
+    begin
+      // reinitialize spi at higher speed
+      SPIC_Init_Advanced(_SPI_MASTER, _SPI_FCY_DIV2, _SPI_CLK_LO_LEADING);
+      //--- signal start-of-test
+      //--- test functions
+      M_Create_New_File();
+      M_Create_Multiple_Files();
+      M_Open_File_Rewrite();
+      M_Open_File_Append();
+      M_Open_File_Read();
+      M_Delete_File();
+      M_Test_File_Exist();
+      M_Create_Swap_File();
+      //--- signal end-of-test
+      UARTC0_Write_Line('Test End.');
+    end
+  else
+    begin
+      UARTC0_Write_Line(err_txt); // Note: Mmc_Fat_Init tries to initialize a card more than once.
+                                 //       If card is not present, initialization may last longer (depending on clock speed)
+    end;
+end.

@@ -1,0 +1,162 @@
+' * Project name:
+'     Mmc_Test (MMC Library Example)
+' * Copyright:
+'     (c) MikroElektronika, 2009.
+' * Revision History:
+'     20091030:
+'       - initial release
+' * Description:
+'     MMC library test. Upon flashing, insert a MMC/SD card into the
+'     module, when you should receive the "Init-OK" message.
+'     Then, you can experiment with MMC read and write functions,
+'     and observe the results through the Usart Terminal.
+' * Test configuration:
+'     MCU:             dsPIC30F4013
+'                      http://ww1.microchip.com/downloads/en/DeviceDoc/70138F.pdf
+'     Dev.Board:       EasydsPIC6
+'                      http://www.mikroe.com/eng/products/view/434/easydspic6-development-system/
+'     Oscillator:      XT-PLL 8x, 10.00000 MHz
+'     Ext. Modules:    ac:MMC module on PORTF
+'                      SmartADAPT Extra Development Board.
+'                      http://www.mikroe.com/eng/products/view/157/smartadapt/
+'     SW:              mikroBasic PRO for dsPIC30/33 and PIC24
+'                      http://www.mikroe.com/eng/products/view/229/mikrobasic-pro-for-dspic30-33-and-pic24/
+' * NOTES:
+'     - Connect RS232 cable and turn on RS232 jumpers J8 and J9 (RC13 & RC14). (board specific)
+'     - Use SmartADAPT to match the SPI pinout of the dsPIC30F4013 and MMC/SD module. (board specific)
+'     - This is NOT an example for working with FILES on a MMC/SD memory module.
+'     - This example should work both for MMC and SD media types.
+
+program MMC_Test
+
+' eof MMC module connections
+dim MMC_chip_select as sbit at LATF0_bit   ' for writing to output pin always use latch 
+dim MMC_chip_select_direction as sbit at TRISF0_bit
+' eof MMC module connections
+
+const FILL_CHAR = "m"
+dim   i, SectorNo as word
+dim   mmc_error as byte
+dim   data_ok as bit
+
+' Variables for MMC routines
+  SectorData as byte[512]        ' Buffer for MMC sector reading/writing
+  data_for_registers as byte[16] ' buffer for CID and CSD registers
+
+' UART write text and new line (carriage return + line feed)
+sub procedure UART_Write_Line( dim byref uart_text as string )
+  UART1_Write_Text(uart_text)
+  UART1_Write(13)
+  UART1_Write(10)
+end sub
+
+' Display byte in hex
+' Display byte in hex
+sub procedure printhex(dim i as byte )
+dim high, low as byte
+
+  high = i and 0xF0               ' High nibble
+  high = high >> 4
+  high = high + "0"
+  if ( high > "9" ) then
+    high = high + 7
+  end if
+  low = (i and 0x0F) + "0"        ' Low nibble
+  if ( low > "9" ) then
+    low = low + 7
+  end if
+  UART1_Write(high)
+  UART1_Write(low)
+end sub
+
+main:
+  PORTB = 0
+  PORTD = 0
+  ADPCFG = 0xFFFF       ' disable A/D inputs
+
+  UART1_Init(9600)       ' Initialize UART module at 9600 bps
+  Delay_ms(100)          ' Wait for UART module to stabilize
+
+  U1MODE.ALTIO = 1       ' Switch Rx and Tx pins on their alternate locations.
+                          ' This is used to free the pins for other module, namely the SPI.
+
+  Delay_ms(10)
+
+  '--- initialise a MMC card
+  ADPCFG = 0xFFFF  ' disable A/D inputs
+  SPI1_Init_Advanced(_SPI_MASTER, _SPI_8_BIT, _SPI_PRESCALE_SEC_1, _SPI_PRESCALE_PRI_64,
+                     _SPI_SS_DISABLE, _SPI_DATA_SAMPLE_MIDDLE, _SPI_CLK_IDLE_HIGH, _SPI_ACTIVE_2_IDLE)
+
+  ' initialise a MMC card
+  mmc_error = Mmc_Init()
+  if ( mmc_error = 0 ) then
+    UART_Write_Line("MMC Init-OK")     ' If MMC present report
+  else
+    UART_Write_Line("MMC Init-error")  ' If error report
+  end if
+
+  ' Fill MMC buffer with same characters
+  for i = 0 to 511
+    SectorData[i] = FILL_CHAR
+  next i
+  
+  ' Choose sector
+  SectorNo = 590
+
+  ' Write sector
+  mmc_error = Mmc_Write_Sector(SectorNo, SectorData)
+  if ( mmc_error = 0 ) then
+    UART_Write_Line("Write-OK")
+  else  ' if there are errors.....
+    UART_Write_Line("Write-Error")
+  end if
+
+  ' Reading of CID register
+  mmc_error = Mmc_Read_Cid(data_for_registers)
+  if ( mmc_error = 0 ) then
+    UART1_Write_Text("CID : ")
+    for i = 0 to 15
+      printhex(data_for_registers[i])
+    next i
+    UART_Write_Line("  ")
+  else
+    UART_Write_Line("CID-error")
+  end if
+  
+  ' Reading of CSD register
+  mmc_error = Mmc_Read_Csd(data_for_registers)
+  if ( mmc_error = 0 ) then
+    UART1_Write_Text("CSD : ")
+    for i = 0 to 15
+      printhex(data_for_registers[i])
+    next i
+    UART_Write_Line("  ")
+  else
+    UART_Write_Line("CSD-error")
+  end if
+  
+  ' Read sector
+  mmc_error = Mmc_Read_Sector(SectorNo, SectorData)
+  if ( mmc_error = 0 ) then
+    UART_Write_Line("Read-OK")
+    ' Chech data match
+    data_ok = 1
+    for i = 0 to 511
+     UART1_Write(SectorData[i])
+     if (SectorData[i] <> FILL_CHAR) then
+       data_ok = 0
+       break
+     end if
+    next i
+    UART_Write_Line("")
+    if ( data_ok <> 0 ) then
+      UART_Write_Line("Content-OK")
+    else
+      UART_Write_Line("Content-Error")
+    end if
+  else  ' if there are errors.....
+    UART_Write_Line("Read-Error")
+  end if
+  ' Signal test end
+  UART_Write_Line("Test End.")
+end.

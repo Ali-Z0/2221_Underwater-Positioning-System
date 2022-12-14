@@ -1,0 +1,263 @@
+' * Project name:
+'     Mmc_Fat16_Test(Demonstration on usage of Mmc_Fat16 library)
+' * Copyright:
+'     (c) MikroElektronika, 2009.
+' * Revision History:
+'     20091030:
+'       - initial release
+' * Description:
+'     This project consists of several blocks that demonstrate various aspects of
+'     usage of the Mmc_Fat16 library. These are:
+'     - Creation of new file and writing down to it
+'     - Opening existing file and re-writing it (writing from start-of-file)
+'     - Opening existing file and appending data to it (writing from end-of-file)
+'     - Opening a file and reading data from it (sending it to UART terminal)
+'     - Creating and modifying several files at once
+'     - Reading file contents
+'     - Deleting file(s)
+'     - Creating the swap file (see Help for details)
+' * Test configuration:
+'     MCU:             dsPIC30F4013
+'                      http://ww1.microchip.com/downloads/en/DeviceDoc/70138F.pdf
+'     Dev.Board:       EasydsPIC6
+'                      http://www.mikroe.com/eng/products/view/434/easydspic6-development-system/
+'     Oscillator:      XT-PLL 8x, 10.00000 MHz
+'     Ext. Modules:    ac:MMC module on PORTF
+'                      SmartADAPT Extra Development Board.
+'                      http://www.mikroe.com/eng/products/view/157/smartadapt/
+'     SW:              mikroBasic PRO for dsPIC30/33 and PIC24
+'                      http://www.mikroe.com/eng/products/view/229/mikrobasic-pro-for-dspic30-33-and-pic24/
+' * NOTES:
+'     - Make sure that MMC card is properly formatted (to FAT16 or just FAT)
+'       before testing it on this example.
+'     - Connect RS232 cable and turn on RS232 jumpers J8 and J9 (RC13 & RC14). (board specific)
+'     - Use SmartADAPT to match the SPI pinout of the dsPIC30F4013 and MMC/SD module. (board specific)
+'     - This example expects MMC card to be inserted before reset, otherwise,
+'       the FAT_ERROR message is displayed.
+
+program MMC_FAT_Test
+
+dim
+  Mmc_Chip_Select as sbit at LATF0_bit   ' for writing to output pin always use latch 
+  Mmc_Chip_Select_Direction as sbit at TRISF0_bit
+
+const LINE_LEN = 43
+
+dim
+  err_txt as string[20]
+  file_contents as string[LINE_LEN]
+
+  filename as string[14]  ' File names
+
+  character as byte
+  loop1, loop2 as byte
+  size as longint
+
+  buffer as byte[512]
+
+' UART write text and new line (carriage return + line feed)
+sub procedure UART_Write_Line( dim byref uart_text as string )
+  UART1_Write_Text(uart_text)
+  UART1_Write(13)
+  UART1_Write(10)
+end sub
+
+'-------------- Creates new file and writes some data to it
+sub procedure M_Create_New_File()
+  filename[7] = "A"                             ' Set filename for single-file tests
+  Mmc_Fat_Set_File_Date(2005,6,21,10,35,0)      ' Set file date & time info
+  Mmc_Fat_Assign(filename, 0xA0)                ' Will not find file and then create file
+  Mmc_Fat_Rewrite                               ' To clear file and start with new data
+  for loop1=1 to 99                             '  We want 5 files on the MMC card
+    UART1_Write(".")
+    file_contents[0] = loop1 div 10 + 48
+    file_contents[1] = loop1 mod 10 + 48
+    Mmc_Fat_Write(file_contents, LINE_LEN-1)    ' write data to the assigned file
+  next loop1
+end sub
+
+'-------------- Creates many new files and writes data to them
+sub procedure M_Create_Multiple_Files()
+  for loop2 = "B" to "Z"
+    UART1_Write(loop2)                        ' signal the progress
+    filename[7] = loop2                       ' set filename
+    Mmc_Fat_Set_File_Date(2005,6,21,10,35,0)  ' Set file date & time info
+    Mmc_Fat_Assign(filename, 0xA0)            ' find existing file or create a new one
+    Mmc_Fat_Rewrite                           ' To clear file and start with new data
+    for loop1 = 1 to 44
+      file_contents[0] = byte(loop1 div 10 + 48)
+      file_contents[1] = byte(loop1 mod 10 + 48)
+      Mmc_Fat_Write(file_contents, LINE_LEN-1) ' write data to the assigned file
+    next loop1
+  next loop2
+end sub
+
+'-------------- Opens an existing file and rewrites it
+sub procedure M_Open_File_Rewrite()
+  filename[7] = "C"                  ' Set filename for single-file tests
+  Mmc_Fat_Assign(filename, 0)
+  Mmc_Fat_Rewrite
+  for loop1 = 1 to 55
+    file_contents[0] = byte(loop1 div 10 + 48)
+    file_contents[1] = byte(loop1 mod 10 + 48)
+    Mmc_Fat_Write(file_contents, 42) ' write data to the assigned file
+  next loop1
+end sub
+
+'-------------- Opens an existing file and appends data to it
+'               (and alters the date/time stamp)
+sub procedure M_Open_File_Append()
+  filename[7] = "B"
+  Mmc_Fat_Assign(filename, 0)
+  Mmc_Fat_Set_File_Date(2009, 1, 23, 17, 22, 0)
+  Mmc_Fat_Append()                                 ' Prepare file for append
+  file_contents = " for mikroElektronika 2009"     ' Prepare file for append
+  file_contents[26] = 13                        ' CR
+  file_contents[27] = 10                        ' LF
+  Mmc_Fat_Write(file_contents, 27)                 ' Write data to assigned file
+end sub
+
+'-------------- Opens an existing file, reads data from it and puts it to USART
+sub procedure M_Open_File_Read()
+  filename[7] = "B"
+  Mmc_Fat_Assign(filename, 0)
+  Mmc_Fat_Reset(size)                ' To read file, procedure returns size of file
+  while size > 0
+    Mmc_Fat_Read(character)
+    UART1_Write(character)           ' Write data to UART
+    Dec(size)
+  wend
+end sub
+
+'-------------- Deletes a file. If file doesn't exist, it will first be created
+'               and then deleted.
+sub procedure M_Delete_File()
+  filename[7] = "F"
+  Mmc_Fat_Assign(filename, 0)
+  Mmc_Fat_Delete
+end sub
+
+'-------------- Tests whether file exists, and if so sends its creation date
+'               and file size via USART
+sub procedure M_Test_File_Exist
+dim
+  fsize as longint
+  year as word
+  month_, day, hour_, minute_ as byte
+  outstr as char[12]
+  
+  filename[7] = "B"
+  if Mmc_Fat_Assign(filename, 0) <> 0 then
+    '--- file has been found - get its date
+    Mmc_Fat_Get_File_Date(year,month_,day,hour_,minute_)
+    UART1_Write_Text(" created: ")
+    WordToStr(year, outstr)
+    UART1_Write_Text(outstr)
+    ByteToStr(month_, outstr)
+    UART1_Write_Text(outstr)
+    WordToStr(day, outstr)
+    UART1_Write_Text(outstr)
+    WordToStr(hour_, outstr)
+    UART1_Write_Text(outstr)
+    WordToStr(minute_, outstr)
+    UART1_Write_Text(outstr)
+
+    '--- file has been found - get its modified date
+    Mmc_Fat_Get_File_Date_Modified(year, month_, day, hour_, minute_)
+    UART1_Write_Text(" modified: ")
+    WordToStr(year, outstr)
+    UART1_Write_Text(outstr)
+    ByteToStr(month_, outstr)
+    UART1_Write_Text(outstr)
+    WordToStr(day, outstr)
+    UART1_Write_Text(outstr)
+    WordToStr(hour_, outstr)
+    UART1_Write_Text(outstr)
+    WordToStr(minute_, outstr)
+    UART1_Write_Text(outstr)
+
+    '--- get file size
+    fsize = Mmc_Fat_Get_File_Size
+    LongIntToStr(fsize, outstr)
+    UART_Write_Line(outstr)
+  else
+    '--- file was not found - signal it
+    UART1_Write(0x55)
+    Delay_ms(1000)
+    UART1_Write(0x55)
+  end if
+end sub
+
+'-------------- Tries to create a swap file, whose size will be at least 100
+'               sectors (see Help for details)
+sub procedure M_Create_Swap_File()
+dim i as word
+
+  for i=0 to 511
+    Buffer[i] = i
+  next i
+  
+  size = Mmc_Fat_Get_Swap_File(5000, "mikroE.txt", 0x20)   ' see help on this function for details
+
+  if (size <> 0) then
+    LongIntToStr(size, err_txt)
+    UART_Write_Line(err_txt)
+
+    for i=0 to 4999
+      Mmc_Write_Sector(size, Buffer)
+      Inc(size)
+      UART1_Write(".")
+    next i
+  end if
+end sub
+
+'-------------- Main. Uncomment the function(s) to test the desired operation(s)
+main:
+  err_txt = "FAT16 not found"
+  file_contents = "XX MMC/SD FAT16 library by Anton Rieckert"
+  file_contents[LINE_LEN-2] = 13
+  file_contents[LINE_LEN-1] = 10
+  file_contents[LINE_LEN] = 0
+  filename = "MIKRO00xTXT"
+  
+  #DEFINE COMPLETE_EXAMPLE               ' comment this line to make simpler/smaller example
+  PORTD = 0
+  TRISD = 0
+  PORTF = 0
+  TRISF = 0
+  ADPCFG = 0xFFFF                        ' initialize AN pins as digital
+  
+  '--- set up USART for the file read
+  SPI1_Init_Advanced(_SPI_MASTER, _SPI_8_BIT, _SPI_PRESCALE_SEC_1, _SPI_PRESCALE_PRI_64,
+                    _SPI_SS_DISABLE, _SPI_DATA_SAMPLE_MIDDLE, _SPI_CLK_IDLE_HIGH, _SPI_ACTIVE_2_IDLE)
+
+  UART1_Init(19200)                      ' Initialize UART module at 9600 bps
+  Delay_ms(100)                          ' Wait for UART module to stabilize
+
+  U1MODE.ALTIO = 1                       ' Switch Rx and Tx pins on their alternate locations.
+                                         ' This is used to free the pins for other module, namely the SPI.
+                                           
+  UART_Write_Line("MCU-Started")         ' MCU present report
+  ' use fat16 quick format instead of init routine if a formatting is needed
+  if Mmc_Fat_Init() = 0 then
+    ' reinitialize spi at higher speed
+    SPI1_Init_Advanced(_SPI_MASTER, _SPI_8_BIT, _SPI_PRESCALE_SEC_1, _SPI_PRESCALE_PRI_4,
+                    _SPI_SS_DISABLE, _SPI_DATA_SAMPLE_MIDDLE, _SPI_CLK_IDLE_HIGH, _SPI_ACTIVE_2_IDLE)
+    '--- Test start
+    UART_Write_Line("Test Start.")
+    M_Create_New_File()
+    #IFDEF COMPLETE_EXAMPLE
+    M_Create_Multiple_Files()
+    M_Open_File_Rewrite()
+    M_Open_File_Append()
+    M_Open_File_Read()
+    M_Delete_File()
+    M_Test_File_Exist()
+    M_Create_Swap_File()
+    #ENDIF
+    UART_Write_Line("Test End.")
+  else
+    UART_Write_Line(err_txt)    ' Note: Cf_Fat_Init tries to initialize a card more than once.
+                                '       If card is not present, initialization may last longer (depending on clock speed)
+  end if
+end.

@@ -1,0 +1,13 @@
+<MMC>
+	<Attributes>
+		<Url>http://www.mikroe.com/eng/products/view/138/mmc-sd-board/</Url>
+		<Image>MMC-SD Board.jpg</Image>
+		<File></File>
+	</Attributes>
+	<Events>
+		<OnLeftClick>OpenUrl</OnLeftClick>
+		<OnRightClick></OnRightClick>
+		<OnDblClick>OpenUrl</OnDblClick>
+		<OnMouseOver>PreviewImage</OnMouseOver>
+	</Events>
+</MMC>

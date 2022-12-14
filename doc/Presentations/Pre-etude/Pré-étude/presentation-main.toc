@@ -1,0 +1,5 @@
+\babel@toc {french}{}\relax 
+\beamer@sectionintoc {2}{Introduction}{3}{0}{1}
+\beamer@sectionintoc {3}{Déroulement}{6}{0}{2}
+\beamer@sectionintoc {4}{Dimensionnements}{9}{0}{3}
+\beamer@sectionintoc {5}{Conclusion}{15}{0}{4}

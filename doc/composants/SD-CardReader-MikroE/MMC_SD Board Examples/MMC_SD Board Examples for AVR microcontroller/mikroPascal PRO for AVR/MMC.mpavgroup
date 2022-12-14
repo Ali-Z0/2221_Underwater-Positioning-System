@@ -1,0 +1,6 @@
+[PROJECTS]
+Count=2
+Project0=MMC Common\MMC_Test.mppav
+Project1=MMC_Fat16\Mmc_Fat16_Test.mppav
+[ActiveProject]
+Index=0
