@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.12.7)  14 DEC 2022 14:35
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.12.7)  14 DEC 2022 16:01
  restricted system commands enabled.
 **presentation-main.tex
 (./presentation-main.tex
@@ -1500,7 +1500,7 @@ t line 82.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  TU/lmtt/b/n --> TU/lmtt/b/n on input line 82.
  (./presentation-main.nav)
-<Images/logo.png, id=54, 200.75pt x 200.75pt>
+<Images/logo.png, id=55, 200.75pt x 200.75pt>
 File: Images/logo.png Graphic file (type png)
 <use Images/logo.png>
 Package luatex.def Info: Images/logo.png  used on input line 87.
@@ -1514,7 +1514,7 @@ Package luatex.def Info: Images/logo.png  used on input line 87.
 ] [3
 
 ]
-<Images/pre-etude.drawio.png, id=114, 3243.86906pt x 3447.12843pt>
+<Images/pre-etude.drawio.png, id=117, 3243.86906pt x 3447.12843pt>
 File: Images/pre-etude.drawio.png Graphic file (type png)
 <use Images/pre-etude.drawio.png>
 Package luatex.def Info: Images/pre-etude.drawio.png  used on input line 116.
@@ -1544,7 +1544,7 @@ Overfull \vbox (4.25536pt too high) detected at line 175
 ] [9
 
 ]
-<Images/Schema-bloc-LocalisationSousMarin.png, id=230, 3317.39375pt x 3257.1687
+<Images/Schema-bloc-LocalisationSousMarin.png, id=237, 3317.39375pt x 3257.1687
 5pt>
 File: Images/Schema-bloc-LocalisationSousMarin.png Graphic file (type png)
 <use Images/Schema-bloc-LocalisationSousMarin.png>
@@ -1558,67 +1558,74 @@ Overfull \vbox (14.07349pt too high) detected at line 184
 [10
 
 <./Images/Schema-bloc-LocalisationSousMarin.png>]
-<Images/BNO055-Illustration.png, id=258, 451.6875pt x 328.22626pt>
+<Images/Altium-blocks.png, id=266, 1210.5225pt x 501.37312pt>
+File: Images/Altium-blocks.png Graphic file (type png)
+<use Images/Altium-blocks.png>
+Package luatex.def Info: Images/Altium-blocks.png  used on input line 189.
+(luatex.def)             Requested size: 398.3386pt x 164.97931pt.
+ [11
+
+<./Images/Altium-blocks.png>]
+<Images/BNO055-Illustration.png, id=297, 451.6875pt x 328.22626pt>
 File: Images/BNO055-Illustration.png Graphic file (type png)
 <use Images/BNO055-Illustration.png>
-Package luatex.def Info: Images/BNO055-Illustration.png  used on input line 189
+Package luatex.def Info: Images/BNO055-Illustration.png  used on input line 196
 .
 (luatex.def)             Requested size: 119.50279pt x 86.83931pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 191
+LaTeX Font Info:    Trying to load font information for U+msa on input line 198
 .
-
-(c:/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
+ (c:/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 191
+LaTeX Font Info:    Trying to load font information for U+msb on input line 198
 .
 
 (c:/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \vbox (1.59164pt too high) detected at line 200
+Overfull \vbox (1.59164pt too high) detected at line 207
  []
 
-[11
+[12
 
 <./Images/BNO055-Illustration.png>]
-<Images/SDcard.png, id=292, 39.406pt x 39.406pt>
+<Images/SDcard.png, id=330, 39.406pt x 39.406pt>
 File: Images/SDcard.png Graphic file (type png)
 <use Images/SDcard.png>
-Package luatex.def Info: Images/SDcard.png  used on input line 205.
+Package luatex.def Info: Images/SDcard.png  used on input line 212.
 (luatex.def)             Requested size: 39.83629pt x 39.83942pt.
 
 
 LaTeX Font Warning: Font shape `TU/Flama-Light(1)/b/n' undefined
-(Font)              using `TU/Flama-Light(1)/m/n' instead on input line 221.
-
-[12
-
-<./Images/SDcard.png>]
-<Images/PowerSystemsComparison.png, id=324, 551.81157pt x 633.11531pt>
-File: Images/PowerSystemsComparison.png Graphic file (type png)
-<use Images/PowerSystemsComparison.png>
-Package luatex.def Info: Images/PowerSystemsComparison.png  used on input line 
-226.
-(luatex.def)             Requested size: 142.26378pt x 163.22462pt.
-
-Overfull \hbox (16.39734pt too wide) in paragraph at lines 226--235
-[][][]  
- []
+(Font)              using `TU/Flama-Light(1)/m/n' instead on input line 228.
 
 [13
 
-<./Images/PowerSystemsComparison.PNG>]
-Overfull \vbox (3.55226pt too high) detected at line 259
+<./Images/SDcard.png>]
+<Images/PowerSystemsComparison.png, id=363, 551.81157pt x 633.11531pt>
+File: Images/PowerSystemsComparison.png Graphic file (type png)
+<use Images/PowerSystemsComparison.png>
+Package luatex.def Info: Images/PowerSystemsComparison.png  used on input line 
+233.
+(luatex.def)             Requested size: 142.26378pt x 163.22462pt.
+
+Overfull \hbox (16.39734pt too wide) in paragraph at lines 233--242
+[][][]  
  []
 
 [14
 
-] [15
+<./Images/PowerSystemsComparison.PNG>]
+Overfull \vbox (3.55226pt too high) detected at line 266
+ []
+
+[15
 
 ] [16
 
 ] [17
+
+] [18
 
 <c:/texlive/2022/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>]
 \tf@nav=\write6
@@ -1639,15 +1646,15 @@ Package rerunfilecheck Info: File `presentation-main.out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 33407 strings out of 477247
+ 33430 strings out of 477247
  100000,1144653 words of node,token memory allocated
- 21234 words of node memory still in use:
-   164 hlist, 12 vlist, 7 rule, 76 disc, 13 local_par, 309 glue, 83 kern, 35 pen
-alty, 623 glyph, 4178 attribute, 80 glue_spec, 599 attribute_list, 4 write, 256 
-pdf_literal, 21 pdf_start_link, 21 pdf_end_link, 3 pdf_dest, 21 pdf_action, 112 
+ 21824 words of node memory still in use:
+   170 hlist, 12 vlist, 7 rule, 76 disc, 13 local_par, 315 glue, 84 kern, 35 pen
+alty, 623 glyph, 4360 attribute, 80 glue_spec, 625 attribute_list, 4 write, 272 
+pdf_literal, 22 pdf_start_link, 22 pdf_end_link, 3 pdf_dest, 22 pdf_action, 114 
 pdf_colorstack nodes
-   avail lists: 2:5075,3:728,4:413,5:200,6:60,7:2290,8:58,9:619,10:19,11:213
- 52892 multiletter control sequences out of 65536+600000
+   avail lists: 2:5283,3:762,4:417,5:202,6:61,7:2302,8:60,9:631,10:19,11:213
+ 52904 multiletter control sequences out of 65536+600000
  61 fonts using 3015903 bytes
  128i,19n,115p,446b,858s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman8-italic.otf><c:/tex
@@ -1657,10 +1664,10 @@ a-Light.otf><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pf
 b><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texli
 ve/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2022/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on presentation-main.pdf (17 pages, 1782498 bytes).
+Output written on presentation-main.pdf (18 pages, 1818919 bytes).
 
-PDF statistics: 495 PDF objects out of 1000 (max. 8388607)
- 410 compressed objects within 5 object streams
- 45 named destinations out of 1000 (max. 131072)
+PDF statistics: 538 PDF objects out of 1000 (max. 8388607)
+ 449 compressed objects within 5 object streams
+ 47 named destinations out of 1000 (max. 131072)
  56 words of extra memory for PDF output out of 10000 (max. 100000000)
 
