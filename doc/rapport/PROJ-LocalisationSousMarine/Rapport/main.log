@@ -1,31 +1,71 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.7)  14 DEC 2022 10:15
-entering extended mode
- restricted \write18 enabled.
- %&-line parsing enabled.
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.12.7)  21 DEC 2022 16:21
+ restricted system commands enabled.
 **main.tex
 (./main.tex
 LaTeX2e <2022-11-01> patch level 1
-L3 programming layer <2022-11-02>
+Lua module: luaotfload 2022-10-03 3.23 Lua based OpenType font support
+Lua module: lualibs 2022-10-04 2.75 ConTeXt Lua standard libraries.
+Lua module: lualibs-extended 2022-10-04 2.75 ConTeXt Lua libraries -- extended c
+ollection.
+luaotfload | conf : Root cache directory is "C:/texlive/2022/texmf-var/luatex-ca
+che/generic/names".
+luaotfload | init : Loading fontloader "fontloader-2022-10-03.lua" from kpse-res
+olved path "c:/texlive/2022/texmf-dist/tex/luatex/luaotfload/fontloader-2022-10-
+03.lua".
+Lua-only attribute luaotfload@noligature = 1
+luaotfload | init : Context OpenType loader version 3.120
+Inserting `luaotfload.node_processor' in `pre_linebreak_filter'.
+Inserting `luaotfload.node_processor' in `hpack_filter'.
+Inserting `luaotfload.glyph_stream' in `glyph_stream_provider'.
+Inserting `luaotfload.define_font' in `define_font'.
+Lua-only attribute luaotfload_color_attribute = 2
+luaotfload | conf : Root cache directory is "C:/texlive/2022/texmf-var/luatex-ca
+che/generic/names".
+Inserting `luaotfload.harf.strip_prefix' in `find_opentype_file'.
+Inserting `luaotfload.harf.strip_prefix' in `find_truetype_file'.
+Removing  `luaotfload.glyph_stream' from `glyph_stream_provider'.
+Inserting `luaotfload.harf.glyphstream' in `glyph_stream_provider'.
+Inserting `luaotfload.harf.finalize_vlist' in `post_linebreak_filter'.
+Inserting `luaotfload.harf.finalize_hlist' in `hpack_filter'.
+Inserting `luaotfload.cleanup_files' in `wrapup_run'.
+Inserting `luaotfload.harf.finalize_unicode' in `finish_pdffile'.
+Inserting `luaotfload.glyphinfo' in `glyph_info'.
+Lua-only attribute luaotfload.letterspace_done = 3
+Inserting `luaotfload.aux.set_sscale_dimens' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_font_index' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.patch_cambria_domh' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.fixup_fontdata' in `luaotfload.patch_font_unsafe'.
+Inserting `luaotfload.aux.set_capheight' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_xheight' in `luaotfload.patch_font'.
+Inserting `luaotfload.rewrite_fontname' in `luaotfload.patch_font'. L3 programm
+ing layer <2022-11-02>
+Inserting `tracingstacklevels' in `input_level_string'.
 (c:/texlive/2022/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
 (c:/texlive/2022/texmf-dist/tex/latex/base/size12.clo
 File: size12.clo 2022/07/02 v1.4n Standard LaTeX file (size option)
-)
-\c@part=\count185
-\c@section=\count186
-\c@subsection=\count187
-\c@subsubsection=\count188
-\c@paragraph=\count189
-\c@subparagraph=\count190
-\c@figure=\count191
-\c@table=\count192
+luaotfload | db : Font names database loaded from C:/texlive/2022/texmf-var/luat
+ex-cache/generic/names/luaotfload-names.luc.gz)
+\c@part=\count183
+\c@section=\count184
+\c@subsection=\count185
+\c@subsubsection=\count186
+\c@paragraph=\count187
+\c@subparagraph=\count188
+\c@figure=\count189
+\c@table=\count190
 \abovecaptionskip=\skip48
 \belowcaptionskip=\skip49
-\bibindent=\dimen140
+\bibindent=\dimen139
 )
 (c:/texlive/2022/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
-)
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 11
+2.
+
+(c:/texlive/2022/texmf-dist/tex/latex/lm/t1lmr.fd
+File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+))
 (c:/texlive/2022/texmf-dist/tex/latex/psnfss/mathptmx.sty
 Package: mathptmx 2020/03/25 PSNFSS-v9.3 Times w/ Math, improved (SPQR, WaS) 
 LaTeX Font Info:    Redeclaring symbol font `operators' on input line 28.
@@ -66,11 +106,11 @@ LaTeX Info: Redefining \hbar on input line 50.
 (c:/texlive/2022/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
 (c:/texlive/2022/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
 \pgfutil@everybye=\toks16
-\pgfutil@tempdima=\dimen141
-\pgfutil@tempdimb=\dimen142
+\pgfutil@tempdima=\dimen140
+\pgfutil@tempdimb=\dimen141
 
-(c:/texlive/2022/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex)
-) (c:/texlive/2022/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+(c:/texlive/2022/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex))
+ (c:/texlive/2022/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 \pgfutil@abb=\box51
 )
 (c:/texlive/2022/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
@@ -96,13 +136,13 @@ Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
 (c:/texlive/2022/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 107.
+Package graphics Info: Driver file: luatex.def on input line 107.
 
-(c:/texlive/2022/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+(c:/texlive/2022/texmf-dist/tex/latex/graphics-def/luatex.def
+File: luatex.def 2022/09/22 v1.2d Graphics/color driver for luatex
 ))
-\Gin@req@height=\dimen143
-\Gin@req@width=\dimen144
+\Gin@req@height=\dimen142
+\Gin@req@width=\dimen143
 )
 (c:/texlive/2022/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
 (c:/texlive/2022/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
@@ -115,41 +155,41 @@ Package: pgfsys 2021/05/15 v3.1.9a (3.1.9a)
 (c:/texlive/2022/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
 \pgfkeys@tmptoks=\toks20
 ))
-\pgf@x=\dimen145
-\pgf@y=\dimen146
-\pgf@xa=\dimen147
-\pgf@ya=\dimen148
-\pgf@xb=\dimen149
-\pgf@yb=\dimen150
-\pgf@xc=\dimen151
-\pgf@yc=\dimen152
-\pgf@xd=\dimen153
-\pgf@yd=\dimen154
+\pgf@x=\dimen144
+\pgf@y=\dimen145
+\pgf@xa=\dimen146
+\pgf@ya=\dimen147
+\pgf@xb=\dimen148
+\pgf@yb=\dimen149
+\pgf@xc=\dimen150
+\pgf@yc=\dimen151
+\pgf@xd=\dimen152
+\pgf@yd=\dimen153
 \w@pgf@writea=\write3
 \r@pgf@reada=\read2
-\c@pgf@counta=\count193
-\c@pgf@countb=\count194
-\c@pgf@countc=\count195
-\c@pgf@countd=\count196
+\c@pgf@counta=\count191
+\c@pgf@countb=\count192
+\c@pgf@countc=\count193
+\c@pgf@countd=\count194
 \t@pgf@toka=\toks21
 \t@pgf@tokb=\toks22
 \t@pgf@tokc=\toks23
-\pgf@sys@id@count=\count197
+\pgf@sys@id@count=\count195
  (c:/texlive/2022/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2021/05/15 v3.1.9a (3.1.9a)
 )
-Driver file for pgf: pgfsys-pdftex.def
+Driver file for pgf: pgfsys-luatex.def
 
-(c:/texlive/2022/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
-File: pgfsys-pdftex.def 2021/05/15 v3.1.9a (3.1.9a)
+(c:/texlive/2022/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-luatex.def
+File: pgfsys-luatex.def 2021/05/15 v3.1.9a (3.1.9a)
 
 (c:/texlive/2022/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
 File: pgfsys-common-pdf.def 2021/05/15 v3.1.9a (3.1.9a)
 )))
 (c:/texlive/2022/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfsyssoftpath@smallbuffer@items=\count198
-\pgfsyssoftpath@bigbuffer@items=\count199
+\pgfsyssoftpath@smallbuffer@items=\count196
+\pgfsyssoftpath@bigbuffer@items=\count197
 )
 (c:/texlive/2022/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2021/05/15 v3.1.9a (3.1.9a)
@@ -159,7 +199,7 @@ Package: xcolor 2022/06/12 v2.14 LaTeX color extensions (UK)
 (c:/texlive/2022/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package xcolor Info: Driver file: pdftex.def on input line 227.
+Package xcolor Info: Driver file: luatex.def on input line 227.
 
 (c:/texlive/2022/texmf-dist/tex/latex/graphics/mathcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1353.
@@ -179,8 +219,8 @@ Package: pgfcore 2021/05/15 v3.1.9a (3.1.9a)
 (c:/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 (c:/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
 (c:/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen155
-\pgfmath@count=\count266
+\pgfmath@dimen=\dimen154
+\pgfmath@count=\count198
 \pgfmath@box=\box52
 \pgfmath@toks=\toks24
 \pgfmath@stack@operand=\toks25
@@ -204,56 +244,56 @@ x)
 (c:/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithm
 etics.code.tex)))
 (c:/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count267
+\c@pgfmathroundto@lastzeros=\count199
 ))
 (c:/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
 (c:/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@picminx=\dimen156
-\pgf@picmaxx=\dimen157
-\pgf@picminy=\dimen158
-\pgf@picmaxy=\dimen159
-\pgf@pathminx=\dimen160
-\pgf@pathmaxx=\dimen161
-\pgf@pathminy=\dimen162
-\pgf@pathmaxy=\dimen163
-\pgf@xx=\dimen164
-\pgf@xy=\dimen165
-\pgf@yx=\dimen166
-\pgf@yy=\dimen167
-\pgf@zx=\dimen168
-\pgf@zy=\dimen169
+\pgf@picminx=\dimen155
+\pgf@picmaxx=\dimen156
+\pgf@picminy=\dimen157
+\pgf@picmaxy=\dimen158
+\pgf@pathminx=\dimen159
+\pgf@pathmaxx=\dimen160
+\pgf@pathminy=\dimen161
+\pgf@pathmaxy=\dimen162
+\pgf@xx=\dimen163
+\pgf@xy=\dimen164
+\pgf@yx=\dimen165
+\pgf@yy=\dimen166
+\pgf@zx=\dimen167
+\pgf@zy=\dimen168
 )
 (c:/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.cod
 e.tex
 File: pgfcorepathconstruct.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@path@lastx=\dimen170
-\pgf@path@lasty=\dimen171
+\pgf@path@lastx=\dimen169
+\pgf@path@lasty=\dimen170
 )
 (c:/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.te
 x
 File: pgfcorepathusage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@shorten@end@additional=\dimen172
-\pgf@shorten@start@additional=\dimen173
+\pgf@shorten@end@additional=\dimen171
+\pgf@shorten@start@additional=\dimen172
 )
 (c:/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
 File: pgfcorescopes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgfpic=\box53
 \pgf@hbox=\box54
 \pgf@layerbox@main=\box55
-\pgf@picture@serial@count=\count268
+\pgf@picture@serial@count=\count266
 )
 (c:/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code
 .tex
 File: pgfcoregraphicstate.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgflinewidth=\dimen174
+\pgflinewidth=\dimen173
 )
 (c:/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.c
 ode.tex
 File: pgfcoretransformations.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@pt@x=\dimen175
-\pgf@pt@y=\dimen176
-\pgf@pt@temp=\dimen177
+\pgf@pt@x=\dimen174
+\pgf@pt@y=\dimen175
+\pgf@pt@temp=\dimen176
 )
 (c:/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2021/05/15 v3.1.9a (3.1.9a)
@@ -267,13 +307,13 @@ File: pgfcorepathprocessing.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 )
 (c:/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
 File: pgfcorearrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfarrowsep=\dimen178
+\pgfarrowsep=\dimen177
 )
 (c:/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@max=\dimen179
-\pgf@sys@shading@range@num=\count269
-\pgf@shadingcount=\count270
+\pgf@max=\dimen178
+\pgf@sys@shading@range@num=\count267
+\pgf@shadingcount=\count268
 )
 (c:/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
@@ -304,8 +344,8 @@ File: pgfmoduleplot.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 (c:/texlive/2022/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.st
 y
 Package: pgfcomp-version-0-65 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@nodesepstart=\dimen180
-\pgf@nodesepend=\dimen181
+\pgf@nodesepstart=\dimen179
+\pgf@nodesepend=\dimen180
 )
 (c:/texlive/2022/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.st
 y
@@ -315,58 +355,58 @@ Package: pgfpages 2011/01/05 ver 0.02
 
 (c:/texlive/2022/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count271
-\calc@Bcount=\count272
-\calc@Adimen=\dimen182
-\calc@Bdimen=\dimen183
+\calc@Acount=\count269
+\calc@Bcount=\count270
+\calc@Adimen=\dimen181
+\calc@Bdimen=\dimen182
 \calc@Askip=\skip50
 \calc@Bskip=\skip51
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count273
+\calc@Ccount=\count271
 \calc@Cskip=\skip52
 )
-\pgf@logicalpages=\count274
-\pgf@firstshipout=\count275
-\pgf@lastshipout=\count276
-\pgf@currentshipout=\count277
-\pgf@cpn=\count278
-\pgf@shipoutnextto=\count279
-\pgfphysicalheight=\dimen184
-\pgfphysicalwidth=\dimen185
+\pgf@logicalpages=\count272
+\pgf@firstshipout=\count273
+\pgf@lastshipout=\count274
+\pgf@currentshipout=\count275
+\pgf@cpn=\count276
+\pgf@shipoutnextto=\count277
+\pgfphysicalheight=\dimen183
+\pgfphysicalwidth=\dimen184
 \pgfpages@shipoutbox=\box58
 )
 (c:/texlive/2022/texmf-dist/tex/latex/parallel/parallel.sty
 Package: parallel 2003/04/13, setting two texts parallel (me)
 
 `parallel': setting two texts parallel, (beta 4) 2003/04/13.
-\ParallelLWidth=\dimen186
-\ParallelRWidth=\dimen187
-\ParallelTextWidth=\dimen188
-\ParallelLeftMargin=\dimen189
-\ParallelUserMidSkip=\dimen190
-\ParallelMainMidSkip=\dimen191
+\ParallelLWidth=\dimen185
+\ParallelRWidth=\dimen186
+\ParallelTextWidth=\dimen187
+\ParallelLeftMargin=\dimen188
+\ParallelUserMidSkip=\dimen189
+\ParallelMainMidSkip=\dimen190
 \ParallelLBox=\box59
 \ParallelRBox=\box60
 \ParallelBoxVar=\box61
 \ParallelLTok=\box62
 \ParallelRTok=\box63
-\ParallelBoolVar=\count280
-\ParallelBoolMid=\count281
-\ParallelWhichBox=\count282
-\ParallelMainMode=\count283
-\ParallelFNMode=\count284
-\ParallelLFNCounter=\count285
-\ParallelRFNCounter=\count286
-\ParallelMaxFN=\count287
-\ParallelFNNumMode=\count288
+\ParallelBoolVar=\count278
+\ParallelBoolMid=\count279
+\ParallelWhichBox=\count280
+\ParallelMainMode=\count281
+\ParallelFNMode=\count282
+\ParallelLFNCounter=\count283
+\ParallelRFNCounter=\count284
+\ParallelMaxFN=\count285
+\ParallelFNNumMode=\count286
 )
 (c:/texlive/2022/texmf-dist/tex/latex/siunitx/siunitx.sty
 Package: siunitx 2022-12-05 v3.1.11 A comprehensive (SI) units package
-\l__siunitx_angle_tmp_dim=\dimen192
+\l__siunitx_angle_tmp_dim=\dimen191
 \l__siunitx_angle_marker_box=\box64
 \l__siunitx_angle_unit_box=\box65
-\l__siunitx_compound_count_int=\count289
+\l__siunitx_compound_count_int=\count287
 
 (c:/texlive/2022/texmf-dist/tex/latex/translations/translations.sty
 Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages
@@ -374,7 +414,7 @@ Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages
 
 (c:/texlive/2022/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count290
+\etb@tempcnta=\count288
 )
 (c:/texlive/2022/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
 Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
@@ -392,65 +432,66 @@ Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
+\pdftexcmds@toks=\toks27
 ))
-\l__siunitx_number_exponent_fixed_int=\count291
-\l__siunitx_number_min_decimal_int=\count292
-\l__siunitx_number_min_integer_int=\count293
-\l__siunitx_number_round_precision_int=\count294
-\l__siunitx_number_group_first_int=\count295
-\l__siunitx_number_group_size_int=\count296
-\l__siunitx_number_group_minimum_int=\count297
+\l__siunitx_number_exponent_fixed_int=\count289
+\l__siunitx_number_min_decimal_int=\count290
+\l__siunitx_number_min_integer_int=\count291
+\l__siunitx_number_round_precision_int=\count292
+\l__siunitx_number_group_first_int=\count293
+\l__siunitx_number_group_size_int=\count294
+\l__siunitx_number_group_minimum_int=\count295
 
 (c:/texlive/2022/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2021/08/26 v2.01 AMS text
 
 (c:/texlive/2022/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks27
-\ex@=\dimen193
+\@emptytoks=\toks28
+\ex@=\dimen192
 ))
 \l__siunitx_table_tmp_box=\box66
-\l__siunitx_table_tmp_dim=\dimen194
-\l__siunitx_table_column_width_dim=\dimen195
+\l__siunitx_table_tmp_dim=\dimen193
+\l__siunitx_table_column_width_dim=\dimen194
 \l__siunitx_table_integer_box=\box67
 \l__siunitx_table_decimal_box=\box68
 \l__siunitx_table_before_box=\box69
 \l__siunitx_table_after_box=\box70
-\l__siunitx_table_before_dim=\dimen196
-\l__siunitx_table_carry_dim=\dimen197
-\l__siunitx_unit_tmp_int=\count298
-\l__siunitx_unit_position_int=\count299
-\l__siunitx_unit_total_int=\count300
+\l__siunitx_table_before_dim=\dimen195
+\l__siunitx_table_carry_dim=\dimen196
+\l__siunitx_unit_tmp_int=\count296
+\l__siunitx_unit_position_int=\count297
+\l__siunitx_unit_total_int=\count298
 
 (c:/texlive/2022/texmf-dist/tex/latex/tools/array.sty
 Package: array 2022/09/04 v2.5g Tabular extension package (FMi)
-\col@sep=\dimen198
+\col@sep=\dimen197
 \ar@mcellbox=\box71
-\extrarowheight=\dimen199
-\NC@list=\toks28
+\extrarowheight=\dimen198
+\NC@list=\toks29
 \extratabsurround=\skip53
 \backup@length=\skip54
 \ar@cellbox=\box72
 ))
 (c:/texlive/2022/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen256
-\lightrulewidth=\dimen257
-\cmidrulewidth=\dimen258
-\belowrulesep=\dimen259
-\belowbottomsep=\dimen260
-\aboverulesep=\dimen261
-\abovetopsep=\dimen262
-\cmidrulesep=\dimen263
-\cmidrulekern=\dimen264
-\defaultaddspace=\dimen265
-\@cmidla=\count301
-\@cmidlb=\count302
-\@aboverulesep=\dimen266
-\@belowrulesep=\dimen267
-\@thisruleclass=\count303
-\@lastruleclass=\count304
-\@thisrulewidth=\dimen268
+\heavyrulewidth=\dimen199
+\lightrulewidth=\dimen256
+\cmidrulewidth=\dimen257
+\belowrulesep=\dimen258
+\belowbottomsep=\dimen259
+\aboverulesep=\dimen260
+\abovetopsep=\dimen261
+\cmidrulesep=\dimen262
+\cmidrulekern=\dimen263
+\defaultaddspace=\dimen264
+\@cmidla=\count299
+\@cmidlb=\count300
+\@aboverulesep=\dimen265
+\@belowrulesep=\dimen266
+\@thisruleclass=\count301
+\@lastruleclass=\count302
+\@thisrulewidth=\dimen267
 )
 (c:/texlive/2022/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2022/11/09 v4.1 Extensive control of page headers and footers
@@ -479,10 +520,10 @@ Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
 
 (c:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkeyval.tex
 (c:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks29
-\XKV@tempa@toks=\toks30
+\XKV@toks=\toks30
+\XKV@tempa@toks=\toks31
 )
-\XKV@depth=\count305
+\XKV@depth=\count303
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 (c:/texlive/2022/texmf-dist/tex/latex/fmtcount/fcprefix.sty
@@ -490,41 +531,41 @@ Package: fcprefix 2012/09/28
 
 (c:/texlive/2022/texmf-dist/tex/latex/fmtcount/fcnumparser.sty
 Package: fcnumparser 2017/06/15
-\fc@digit@counter=\count306
+\fc@digit@counter=\count304
 ))
-\c@padzeroesN=\count307
-\fc@tmpcatcode=\count308
-\@DT@modctr=\count309
-\@ordinalctr=\count310
-\@orgargctr=\count311
-\@strctr=\count312
-\@tmpstrctr=\count313
-\@DT@loopN=\count314
-\@DT@X=\count315
+\c@padzeroesN=\count305
+\fc@tmpcatcode=\count306
+\@DT@modctr=\count307
+\@ordinalctr=\count308
+\@orgargctr=\count309
+\@strctr=\count310
+\@tmpstrctr=\count311
+\@DT@loopN=\count312
+\@DT@X=\count313
 )
 (c:/texlive/2022/texmf-dist/tex/latex/datetime/datetime-defaults.sty
 Package: datetime-defaults 2013/09/10
 )
-\@day=\count316
-\@month=\count317
-\@year=\count318
-\c@HOUR=\count319
-\c@HOURXII=\count320
-\c@MINUTE=\count321
-\c@TOHOUR=\count322
-\c@TOMINUTE=\count323
-\c@SECOND=\count324
-\currenthour=\count325
-\currentminute=\count326
-\currentsecond=\count327
+\@day=\count314
+\@month=\count315
+\@year=\count316
+\c@HOUR=\count317
+\c@HOURXII=\count318
+\c@MINUTE=\count319
+\c@TOHOUR=\count320
+\c@TOMINUTE=\count321
+\c@SECOND=\count322
+\currenthour=\count323
+\currentminute=\count324
+\currentsecond=\count325
 Package datetime Info: No datetime.cfg file found, using default settings on in
 put line 308.
-\@dtctr=\count328
-\dayofyear=\count329
-\dayofweek=\count330
+\@dtctr=\count326
+\dayofyear=\count327
+\dayofweek=\count328
 LaTeX Info: Redefining \today on input line 736.
-\dt@a=\toks31
-\dt@b=\toks32
+\dt@a=\toks32
+\dt@b=\toks33
 )
 (c:/texlive/2022/texmf-dist/tex/latex/blindtext/blindtext.sty
 Package: blindtext 2012/01/06 V2.0 blindtext-Package
@@ -532,44 +573,44 @@ Package: blindtext 2012/01/06 V2.0 blindtext-Package
 (c:/texlive/2022/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 )
-\c@blindtext=\count331
-\c@Blindtext=\count332
-\c@blind@countparstart=\count333
-\blind@countxx=\count334
-\blindtext@numBlindtext=\count335
-\blind@countyy=\count336
-\c@blindlist=\count337
-\c@blindlistlevel=\count338
-\c@blindlist@level=\count339
-\blind@listitem=\count340
-\c@blind@listcount=\count341
-\c@blind@levelcount=\count342
-\blind@mathformula=\count343
-\blind@Mathformula=\count344
-\c@blind@randomcount=\count345
-\c@blind@randommax=\count346
-\c@blind@pangramcount=\count347
-\c@blind@pangrammax=\count348
+\c@blindtext=\count329
+\c@Blindtext=\count330
+\c@blind@countparstart=\count331
+\blind@countxx=\count332
+\blindtext@numBlindtext=\count333
+\blind@countyy=\count334
+\c@blindlist=\count335
+\c@blindlistlevel=\count336
+\c@blindlist@level=\count337
+\blind@listitem=\count338
+\c@blind@listcount=\count339
+\c@blind@levelcount=\count340
+\blind@mathformula=\count341
+\blind@Mathformula=\count342
+\c@blind@randomcount=\count343
+\c@blind@randommax=\count344
+\c@blind@pangramcount=\count345
+\c@blind@pangrammax=\count346
 )
 (c:/texlive/2022/texmf-dist/tex/latex/tools/multicol.sty
 Package: multicol 2021/11/30 v1.9d multicolumn formatting (FMi)
-\c@tracingmulticols=\count349
+\c@tracingmulticols=\count347
 \mult@box=\box73
-\multicol@leftmargin=\dimen269
-\c@unbalance=\count350
-\c@collectmore=\count351
-\doublecol@number=\count352
-\multicoltolerance=\count353
-\multicolpretolerance=\count354
-\full@width=\dimen270
-\page@free=\dimen271
-\premulticols=\dimen272
-\postmulticols=\dimen273
+\multicol@leftmargin=\dimen268
+\c@unbalance=\count348
+\c@collectmore=\count349
+\doublecol@number=\count350
+\multicoltolerance=\count351
+\multicolpretolerance=\count352
+\full@width=\dimen269
+\page@free=\dimen270
+\premulticols=\dimen271
+\postmulticols=\dimen272
 \multicolsep=\skip64
 \multicolbaselineskip=\skip65
 \partial@page=\box74
 \last@line=\box75
-\maxbalancingoverflow=\dimen274
+\maxbalancingoverflow=\dimen273
 \mult@rightbox=\box76
 \mult@grightbox=\box77
 \mult@firstbox=\box78
@@ -610,19 +651,19 @@ Package: multicol 2021/11/30 v1.9d multicolumn formatting (FMi)
 \@tempa=\box113
 \@tempa=\box114
 \@tempa=\box115
-\c@minrows=\count355
-\c@columnbadness=\count356
-\c@finalcolumnbadness=\count357
-\last@try=\dimen275
-\multicolovershoot=\dimen276
-\multicolundershoot=\dimen277
+\c@minrows=\count353
+\c@columnbadness=\count354
+\c@finalcolumnbadness=\count355
+\last@try=\dimen274
+\multicolovershoot=\dimen275
+\multicolundershoot=\dimen276
 \mult@nat@firstbox=\box116
 \colbreak@box=\box117
-\mc@col@check@num=\count358
+\mc@col@check@num=\count356
 )
 (c:/texlive/2022/texmf-dist/tex/latex/tools/enumerate.sty
 Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
-\@enLab=\toks33
+\@enLab=\toks34
 )
 (c:/texlive/2022/texmf-dist/tex/latex/psnfss/pifont.sty
 Package: pifont 2020/03/25 PSNFSS-v9.3 Pi font support (SPQR) 
@@ -662,34 +703,36 @@ Package: trimclip 2020/08/19 v1.2 Trim and clip general TeX material
 Package: collectbox 2022/10/17 v0.4c Collect macro arguments as boxes
 \collectedbox=\box118
 )
-\tc@llx=\dimen278
-\tc@lly=\dimen279
-\tc@urx=\dimen280
-\tc@ury=\dimen281
-Package trimclip Info: Using driver 'tc-pdftex.def'.
+\tc@llx=\dimen277
+\tc@lly=\dimen278
+\tc@urx=\dimen279
+\tc@ury=\dimen280
 
-(c:/texlive/2022/texmf-dist/tex/latex/adjustbox/tc-pdftex.def
-File: tc-pdftex.def 2019/01/04 v2.2 Clipping driver for pdftex
-))
-\adjbox@Width=\dimen282
-\adjbox@Height=\dimen283
-\adjbox@Depth=\dimen284
-\adjbox@Totalheight=\dimen285
-\adjbox@pwidth=\dimen286
-\adjbox@pheight=\dimen287
-\adjbox@pdepth=\dimen288
-\adjbox@ptotalheight=\dimen289
+(c:/texlive/2022/texmf-dist/tex/latex/adjustbox/tc-pgf.def
+File: tc-pgf.def 2019/01/04 v2.2 trimclip fall-back clipping driver using PGF
+)
+Package trimclip Info: No clipping driver 'tc-luatex.def' available.
+(trimclip)             Using fall-back PGF driver.
+)
+\adjbox@Width=\dimen281
+\adjbox@Height=\dimen282
+\adjbox@Depth=\dimen283
+\adjbox@Totalheight=\dimen284
+\adjbox@pwidth=\dimen285
+\adjbox@pheight=\dimen286
+\adjbox@pdepth=\dimen287
+\adjbox@ptotalheight=\dimen288
 
 (c:/texlive/2022/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
 Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
-\c@checkoddpage=\count359
+\c@checkoddpage=\count357
 )
 (c:/texlive/2022/texmf-dist/tex/latex/varwidth/varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
 \@vwid@box=\box119
-\sift@deathcycles=\count360
-\@vwid@loff=\dimen290
-\@vwid@roff=\dimen291
+\sift@deathcycles=\count358
+\@vwid@loff=\dimen289
+\@vwid@roff=\dimen290
 ))
 (c:/texlive/2022/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
@@ -697,56 +740,158 @@ Package: geometry 2020/01/02 v5.9 Page Geometry
 (c:/texlive/2022/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
-\Gm@cnth=\count361
-\Gm@cntv=\count362
-\c@Gm@tempcnt=\count363
-\Gm@bindingoffset=\dimen292
-\Gm@wd@mp=\dimen293
-\Gm@odd@mp=\dimen294
-\Gm@even@mp=\dimen295
-\Gm@layoutwidth=\dimen296
-\Gm@layoutheight=\dimen297
-\Gm@layouthoffset=\dimen298
-\Gm@layoutvoffset=\dimen299
-\Gm@dimlist=\toks34
+\Gm@cnth=\count359
+\Gm@cntv=\count360
+\c@Gm@tempcnt=\count361
+\Gm@bindingoffset=\dimen291
+\Gm@wd@mp=\dimen292
+\Gm@odd@mp=\dimen293
+\Gm@even@mp=\dimen294
+\Gm@layoutwidth=\dimen295
+\Gm@layoutheight=\dimen296
+\Gm@layouthoffset=\dimen297
+\Gm@layoutvoffset=\dimen298
+\Gm@dimlist=\toks35
 )
 (c:/texlive/2022/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2022/11/30 3.83 The Babel package
-\babel@savecnt=\count364
-\U@D=\dimen300
-\l@unhyphenated=\language87
 
-(c:/texlive/2022/texmf-dist/tex/generic/babel/txtbabel.def)
+(c:/texlive/2022/texmf-dist/tex/generic/babel/luababel.def
 \bbl@readstream=\read3
-\bbl@dirlevel=\count365
+\l@dumylang=\language2
+Package babel Info: Non-standard hyphenation setup on input line 118.
+\l@nohyphenation=\language3
+\l@german-x-2022-03-16=\language4
+\l@ngerman-x-2022-03-16=\language5
+\l@afrikaans=\language6
+\l@ancientgreek=\language7
+\l@ibycus=\language8
+\l@arabic=\language9
+\l@armenian=\language10
+\l@basque=\language11
+\l@belarusian=\language12
+\l@bulgarian=\language13
+\l@catalan=\language14
+\l@pinyin=\language15
+\l@churchslavonic=\language16
+\l@coptic=\language17
+\l@croatian=\language18
+\l@czech=\language19
+\l@danish=\language20
+\l@dutch=\language21
+\l@ukenglish=\language22
+\l@usenglishmax=\language23
+\l@esperanto=\language24
+\l@estonian=\language25
+\l@ethiopic=\language26
+\l@farsi=\language27
+\l@finnish=\language28
+\l@schoolfinnish=\language29
+\l@french=\language30
+\l@friulan=\language31
+\l@galician=\language32
+\l@georgian=\language33
+\l@german=\language34
+\l@ngerman=\language35
+\l@swissgerman=\language36
+\l@greek=\language37
+\l@monogreek=\language38
+\l@hungarian=\language39
+\l@icelandic=\language40
+\l@assamese=\language41
+\l@bengali=\language42
+\l@gujarati=\language43
+\l@hindi=\language44
+\l@kannada=\language45
+\l@malayalam=\language46
+\l@marathi=\language47
+\l@oriya=\language48
+\l@pali=\language49
+\l@panjabi=\language50
+\l@tamil=\language51
+\l@telugu=\language52
+\l@indonesian=\language53
+\l@interlingua=\language54
+\l@irish=\language55
+\l@italian=\language56
+\l@kurmanji=\language57
+\l@classiclatin=\language58
+\l@latin=\language59
+\l@liturgicallatin=\language60
+\l@latvian=\language61
+\l@lithuanian=\language62
+\l@macedonian=\language63
+\l@mongolian=\language64
+\l@mongolianlmc=\language65
+\l@bokmal=\language66
+\l@nynorsk=\language67
+\l@occitan=\language68
+\l@piedmontese=\language69
+\l@polish=\language70
+\l@portuguese=\language71
+\l@romanian=\language72
+\l@romansh=\language73
+\l@russian=\language74
+\l@sanskrit=\language75
+\l@serbian=\language76
+\l@serbianc=\language77
+\l@slovak=\language78
+\l@slovenian=\language79
+\l@spanish=\language80
+\l@swedish=\language81
+\l@thai=\language82
+\l@turkish=\language83
+\l@turkmen=\language84
+\l@ukrainian=\language85
+\l@uppersorbian=\language86
+\l@welsh=\language87
+\babelcatcodetablenum=\catcodetable12
+\bbl@pattcodes=\catcodetable13
+)
+\babel@savecnt=\count362
+\U@D=\dimen299
+\l@unhyphenated=\language88
 
+(c:/texlive/2022/texmf-dist/tex/generic/babel/luababel.def
+\bbl@attr@locale=\attribute4
+)
 (c:/texlive/2022/texmf-dist/tex/generic/babel-french/french.ldf
 Language: french 2022/11/11 v3.5o French support from the babel system
 Package babel Info: Hyphen rules for 'acadian' set to \l@french
-(babel)             (\language29). Reported on input line 91.
+(babel)             (\language30). Reported on input line 91.
 Package babel Info: Hyphen rules for 'canadien' set to \l@french
-(babel)             (\language29). Reported on input line 92.
-\FB@nonchar=\count366
-Package babel Info: Making : an active character on input line 395.
-Package babel Info: Making ; an active character on input line 396.
-Package babel Info: Making ! an active character on input line 397.
-Package babel Info: Making ? an active character on input line 398.
-\FBguill@level=\count367
-\FBold@everypar=\toks35
-\FB@Mht=\dimen301
-\mc@charclass=\count368
-\mc@charfam=\count369
-\mc@charslot=\count370
-\std@mcc=\count371
-\dec@mcc=\count372
-\listindentFB=\dimen302
-\descindentFB=\dimen303
-\labelindentFB=\dimen304
-\labelwidthFB=\dimen305
-\leftmarginFB=\dimen306
-\parindentFFN=\dimen307
-\FBfnindent=\dimen308
-))
+(babel)             (\language30). Reported on input line 92.
+\FB@nonchar=\count363
+\FB@spacing=\attribute5
+\FB@addDPspace=\attribute6
+\FB@addGUILspace=\attribute7
+\FB@ucsNBSP=\attribute8
+\FB@dialect=\attribute9
+Package french.ldf Info: No need for active punctuation characters
+(french.ldf)             with this version of LuaTeX!
+(french.ldf)             reported on input line 249.
+\FBguill@level=\count364
+\FBold@everypar=\toks36
+\FB@Mht=\dimen300
+\mc@charclass=\count365
+\mc@charfam=\count366
+\mc@charslot=\count367
+\std@mcc=\count368
+\dec@mcc=\count369
+Inserting `frenchb.french_punctuation' in `kerning'.
+\listindentFB=\dimen301
+\descindentFB=\dimen302
+\labelindentFB=\dimen303
+\labelwidthFB=\dimen304
+\leftmarginFB=\dimen305
+\parindentFFN=\dimen306
+\FBfnindent=\dimen307
+
+(c:/texlive/2022/texmf-dist/tex/generic/hyph-utf8/loadhyph/loadhyph-fr.tex
+UTF-8 French hyphenation patterns
+(c:/texlive/2022/texmf-dist/tex/generic/hyph-utf8/patterns/tex/hyph-fr.tex)
+(c:/texlive/2022/texmf-dist/tex/generic/hyph-utf8/patterns/quote/hyph-quote-fr.
+tex))))
 (c:/texlive/2022/texmf-dist/tex/generic/babel/locale/fr/babel-french.tex
 Package babel Info: Importing font and identification data for french
 (babel)             from babel-fr.ini. Reported on input line 11.
@@ -757,19 +902,19 @@ Package: caption 2022/03/01 v3.6b Customizing captions (AR)
 
 (c:/texlive/2022/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2022/03/17 v2.3b caption3 kernel (AR)
-\caption@tempdima=\dimen309
-\captionmargin=\dimen310
-\caption@leftmargin=\dimen311
-\caption@rightmargin=\dimen312
-\caption@width=\dimen313
-\caption@indent=\dimen314
-\caption@parindent=\dimen315
-\caption@hangindent=\dimen316
+\caption@tempdima=\dimen308
+\captionmargin=\dimen309
+\caption@leftmargin=\dimen310
+\caption@rightmargin=\dimen311
+\caption@width=\dimen312
+\caption@indent=\dimen313
+\caption@parindent=\dimen314
+\caption@hangindent=\dimen315
 Package caption Info: Standard document class detected.
 Package caption Info: french babel package is loaded.
 )
-\c@caption@flags=\count373
-\c@continuedfloat=\count374
+\c@caption@flags=\count370
+\c@continuedfloat=\count371
 )
 (c:/texlive/2022/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
 (c:/texlive/2022/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
@@ -781,10 +926,10 @@ Package caption Info: french babel package is loaded.
 Package: pgffor 2021/05/15 v3.1.9a (3.1.9a)
 
 (c:/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
-\pgffor@iter=\dimen317
-\pgffor@skip=\dimen318
-\pgffor@stack=\toks36
-\pgffor@toks=\toks37
+\pgffor@iter=\dimen316
+\pgffor@skip=\dimen317
+\pgffor@stack=\toks37
+\pgffor@toks=\toks38
 ))
 (c:/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 Package: tikz 2021/05/15 v3.1.9a (3.1.9a)
@@ -792,33 +937,33 @@ Package: tikz 2021/05/15 v3.1.9a (3.1.9a)
 (c:/texlive/2022/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.co
 de.tex
 File: pgflibraryplothandlers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@plot@mark@count=\count375
-\pgfplotmarksize=\dimen319
+\pgf@plot@mark@count=\count372
+\pgfplotmarksize=\dimen318
 )
-\tikz@lastx=\dimen320
-\tikz@lasty=\dimen321
-\tikz@lastxsaved=\dimen322
-\tikz@lastysaved=\dimen323
-\tikz@lastmovetox=\dimen324
-\tikz@lastmovetoy=\dimen325
-\tikzleveldistance=\dimen326
-\tikzsiblingdistance=\dimen327
+\tikz@lastx=\dimen319
+\tikz@lasty=\dimen320
+\tikz@lastxsaved=\dimen321
+\tikz@lastysaved=\dimen322
+\tikz@lastmovetox=\dimen323
+\tikz@lastmovetoy=\dimen324
+\tikzleveldistance=\dimen325
+\tikzsiblingdistance=\dimen326
 \tikz@figbox=\box120
 \tikz@figbox@bg=\box121
 \tikz@tempbox=\box122
 \tikz@tempbox@bg=\box123
-\tikztreelevel=\count376
-\tikznumberofchildren=\count377
-\tikznumberofcurrentchild=\count378
-\tikz@fig@count=\count379
+\tikztreelevel=\count373
+\tikznumberofchildren=\count374
+\tikznumberofcurrentchild=\count375
+\tikz@fig@count=\count376
 
 (c:/texlive/2022/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfmatrixcurrentrow=\count380
-\pgfmatrixcurrentcolumn=\count381
-\pgf@matrix@numberofcolumns=\count382
+\pgfmatrixcurrentrow=\count377
+\pgfmatrixcurrentcolumn=\count378
+\pgf@matrix@numberofcolumns=\count379
 )
-\tikz@expandcount=\count383
+\tikz@expandcount=\count380
 
 (c:/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzli
 brarytopaths.code.tex
@@ -826,8 +971,8 @@ File: tikzlibrarytopaths.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 )))
 (c:/texlive/2022/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2022-07-02 v1.5u LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks38
-\verbatim@line=\toks39
+\every@verbatim=\toks39
+\verbatim@line=\toks40
 \verbatim@in@stream=\read4
 )
 \pgfpages@box@1=\box124
@@ -837,9 +982,9 @@ LaTeX Font Info:    Trying to load font information for T1+ptm on input line 57
 (c:/texlive/2022/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
-(c:/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2022-10-26 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count384
+(c:/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-luatex.def
+File: l3backend-luatex.def 2022-10-26 L3 backend support: PDF output (LuaTeX)
+\l__color_backend_stack_int=\count381
 \l__pdf_internal_box=\box125
 )
 (./main.aux
@@ -847,7 +992,7 @@ File: l3backend-pdftex.def 2022-10-26 L3 backend support: PDF output (pdfTeX)
 LaTeX Warning: Label `fig:SchemaBloc' multiply defined.
 
 )
-\openout1 = `main.aux'.
+\openout1 = main.aux
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 57.
 LaTeX Font Info:    ... okay on input line 57.
@@ -858,25 +1003,33 @@ LaTeX Font Info:    ... okay on input line 57.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 57.
 LaTeX Font Info:    ... okay on input line 57.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 57.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 5
+7.
+ (c:/texlive/2022/texmf-dist/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2022/07/10 v2.5l Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 57.
 LaTeX Font Info:    ... okay on input line 57.
 LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 57.
 LaTeX Font Info:    ... okay on input line 57.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 57.
 LaTeX Font Info:    ... okay on input line 57.
-\big@size=\dimen328
- (c:/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+\big@size=\dimen327
+
+(c:/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count385
-\scratchdimen=\dimen329
+\scratchcounter=\count382
+\scratchdimen=\dimen328
 \scratchbox=\box126
-\nofMPsegments=\count386
-\nofMParguments=\count387
-\everyMPshowfont=\toks40
-\MPscratchCnt=\count388
-\MPscratchDim=\dimen330
-\MPnumerator=\count389
-\makeMPintoPDFobject=\count390
-\everyMPtoPDFconversion=\toks41
+\nofMPsegments=\count383
+\nofMParguments=\count384
+\everyMPshowfont=\toks41
+\MPscratchCnt=\count385
+\MPscratchDim=\dimen329
+\MPnumerator=\count386
+\makeMPintoPDFobject=\count387
+\everyMPtoPDFconversion=\toks42
 ) (c:/texlive/2022/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -895,9 +1048,9 @@ Package translations Info: loading dictionary `translations-basic-dictionary' f
 or `french'. on input line 57.
 
 *geometry* driver: auto-detecting
-*geometry* detected driver: pdftex
+*geometry* detected driver: luatex
 *geometry* verbose mode - [ preamble ] result:
-* driver: pdftex
+* driver: luatex
 * paper: <default>
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
@@ -939,8 +1092,8 @@ Package caption Info: End \AtBeginDocument code.
 <../ETML-ES-LOGO.png, id=4, 200.75pt x 200.75pt>
 File: ../ETML-ES-LOGO.png Graphic file (type png)
 <use ../ETML-ES-LOGO.png>
-Package pdftex.def Info: ../ETML-ES-LOGO.png  used on input line 20.
-(pdftex.def)             Requested size: 145.6229pt x 145.63344pt.
+Package luatex.def Info: ../ETML-ES-LOGO.png  used on input line 20.
+(luatex.def)             Requested size: 145.6229pt x 145.63344pt.
 ) (./main.toc
 LaTeX Font Info:    Calculating math sizes for size <16> on input line 3.
 LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line
@@ -981,8 +1134,8 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9.6001> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 3.
 )
 \tf@toc=\write4
-\openout4 = `main.toc'.
 
+\openout4 = main.toc
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -994,23 +1147,19 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [1
 
-{c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <../ETML-ES-LOGO
-.png>] (../CDC/CDC.tex
+{c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}<../ETML-ES-LOGO.p
+ng>] (../CDC/CDC.tex
 File: ../ETML-ES-LOGO.png Graphic file (type png)
 <use ../ETML-ES-LOGO.png>
-Package pdftex.def Info: ../ETML-ES-LOGO.png  used on input line 24.
-(pdftex.def)             Requested size: 88.31282pt x 88.31494pt.
+Package luatex.def Info: ../ETML-ES-LOGO.png  used on input line 24.
+(luatex.def)             Requested size: 88.31282pt x 88.31494pt.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 25.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 25.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 25.
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 6
-5.
- (c:/texlive/2022/texmf-dist/tex/latex/psnfss/ts1ptm.fd
-File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)
+
 Underfull \hbox (badness 10000) in paragraph at lines 68--69
 
  []
@@ -1026,17 +1175,17 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [2
 
 ]
-Overfull \hbox (13.05344pt too wide) in paragraph at lines 91--92
-[]\T1/ptm/m/n/16 Routage pour in-t�-gra-tion dans boi-tier de lampe de plon-g�e
- 200x45mm. 
+Overfull \hbox (13.55368pt too wide) in paragraph at lines 91--92
+[]\T1/ptm/m/n/16 Rou-tage pour in-té-gra-tion dans boi-tier de lampe de plon-g
+ée 200x45mm. 
  []
 
-<../CDC/Figures/pre-etude.drawio.png, id=17, 3243.86906pt x 3447.12843pt>
+<../CDC/Figures/pre-etude.drawio.png, id=16, 3243.86906pt x 3447.12843pt>
 File: ../CDC/Figures/pre-etude.drawio.png Graphic file (type png)
 <use ../CDC/Figures/pre-etude.drawio.png>
-Package pdftex.def Info: ../CDC/Figures/pre-etude.drawio.png  used on input lin
+Package luatex.def Info: ../CDC/Figures/pre-etude.drawio.png  used on input lin
 e 103.
-(pdftex.def)             Requested size: 305.33789pt x 324.42987pt.
+(luatex.def)             Requested size: 305.33789pt x 324.42987pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1045,7 +1194,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[3]
+[3
+Missing character: There is no ’ (U+2019) in font ptmr8t!
+Missing character: There is no ’ (U+2019) in font ptmr8t!
+Missing character: There is no ’ (U+2019) in font ptmr8t!
+Missing character: There is no ’ (U+2019) in font ptmr8t!
+Missing character: There is no ’ (U+2019) in font ptmr8t!
+Missing character: There is no ’ (U+2019) in font ptmr8t!
+]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1058,13 +1214,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 
 
- <../CDC/Figures/pre-etude.drawio.png>]
-<../CDC/Figures/Tab-Jalons-PROJ.PNG, id=25, 1159.33125pt x 687.31781pt>
+
+Missing character: There is no ’ (U+2019) in font ptmr8t!
+Missing character: There is no • (U+2022) in font ptmr8t!
+Missing character: There is no • (U+2022) in font ptmr8t!
+Missing character: There is no • (U+2022) in font ptmr8t!
+<../CDC/Figures/pre-etude.drawio.png>]
+<../CDC/Figures/Tab-Jalons-PROJ.PNG, id=24, 1159.33125pt x 687.31781pt>
 File: ../CDC/Figures/Tab-Jalons-PROJ.PNG Graphic file (type png)
 <use ../CDC/Figures/Tab-Jalons-PROJ.PNG>
-Package pdftex.def Info: ../CDC/Figures/Tab-Jalons-PROJ.PNG  used on input line
+Package luatex.def Info: ../CDC/Figures/Tab-Jalons-PROJ.PNG  used on input line
  141.
-(pdftex.def)             Requested size: 422.77664pt x 250.64343pt.
+(luatex.def)             Requested size: 422.77664pt x 250.64343pt.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1076,15 +1237,23 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [5
 
+
+Missing character: There is no œ (U+0153) in font ptmr8t!
+Missing character: There is no … (U+2026) in font ptmr8t!
+Missing character: There is no ’ (U+2019) in font ptmr8t!
+Missing character: There is no ’ (U+2019) in font ptmr8t!
+Missing character: There is no ’ (U+2019) in font ptmr8t!
+Missing character: There is no ’ (U+2019) in font ptmr8t!
+Missing character: There is no ’ (U+2019) in font ptmr8t!
 ]) (./Pages/Pre-etude.tex
-<Figures/Schema-bloc-LocalisationSousMarin.drawio.png, id=29, 3317.39375pt x 32
+<Figures/Schema-bloc-LocalisationSousMarin.drawio.png, id=28, 3317.39375pt x 32
 57.16875pt>
 File: Figures/Schema-bloc-LocalisationSousMarin.drawio.png Graphic file (type p
 ng)
 <use Figures/Schema-bloc-LocalisationSousMarin.drawio.png>
-Package pdftex.def Info: Figures/Schema-bloc-LocalisationSousMarin.drawio.png  
+Package luatex.def Info: Figures/Schema-bloc-LocalisationSousMarin.drawio.png  
 used on input line 11.
-(pdftex.def)             Requested size: 422.77664pt x 415.09715pt.
+(luatex.def)             Requested size: 422.77664pt x 415.09715pt.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1096,7 +1265,17 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [6
 
- <../CDC/Figures/Tab-Jalons-PROJ.PNG>]
+
+Missing character: There is no • (U+2022) in font ptmr8t!
+Missing character: There is no • (U+2022) in font ptmr8t!
+Missing character: There is no • (U+2022) in font ptmr8t!
+Missing character: There is no • (U+2022) in font ptmr8t!
+Missing character: There is no • (U+2022) in font ptmr8t!
+Missing character: There is no • (U+2022) in font ptmr8t!
+Missing character: There is no • (U+2022) in font ptmr8t!
+Missing character: There is no • (U+2022) in font ptmr8t!
+Missing character: There is no • (U+2022) in font ptmr8t!
+<../CDC/Figures/Tab-Jalons-PROJ.PNG>]
 Underfull \hbox (badness 10000) in paragraph at lines 19--21
 
  []
@@ -1136,18 +1315,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [7
 
- <./Figures/Schema-bloc-LocalisationSousMarin.drawio.png>]
-Overfull \hbox (5.9712pt too wide) in paragraph at lines 46--47
-\T1/ptm/m/n/16 la fu-sion des sen-seurs (\T1/ptm/b/n/16 Acc�l�rom�tre, gy-ro-sc
-ope, ma-gn�-to-m�tre et ther-
+<./Figures/Schema-bloc-LocalisationSousMarin.drawio.png>]
+Overfull \hbox (6.5632pt too wide) in paragraph at lines 46--47
+\T1/ptm/m/n/16 la fu-sion des sen-seurs (\T1/ptm/b/n/16 Accéléromètre, gy-ro-
+scope, ma-gné-to-mètre et ther-
  []
 
-<Figures/BNO055-Illustration.png, id=39, 451.6875pt x 328.22626pt>
+<Figures/BNO055-Illustration.png, id=37, 451.6875pt x 328.22626pt>
 File: Figures/BNO055-Illustration.png Graphic file (type png)
 <use Figures/BNO055-Illustration.png>
-Package pdftex.def Info: Figures/BNO055-Illustration.png  used on input line 50
+Package luatex.def Info: Figures/BNO055-Illustration.png  used on input line 50
 .
-(pdftex.def)             Requested size: 187.89914pt x 136.5419pt.
+(luatex.def)             Requested size: 187.89914pt x 136.5419pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 56--57
 
@@ -1158,11 +1337,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 58--59
 
  []
 
-<Figures/DATAS-BNO055.png, id=40, 776.9025pt x 1522.18687pt>
+<Figures/DATAS-BNO055.png, id=38, 776.9025pt x 1522.18687pt>
 File: Figures/DATAS-BNO055.png Graphic file (type png)
 <use Figures/DATAS-BNO055.png>
-Package pdftex.def Info: Figures/DATAS-BNO055.png  used on input line 73.
-(pdftex.def)             Requested size: 319.42996pt x 625.8659pt.
+Package luatex.def Info: Figures/DATAS-BNO055.png  used on input line 73.
+(luatex.def)             Requested size: 319.42996pt x 625.8659pt.
 
 LaTeX Warning: Float too large for page by 12.43587pt on input line 77.
 
@@ -1190,12 +1369,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [9
 
- <./Figures/BNO055-Illustration.png>]
-<Figures/Capteur-pression.png, id=51, 388.45125pt x 380.17032pt>
+<./Figures/BNO055-Illustration.png>]
+<Figures/Capteur-pression.png, id=49, 388.45125pt x 380.17032pt>
 File: Figures/Capteur-pression.png Graphic file (type png)
 <use Figures/Capteur-pression.png>
-Package pdftex.def Info: Figures/Capteur-pression.png  used on input line 89.
-(pdftex.def)             Requested size: 187.89914pt x 183.8951pt.
+Package luatex.def Info: Figures/Capteur-pression.png  used on input line 89.
+(luatex.def)             Requested size: 187.89914pt x 183.8951pt.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1205,7 +1384,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[10 <./Figures/DATAS-BNO055.PNG>]
+[10<./Figures/DATAS-BNO055.PNG>]
 Overfull \hbox (12.0533pt too wide) in paragraph at lines 112--125
 []
  []
@@ -1235,16 +1414,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [11
 
- <./Figures/Capteur-pression.PNG>]
-Underfull \hbox (badness 10000) in paragraph at lines 142--145
+<./Figures/Capteur-pression.PNG>]
+Underfull \hbox (badness 10000) in paragraph at lines 141--144
 
  []
 
-<Figures/RTC.png, id=60, 642.4pt x 642.4pt>
+<Figures/RTC.png, id=59, 642.4pt x 642.4pt>
 File: Figures/RTC.png Graphic file (type png)
 <use Figures/RTC.png>
-Package pdftex.def Info: Figures/RTC.png  used on input line 151.
-(pdftex.def)             Requested size: 187.89914pt x 187.89879pt.
+Package luatex.def Info: Figures/RTC.png  used on input line 150.
+(luatex.def)             Requested size: 187.89914pt x 187.89879pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1254,22 +1433,21 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [12]
-Overfull \hbox (23.2343pt too wide) in paragraph at lines 164--165
-\T1/ptm/m/n/16 tions, sa-chant que beau-coup sont pr�-sentes dans le pro-jet (\
-T1/ptm/b/n/16 I2C, SPI, UART...\T1/ptm/m/n/16 ),
+Overfull \hbox (23.2343pt too wide) in paragraph at lines 161--162
+\T1/ptm/m/n/16 tions, sa-chant que beau-coup sont pré-sentes dans le pro-jet (\T1/ptm/b/n/16 I2C, SPI, UART...\T1/ptm/m/n/16 ),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 170--172
+Underfull \hbox (badness 10000) in paragraph at lines 167--169
 
  []
 
-<Figures/PIC32MX795F512L-V7X-Regular.png, id=65, 803.0pt x 665.48625pt>
+<Figures/PIC32MX795F512L-V7X-Regular.png, id=64, 803.0pt x 665.48625pt>
 File: Figures/PIC32MX795F512L-V7X-Regular.png Graphic file (type png)
 <use Figures/PIC32MX795F512L-V7X-Regular.png>
-Package pdftex.def Info: Figures/PIC32MX795F512L-V7X-Regular.png  used on input
- line 175.
-(pdftex.def)             Requested size: 187.89914pt x 155.71909pt.
+Package luatex.def Info: Figures/PIC32MX795F512L-V7X-Regular.png  used on input
+ line 172.
+(luatex.def)             Requested size: 187.89914pt x 155.71909pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1278,15 +1456,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[13 <./Figures/RTC.png>]
-<Figures/PowerSystemsComparison.png, id=70, 551.81157pt x 633.11531pt>
+[13<./Figures/RTC.png>]
+<Figures/PowerSystemsComparison.png, id=68, 551.81157pt x 633.11531pt>
 File: Figures/PowerSystemsComparison.png Graphic file (type png)
 <use Figures/PowerSystemsComparison.png>
-Package pdftex.def Info: Figures/PowerSystemsComparison.png  used on input line
- 192.
-(pdftex.def)             Requested size: 263.06166pt x 301.8342pt.
+Package luatex.def Info: Figures/PowerSystemsComparison.png  used on input line
+ 189.
+(luatex.def)             Requested size: 263.06166pt x 301.8342pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 198--199
+Underfull \hbox (badness 10000) in paragraph at lines 195--196
 
  []
 
@@ -1300,7 +1478,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [14
 
- <./Figures/PIC32MX795F512L-V7X-Regular.png>]
+<./Figures/PIC32MX795F512L-V7X-Regular.png>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1311,7 +1489,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [15
 
- <./Figures/PowerSystemsComparison.PNG>]
+<./Figures/PowerSystemsComparison.PNG>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1335,25 +1513,29 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 LaTeX Warning: There were multiply-defined labels.
 
- ) 
-Here is how much of TeX's memory you used:
- 23675 strings out of 474968
- 500156 string characters out of 5780081
- 813185 words of memory out of 5000000
- 44734 multiletter control sequences out of 15000+600000
- 536766 words of font info for 123 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 85i,11n,117p,1007b,522s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{c:/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2022/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2022/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/
-urw/symbol/usyr.pfb><c:/texlive/2022/texmf-dist/fonts/type1/urw/times/utmb8a.pf
-b><c:/texlive/2022/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2022
-/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (18 pages, 2494675 bytes).
-PDF statistics:
- 115 PDF objects out of 1000 (max. 8388607)
- 64 compressed objects within 1 object stream
- 0 named destinations out of 1000 (max. 500000)
- 63 words of extra memory for PDF output out of 10000 (max. 10000000)
+)
+
+Here is how much of LuaTeX's memory you used:
+ 24756 strings out of 477247
+ 100000,953878 words of node,token memory allocated
+ 3499 words of node memory still in use:
+   4 hlist, 1 vlist, 1 rule, 102 glue, 75 kern, 1 penalty, 2 glyph, 867 attribut
+e, 56 glue_spec, 125 attribute_list, 3 write nodes
+   avail lists: 1:1,2:2900,3:292,4:108,5:170,6:97,7:6850,8:44,9:516,10:16,11:562
+
+ 44745 multiletter control sequences out of 65536+600000
+ 162 fonts using 7518623 bytes
+ 85i,11n,115p,1006b,470s stack positions out of 10000i,1000n,20000p,200000b,200000s
+{c:/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2022/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2022/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/urw/s
+ymbol/usyr.pfb><c:/texlive/2022/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/
+texlive/2022/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2022/texmf-
+dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (18 pages, 2490136 bytes).
+
+PDF statistics: 107 PDF objects out of 1000 (max. 8388607)
+ 62 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 131072)
+ 16 words of extra memory for PDF output out of 10000 (max. 100000000)
 
