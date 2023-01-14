@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.12.7)  21 DEC 2022 16:21
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.12.7)  11 JAN 2023 14:57
  restricted system commands enabled.
 **main.tex
 (./main.tex
@@ -1521,7 +1521,7 @@ Here is how much of LuaTeX's memory you used:
  3499 words of node memory still in use:
    4 hlist, 1 vlist, 1 rule, 102 glue, 75 kern, 1 penalty, 2 glyph, 867 attribut
 e, 56 glue_spec, 125 attribute_list, 3 write nodes
-   avail lists: 1:1,2:2900,3:292,4:108,5:170,6:97,7:6850,8:44,9:516,10:16,11:562
+   avail lists: 1:1,2:2900,3:292,4:108,5:173,6:97,7:6847,8:44,9:516,10:16,11:562
 
  44745 multiletter control sequences out of 65536+600000
  162 fonts using 7518623 bytes
@@ -1532,7 +1532,7 @@ ype1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/urw/s
 ymbol/usyr.pfb><c:/texlive/2022/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/
 texlive/2022/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2022/texmf-
 dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (18 pages, 2490136 bytes).
+Output written on main.pdf (18 pages, 2490203 bytes).
 
 PDF statistics: 107 PDF objects out of 1000 (max. 8388607)
  62 compressed objects within 1 object stream
