@@ -233,7 +233,7 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=BRFFVVZV
 
 [Configuration1]
 Name=Sources
@@ -1191,6 +1191,16 @@ SelectedOnly=0
 UpdateVariants=1
 UpdateToLatestRevision=1
 PartTypes=0
+
+[NetInfos]
+Net1=NetName=GND|NetColor=clBlack
+Net2=NetName=NetD?_3|NetColor=clBlack
+Net3=NetName=OSC1|NetColor=clBlack
+Net4=NetName=OSC2|NetColor=clBlack
+Net5=NetName=PGEC2|NetColor=clBlack
+Net6=NetName=PGED2|NetColor=clBlack
+Net7=NetName=Reset|NetColor=clBlack
+Net8=NetName=VCC3V3|NetColor=clBlack
 
 [Comparison Options]
 ComparisonOptions0=Kind=Net|MinPercent=75|MinMatch=3|ShowMatch=0|UseName=-1|InclAllRules=0

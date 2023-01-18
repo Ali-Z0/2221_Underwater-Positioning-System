@@ -19,3 +19,11 @@
 \contentsline {subsubsection}{\numberline {2.2.7}Batterie, charge et régulation}{15}{}%
 \contentsline {subsection}{\numberline {2.3}Estimation des coûts}{16}{}%
 \contentsline {subsection}{\numberline {2.4}Conclusion et perspectives}{17}{}%
+\contentsline {section}{\numberline {3}Développement schématique}{18}{}%
+\contentsline {subsection}{\numberline {3.1}Choix des composants}{19}{}%
+\contentsline {subsubsection}{\numberline {3.1.1}Microcontrôleur}{19}{}%
+\contentsline {subsection}{\numberline {3.2}Dimensionnements}{19}{}%
+\contentsline {subsection}{\numberline {3.3}Oscillogram of the output current depending on the input tension}{19}{}%
+\contentsline {subsection}{\numberline {3.4}Dissipated power calculation}{19}{}%
+\contentsline {subsection}{\numberline {3.5}Estimation of the junction's temperature without cooling}{19}{}%
+\contentsline {subsection}{\numberline {3.6}Short-circuited output - dissipated power calculation}{19}{}%

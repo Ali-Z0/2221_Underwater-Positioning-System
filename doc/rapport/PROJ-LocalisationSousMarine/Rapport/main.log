@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.12.7)  11 JAN 2023 14:57
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.12.7)  18 JAN 2023 08:36
  restricted system commands enabled.
 **main.tex
 (./main.tex
@@ -1498,7 +1498,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[16]) (./main.bbl)
+[16]) (./Pages/Dev-SCH.tex
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1507,7 +1507,40 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[17] [18
+[17]
+Overfull \hbox (3.36163pt too wide) in paragraph at lines 8--10
+[]\T1/ptm/m/n/16 Lors de la re-cherche de com-po-sants, j'ai dé-cidé d'uti-li-
+ser l'un des PIC32
+ []
+
+<Figures/Dev-SCH/PIC32-choisi.png, id=82, 712.16063pt x 235.63031pt>
+File: Figures/Dev-SCH/PIC32-choisi.png Graphic file (type png)
+<use Figures/Dev-SCH/PIC32-choisi.png>
+Package luatex.def Info: Figures/Dev-SCH/PIC32-choisi.png  used on input line 1
+3.
+(luatex.def)             Requested size: 469.75502pt x 155.42659pt.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[18
+
+]) (./main.bbl)
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[19
+
+<./Figures/Dev-SCH/PIC32-choisi.PNG>] [20
 
 ] (./main.aux)
 
@@ -1516,15 +1549,15 @@ LaTeX Warning: There were multiply-defined labels.
 )
 
 Here is how much of LuaTeX's memory you used:
- 24756 strings out of 477247
+ 24795 strings out of 477247
  100000,953878 words of node,token memory allocated
- 3499 words of node memory still in use:
-   4 hlist, 1 vlist, 1 rule, 102 glue, 75 kern, 1 penalty, 2 glyph, 867 attribut
-e, 56 glue_spec, 125 attribute_list, 3 write nodes
-   avail lists: 1:1,2:2900,3:292,4:108,5:173,6:97,7:6847,8:44,9:516,10:16,11:562
-
- 44745 multiletter control sequences out of 65536+600000
- 162 fonts using 7518623 bytes
+ 3647 words of node memory still in use:
+   4 hlist, 1 vlist, 1 rule, 108 glue, 77 kern, 1 penalty, 2 glyph, 909 attribut
+e, 56 glue_spec, 131 attribute_list, 3 write nodes
+   avail lists: 1:1,2:3412,3:358,4:136,5:240,6:105,7:6841,8:44,9:624,10:16,11:56
+2
+ 44766 multiletter control sequences out of 65536+600000
+ 163 fonts using 7576535 bytes
  85i,11n,115p,1006b,470s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {c:/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2022/texmf-d
 ist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2022/texmf-dist/fonts/t
@@ -1532,10 +1565,10 @@ ype1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/urw/s
 ymbol/usyr.pfb><c:/texlive/2022/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/
 texlive/2022/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2022/texmf-
 dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (18 pages, 2490203 bytes).
+Output written on main.pdf (20 pages, 2537555 bytes).
 
-PDF statistics: 107 PDF objects out of 1000 (max. 8388607)
- 62 compressed objects within 1 object stream
+PDF statistics: 115 PDF objects out of 1000 (max. 8388607)
+ 66 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 131072)
  16 words of extra memory for PDF output out of 10000 (max. 100000000)
 
