@@ -1,7 +1,6 @@
 % ------------------------- MAIN TASK ---------------------------------
 \section{Développement schématique}
 
-\clearpage
 \subsection{Choix des composants} \label{ssec:num32}
 {
 	\subsubsection{Microcontrôleur}
@@ -11,7 +10,7 @@
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=1\linewidth]{Figures/Dev-SCH/PIC32-choisi}
-		\caption{Périphèriques disponnibles du PIC}
+		\caption{Périphériques disponibles du PIC}
 		\label{fig:pic32-choisi}
 		\source{PIC32MM0256GPM064 family datasheet}
 	\end{figure}
@@ -21,15 +20,56 @@
 	\begin{center}
 		\fbox{\textit{1 - I2C}} \fbox{\textit{1 - SPI}} \fbox{\textit{1 - UART}} \fbox{\textit{1 - RTCC}}
 	\end{center}
-\subsection{Dimensionnements} \label{ssec:num31}
-{}
 }
-\subsection{Oscillogram of the output current depending on the input tension} \label{ssec:num33}
-{}
-\subsection{Dissipated power calculation} \label{ssec:num34}
-{}
-\subsection{Estimation of the junction's temperature without cooling} \label{ssec:num35}
-{}
-\subsection{Short-circuited output - dissipated power calculation} \label{ssec:num36}
-{}
+
+\clearpage
+\subsection{Dimensionnements} \label{ssec:num31}
+{
+	\subsubsection{Vue d'ensemble schématique} \label{sssec:SchemaBloc}
+	{
+		\begin{figure}[th]
+			\centering
+			\includegraphics[width=1.1\linewidth]{Figures/Dev-SCH/schemaBloc}
+			\caption{Schéma bloc de la schématique}
+			\source{Auteur}
+			\label{fig:schemablocSCH}
+		\end{figure}
+		
+		Nous pouvons constater sur la figure \ref{fig:schemablocSCH} la structure des différents blocs du schéma : \vspace{+5mm}
+		
+		\begin{tabularx}{18cm}{|X|X|}
+			\hline
+			Bloc & Description \\
+			\hline
+			\hline
+			Power & Contient les différents régulateurs du système, ainsi que la gestion de charge de la batterie. \\
+			\hline
+			MCU & Contient l'intelligence du système, avec le microcontrôleur ainsi que tous ses composants passifs associés. \\
+			\hline
+			Peripherals & Périphériques du système : Carte-SD, Centrale inertielle, Capteur de pression, Slots MikroE. \\ 
+			\hline
+			Interface & Connecteur USB avec convertisseur serial (FTDI) et tous les composants passifs de sécurité. \\
+			\hline
+		\end{tabularx}
+	}
+
+	\clearpage
+	\subsubsection{Chargeur de batterie} \label{sssec:BatCharger}
+	{
+		
+	}
+	
+	\subsubsection{Régulateur 3.3V} \label{sssec:Reg3V3}
+	{
+		
+	}
+	
+	\subsubsection{Régulateur 5V} \label{sssec:Reg5V}
+	{
+		
+	}
+	
+
+}
+
 \clearpage
