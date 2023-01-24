@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.8)  24 JAN 2023 19:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.8)  24 JAN 2023 20:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1399,6 +1399,17 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [19
 
  <./Figures/Dev-SCH/schemaBloc.png>]
+<Figures/Dev-SCH/Etats_diagramme.png, id=95, 2865.70625pt x 2915.89375pt>
+File: Figures/Dev-SCH/Etats_diagramme.png Graphic file (type png)
+<use Figures/Dev-SCH/Etats_diagramme.png>
+Package pdftex.def Info: Figures/Dev-SCH/Etats_diagramme.png  used on input lin
+e 83.
+(pdftex.def)             Requested size: 516.73338pt x 525.77258pt.
+
+Overfull \hbox (46.97836pt too wide) in paragraph at lines 83--84
+ [][] 
+ []
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1409,7 +1420,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [20
 
-]) (./main.bbl)
+]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1418,9 +1429,19 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[21
+[21 <./Figures/Dev-SCH/Etats_diagramme.png>]) (./main.bbl)
 
-] [22
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[22
+
+
+] [23
 
 ] (./main.aux)
 
@@ -1428,10 +1449,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 23779 strings out of 474968
- 502267 string characters out of 5780081
- 817341 words of memory out of 5000000
- 44828 multiletter control sequences out of 15000+600000
+ 23791 strings out of 474968
+ 502703 string characters out of 5780081
+ 817351 words of memory out of 5000000
+ 44839 multiletter control sequences out of 15000+600000
  538478 words of font info for 124 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  85i,11n,117p,1007b,522s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1441,10 +1462,10 @@ ts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/
 urw/symbol/usyr.pfb><c:/texlive/2022/texmf-dist/fonts/type1/urw/times/utmb8a.pf
 b><c:/texlive/2022/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2022
 /texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (22 pages, 2585003 bytes).
+Output written on main.pdf (23 pages, 2808432 bytes).
 PDF statistics:
- 132 PDF objects out of 1000 (max. 8388607)
- 73 compressed objects within 1 object stream
+ 137 PDF objects out of 1000 (max. 8388607)
+ 75 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 73 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 78 words of extra memory for PDF output out of 10000 (max. 10000000)
 
