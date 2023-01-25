@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.12.7)  25 JAN 2023 10:48
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.12.7)  25 JAN 2023 11:46
  restricted system commands enabled.
 **main.tex
 (./main.tex
@@ -1543,29 +1543,29 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [17]
-<Figures/Dev-SCH/schemaBloc.png, id=83, 1262.46657pt x 623.32875pt>
+<Figures/Dev-SCH/schemaBloc.png, id=83, 1093.08376pt x 639.89063pt>
 File: Figures/Dev-SCH/schemaBloc.png Graphic file (type png)
 <use Figures/Dev-SCH/schemaBloc.png>
 Package luatex.def Info: Figures/Dev-SCH/schemaBloc.png  used on input line 32.
 
-(luatex.def)             Requested size: 516.73338pt x 255.12892pt.
+(luatex.def)             Requested size: 469.75502pt x 274.99138pt.
 
-Overfull \hbox (46.97836pt too wide) in paragraph at lines 32--33
- [][] 
- []
-
-
-Underfull \hbox (badness 2261) in paragraph at lines 53--53
+Underfull \hbox (badness 2261) in paragraph at lines 52--52
 []|\T1/ptm/m/n/16 Contient l'in-tel-li-gence du sys-tème,
  []
 
 
-Overfull \hbox (60.39458pt too wide) in paragraph at lines 53--55
+Underfull \hbox (badness 2277) in paragraph at lines 52--52
+\T1/ptm/m/n/16 pas-sifs de sé-cu-rité. In-ter-face LED
+ []
+
+
+Overfull \hbox (60.39458pt too wide) in paragraph at lines 52--54
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 53--55
+Underfull \hbox (badness 10000) in paragraph at lines 52--54
 
  []
 
@@ -1595,10 +1595,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 File: Figures/Dev-SCH/Etats_diagramme.png Graphic file (type png)
 <use Figures/Dev-SCH/Etats_diagramme.png>
 Package luatex.def Info: Figures/Dev-SCH/Etats_diagramme.png  used on input lin
-e 83.
+e 82.
 (luatex.def)             Requested size: 516.73338pt x 525.77258pt.
 
-Overfull \hbox (46.97836pt too wide) in paragraph at lines 83--84
+Overfull \hbox (46.97836pt too wide) in paragraph at lines 82--83
  [][] 
  []
 
@@ -1613,6 +1613,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [20
 
 ]
+<Figures/Dev-SCH/LEDStates.png, id=96, 2166.59438pt x 2092.06593pt>
+File: Figures/Dev-SCH/LEDStates.png Graphic file (type png)
+<use Figures/Dev-SCH/LEDStates.png>
+Package luatex.def Info: Figures/Dev-SCH/LEDStates.png  used on input line 101.
+
+(luatex.def)             Requested size: 446.26582pt x 430.91933pt.
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1621,7 +1628,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[21<./Figures/Dev-SCH/Etats_diagramme.png>]) (./main.bbl)
+[21<./Figures/Dev-SCH/Etats_diagramme.png>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1633,7 +1640,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [22
 
 
-] [23
+<./Figures/Dev-SCH/LEDStates.png>]) (./main.bbl)
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[23
+
+] [24
 
 ] (./main.aux)
 
@@ -1642,14 +1660,14 @@ LaTeX Warning: There were multiply-defined labels.
 )
 
 Here is how much of LuaTeX's memory you used:
- 24965 strings out of 477247
+ 24986 strings out of 477247
  100000,953878 words of node,token memory allocated
- 4356 words of node memory still in use:
-   4 hlist, 1 vlist, 1 rule, 131 glue, 97 kern, 1 penalty, 2 glyph, 1105 attribu
-te, 56 glue_spec, 159 attribute_list, 3 write nodes
-   avail lists: 1:1,2:3276,3:363,4:140,5:284,6:107,7:6818,8:44,9:638,10:16,11:56
+ 4567 words of node memory still in use:
+   4 hlist, 1 vlist, 1 rule, 135 glue, 108 kern, 1 penalty, 2 glyph, 1161 attrib
+ute, 56 glue_spec, 167 attribute_list, 3 write nodes
+   avail lists: 1:1,2:3284,3:371,4:144,5:281,6:109,7:6814,8:44,9:652,10:16,11:56
 2
- 44900 multiletter control sequences out of 65536+600000
+ 44912 multiletter control sequences out of 65536+600000
  163 fonts using 7576535 bytes
  85i,11n,115p,1006b,470s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {c:/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2022/texmf-d
@@ -1658,10 +1676,10 @@ ype1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/urw/s
 ymbol/usyr.pfb><c:/texlive/2022/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/
 texlive/2022/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2022/texmf-
 dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (23 pages, 2805344 bytes).
+Output written on main.pdf (24 pages, 3054043 bytes).
 
-PDF statistics: 129 PDF objects out of 1000 (max. 8388607)
- 73 compressed objects within 1 object stream
+PDF statistics: 134 PDF objects out of 1000 (max. 8388607)
+ 75 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 131072)
  16 words of extra memory for PDF output out of 10000 (max. 100000000)
 

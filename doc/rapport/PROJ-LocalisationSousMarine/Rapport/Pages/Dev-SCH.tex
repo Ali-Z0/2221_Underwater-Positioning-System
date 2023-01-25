@@ -29,13 +29,12 @@
 	{
 		\begin{figure}[th]
 			\centering
-			\includegraphics[width=1.1\linewidth]{Figures/Dev-SCH/schemaBloc}
+			\includegraphics[width=1\linewidth]{Figures/Dev-SCH/schemaBloc}
 			\caption{Schéma bloc de la schématique}
 			\source{Auteur}
 			\label{fig:schemablocSCH}
 		\end{figure}
-		
-		Nous pouvons constater sur la figure \ref{fig:schemablocSCH} la structure des différents blocs du schéma : \vspace{+5mm}
+		Nous pouvons constater sur la figure \ref{fig:schemablocSCH} la structure des différents blocs du schéma : \vspace{+2mm}
 		
 		\begin{tabularx}{18cm}{|X|X|}
 			\hline
@@ -48,7 +47,7 @@
 			\hline
 			Peripherals & Périphériques du système : Carte-SD, Centrale inertielle, Capteur de pression, Slots MikroE. \\ 
 			\hline
-			Interface & Connecteur USB avec convertisseur serial (FTDI) et tous les composants passifs de sécurité. \\
+			Interface & Connecteur USB avec convertisseur serial (FTDI) et tous les composants passifs de sécurité. Interface LED RGB pour le statut. \\
 			\hline
 		\end{tabularx}
 	}
@@ -72,8 +71,8 @@
 			Capacite = Consommation * Temps
 		\end{equation}
 		
-		Ce qui nous fait une capacité de $\sim$292.68mAh, valeur facilement atteignable par les batteries li-ion du marché. Étant-donné que différents projets utilisaient des batteries 3400mAh, dans un objectif de conformité et de simplification des commandes, j'ai choisis cette même valeur.
-		Ce qui signifie une autonomie de $\sim$23 heures.
+		Ce qui nous fait une capacité de $\sim$452.68mAh, valeur facilement atteignable par les batteries li-ion du marché. Étant-donné que différents projets utilisaient des batteries 3400mAh, dans un objectif de conformité et de simplification des commandes, j'ai choisis cette même valeur.
+		Ce qui signifie une autonomie de $\sim$15 heures, sans compter les différents mécanismes d'économie d'énergie.
 		
 		C'est un temps largement suffisant pour la durée de plusieurs expéditions, néanmoins la RTCC du microcontrôleur requiert d'être alimentée en permanence, j'ai donc décidé de déterminer un fonctionnement, où lorsque l'on charge la batterie la date se mettrait à jour et le mode "éteint" serait juste un mode de veille qui attendrait un niveau positif sur le switch avant de commencer le logging avec un timsetamp principale contenant la date, puis, seulement des deltas entre les mesures. Un diagramme des états est présents à la figure \ref{fig:etatsdiagramme}.
 		
@@ -84,6 +83,25 @@
 			\caption{Diagramme des états du système}
 			\label{fig:etatsdiagramme}
 			\source{Auteur}
+		\end{figure}
+		
+	}
+
+	\clearpage
+	\subsubsection{LED Interface} \label{sssec:DimLedRGB}
+	{
+		Afin d'informer l'utilisateur de ce qu'il se passe dans le système, j'ai décidé d'implémenter en tant qu'interface, une led RGB. Celle-ci sera un minimum puissante, afin de pouvoir être lisible lors de l'utilisation sous-marine du module.
+		
+		La consommation de la led RGB étant relativement importante, des mécanismes d'économie d'énergie seront mis en place dans le développement firmware. \vspace{+3mm}
+		
+		\textbf{Diagramme d'interface :}
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.95\linewidth]{Figures/Dev-SCH/LEDStates}
+			\caption{Définitions des états de la LED RGB}
+			\source{Auteur}
+			\label{fig:ledstates}
 		\end{figure}
 		
 	}
