@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.12.7)  25 JAN 2023 13:21
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.12.7)  25 JAN 2023 15:13
  restricted system commands enabled.
 **main.tex
 (./main.tex
@@ -1543,12 +1543,17 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [17]
-<Figures/Dev-SCH/schemaBloc.png, id=83, 1093.08376pt x 639.89063pt>
+<Figures/Dev-SCH/schemaBloc.png, id=83, 1042.64531pt x 624.08156pt>
 File: Figures/Dev-SCH/schemaBloc.png Graphic file (type png)
 <use Figures/Dev-SCH/schemaBloc.png>
 Package luatex.def Info: Figures/Dev-SCH/schemaBloc.png  used on input line 32.
 
-(luatex.def)             Requested size: 469.75502pt x 274.99138pt.
+(luatex.def)             Requested size: 516.73338pt x 309.29747pt.
+
+Overfull \hbox (46.97836pt too wide) in paragraph at lines 32--33
+ [][] 
+ []
+
 
 Underfull \hbox (badness 2261) in paragraph at lines 52--52
 []|\T1/ptm/m/n/16 Contient l'in-tel-li-gence du sys-tème,
@@ -1676,7 +1681,7 @@ ype1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/urw/s
 ymbol/usyr.pfb><c:/texlive/2022/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/
 texlive/2022/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2022/texmf-
 dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (24 pages, 3053835 bytes).
+Output written on main.pdf (24 pages, 3053852 bytes).
 
 PDF statistics: 134 PDF objects out of 1000 (max. 8388607)
  75 compressed objects within 1 object stream
