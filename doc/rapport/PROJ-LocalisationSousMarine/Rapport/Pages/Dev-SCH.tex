@@ -59,7 +59,7 @@
 		Afin de proportionner la batterie du circuit, il a fallut dimensionner les différentes consommations des composants, ceci par le biais de leurs documentations :
 		
 		\begin{center}
-			\fbox{\textit{MCU - 30mA}} \fbox{\textit{BNO055 - 12.3mA}} \fbox{\textit{Capt. Pression - 4mA}} \fbox{\textit{\textcolor{red}{Carte-SD - 100mA}}} \fbox{\textit{MikroE - ??mA}} \fbox{\textit{Régulateurs - 40uA}} \fbox{\textit{LED RGB - 80mA}} 
+			\fbox{\textit{MCU - 30mA}} \fbox{\textit{BNO055 - 12.3mA}} \fbox{\textit{Capt. Pression - 4mA}} \fbox{\textit{\textcolor{red}{Carte-SD - 100mA}}} \fbox{\textit{MikroE - ??mA}} \fbox{\textit{Régulateurs - 40uA}} \fbox{\textit{LED RGB - 25mA}} 
 		\end{center}
 		
 		Nous pouvons constater que la plus grande consommation vient de la carte micro-SD, qui au maximum peut induire 100mA. \footnote{Selon datasheet SanDisk : https://images-na.ssl-images-amazon.com/images/I/91tTtUMDM3L.pdf}
@@ -68,11 +68,11 @@
 		Afin d'obtenir une autonomie d'au moins 2h (selon CDC), il faudrait une capacité de :
 		
 		\begin{equation}
-			Capacite = Consommation * Temps
+			Capacite = Consommation_{tot} * Temps
 		\end{equation}
 		
-		Ce qui nous fait une capacité de $\sim$452.68mAh, valeur facilement atteignable par les batteries li-ion du marché. Étant-donné que différents projets utilisaient des batteries 3400mAh, dans un objectif de conformité et de simplification des commandes, j'ai choisis cette même valeur.
-		Ce qui signifie une autonomie de $\sim$15 heures, sans compter les différents mécanismes d'économie d'énergie.
+		Ce qui nous fait une capacité de $\sim$342.68mAh, valeur facilement atteignable par les batteries li-ion du marché. Étant-donné que différents projets utilisaient des batteries 3400mAh, dans un objectif de conformité et de simplification des commandes, j'ai choisis cette même valeur.
+		Ce qui signifie une autonomie de $\sim$20 heures, sans compter les différents mécanismes d'économie d'énergie.
 		
 		C'est un temps largement suffisant pour la durée de plusieurs expéditions, néanmoins la RTCC du microcontrôleur requiert d'être alimentée en permanence, j'ai donc décidé de déterminer un fonctionnement, où lorsque l'on charge la batterie la date se mettrait à jour et le mode "éteint" serait juste un mode de veille qui attendrait un niveau positif sur le switch avant de commencer le logging avec un timsetamp principale contenant la date, puis, seulement des deltas entre les mesures. Un diagramme des états est présents à la figure \ref{fig:etatsdiagramme}.
 		
