@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.12.7)  25 JAN 2023 15:13
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.12.7)  25 JAN 2023 16:39
  restricted system commands enabled.
 **main.tex
 (./main.tex
@@ -1634,6 +1634,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [21<./Figures/Dev-SCH/Etats_diagramme.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 111--112
+
+ []
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1645,7 +1649,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [22
 
 
-<./Figures/Dev-SCH/LEDStates.png>]) (./main.bbl)
+<./Figures/Dev-SCH/LEDStates.png>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1656,7 +1660,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [23
 
-] [24
+]) (./main.bbl)
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[24
+
+] [25
 
 ] (./main.aux)
 
@@ -1665,14 +1680,14 @@ LaTeX Warning: There were multiply-defined labels.
 )
 
 Here is how much of LuaTeX's memory you used:
- 24986 strings out of 477247
+ 24987 strings out of 477247
  100000,953878 words of node,token memory allocated
- 4567 words of node memory still in use:
-   4 hlist, 1 vlist, 1 rule, 135 glue, 108 kern, 1 penalty, 2 glyph, 1161 attrib
-ute, 56 glue_spec, 167 attribute_list, 3 write nodes
-   avail lists: 1:1,2:3284,3:371,4:144,5:285,6:109,7:6814,8:44,9:652,10:16,11:56
+ 4670 words of node memory still in use:
+   4 hlist, 1 vlist, 1 rule, 137 glue, 113 kern, 1 penalty, 2 glyph, 1189 attrib
+ute, 56 glue_spec, 171 attribute_list, 3 write nodes
+   avail lists: 1:1,2:3324,3:379,4:148,5:281,6:111,7:6812,8:44,9:666,10:16,11:56
 2
- 44912 multiletter control sequences out of 65536+600000
+ 44913 multiletter control sequences out of 65536+600000
  163 fonts using 7576535 bytes
  85i,11n,115p,1006b,470s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {c:/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2022/texmf-d
@@ -1681,10 +1696,10 @@ ype1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/urw/s
 ymbol/usyr.pfb><c:/texlive/2022/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/
 texlive/2022/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2022/texmf-
 dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (24 pages, 3053852 bytes).
+Output written on main.pdf (25 pages, 3055059 bytes).
 
-PDF statistics: 134 PDF objects out of 1000 (max. 8388607)
- 75 compressed objects within 1 object stream
+PDF statistics: 137 PDF objects out of 1000 (max. 8388607)
+ 77 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 131072)
  16 words of extra memory for PDF output out of 10000 (max. 100000000)
 
