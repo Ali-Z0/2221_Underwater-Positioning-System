@@ -180,6 +180,26 @@
 			\includegraphics[width=0.25\linewidth]{Figures/Dev-SCH/I2C2}
 			\label{fig:i2c2}
 		\end{figure}
+	
+		\clearpage
+		Pour ce qui est des mesures sur ces différents bus de communications, des connecteurs bergs ont étés prévus, afin de pouvoir connecter facilement un analyseur logique sur les différentes trames : 
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.9\linewidth]{Figures/Dev-SCH/PointsMesures}
+			\caption{Connecteurs pour analyseur logique}
+			\label{fig:pointsmesures}
+		\end{figure}
+		
+		Une contrainte s'est crée, lorsque toutes les pins du microcontrôleur ont été allouée alors qu'il restait des connexion pour les "Chip select" et "Reset" des carte click-board Mikroe. Afin de remédier à ce problème, j'ai décidé d'utiliser un démultiplexeur, sachant que chacune des ces PINS, peuvent être activée seulement une à une : 
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.6\linewidth]{Figures/Dev-SCH/Demultiplexeur}
+			\caption{Demultiplexeur}
+			\label{fig:demultiplexeur}
+		\end{figure}
+		
 
 	}
 
@@ -224,7 +244,11 @@
 		
 		J'ai pû faire un contrôle mutuel de la schématique avec mon collègue M. Meven Ricchieri.
 		
+		Je n'ai pas rencontré de problèmes particuliers, j'ai pus compléter la schématique, avancer sur le concept globale et je suis très enthousiaste de continuer ce projet.
 		
+		Désormais il vas falloir préparer la création du PCB, en contrôlant les footprints du circuit et développer d'avantage l'aspect mécanique du projet.
+		
+		La schématique issue de cette partie développement,  sera disponible en annexe de ce rapport.
 		
 		
 	}
