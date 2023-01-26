@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.8)  26 JAN 2023 21:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.8)  26 JAN 2023 21:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1554,7 +1554,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 File: Figures/Dev-SCH/Periph1.png Graphic file (type png)
 <use Figures/Dev-SCH/Periph1.png>
 Package pdftex.def Info: Figures/Dev-SCH/Periph1.png  used on input line 209.
-(pdftex.def)             Requested size: 469.75502pt x 296.4236pt.
+(pdftex.def)             Requested size: 399.29463pt x 251.96005pt.
+<Figures/Dev-SCH/Mikroe.png, id=131, 1028.04076pt x 338.4645pt>
+File: Figures/Dev-SCH/Mikroe.png Graphic file (type png)
+<use Figures/Dev-SCH/Mikroe.png>
+Package pdftex.def Info: Figures/Dev-SCH/Mikroe.png  used on input line 222.
+(pdftex.def)             Requested size: 375.80544pt x 123.72702pt.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1567,10 +1572,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [25
 
  <./Figures/Dev-SCH/PointsMesures.png> <./Figures/Dev-SCH/Demultiplexeur.png>]
-<Figures/Dev-SCH/ChargeBat.png, id=137, 459.51675pt x 284.86424pt>
+<Figures/Dev-SCH/ChargeBat.png, id=138, 459.51675pt x 284.86424pt>
 File: Figures/Dev-SCH/ChargeBat.png Graphic file (type png)
 <use Figures/Dev-SCH/ChargeBat.png>
-Package pdftex.def Info: Figures/Dev-SCH/ChargeBat.png  used on input line 222.
+Package pdftex.def Info: Figures/Dev-SCH/ChargeBat.png  used on input line 236.
 
 (pdftex.def)             Requested size: 258.36668pt x 160.17053pt.
 
@@ -1584,7 +1589,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [26
 
- <./Figures/Dev-SCH/Periph1.png>]
+ <./Figures/Dev-SCH/Periph1.png> <./Figures/Dev-SCH/Mikroe.png>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1614,10 +1619,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 24000 strings out of 474968
- 508179 string characters out of 5780081
- 820013 words of memory out of 5000000
- 45026 multiletter control sequences out of 15000+600000
+ 24012 strings out of 474968
+ 508508 string characters out of 5780081
+ 820023 words of memory out of 5000000
+ 45037 multiletter control sequences out of 15000+600000
  540416 words of font info for 129 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  85i,11n,117p,1007b,525s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1629,10 +1634,10 @@ l/usyr.pfb><c:/texlive/2022/texmf-dist/fonts/type1/urw/symbol/usyr.pfb><c:/texl
 ive/2022/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2022/texmf-dis
 t/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2022/texmf-dist/fonts/type1/urw/
 times/utmri8a.pfb>
-Output written on main.pdf (29 pages, 3663048 bytes).
+Output written on main.pdf (29 pages, 3727771 bytes).
 PDF statistics:
- 190 PDF objects out of 1000 (max. 8388607)
+ 192 PDF objects out of 1000 (max. 8388607)
  94 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 138 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 143 words of extra memory for PDF output out of 10000 (max. 10000000)
 

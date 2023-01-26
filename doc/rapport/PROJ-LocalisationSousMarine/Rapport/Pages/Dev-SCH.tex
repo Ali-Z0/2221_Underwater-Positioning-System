@@ -206,10 +206,24 @@
 	{
 		\begin{figure}[h]
 			\centering
-			\includegraphics[width=1\linewidth]{Figures/Dev-SCH/Periph1}
+			\includegraphics[width=0.85\linewidth]{Figures/Dev-SCH/Periph1}
 			\caption{Carte-SD, capteur de pression et centrale inertielle.}
 			\label{fig:periph1}
 		\end{figure}
+		
+		Pour la carte-SD, certaines pins ne sont pas utilisée car pas utile dans le cadre du projet (Ex: Pin CD (Card Detect)).
+		
+		Pour le capteur de pression, il s'agit d'un simple connecteur (AMTEK 5H2001N0-105PXBL00A01) qui vas venir connecter le senseur rattaché à l'extension mécanique.
+		
+		Quant à la centrale inertielle (BNO055 adafruit-board) le bit d'adresse supplémentaire est mis à 0.
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.8\linewidth]{Figures/Dev-SCH/Mikroe}
+			\caption{}
+			\label{fig:mikroe}
+		\end{figure}
+		Les slots Mikroe (3x figure \ref{fig:mikroe}) sont prévus pour pouvoir utiliser le plus de bus de communication possibles. Les jumpers sont prévus pour éviter les collisions sur les lignes.
 		
 	}
 
