@@ -29,5 +29,4 @@
 \contentsline {subsubsection}{\numberline {3.2.4}Adaptation mécanique}{23}{}%
 \contentsline {subsubsection}{\numberline {3.2.5}Bus de communications}{24}{}%
 \contentsline {subsubsection}{\numberline {3.2.6}Chargeur de batterie}{25}{}%
-\contentsline {subsubsection}{\numberline {3.2.7}Régulateur 3.3V}{26}{}%
-\contentsline {subsubsection}{\numberline {3.2.8}Régulateur 5V}{26}{}%
+\contentsline {subsubsection}{\numberline {3.2.7}Conclusion et perspectives}{26}{}%
