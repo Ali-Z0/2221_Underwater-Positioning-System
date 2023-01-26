@@ -28,5 +28,6 @@
 \contentsline {subsubsection}{\numberline {3.2.3}LED Interface}{22}{}%
 \contentsline {subsubsection}{\numberline {3.2.4}Adaptation mécanique}{23}{}%
 \contentsline {subsubsection}{\numberline {3.2.5}Bus de communications}{24}{}%
-\contentsline {subsubsection}{\numberline {3.2.6}Chargeur de batterie}{26}{}%
-\contentsline {subsubsection}{\numberline {3.2.7}Conclusion et perspectives}{27}{}%
+\contentsline {subsubsection}{\numberline {3.2.6}Périphériques}{26}{}%
+\contentsline {subsubsection}{\numberline {3.2.7}Chargeur de batterie}{27}{}%
+\contentsline {subsubsection}{\numberline {3.2.8}Conclusion et perspectives}{28}{}%
