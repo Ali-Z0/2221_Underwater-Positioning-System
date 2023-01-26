@@ -27,7 +27,7 @@
 \contentsline {subsubsection}{\numberline {3.2.2}Autonomie du système}{20}{}%
 \contentsline {subsubsection}{\numberline {3.2.3}LED Interface}{22}{}%
 \contentsline {subsubsection}{\numberline {3.2.4}Adaptation mécanique}{23}{}%
-\contentsline {subsubsection}{\numberline {3.2.5}Chargeur de batterie}{24}{}%
-\contentsline {subsubsection}{\numberline {3.2.6}Aspects techniques particuliers du schéma (bus, technologie particulière).}{24}{}%
-\contentsline {subsubsection}{\numberline {3.2.7}Régulateur 3.3V}{24}{}%
-\contentsline {subsubsection}{\numberline {3.2.8}Régulateur 5V}{24}{}%
+\contentsline {subsubsection}{\numberline {3.2.5}Bus de communications}{24}{}%
+\contentsline {subsubsection}{\numberline {3.2.6}Chargeur de batterie}{25}{}%
+\contentsline {subsubsection}{\numberline {3.2.7}Régulateur 3.3V}{25}{}%
+\contentsline {subsubsection}{\numberline {3.2.8}Régulateur 5V}{25}{}%
