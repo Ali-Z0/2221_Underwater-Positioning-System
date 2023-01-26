@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.12.7)  26 JAN 2023 10:27
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.12.7)  26 JAN 2023 11:18
  restricted system commands enabled.
 **main.tex
 (./main.tex
@@ -1703,10 +1703,10 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of LuaTeX's memory you used:
  25027 strings out of 477247
  100000,953878 words of node,token memory allocated
- 4926 words of node memory still in use:
-   4 hlist, 1 vlist, 1 rule, 153 glue, 113 kern, 1 penalty, 2 glyph, 1252 attrib
-ute, 56 glue_spec, 180 attribute_list, 3 write nodes
-   avail lists: 1:1,2:3324,3:387,4:152,5:279,6:113,7:6796,8:44,9:680,10:16,11:56
+ 5226 words of node memory still in use:
+   4 hlist, 1 vlist, 1 rule, 173 glue, 113 kern, 1 penalty, 2 glyph, 1322 attrib
+ute, 56 glue_spec, 190 attribute_list, 3 write nodes
+   avail lists: 1:1,2:3244,3:387,4:152,5:279,6:113,7:6776,8:44,9:680,10:16,11:56
 2
  44935 multiletter control sequences out of 65536+600000
  163 fonts using 7576535 bytes
@@ -1717,7 +1717,7 @@ ype1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/urw/s
 ymbol/usyr.pfb><c:/texlive/2022/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/
 texlive/2022/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2022/texmf-
 dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (26 pages, 3399869 bytes).
+Output written on main.pdf (26 pages, 3399963 bytes).
 
 PDF statistics: 144 PDF objects out of 1000 (max. 8388607)
  79 compressed objects within 1 object stream
