@@ -136,54 +136,88 @@
 	\clearpage
 	\subsubsection{Bus de communications}
 	{
-		\textbf{UART (1) :}
-		
-		Utilisation : Communication avec les boards Mikroe
-		
-		Pinning :
-		
-		\vspace{+5mm}
-		
-		\textbf{UART (2) :}
-		
-		Utilisation :
-		
-		Pinning :
-		
-		\vspace{+5mm}
-
-		\textbf{SPI :}
-		
-		Utilisation :
-		
-		Pinning :
-		
-		\vspace{+5mm}
-		
-		\textbf{I2C (1) :}
-		
-		Utilisation :
-		
-		Pinning :
-		
-		\vspace{+5mm}
-
-		\textbf{I2C (2) :}
-		
-		Utilisation :
-		
-		Pinning :
-		
-		\vspace{+5mm}
+		\textbf{UART (1) :} \\
+		\underline{Utilisation :} Communication avec les boards Mikroe, pour les clicks-boards utilisant la comm. série. \\
+		\underline{Pinning :} \vspace{-6mm}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.25\linewidth]{Figures/Dev-SCH/UART1}
+			\label{fig:uart1}
+		\end{figure}		
+	
+		\textbf{UART (2) :} \\
+		\underline{Utilisation :} Communication avec FTDI conversion USB-Serial. Transfert des fichiers de la carte-SD et mise-à-jour de la RTCC. \\
+		\underline{Pinning :} \vspace{-6mm}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.25\linewidth]{Figures/Dev-SCH/UART2}
+			\label{fig:uart2}
+		\end{figure}		
+	
+		\textbf{SPI :} \\
+		\underline{Utilisation :} Communication avec la carte micro-SD, écriture des mesures, timestamps et flag d'importance. \\
+		\underline{Pinning :} \vspace{-6mm}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.25\linewidth]{Figures/Dev-SCH/SPI}
+			\label{fig:spi}
+		\end{figure}
+	
+		\textbf{I2C (1) :} \\
+		\underline{Utilisation :} Lecture des mesure de la centrale inertielle BNO055 et paramétrage des registres de celui-ci. \\
+		\underline{Pinning :} \vspace{-6mm}
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=0.25\linewidth]{Figures/Dev-SCH/I2C1}
+			\label{fig:i2c1}
+		\end{figure}
+	
+		\textbf{I2C (2) :} \\
+		\underline{Utilisation :} Lecture des données du capteur de pression et est également connecté aux slots Mikroe, pour permettre à ceux-ci de communiquer via I2C. \\
+		\underline{Pinning :} \vspace{-6mm}
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=0.25\linewidth]{Figures/Dev-SCH/I2C2}
+			\label{fig:i2c2}
+		\end{figure}
 
 	}
 
 	\clearpage
 	\subsubsection{Chargeur de batterie} \label{sssec:BatCharger}
 	{
+		Ici je vais me pencher sur les dimensionnement des 3 résistances \textit{PROG} du composant de régulation et de charge d'accu, les autres composants passifs n'ont pas requis de dimensionnements particuliers.
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.55\linewidth]{Figures/Dev-SCH/ChargeBat}
+			\caption{IC régulation et gestion charge de l'accu}
+			\label{fig:chargebat}
+		\end{figure}
 		
+		Afin de déterminer le comportement de la charge via les différentes étapes de courants, quelques équations ont été utiles : \\
+		Où \\
+		$C = 3400mAh$ \\
+		$ratio_{term} = 0.05$
+		$ratio_{chrg} = 0.1$
+		
+		\begin{equation} \label{equ:ich}
+			I_{term} = C * ratio_{chrg} 
+		\end{equation}
+		D'après \ref{equ:ich}, $I_{term} = 170mA$.
+	 
+	 	\begin{equation} \label{equ:Rprog3}
+		 	Rprog3 = \frac{1000V}{I_{term}}
+		\end{equation}
+		D'après \ref{equ:Rprog1}, $Rprog3 = 5k88 \Omega$ E12 $\Longrightarrow$ $6k2\Omega$ (Arrondis au supérieur pour limiter courant de terminaison).
+		
+		\begin{equation} \label{equ:Rprog1}
+			Rprog1 = \frac{1000V}{C * ratio_{chrg}} 
+		\end{equation}
+		D'après \ref{equ:Rprog1}, $Rprog1 = 2k94 \Omega$ E12 $\Longrightarrow$ $2k2\Omega$ (Arrondis à l'inférieur pour limiter courant de charge).
+		 
 	}
 	
+	\clearpage
 	\subsubsection{Régulateur 3.3V} \label{sssec:Reg3V3}
 	{
 		
