@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.12.7)  1 FEB 2023 13:51
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.12.7)  1 FEB 2023 14:39
  restricted system commands enabled.
 **presentation-main.tex
 (./presentation-main.tex
@@ -1556,7 +1556,7 @@ t line 83.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  TU/lmtt/b/n --> TU/lmtt/b/n on input line 83.
  (./presentation-main.nav)
-<Images/logo.png, id=60, 200.75pt x 200.75pt>
+<Images/logo.png, id=61, 200.75pt x 200.75pt>
 File: Images/logo.png Graphic file (type png)
 <use Images/logo.png>
 Package luatex.def Info: Images/logo.png  used on input line 88.
@@ -1572,13 +1572,13 @@ Package luatex.def Info: Images/logo.png  used on input line 88.
 ] [4
 
 ]
-<Images/Dev-SCH/schemaBloc.png, id=153, 1042.64531pt x 624.08156pt>
+<Images/Dev-SCH/schemaBloc.png, id=157, 1042.64531pt x 624.08156pt>
 File: Images/Dev-SCH/schemaBloc.png Graphic file (type png)
 <use Images/Dev-SCH/schemaBloc.png>
 Package luatex.def Info: Images/Dev-SCH/schemaBloc.png  used on input line 139.
 
 (luatex.def)             Requested size: 219.08743pt x 131.12766pt.
-<Images/Dev-SCH/DescrBlocs.png, id=154, 1124.70187pt x 505.13719pt>
+<Images/Dev-SCH/DescrBlocs.png, id=158, 1124.70187pt x 505.13719pt>
 File: Images/Dev-SCH/DescrBlocs.png Graphic file (type png)
 <use Images/Dev-SCH/DescrBlocs.png>
 Package luatex.def Info: Images/Dev-SCH/DescrBlocs.png  used on input line 139.
@@ -1586,134 +1586,147 @@ Package luatex.def Info: Images/Dev-SCH/DescrBlocs.png  used on input line 139.
 (luatex.def)             Requested size: 179.25114pt x 80.50758pt.
  [5
 
-<./Images/Dev-SCH/schemaBloc.png><./Images/Dev-SCH/DescrBlocs.png>] [6
+<./Images/Dev-SCH/schemaBloc.png><./Images/Dev-SCH/DescrBlocs.png>]
+<Images/Dev-SCH/Schema-bloc-detail.png, id=190, 4342.2225pt x 3854.4pt>
+File: Images/Dev-SCH/Schema-bloc-detail.png Graphic file (type png)
+<use Images/Dev-SCH/Schema-bloc-detail.png>
+Package luatex.def Info: Images/Dev-SCH/Schema-bloc-detail.png  used on input l
+ine 148.
+(luatex.def)             Requested size: 239.00558pt x 212.1397pt.
+
+Overfull \vbox (29.05261pt too high) detected at line 148
+ []
+
+[6
+
+<./Images/Dev-SCH/Schema-bloc-detail.png>] [7
 
 ]
 
 LaTeX Font Warning: Font shape `TU/Flama-Light(1)/m/it' undefined
-(Font)              using `TU/Flama-Light(1)/m/n' instead on input line 145.
+(Font)              using `TU/Flama-Light(1)/m/n' instead on input line 154.
 
 
 LaTeX Font Warning: Font shape `TU/Flama-Light(1)/b/n' undefined
-(Font)              using `TU/Flama-Light(1)/m/n' instead on input line 147.
+(Font)              using `TU/Flama-Light(1)/m/n' instead on input line 156.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 149
+LaTeX Font Info:    Trying to load font information for U+msa on input line 158
 .
 (c:/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 149
+LaTeX Font Info:    Trying to load font information for U+msb on input line 158
 .
 
 (c:/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [7
+) [8
 
 ]
-<Images/Dev-SCH/Etats_diagramme.png, id=221, 2865.70625pt x 2915.89375pt>
+<Images/Dev-SCH/Etats_diagramme.png, id=259, 2865.70625pt x 2915.89375pt>
 File: Images/Dev-SCH/Etats_diagramme.png Graphic file (type png)
 <use Images/Dev-SCH/Etats_diagramme.png>
 Package luatex.def Info: Images/Dev-SCH/Etats_diagramme.png  used on input line
- 165.
+ 174.
 (luatex.def)             Requested size: 199.1693pt x 202.62065pt.
 
-Overfull \vbox (50.83305pt too high) detected at line 169
- []
-
-[8
-
-<./Images/Dev-SCH/Etats_diagramme.png>]
-<Images/Dev-SCH/LEDStates.png, id=252, 2166.59438pt x 2092.06593pt>
-File: Images/Dev-SCH/LEDStates.png Graphic file (type png)
-<use Images/Dev-SCH/LEDStates.png>
-Package luatex.def Info: Images/Dev-SCH/LEDStates.png  used on input line 178.
-(luatex.def)             Requested size: 219.08743pt x 211.54918pt.
-
-Overfull \vbox (28.4621pt too high) detected at line 178
+Overfull \vbox (50.83305pt too high) detected at line 178
  []
 
 [9
 
+<./Images/Dev-SCH/Etats_diagramme.png>]
+<Images/Dev-SCH/LEDStates.png, id=292, 2166.59438pt x 2092.06593pt>
+File: Images/Dev-SCH/LEDStates.png Graphic file (type png)
+<use Images/Dev-SCH/LEDStates.png>
+Package luatex.def Info: Images/Dev-SCH/LEDStates.png  used on input line 187.
+(luatex.def)             Requested size: 219.08743pt x 211.54918pt.
+
+Overfull \vbox (28.4621pt too high) detected at line 187
+ []
+
+[10
+
 <./Images/Dev-SCH/LEDStates.png>]
-<Images/Dev-SCH/MecaniqueProto2.png, id=284, 2118.41437pt x 536.0025pt>
+<Images/Dev-SCH/MecaniqueProto2.png, id=324, 2118.41437pt x 536.0025pt>
 File: Images/Dev-SCH/MecaniqueProto2.png Graphic file (type png)
 <use Images/Dev-SCH/MecaniqueProto2.png>
 Package luatex.def Info: Images/Dev-SCH/MecaniqueProto2.png  used on input line
- 185.
+ 194.
 (luatex.def)             Requested size: 278.83578pt x 70.54971pt.
-<Images/Dev-SCH/MecaniqueProto1.png, id=285, 1457.445pt x 1547.7825pt>
+<Images/Dev-SCH/MecaniqueProto1.png, id=325, 1457.445pt x 1547.7825pt>
 File: Images/Dev-SCH/MecaniqueProto1.png Graphic file (type png)
 <use Images/Dev-SCH/MecaniqueProto1.png>
 Package luatex.def Info: Images/Dev-SCH/MecaniqueProto1.png  used on input line
- 187.
+ 196.
 (luatex.def)             Requested size: 99.58464pt x 105.73433pt.
- [10
+ [11
 
 <./Images/Dev-SCH/MecaniqueProto2.png><./Images/Dev-SCH/MecaniqueProto1.png>] [
-11
+12
 
 ]
-<Images/Dev-SCH/UART12Spi.png, id=321, 809.27344pt x 617.30624pt>
+<Images/Dev-SCH/UART12Spi.png, id=362, 809.27344pt x 617.30624pt>
 File: Images/Dev-SCH/UART12Spi.png Graphic file (type png)
 <use Images/Dev-SCH/UART12Spi.png>
-Package luatex.def Info: Images/Dev-SCH/UART12Spi.png  used on input line 197.
+Package luatex.def Info: Images/Dev-SCH/UART12Spi.png  used on input line 206.
 (luatex.def)             Requested size: 195.1881pt x 148.8818pt.
-<Images/Dev-SCH/I2C1I2C2.png, id=322, 801.74532pt x 406.51875pt>
+<Images/Dev-SCH/I2C1I2C2.png, id=363, 801.74532pt x 406.51875pt>
 File: Images/Dev-SCH/I2C1I2C2.png Graphic file (type png)
 <use Images/Dev-SCH/I2C1I2C2.png>
-Package luatex.def Info: Images/Dev-SCH/I2C1I2C2.png  used on input line 199.
+Package luatex.def Info: Images/Dev-SCH/I2C1I2C2.png  used on input line 208.
 (luatex.def)             Requested size: 195.1881pt x 98.96835pt.
- [12
-
-<./Images/Dev-SCH/UART12Spi.png><./Images/Dev-SCH/I2C1I2C2.png>]
-<Images/Dev-SCH/Periph1.png, id=351, 675.7245pt x 426.393pt>
-File: Images/Dev-SCH/Periph1.png Graphic file (type png)
-<use Images/Dev-SCH/Periph1.png>
-Package luatex.def Info: Images/Dev-SCH/Periph1.png  used on input line 206.
-(luatex.def)             Requested size: 195.1881pt x 123.16283pt.
-<Images/Dev-SCH/Mikroe.png, id=352, 1028.04076pt x 338.4645pt>
-File: Images/Dev-SCH/Mikroe.png Graphic file (type png)
-<use Images/Dev-SCH/Mikroe.png>
-Package luatex.def Info: Images/Dev-SCH/Mikroe.png  used on input line 208.
-(luatex.def)             Requested size: 195.1881pt x 64.26244pt.
  [13
 
+<./Images/Dev-SCH/UART12Spi.png><./Images/Dev-SCH/I2C1I2C2.png>]
+<Images/Dev-SCH/Periph1.png, id=394, 675.7245pt x 426.393pt>
+File: Images/Dev-SCH/Periph1.png Graphic file (type png)
+<use Images/Dev-SCH/Periph1.png>
+Package luatex.def Info: Images/Dev-SCH/Periph1.png  used on input line 215.
+(luatex.def)             Requested size: 195.1881pt x 123.16283pt.
+<Images/Dev-SCH/Mikroe.png, id=395, 1028.04076pt x 338.4645pt>
+File: Images/Dev-SCH/Mikroe.png Graphic file (type png)
+<use Images/Dev-SCH/Mikroe.png>
+Package luatex.def Info: Images/Dev-SCH/Mikroe.png  used on input line 217.
+(luatex.def)             Requested size: 195.1881pt x 64.26244pt.
+ [14
+
 <./Images/Dev-SCH/Periph1.png><./Images/Dev-SCH/Mikroe.png>]
-<Images/Dev-SCH/ChargeBat.png, id=383, 459.51675pt x 284.86424pt>
+<Images/Dev-SCH/ChargeBat.png, id=427, 459.51675pt x 284.86424pt>
 File: Images/Dev-SCH/ChargeBat.png Graphic file (type png)
 <use Images/Dev-SCH/ChargeBat.png>
-Package luatex.def Info: Images/Dev-SCH/ChargeBat.png  used on input line 215.
+Package luatex.def Info: Images/Dev-SCH/ChargeBat.png  used on input line 224.
 (luatex.def)             Requested size: 119.50279pt x 74.08034pt.
 
-Overfull \vbox (7.5832pt too high) detected at line 230
- []
-
-[14
-
-<./Images/Dev-SCH/ChargeBat.png>]
-<Images/Dev-SCH/BOMavecPrix.png, id=420, 481.04718pt x 524.71031pt>
-File: Images/Dev-SCH/BOMavecPrix.png Graphic file (type png)
-<use Images/Dev-SCH/BOMavecPrix.png>
-Package luatex.def Info: Images/Dev-SCH/BOMavecPrix.png  used on input line 236
-.
-(luatex.def)             Requested size: 179.25114pt x 195.52487pt.
-
-Overfull \vbox (14.07727pt too high) detected at line 238
+Overfull \vbox (7.5832pt too high) detected at line 239
  []
 
 [15
 
-<./Images/Dev-SCH/BOMavecPrix.png>] [16
+<./Images/Dev-SCH/ChargeBat.png>]
+<Images/Dev-SCH/BOMavecPrix.png, id=464, 481.04718pt x 524.71031pt>
+File: Images/Dev-SCH/BOMavecPrix.png Graphic file (type png)
+<use Images/Dev-SCH/BOMavecPrix.png>
+Package luatex.def Info: Images/Dev-SCH/BOMavecPrix.png  used on input line 245
+.
+(luatex.def)             Requested size: 179.25114pt x 195.52487pt.
+
+Overfull \vbox (14.07727pt too high) detected at line 247
+ []
+
+[16
+
+<./Images/Dev-SCH/BOMavecPrix.png>] [17
 
 ]
-<Images/Dev-SCH/lightbulb.png, id=454, 169.38281pt x 169.38281pt>
+<Images/Dev-SCH/lightbulb.png, id=499, 169.38281pt x 169.38281pt>
 File: Images/Dev-SCH/lightbulb.png Graphic file (type png)
 <use Images/Dev-SCH/lightbulb.png>
-Package luatex.def Info: Images/Dev-SCH/lightbulb.png  used on input line 254.
+Package luatex.def Info: Images/Dev-SCH/lightbulb.png  used on input line 263.
 (luatex.def)             Requested size: 59.74835pt x 59.7475pt.
- [17
+ [18
 
-<./Images/Dev-SCH/lightbulb.png>] [18
+<./Images/Dev-SCH/lightbulb.png>] [19
 
 ]
 \tf@nav=\write6
@@ -1734,15 +1747,15 @@ Package rerunfilecheck Info: File `presentation-main.out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 34649 strings out of 477247
+ 34674 strings out of 477247
  100000,1373583 words of node,token memory allocated
- 14781 words of node memory still in use:
-   136 hlist, 10 vlist, 5 rule, 10 disc, 4 local_par, 199 glue, 28 kern, 16 pena
-lty, 84 glyph, 3989 attribute, 80 glue_spec, 572 attribute_list, 4 write, 272 pd
-f_literal, 23 pdf_start_link, 23 pdf_end_link, 23 pdf_action, 78 pdf_colorstack 
+ 15424 words of node memory still in use:
+   142 hlist, 10 vlist, 5 rule, 10 disc, 4 local_par, 208 glue, 29 kern, 16 pena
+lty, 84 glyph, 4185 attribute, 80 glue_spec, 600 attribute_list, 4 write, 288 pd
+f_literal, 24 pdf_start_link, 24 pdf_end_link, 24 pdf_action, 80 pdf_colorstack 
 nodes
-   avail lists: 2:5827,3:765,4:453,5:444,6:62,7:2172,8:68,9:762,10:16,11:152
- 53974 multiletter control sequences out of 65536+600000
+   avail lists: 2:6019,3:799,4:457,5:446,6:63,7:2184,8:70,9:774,10:16,11:152
+ 53987 multiletter control sequences out of 65536+600000
  63 fonts using 3100683 bytes
  128i,19n,134p,446b,894s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf><c:/t
@@ -1752,10 +1765,10 @@ exlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman8-italic.otf><c:/texlive/
 ht.otf><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:
 /texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/20
 22/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on presentation-main.pdf (18 pages, 1395595 bytes).
+Output written on presentation-main.pdf (19 pages, 1755816 bytes).
 
-PDF statistics: 543 PDF objects out of 1000 (max. 8388607)
- 444 compressed objects within 5 object streams
- 50 named destinations out of 1000 (max. 131072)
+PDF statistics: 589 PDF objects out of 1000 (max. 8388607)
+ 486 compressed objects within 5 object streams
+ 53 named destinations out of 1000 (max. 131072)
  64 words of extra memory for PDF output out of 10000 (max. 100000000)
 
