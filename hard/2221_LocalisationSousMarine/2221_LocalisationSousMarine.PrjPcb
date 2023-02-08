@@ -154,7 +154,7 @@ DocumentUniqueId=LISHSYMV
 [Document7]
 DocumentPath=Schematic\Interface.SchDoc
 AnnotationEnabled=1
-AnnotateStartValue=1
+AnnotateStartValue=2
 AnnotationIndexControlEnabled=1
 AnnotateSuffix=
 AnnotateScope=All
@@ -188,7 +188,7 @@ DocumentUniqueId=UACBRLVJ
 [Document9]
 DocumentPath=Schematic\MCU.SchDoc
 AnnotationEnabled=1
-AnnotateStartValue=1
+AnnotateStartValue=3
 AnnotationIndexControlEnabled=1
 AnnotateSuffix=
 AnnotateScope=All
@@ -205,7 +205,7 @@ DocumentUniqueId=GNAZWADN
 [Document10]
 DocumentPath=Schematic\Peripherals.SchDoc
 AnnotationEnabled=1
-AnnotateStartValue=1
+AnnotateStartValue=4
 AnnotationIndexControlEnabled=1
 AnnotateSuffix=
 AnnotateScope=All
@@ -222,7 +222,7 @@ DocumentUniqueId=WNXZQSUZ
 [Document11]
 DocumentPath=Schematic\Power.SchDoc
 AnnotationEnabled=1
-AnnotateStartValue=1
+AnnotateStartValue=5
 AnnotationIndexControlEnabled=1
 AnnotateSuffix=
 AnnotateScope=All
