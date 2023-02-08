@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.12.7)  1 FEB 2023 14:39
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.12.7)  8 FEB 2023 14:20
  restricted system commands enabled.
 **presentation-main.tex
 (./presentation-main.tex
@@ -1747,7 +1747,7 @@ Package rerunfilecheck Info: File `presentation-main.out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 34674 strings out of 477247
+ 34669 strings out of 477247
  100000,1373583 words of node,token memory allocated
  15424 words of node memory still in use:
    142 hlist, 10 vlist, 5 rule, 10 disc, 4 local_par, 208 glue, 29 kern, 16 pena
@@ -1755,8 +1755,8 @@ lty, 84 glyph, 4185 attribute, 80 glue_spec, 600 attribute_list, 4 write, 288 pd
 f_literal, 24 pdf_start_link, 24 pdf_end_link, 24 pdf_action, 80 pdf_colorstack 
 nodes
    avail lists: 2:6019,3:799,4:457,5:446,6:63,7:2184,8:70,9:774,10:16,11:152
- 53987 multiletter control sequences out of 65536+600000
- 63 fonts using 3100683 bytes
+ 53984 multiletter control sequences out of 65536+600000
+ 62 fonts using 3043951 bytes
  128i,19n,134p,446b,894s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf><c:/t
 exlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman8-italic.otf><c:/texlive/
@@ -1765,7 +1765,7 @@ exlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman8-italic.otf><c:/texlive/
 ht.otf><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:
 /texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/20
 22/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on presentation-main.pdf (19 pages, 1755816 bytes).
+Output written on presentation-main.pdf (19 pages, 1755785 bytes).
 
 PDF statistics: 589 PDF objects out of 1000 (max. 8388607)
  486 compressed objects within 5 object streams
