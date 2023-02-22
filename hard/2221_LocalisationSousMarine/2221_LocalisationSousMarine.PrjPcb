@@ -118,23 +118,6 @@ GenerateClassCluster=0
 DocumentUniqueId=ANVGBHYI
 
 [Document5]
-DocumentPath=..\..\..\..\..\..\..\Public\Documents\Altium\AD21\Library\Miscellaneous Connectors\Miscellaneous Connectors.PcbLib
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=PRUVSJPK
-
-[Document6]
 DocumentPath=PCB\LIB\QFP80P1200X1200X120-44N.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -151,7 +134,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=AQPVSIMT
 
-[Document7]
+[Document6]
 DocumentPath=Schematic\SchemaBloc.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -168,7 +151,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=LISHSYMV
 
-[Document8]
+[Document7]
 DocumentPath=Schematic\Interface.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=2
@@ -185,7 +168,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=ZBEXWQOI
 
-[Document9]
+[Document8]
 DocumentPath=ES_Class6C_2L.PcbDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -202,7 +185,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=UACBRLVJ
 
-[Document10]
+[Document9]
 DocumentPath=Schematic\MCU.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=3
@@ -219,7 +202,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=GNAZWADN
 
-[Document11]
+[Document10]
 DocumentPath=Schematic\Peripherals.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=4
@@ -236,7 +219,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=WNXZQSUZ
 
-[Document12]
+[Document11]
 DocumentPath=Schematic\Power.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=5
@@ -253,7 +236,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=UYNQZODH
 
-[Document13]
+[Document12]
 DocumentPath=Schematic\LIB\mikroBUS_Add-on_standard.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -270,7 +253,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=YWNMMQBP
 
-[Document14]
+[Document13]
 DocumentPath=PCB\LIB\mikroBUS_Add-on_standard.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -287,8 +270,25 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=MKYDYDTN
 
-[Document15]
+[Document14]
 DocumentPath=2221_LocalisationSousMarine.OutJob
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=
+
+[Document15]
+DocumentPath=PCB\LIB\0805.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
