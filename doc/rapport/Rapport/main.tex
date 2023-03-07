@@ -34,26 +34,29 @@
 \newdateformat{monthyeardate}{%
   \monthname[\THEMONTH], \THEYEAR}
 
-\pgfpagesdeclarelayout{boxed}
-{
-  \edef\pgfpageoptionborder{0pt}
-}
-{
-  \pgfpagesphysicalpageoptions
-  {%
-    logical pages=1,%
-  }
-  \pgfpageslogicalpageoptions{1}
-  {
-    border code=\pgfsetlinewidth{1pt}\pgfstroke,%
-    border shrink=\pgfpageoptionborder,%
-    resized width=.98\pgfphysicalwidth,%
-    resized height=.98\pgfphysicalheight,%
-    center=\pgfpoint{.5\pgfphysicalwidth}{.5\pgfphysicalheight}%
-  }%
-}
-\pgfpagesuselayout{boxed}
-\setlength{\columnsep}{0.5cm}
+\begin{comment}
+	\pgfpagesdeclarelayout{boxed}
+	{
+		\edef\pgfpageoptionborder{0pt}
+	}
+	{
+		\pgfpagesphysicalpageoptions
+		{%
+			logical pages=1,%
+		}
+		\pgfpageslogicalpageoptions{1}
+		{
+			border code=\pgfsetlinewidth{1pt}\pgfstroke,%
+			border shrink=\pgfpageoptionborder,%
+			resized width=.98\pgfphysicalwidth,%
+			resized height=.98\pgfphysicalheight,%
+			center=\pgfpoint{.5\pgfphysicalwidth}{.5\pgfphysicalheight}%
+		}%
+	}
+	\pgfpagesuselayout{boxed}
+	\setlength{\columnsep}{0.5cm}
+\end{comment}
+
 
 % \renewcommand\thesubsection{\Alph{subsection}}
 
@@ -62,7 +65,7 @@
 \lhead{PROJET 2221}
 \chead {\today}
 \rhead{LocalisationSousMarine}
-\fontsize{14}{14}\selectfont
+%\fontsize{14}{14}\selectfont
 
 % ------------------------- TITLE PAGE INSERTION ------------------------
 \input{Pages/titlepage} 
