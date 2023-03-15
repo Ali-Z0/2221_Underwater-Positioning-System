@@ -302,7 +302,7 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=AMFFBBAR
 
 [Document16]
 DocumentPath=PCB_Dims.PCBDwf
@@ -320,6 +320,10 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=WOEALYLX
+
+[GeneratedDocument1]
+DocumentPath=Project Outputs for 2221_LocalisationSousMarine\Design Rule Check - ES_Class6C_2L.html
+DItemRevisionGUID=
 
 [Configuration1]
 Name=Sources
