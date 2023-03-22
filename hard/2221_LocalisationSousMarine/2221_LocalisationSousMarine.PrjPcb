@@ -33,7 +33,7 @@ FSMCodingStyle=eFMSDropDownList_OneProcess
 FSMEncodingStyle=eFMSDropDownList_OneHot
 IsProjectConflictPreventionWarningsEnabled=1
 IsVirtualBomDocumentRemoved=0
-OutputPath=
+OutputPath=Project Outputs for 2221_LocalisationSousMarine
 LogFolderPath=
 ManagedProjectGUID=
 Template=K:\ES\APPLICATIONS\APPSLO\ALTIUM\ES_Templates\ES_Proj_6C_2L\ES_Proj_6C_2L_2019.PrjPCB
@@ -321,6 +321,23 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=WOEALYLX
 
+[Document17]
+DocumentPath=2221_LocalisationSousMarine.BomDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=
+
 [GeneratedDocument1]
 DocumentPath=Project Outputs for 2221_LocalisationSousMarine\Design Rule Check - ES_Class6C_2L.html
 DItemRevisionGUID=
@@ -372,7 +389,7 @@ SCH_HasExpandLogicalToPhysicalSheets=-1
 SaveSettingsToOutJob=-1
 
 [Generic_EDE]
-OutputDir=
+OutputDir=Project Outputs for 2221_LocalisationSousMarine
 
 [OutputGroup1]
 Name=Netlist Outputs
