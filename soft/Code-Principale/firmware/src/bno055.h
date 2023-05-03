@@ -39,6 +39,14 @@
 /*! \file bno055.h
  * \brief BNO055 Sensor Driver Support Header File */
 
+#include "app.h"
+#include <stdint.h>
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdlib.h>
+#include "system_config.h"
+#include "system_definitions.h"
+
 #ifndef __BNO055_H__
 #define __BNO055_H__
 
@@ -149,6 +157,8 @@ typedef int64_t s64; /**< used for signed 64bit */
 typedef signed char s8; /**< used for signed 8bit */
 typedef signed short int s16; /**< used for signed 16bit */
 typedef signed long int s32; /**< used for signed 32bit */
+//typedef signed long long int s64;
+#define LLONG_MAX 0x7fffffffffffffffLL
 
 #if defined(LONG_MAX) && LONG_MAX == 0x7fffffffffffffffL
 typedef long int s64; /**< used for signed 64bit */

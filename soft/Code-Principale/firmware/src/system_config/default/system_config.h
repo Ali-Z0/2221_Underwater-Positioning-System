@@ -83,7 +83,7 @@ extern "C" {
 */
 #define SYS_CLK_FREQ                        8000000ul
 #define SYS_CLK_BUS_PERIPHERAL_1            8000000ul
-#define SYS_CLK_UPLL_BEFORE_DIV2_FREQ       192000000ul
+#define SYS_CLK_UPLL_BEFORE_DIV2_FREQ       96000000ul
 #define SYS_CLK_CONFIG_PRIMARY_XTAL         8000000ul
 #define SYS_CLK_CONFIG_SECONDARY_XTAL       32768ul
    
@@ -97,9 +97,9 @@ extern "C" {
 #define SYS_PORT_A_CNEN         0x0000
 
 #define SYS_PORT_B_ANSEL        0x0003
-#define SYS_PORT_B_TRIS         0xEF9F
+#define SYS_PORT_B_TRIS         0xEFDF
 #define SYS_PORT_B_LAT          0x0000
-#define SYS_PORT_B_ODC          0x0000
+#define SYS_PORT_B_ODC          0x0040
 #define SYS_PORT_B_CNPU         0x0000
 #define SYS_PORT_B_CNPD         0x0000
 #define SYS_PORT_B_CNEN         0x0000
@@ -137,6 +137,18 @@ extern "C" {
 #define DRV_TMR_ASYNC_WRITE_ENABLE_IDX0     false
 #define DRV_TMR_POWER_STATE_IDX0            
 
+#define DRV_TMR_PERIPHERAL_ID_IDX1          TMR_ID_2
+#define DRV_TMR_INTERRUPT_SOURCE_IDX1       INT_SOURCE_TIMER_2
+#define DRV_TMR_INTERRUPT_VECTOR_IDX1       INT_VECTOR_T2
+#define DRV_TMR_ISR_VECTOR_IDX1             _TIMER_2_VECTOR
+#define DRV_TMR_INTERRUPT_PRIORITY_IDX1     INT_PRIORITY_LEVEL1
+#define DRV_TMR_INTERRUPT_SUB_PRIORITY_IDX1 INT_SUBPRIORITY_LEVEL0
+#define DRV_TMR_CLOCK_SOURCE_IDX1           DRV_TMR_CLKSOURCE_INTERNAL
+#define DRV_TMR_PRESCALE_IDX1               TMR_PRESCALE_VALUE_8
+#define DRV_TMR_OPERATION_MODE_IDX1         DRV_TMR_OPERATION_MODE_16_BIT
+
+#define DRV_TMR_ASYNC_WRITE_ENABLE_IDX1     false
+#define DRV_TMR_POWER_STATE_IDX1            
 
  // *****************************************************************************
 /* USART Driver Configuration Options
@@ -252,13 +264,6 @@ extern "C" {
 #define BatReadOff() PLIB_PORTS_PinClear(PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_5)
 #define BatReadStateGet() PLIB_PORTS_PinGetLatched(PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_5)
 #define BatReadStateSet(Value) PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_5, Value)
-
-/*** Functions for RstImu pin ***/
-#define RstImuToggle() PLIB_PORTS_PinToggle(PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_6)
-#define RstImuOn() PLIB_PORTS_PinSet(PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_6)
-#define RstImuOff() PLIB_PORTS_PinClear(PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_6)
-#define RstImuStateGet() PLIB_PORTS_PinGetLatched(PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_6)
-#define RstImuStateSet(Value) PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_6, Value)
 
 /*** Functions for USB_DC pin ***/
 #define USB_DCStateGet() PLIB_PORTS_PinGet(PORTS_ID_0, PORT_CHANNEL_C, PORTS_BIT_POS_6)

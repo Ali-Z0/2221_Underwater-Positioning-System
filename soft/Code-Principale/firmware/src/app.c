@@ -90,22 +90,14 @@ s_bno055_data bno055_data;
 void MainTimer_callback(){
     
     appData.TmrCnt ++;
+}
+
+void DisplayTimer_callback()
+{
+    appData.TmrDisplay ++;
     
-    
-    if ( ( appData.TmrCnt % 5 ) == 0){
-        appData.mainTmrTickFlag = true;
-        appData.mainTmrCnt ++;
-        appData.TmrDisplay ++;
-    }
-    
-    if ( ( appData.TmrCnt % 5000 ) == 0)
+    if ( ( appData.TmrCnt % 500 ) == 0)
         appData.measTodoFlag = true;
-    
-    if (appData.TmrCnt >= 4294967295){
-        appData.TmrTickFlag = true;
-        appData.TmrCnt = 0;
-    }
-    
 }
 /* TODO:  Add any necessary callback functions.
 */
@@ -149,12 +141,19 @@ void APP_Initialize ( void )
     
     PwrHoldOn();
     
-    LED_BOn();
-    
     DRV_TMR0_Start();
+    DRV_TMR1_Start();
     i2c_init(1);
     
+    LED_BOn();
+    BNO055_delay_msek(400);
+    LED_BOff();
     
+    /* Reset IMU */
+    //RstImuOff();
+    //BNO055_delay_msek(100);
+    //RstImuOn();
+    //BNO055_delay_msek(100);
     
     //bno055_init(&bno055);
     /* TODO: Initialize your application's state machine and other

@@ -217,6 +217,8 @@ void APP_Tasks( void );
 // Callback main timer
 void MainTimer_callback( void );
 
+// Callback display timer
+void DisplayTimer_callback( void );
 
 #endif /* _APP_H */
 

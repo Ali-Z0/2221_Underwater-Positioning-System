@@ -105,6 +105,8 @@ void BNO055_delay_msek(u32 msek);
  */
 s32 bno055_data_readout_template(void);
 
+s32 bno055_read_routine(void);
+
 /*----------------------------------------------------------------------------*
  *  struct bno055_t parameters can be accessed by using BNO055
  *  BNO055_t having the following parameters

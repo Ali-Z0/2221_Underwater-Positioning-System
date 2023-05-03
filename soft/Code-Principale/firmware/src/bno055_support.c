@@ -43,6 +43,7 @@
 #include "bno055.h"
 #include "bno055_support.h"
 #include "Mc32_I2cUtilCCS.h"
+#include "driver/tmr/drv_tmr_static.h"
 
 // Global variable
 APP_DATA appData;
@@ -95,7 +96,6 @@ s8 I2C_routine(void)
     bno055.bus_read = BNO055_I2C_bus_read;
     bno055.delay_msec = BNO055_delay_msek;
     bno055.dev_addr = BNO055_I2C_ADDR1;
-
     return BNO055_INIT_VALUE;
 }
 
@@ -130,7 +130,7 @@ s8 BNO055_I2C_bus_write(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt)
     array[BNO055_INIT_VALUE] = reg_addr;
     
     i2c_start();
-    BNO055_iERROR = i2c_write(dev_addr);
+    BNO055_iERROR = i2c_write(dev_addr<<1);
     
     for (stringpos = BNO055_INIT_VALUE; stringpos < cnt; stringpos++)
     {
@@ -185,11 +185,11 @@ s8 BNO055_I2C_bus_read(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt)
     
     i2c_start();
     // Write asked register
-    BNO055_iERROR = i2c_write(dev_addr);   
+    BNO055_iERROR = i2c_write(dev_addr<<1);   
     BNO055_iERROR = i2c_write(reg_addr);
     // Send read address 
     i2c_reStart();
-    dev_addr = (dev_addr) | 0b00000001;
+    dev_addr = (dev_addr<<1) | 0b00000001;
     BNO055_iERROR = i2c_write(dev_addr);
 
     /* Please take the below API as your reference
@@ -205,10 +205,10 @@ s8 BNO055_I2C_bus_read(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt)
     for (stringpos = BNO055_INIT_VALUE; stringpos < cnt; stringpos++)
     {
 
-        if((stringpos < cnt)&&(cnt > BNO055_I2C_BUS_WRITE_ARRAY_INDEX))
-            array[stringpos /*+ BNO055_I2C_BUS_WRITE_ARRAY_INDEX*/] = i2c_read(1);
+        if(((stringpos+1) < cnt)&&(cnt > BNO055_I2C_BUS_WRITE_ARRAY_INDEX))
+            array[stringpos] = i2c_read(1);
         else
-            array[stringpos /*+ BNO055_I2C_BUS_WRITE_ARRAY_INDEX*/] = i2c_read(0);
+            array[stringpos] = i2c_read(0);
         
         *(reg_data + stringpos) = array[stringpos];
         
@@ -230,10 +230,13 @@ s8 BNO055_I2C_bus_read(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt)
 void BNO055_delay_msek(u32 msek)
 {
     /*Delay routine*/
-    //appData.mainTmrTickFlag = 0;
-    appData.mainTmrCnt = 0;
-    while (appData.mainTmrCnt < msek) 
+    DRV_TMR0_Stop();
+    DRV_TMR0_CounterClear();
+    appData.TmrCnt = 0;
+    DRV_TMR0_Start();
+    while (appData.TmrCnt < msek) 
     { } 
+    DRV_TMR0_Stop();
 }
 
 #endif
@@ -248,180 +251,65 @@ s32 bno055_data_readout_template(void)
     /* variable used to set the power mode of the sensor*/
     u8 power_mode = BNO055_INIT_VALUE;
 
-    /*********read raw accel data***********/
-    /* variable used to read the accel x data */
-    //s16 accel_datax = BNO055_INIT_VALUE;
-
-    /* variable used to read the accel y data */
-    //s16 accel_datay = BNO055_INIT_VALUE;
-
-    /* variable used to read the accel z data */
-    //s16 accel_dataz = BNO055_INIT_VALUE;
 
     /* variable used to read the accel xyz data */
     struct bno055_accel_t accel_xyz;
 
     /*********read raw mag data***********/
-    /* variable used to read the mag x data */
-    //s16 mag_datax = BNO055_INIT_VALUE;
-
-    /* variable used to read the mag y data */
-    //s16 mag_datay = BNO055_INIT_VALUE;
-
-    /* variable used to read the mag z data */
-    //s16 mag_dataz = BNO055_INIT_VALUE;
-
     /* structure used to read the mag xyz data */
     struct bno055_mag_t mag_xyz;
 
     /***********read raw gyro data***********/
-    /* variable used to read the gyro x data */
-    //s16 gyro_datax = BNO055_INIT_VALUE;
-
-    /* variable used to read the gyro y data */
-    //s16 gyro_datay = BNO055_INIT_VALUE;
-
-    /* variable used to read the gyro z data */
-    //s16 gyro_dataz = BNO055_INIT_VALUE;
-
     /* structure used to read the gyro xyz data */
     struct bno055_gyro_t gyro_xyz;
 
     /*************read raw Euler data************/
-    /* variable used to read the euler h data */
-    //s16 euler_data_h = BNO055_INIT_VALUE;
-
-    /* variable used to read the euler r data */
-    //s16 euler_data_r = BNO055_INIT_VALUE;
-
-    /* variable used to read the euler p data */
-    //s16 euler_data_p = BNO055_INIT_VALUE;
-
     /* structure used to read the euler hrp data */
     struct bno055_euler_t euler_hrp;
 
     /************read raw quaternion data**************/
-    /* variable used to read the quaternion w data */
-    //s16 quaternion_data_w = BNO055_INIT_VALUE;
-
-    /* variable used to read the quaternion x data */
-    //s16 quaternion_data_x = BNO055_INIT_VALUE;
-
-    /* variable used to read the quaternion y data */
-    //s16 quaternion_data_y = BNO055_INIT_VALUE;
-
-    /* variable used to read the quaternion z data */
-    //s16 quaternion_data_z = BNO055_INIT_VALUE;
-
     /* structure used to read the quaternion wxyz data */
     struct bno055_quaternion_t quaternion_wxyz;
 
     /************read raw linear acceleration data***********/
-    /* variable used to read the linear accel x data */
-    //s16 linear_accel_data_x = BNO055_INIT_VALUE;
-
-    /* variable used to read the linear accel y data */
-    //s16 linear_accel_data_y = BNO055_INIT_VALUE;
-
-    /* variable used to read the linear accel z data */
-    //s16 linear_accel_data_z = BNO055_INIT_VALUE;
-
     /* structure used to read the linear accel xyz data */
     struct bno055_linear_accel_t linear_acce_xyz;
 
     /*****************read raw gravity sensor data****************/
-    /* variable used to read the gravity x data */
-    //s16 gravity_data_x = BNO055_INIT_VALUE;
-
-    /* variable used to read the gravity y data */
-    //s16 gravity_data_y = BNO055_INIT_VALUE;
-
-    /* variable used to read the gravity z data */
-    //s16 gravity_data_z = BNO055_INIT_VALUE;
-
     /* structure used to read the gravity xyz data */
     struct bno055_gravity_t gravity_xyz;
 
     /*************read accel converted data***************/
-    /* variable used to read the accel x data output as m/s2 or mg */
-    //double d_accel_datax = BNO055_INIT_VALUE;
-
-    /* variable used to read the accel y data output as m/s2 or mg */
-    //double d_accel_datay = BNO055_INIT_VALUE;
-
-    /* variable used to read the accel z data output as m/s2 or mg */
-    //double d_accel_dataz = BNO055_INIT_VALUE;
-
     /* structure used to read the accel xyz data output as m/s2 or mg */
     struct bno055_accel_double_t d_accel_xyz;
 
     /******************read mag converted data********************/
-    /* variable used to read the mag x data output as uT*/
-    //double d_mag_datax = BNO055_INIT_VALUE;
-
-    /* variable used to read the mag y data output as uT*/
-    //double d_mag_datay = BNO055_INIT_VALUE;
-
-    /* variable used to read the mag z data output as uT*/
-    //double d_mag_dataz = BNO055_INIT_VALUE;
-
     /* structure used to read the mag xyz data output as uT*/
     struct bno055_mag_double_t d_mag_xyz;
 
     /*****************read gyro converted data************************/
-    /* variable used to read the gyro x data output as dps or rps */
-    //double d_gyro_datax = BNO055_INIT_VALUE;
-
-    /* variable used to read the gyro y data output as dps or rps */
-    //double d_gyro_datay = BNO055_INIT_VALUE;
-
-    /* variable used to read the gyro z data output as dps or rps */
-    //double d_gyro_dataz = BNO055_INIT_VALUE;
-
     /* structure used to read the gyro xyz data output as dps or rps */
     struct bno055_gyro_double_t d_gyro_xyz;
 
     /*******************read euler converted data*******************/
-
     /* variable used to read the euler h data output
      * as degree or radians*/
     double d_euler_data_h = BNO055_INIT_VALUE;
-
     /* variable used to read the euler r data output
      * as degree or radians*/
     double d_euler_data_r = BNO055_INIT_VALUE;
-
     /* variable used to read the euler p data output
      * as degree or radians*/
     double d_euler_data_p = BNO055_INIT_VALUE;
-
     /* structure used to read the euler hrp data output
      * as as degree or radians */
     struct bno055_euler_double_t d_euler_hpr;
 
     /*********read linear acceleration converted data**********/
-    /* variable used to read the linear accel x data output as m/s2*/
-    //double d_linear_accel_datax = BNO055_INIT_VALUE;
-
-    /* variable used to read the linear accel y data output as m/s2*/
-    //double d_linear_accel_datay = BNO055_INIT_VALUE;
-
-    /* variable used to read the linear accel z data output as m/s2*/
-    //double d_linear_accel_dataz = BNO055_INIT_VALUE;
-
     /* structure used to read the linear accel xyz data output as m/s2*/
     struct bno055_linear_accel_double_t d_linear_accel_xyz;
 
     /********************Gravity converted data**********************/
-    /* variable used to read the gravity sensor x data output as m/s2*/
-    //double d_gravity_data_x = BNO055_INIT_VALUE;
-
-    /* variable used to read the gravity sensor y data output as m/s2*/
-    //double d_gravity_data_y = BNO055_INIT_VALUE;
-
-    /* variable used to read the gravity sensor z data output as m/s2*/
-    //double d_gravity_data_z = BNO055_INIT_VALUE;
-
     /* structure used to read the gravity xyz data output as m/s2*/
     struct bno055_gravity_double_t d_gravity_xyz;
 
@@ -501,25 +389,16 @@ s32 bno055_data_readout_template(void)
     /*  Raw accel X, Y and Z data can read from the register
      * page - page 0
      * register - 0x08 to 0x0D*/
-    //comres += bno055_read_accel_x(&accel_datax);
-    //comres += bno055_read_accel_y(&accel_datay);
-    //comres += bno055_read_accel_z(&accel_dataz);
     comres += bno055_read_accel_xyz(&accel_xyz);
 
     /*  Raw mag X, Y and Z data can read from the register
      * page - page 0
      * register - 0x0E to 0x13*/
-    //comres += bno055_read_mag_x(&mag_datax);
-    //comres += bno055_read_mag_y(&mag_datay);
-    //comres += bno055_read_mag_z(&mag_dataz);
     comres += bno055_read_mag_xyz(&mag_xyz);
 
     /*  Raw gyro X, Y and Z data can read from the register
      * page - page 0
      * register - 0x14 to 0x19*/
-    //comres += bno055_read_gyro_x(&gyro_datax);
-    //comres += bno055_read_gyro_y(&gyro_datay);
-    //comres += bno055_read_gyro_z(&gyro_dataz);
     comres += bno055_read_gyro_xyz(&gyro_xyz);
 
     /************************* END READ RAW SENSOR DATA****************/
