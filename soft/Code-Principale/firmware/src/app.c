@@ -146,14 +146,15 @@ void APP_Initialize ( void )
     i2c_init(1);
     
     LED_BOn();
-    BNO055_delay_msek(400);
+    //RstImuOn();
+    BNO055_delay_msek(500);
     LED_BOff();
     
     /* Reset IMU */
-    //RstImuOff();
-    //BNO055_delay_msek(100);
-    //RstImuOn();
-    //BNO055_delay_msek(100);
+    RstImuOff();
+    BNO055_delay_msek(100);
+    RstImuOn();
+    BNO055_delay_msek(100);
     
     //bno055_init(&bno055);
     /* TODO: Initialize your application's state machine and other
@@ -197,10 +198,22 @@ void APP_Tasks ( void )
             bool appInitialized = true;
             
             // Test DELAY 
-            //BNO055_delay_msek(1000);
+            BNO055_delay_msek(1000);
             
             // Mesure all
             bno055_data_readout_template();
+            
+            /*uint8_t sys_status = 0;
+            uint8_t dev_addr = 0;
+            i2c_start();
+            i2c_write(BNO055_I2C_ADDR1<<1);
+            i2c_write(0x39);
+            i2c_reStart();
+            dev_addr = (BNO055_I2C_ADDR1<<1) | 0b00000001;
+            i2c_write(dev_addr);
+            sys_status = i2c_read(0);
+            i2c_stop();*/
+            
         
             if (appInitialized)
             {
@@ -217,7 +230,7 @@ void APP_Tasks ( void )
             if(appData.measTodoFlag)
             {
                 appData.measTodoFlag = false;
-                res = bno055_read_routine();
+                //res = bno055_read_routine();
                 if(res < 0){
                     LED_ROn();
                 }

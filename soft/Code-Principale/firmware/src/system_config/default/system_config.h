@@ -81,9 +81,9 @@ extern "C" {
 // *****************************************************************************
 /* Clock System Service Configuration Options
 */
-#define SYS_CLK_FREQ                        8000000ul
-#define SYS_CLK_BUS_PERIPHERAL_1            8000000ul
-#define SYS_CLK_UPLL_BEFORE_DIV2_FREQ       96000000ul
+#define SYS_CLK_FREQ                        4000000ul
+#define SYS_CLK_BUS_PERIPHERAL_1            4000000ul
+#define SYS_CLK_UPLL_BEFORE_DIV2_FREQ       192000000ul
 #define SYS_CLK_CONFIG_PRIMARY_XTAL         8000000ul
 #define SYS_CLK_CONFIG_SECONDARY_XTAL       32768ul
    
@@ -97,9 +97,9 @@ extern "C" {
 #define SYS_PORT_A_CNEN         0x0000
 
 #define SYS_PORT_B_ANSEL        0x0003
-#define SYS_PORT_B_TRIS         0xEFDF
+#define SYS_PORT_B_TRIS         0xEF9F
 #define SYS_PORT_B_LAT          0x0000
-#define SYS_PORT_B_ODC          0x0040
+#define SYS_PORT_B_ODC          0x0000
 #define SYS_PORT_B_CNPU         0x0000
 #define SYS_PORT_B_CNPD         0x0000
 #define SYS_PORT_B_CNEN         0x0000
@@ -264,6 +264,13 @@ extern "C" {
 #define BatReadOff() PLIB_PORTS_PinClear(PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_5)
 #define BatReadStateGet() PLIB_PORTS_PinGetLatched(PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_5)
 #define BatReadStateSet(Value) PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_5, Value)
+
+/*** Functions for RstImu pin ***/
+#define RstImuToggle() PLIB_PORTS_PinToggle(PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_6)
+#define RstImuOn() PLIB_PORTS_PinSet(PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_6)
+#define RstImuOff() PLIB_PORTS_PinClear(PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_6)
+#define RstImuStateGet() PLIB_PORTS_PinGetLatched(PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_6)
+#define RstImuStateSet(Value) PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_6, Value)
 
 /*** Functions for USB_DC pin ***/
 #define USB_DCStateGet() PLIB_PORTS_PinGet(PORTS_ID_0, PORT_CHANNEL_C, PORTS_BIT_POS_6)

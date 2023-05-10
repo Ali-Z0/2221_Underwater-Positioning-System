@@ -106,7 +106,7 @@ void i2c_start(void)
         // Handel bus collision
         PLIB_I2C_ArbitrationLossClear(KIT_I2C_BUS);
     }
-   
+
     // Wait for the signal to complete
     while (PLIB_I2C_StartWasDetected(KIT_I2C_BUS) == false);
    

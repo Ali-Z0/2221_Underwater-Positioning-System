@@ -132,7 +132,7 @@ s8 BNO055_I2C_bus_write(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt)
     i2c_start();
     BNO055_iERROR = i2c_write(dev_addr<<1);
     
-    for (stringpos = BNO055_INIT_VALUE; stringpos < cnt; stringpos++)
+    for (stringpos = BNO055_INIT_VALUE; stringpos < (cnt+BNO055_I2C_BUS_WRITE_ARRAY_INDEX); stringpos++)
     {
         BNO055_iERROR = i2c_write(array[stringpos]);
         array[stringpos + BNO055_I2C_BUS_WRITE_ARRAY_INDEX] = *(reg_data + stringpos);
