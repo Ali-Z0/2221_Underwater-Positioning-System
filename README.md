@@ -51,6 +51,8 @@ Bouton de sauvegarde [A définir : Magnétique, Optique, Mécanique ou autre].
 optionnel dans cette version).
 -  Interface LED.
 
+![](./doc/rapport/Rapport/Figures/Dev-SCH/Schema-bloc-detail-bkgnd.jpg =100x20)
+![Example screenshot](./doc/rapport/Rapport/Figures/Dev-SCH/Schema-bloc-detail-bkgnd.jpg =200x200)
 
 ## Screenshots
 ![Example screenshot](./img/screenshot.png)
