@@ -3,14 +3,13 @@
 > Démonstration [ici](https://www.example.com). <!-- If you have the project hosted somewhere, include the link here. -->
 
 ## Table of Contents
-* [Information générales](#general-information)
-* [Technologies utilisées](#technologies-used)
-* [Fonctionnalités](#features)
-* [Captures d'écrans](#screenshots)
-* [Configuration](#setup)
-* [Utilisation](#usage)
-* [Statut du projet](#project-status)
-* [Améliorations/correctifs](#room-for-improvement)
+* [Information générales](#information-générales)
+* [Technologies utilisées](#technologies-utilisées)
+* [Fonctionnalités](#fonctionnalités)
+* [Configuration](#configuration)
+* [Utilisation](#utilisation)
+* [Statut du projet](#statut-du-projet)
+* [Améliorations et correctifs](#améliorations-et-correctifs)
 * [Affiliations](#acknowledgements)
 * [Contact](#contact)
 <!-- * [License](#license) -->
@@ -51,28 +50,22 @@ Bouton de sauvegarde [A définir : Magnétique, Optique, Mécanique ou autre].
 optionnel dans cette version).
 -  Interface LED.
 
-![](./doc/rapport/Rapport/Figures/Dev-SCH/Schema-bloc-detail-bkgnd.jpg =100x20)
-![Example screenshot](./doc/rapport/Rapport/Figures/Dev-SCH/Schema-bloc-detail-bkgnd.jpg =200x200)
+<p align="center" width="100%">
+    <img width="60%" src=./doc/rapport/Rapport/Figures/Dev-SCH/Schema-bloc-detail-bkgnd.jpg =100x20">
+</p>
 
-## Screenshots
-![Example screenshot](./img/screenshot.png)
-<!-- If you have screenshots you'd like to share, include them here. -->
-
-
-## Setup
-What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
-
-Proceed to describe how to install / setup one's local environment / get started with the project.
+## Configuration
+La carte éléctronique doit être assemblée en considération des fichiers de fabrication et de la BOM (Bill of materials). Le firmware doit ensuite être implémenté sur dans microcntrôleur PIC et une carte SD doit être insérée, afin de lire les données de déplacement.
 
 
-## Usage
+## Utilisation
 How does one go about using it?
 Provide various use cases and code examples here.
 
 `write-your-code-here`
 
 
-## Project Status
+## Statut du projet
 Project is: _in progress_ / _complete_ / _no longer being worked on_. If you are no longer working on it, provide reasons why.
 
 
