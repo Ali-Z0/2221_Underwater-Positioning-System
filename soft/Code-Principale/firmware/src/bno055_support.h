@@ -45,13 +45,12 @@
 
 typedef struct {
     s32 comres;
-    struct bno055_accel_t accel_xyz;
-    struct bno055_mag_t mag_xyz;
-    struct bno055_gyro_t gyro_xyz;
-    struct bno055_euler_t euler_hrp;
-    struct bno055_quaternion_t quaternion_wxyz;
-    struct bno055_linear_accel_t linear_acce_xyz;
-    struct bno055_gravity_t gravity_xyz;
+    struct bno055_gravity_double_t gravity;
+    struct bno055_linear_accel_double_t linear_accel;
+    struct bno055_euler_double_t euler;
+    struct bno055_gyro_double_t gyro;
+    struct bno055_mag_double_t mag;
+    struct bno055_quaternion_t quaternion;
 }s_bno055_data;
 
 extern s_bno055_data bno055_data;
@@ -105,7 +104,7 @@ void BNO055_delay_msek(u32 msek);
  */
 s32 bno055_data_readout_template(void);
 
-s32 bno055_read_routine(void);
+s32 bno055_read_routine(s_bno055_data *data);
 
 /*----------------------------------------------------------------------------*
  *  struct bno055_t parameters can be accessed by using BNO055

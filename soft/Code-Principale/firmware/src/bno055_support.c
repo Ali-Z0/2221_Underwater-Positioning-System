@@ -52,30 +52,117 @@ s_bno055_data bno055_data;
 
 #ifdef  BNO055_API
 
-s32 bno055_read_routine(void)
+s32 bno055_read_routine(s_bno055_data *data)
 {
-    bno055_data.comres = BNO055_ERROR;
-    
+      /* Variable used to return value of
+     * communication routine*/
+    s32 comres = BNO055_ERROR;
+
+    /* variable used to set the power mode of the sensor*/
+    u8 power_mode = BNO055_INIT_VALUE;
+
+    /*---------------------------------------------------------------------------*
+     *********************** START INITIALIZATION ************************
+     *--------------------------------------------------------------------------*/
+#ifdef  BNO055_API
+    /*  Based on the user need configure I2C interface.
+     *  It is example code to explain how to use the bno055 API*/
     I2C_routine();
-    bno055_data.comres = bno055_init(&bno055);
-    bno055_data.comres += bno055_set_power_mode(BNO055_POWER_MODE_NORMAL);
+#endif
+
+    /*--------------------------------------------------------------------------*
+     *  This API used to assign the value/reference of
+     *  the following parameters
+     *  I2C address
+     *  Bus Write
+     *  Bus read
+     *  Chip id
+     *  Page id
+     *  Accel revision id
+     *  Mag revision id
+     *  Gyro revision id
+     *  Boot loader revision id
+     *  Software revision id
+     *-------------------------------------------------------------------------*/
+    comres = bno055_init(&bno055);
+
+    /*  For initializing the BNO sensor it is required to the operation mode
+     * of the sensor as NORMAL
+     * Normal mode can set from the register
+     * Page - page0
+     * register - 0x3E
+     * bit positions - 0 and 1*/
+    power_mode = BNO055_POWER_MODE_NORMAL;
+
+    /* set the power mode as NORMAL*/
+    comres += bno055_set_power_mode(power_mode);
+
+    /*----------------------------------------------------------------*
+     ************************* END INITIALIZATION *************************
+     *-----------------------------------------------------------------*/
+
+    /************************* START READ RAW FUSION DATA ********
+     * For reading fusion data it is required to set the
+     * operation modes of the sensor
+     * operation mode can set from the register
+     * page - page0
+     * register - 0x3D
+     * bit - 0 to 3
+     * for sensor data read following operation mode have to set
+     * FUSION MODE
+     * 0x08 - BNO055_OPERATION_MODE_IMUPLUS
+     * 0x09 - BNO055_OPERATION_MODE_COMPASS
+     * 0x0A - BNO055_OPERATION_MODE_M4G
+     * 0x0B - BNO055_OPERATION_MODE_NDOF_FMC_OFF
+     * 0x0C - BNO055_OPERATION_MODE_NDOF
+     * based on the user need configure the operation mode*/
+    comres += bno055_set_operation_mode(BNO055_OPERATION_MODE_NDOF);
     
-    bno055_data.comres += bno055_set_operation_mode(BNO055_OPERATION_MODE_AMG);
-    
-    bno055_data.comres += bno055_read_accel_xyz(&bno055_data.accel_xyz);
-    bno055_data.comres += bno055_read_mag_xyz(&bno055_data.mag_xyz);
-    bno055_data.comres += bno055_read_gyro_xyz(&bno055_data.gyro_xyz);
-    
-    bno055_data.comres += bno055_set_operation_mode(BNO055_OPERATION_MODE_NDOF);
-    
-    bno055_data.comres += bno055_read_euler_hrp(&bno055_data.euler_hrp);
-    bno055_data.comres += bno055_read_quaternion_wxyz(&bno055_data.quaternion_wxyz);
-    bno055_data.comres += bno055_read_linear_accel_xyz(&bno055_data.linear_acce_xyz);
-    bno055_data.comres += bno055_read_gravity_xyz(&bno055_data.gravity_xyz);
-    
-    bno055_data.comres += bno055_set_power_mode(BNO055_POWER_MODE_SUSPEND);
-    
-    return bno055_data.comres;
+    BNO055_delay_msek(5);
+    /*  Raw Quaternion W, X, Y and Z data can read from the register
+     * page - page 0
+     * register - 0x20 to 0x27 */
+    comres += bno055_read_quaternion_wxyz(&data->quaternion);
+    BNO055_delay_msek(5);
+    /************************* END READ RAW FUSION DATA  ************/
+    /******************START READ CONVERTED SENSOR DATA****************/
+    /*  API used to read mag data output as double  - uT(micro Tesla)
+     * float functions also available in the BNO055 API */
+    comres += bno055_convert_double_mag_xyz_uT(&data->mag);
+    BNO055_delay_msek(5);
+    /*  API used to read gyro data output as double  - dps and rps
+     * float functions also available in the BNO055 API */
+    comres += bno055_convert_double_gyro_xyz_dps(&data->gyro);
+    BNO055_delay_msek(5);
+    /*  API used to read Euler data output as double  - degree and radians
+     * float functions also available in the BNO055 API */
+    comres += bno055_convert_double_euler_hpr_deg(&data->euler);
+    BNO055_delay_msek(5);
+    /*  API used to read Linear acceleration data output as m/s2
+     * float functions also available in the BNO055 API */
+    comres += bno055_convert_double_linear_accel_xyz_msq(&data->linear_accel);
+    BNO055_delay_msek(5);
+    comres += bno055_convert_double_gravity_xyz_msq(&data->gravity);
+
+    /*-----------------------------------------------------------------------*
+     ************************* START DE-INITIALIZATION ***********************
+     *-------------------------------------------------------------------------*/
+
+    /*  For de - initializing the BNO sensor it is required
+     * to the operation mode of the sensor as SUSPEND
+     * Suspend mode can set from the register
+     * Page - page0
+     * register - 0x3E
+     * bit positions - 0 and 1*/
+    power_mode = BNO055_POWER_MODE_SUSPEND;
+
+    /* set the power mode as SUSPEND*/
+    comres += bno055_set_power_mode(power_mode);
+
+    /*---------------------------------------------------------------------*
+    ************************* END DE-INITIALIZATION **********************
+    *---------------------------------------------------------------------*/
+    return comres;
 }
 
 /*--------------------------------------------------------------------------*
@@ -216,7 +303,7 @@ s8 BNO055_I2C_bus_read(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt)
     
     i2c_stop();
     
-    if(BNO055_iERROR)
+    if(BNO055_iERROR-1 != 0)
         BNO055_iERROR = -1;
     else
         BNO055_iERROR = 0;

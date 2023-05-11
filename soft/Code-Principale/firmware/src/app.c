@@ -96,7 +96,7 @@ void DisplayTimer_callback()
 {
     appData.TmrDisplay ++;
     
-    if ( ( appData.TmrCnt % 500 ) == 0)
+    if ( ( appData.TmrDisplay % 300 ) == 0)
         appData.measTodoFlag = true;
 }
 /* TODO:  Add any necessary callback functions.
@@ -213,7 +213,6 @@ void APP_Tasks ( void )
             i2c_write(dev_addr);
             sys_status = i2c_read(0);
             i2c_stop();*/
-            
         
             if (appInitialized)
             {
@@ -230,7 +229,8 @@ void APP_Tasks ( void )
             if(appData.measTodoFlag)
             {
                 appData.measTodoFlag = false;
-                //res = bno055_read_routine();
+                bno055_data.comres = bno055_read_routine(&bno055_data);
+
                 if(res < 0){
                     LED_ROn();
                 }

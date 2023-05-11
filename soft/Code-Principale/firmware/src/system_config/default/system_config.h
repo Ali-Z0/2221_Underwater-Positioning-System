@@ -97,9 +97,9 @@ extern "C" {
 #define SYS_PORT_A_CNEN         0x0000
 
 #define SYS_PORT_B_ANSEL        0x0003
-#define SYS_PORT_B_TRIS         0xEF9F
-#define SYS_PORT_B_LAT          0x0000
-#define SYS_PORT_B_ODC          0x0000
+#define SYS_PORT_B_TRIS         0xEF1F
+#define SYS_PORT_B_LAT          0x0080
+#define SYS_PORT_B_ODC          0x0080
 #define SYS_PORT_B_CNPU         0x0000
 #define SYS_PORT_B_CNPD         0x0000
 #define SYS_PORT_B_CNEN         0x0000
@@ -280,9 +280,6 @@ extern "C" {
 
 /*** Functions for BatStat pin ***/
 #define BatStatStateGet() PLIB_PORTS_PinGet(PORTS_ID_0, PORT_CHANNEL_C, PORTS_BIT_POS_2)
-
-/*** Functions for IntImu pin ***/
-#define IntImuStateGet() PLIB_PORTS_PinGet(PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_7)
 
 
 /*** Application Instance 0 Configuration ***/
