@@ -303,6 +303,7 @@ s8 BNO055_I2C_bus_read(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt)
     
     i2c_stop();
     
+    // Error comm return
     if(BNO055_iERROR-1 != 0)
         BNO055_iERROR = -1;
     else
