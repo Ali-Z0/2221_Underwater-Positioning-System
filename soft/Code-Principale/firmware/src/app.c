@@ -57,6 +57,8 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include "bno055.h"
 #include "bno055_support.h"
 #include "Mc32_I2cUtilCCS.h"
+#include "sd_fat_gest.h"
+#include <stdio.h>
 
 // *****************************************************************************
 // *****************************************************************************
@@ -95,8 +97,9 @@ void MainTimer_callback(){
 void DisplayTimer_callback()
 {
     appData.TmrDisplay ++;
+    appData.TmrMeas ++;
     
-    if ( ( appData.TmrDisplay % 300 ) == 0)
+    if ( ( appData.TmrMeas % 300 ) == 0)
         appData.measTodoFlag = true;
 }
 /* TODO:  Add any necessary callback functions.
@@ -146,7 +149,6 @@ void APP_Initialize ( void )
     i2c_init(1);
     
     LED_BOn();
-    //RstImuOn();
     BNO055_delay_msek(500);
     LED_BOff();
     
@@ -155,6 +157,7 @@ void APP_Initialize ( void )
     BNO055_delay_msek(100);
     RstImuOn();
     BNO055_delay_msek(100);
+    
     
     //bno055_init(&bno055);
     /* TODO: Initialize your application's state machine and other
@@ -174,13 +177,18 @@ void APP_Initialize ( void )
 void APP_Tasks ( void )
 {
     // Main timer action     
-    if(appData.TmrDisplay <= 500){
+    if(appData.TmrDisplay <= 2){
         LED_BOn();
     }
-    else if (appData.TmrDisplay > 500){
+    else {
         LED_BOff();
     }
-    if (appData.TmrDisplay >= 2500){
+
+    /*if ((appData.TmrDisplay%50) == 0){
+        serDisplayValues();
+    }*/
+    
+    if (appData.TmrDisplay >= 350){
         appData.TmrDisplay = 0; 
     }
     
@@ -200,19 +208,8 @@ void APP_Tasks ( void )
             // Test DELAY 
             BNO055_delay_msek(1000);
             
-            // Mesure all
+            // Measure all
             bno055_data_readout_template();
-            
-            /*uint8_t sys_status = 0;
-            uint8_t dev_addr = 0;
-            i2c_start();
-            i2c_write(BNO055_I2C_ADDR1<<1);
-            i2c_write(0x39);
-            i2c_reStart();
-            dev_addr = (BNO055_I2C_ADDR1<<1) | 0b00000001;
-            i2c_write(dev_addr);
-            sys_status = i2c_read(0);
-            i2c_stop();*/
         
             if (appInitialized)
             {
@@ -224,22 +221,24 @@ void APP_Tasks ( void )
 
         case APP_STATE_SERVICE_TASKS:
         {
-            s32 res = -1;
             
             if(appData.measTodoFlag)
             {
                 appData.measTodoFlag = false;
                 bno055_data.comres = bno055_read_routine(&bno055_data);
-
-                if(res < 0){
+                serDisplayValues();
+                
+                if(bno055_data.comres != 0){
                     LED_ROn();
                 }
             }
+            
+            sd_fat_task();
 
             
            break;
         }
-
+        
         /* TODO: implement your application state machine.*/
         
 
@@ -252,6 +251,101 @@ void APP_Tasks ( void )
     }
 }
 
+void serDisplayValues ( void )
+{   
+    char sendBuffer[60] = {0};
+    uint8_t i = 0;
+    uint32_t ctnTimeout = 0;
+
+    if(bno055_data.flagMeasReady)
+    {
+        /* Reset the measure ready flag */
+        bno055_data.flagMeasReady = false;
+        
+        /* Preapare Gravity string */
+        sprintf(sendBuffer, "Gravity : X = %04.03lf\tY = %04.03lf\tZ = %04.03lf \n\r", bno055_data.gravity.x, bno055_data.gravity.y, bno055_data.gravity.z);
+        /* Transmit Gravity string */
+        do{
+            if(!PLIB_USART_TransmitterBufferIsFull(USART_ID_1))
+            {
+                PLIB_USART_TransmitterByteSend(USART_ID_1, sendBuffer[i]);
+                i++;
+            }
+            ctnTimeout++;
+        }while((sendBuffer[i-1] != '\r')&&(ctnTimeout<TIME_OUT));
+        i = 0;
+        
+        
+        /* Preapare gyroscope string */
+        sprintf(sendBuffer, "Gyro    : X = %04.03lf\tY = %04.03lf\tZ = %04.03lf \n\r", bno055_data.gyro.x, bno055_data.gyro.y, bno055_data.gyro.z);
+        /* Transmit Gravity string */
+        do{
+            if(!PLIB_USART_TransmitterBufferIsFull(USART_ID_1))
+            {
+                PLIB_USART_TransmitterByteSend(USART_ID_1, sendBuffer[i]);
+                i++;
+            }
+            ctnTimeout++;
+        }while((sendBuffer[i-1] != '\r')&&(ctnTimeout<TIME_OUT));
+        i = 0;
+        
+        
+        /* Preapare magnitude string */
+        sprintf(sendBuffer, "Mag     : X = %04.03lf\tY = %04.03lf\tZ = %04.03lf \n\r", bno055_data.mag.x, bno055_data.mag.y, bno055_data.mag.z);
+        /* Transmit Gravity string */
+        do{
+            if(!PLIB_USART_TransmitterBufferIsFull(USART_ID_1))
+            {
+                PLIB_USART_TransmitterByteSend(USART_ID_1, sendBuffer[i]);
+                i++;
+            }
+            ctnTimeout++;
+        }while((sendBuffer[i-1] != '\r')&&(ctnTimeout<TIME_OUT));
+        i = 0;
+        
+        /* Preapare linear acceleration string */
+        sprintf(sendBuffer, "Accel   : X = %04.03lf\tY = %04.03lf\tZ = %04.03lf \n\r", bno055_data.linear_accel.x, bno055_data.linear_accel.y, bno055_data.linear_accel.z);
+        /* Transmit Gravity string */
+        do{
+            if(!PLIB_USART_TransmitterBufferIsFull(USART_ID_1))
+            {
+                PLIB_USART_TransmitterByteSend(USART_ID_1, sendBuffer[i]);
+                i++;
+            }
+            ctnTimeout++;
+        }while((sendBuffer[i-1] != '\r')&&(ctnTimeout<TIME_OUT));
+        i = 0;
+
+        /* Preapare euler string */
+        sprintf(sendBuffer, "Euler   : H = %04.03lf\tP = %04.03lf\tR = %04.03lf \n\r", bno055_data.euler.h, bno055_data.euler.p, bno055_data.euler.r);
+        /* Transmit Gravity string */
+        do{
+            if(!PLIB_USART_TransmitterBufferIsFull(USART_ID_1))
+            {
+                PLIB_USART_TransmitterByteSend(USART_ID_1, sendBuffer[i]);
+                i++;
+            }
+            ctnTimeout++;
+        }while((sendBuffer[i-1] != '\r')&&(ctnTimeout<TIME_OUT));
+        i = 0;
+        
+        
+        /* Preapare quaternion string */
+        sprintf(sendBuffer, "Quater. : W = %05d\tX = %05d\tY = %05d\tZ = %05d \n\n\r", bno055_data.quaternion.w, bno055_data.quaternion.x, bno055_data.quaternion.y, bno055_data.quaternion.z);
+        /* Transmit Gravity string */
+        do{
+            if(!PLIB_USART_TransmitterBufferIsFull(USART_ID_1))
+            {
+                PLIB_USART_TransmitterByteSend(USART_ID_1, sendBuffer[i]);
+                i++;
+            }
+            ctnTimeout++;
+        }while((sendBuffer[i-1] != '\r')&&(ctnTimeout<TIME_OUT));
+        i = 0;
+    
+    }
+    
+}
  
 
 /*******************************************************************************

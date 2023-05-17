@@ -45,6 +45,7 @@
 
 typedef struct {
     s32 comres;
+    bool flagMeasReady;
     struct bno055_gravity_double_t gravity;
     struct bno055_linear_accel_double_t linear_accel;
     struct bno055_euler_double_t euler;

@@ -67,6 +67,7 @@ extern "C" {
 #endif
 // DOM-IGNORE-END 
     
+#define TIME_OUT 80000000U
 
 // *****************************************************************************
 // *****************************************************************************
@@ -123,6 +124,7 @@ typedef struct
     uint32_t TmrCnt;
     
     /* Measure todo flag */
+    uint32_t TmrMeas;
     bool measTodoFlag;
     
     /* Timer display */
@@ -180,6 +182,7 @@ extern APP_DATA appData;
 
 void APP_Initialize ( void );
 
+void serDisplayValues ( void );
 
 /*******************************************************************************
   Function:

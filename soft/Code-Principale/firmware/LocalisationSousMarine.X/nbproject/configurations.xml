@@ -12,6 +12,12 @@
                 <logicalFolder name="f1" displayName="tmr" projectFiles="true">
                   <itemPath>../src/system_config/default/framework/driver/tmr/drv_tmr_static.h</itemPath>
                 </logicalFolder>
+                <logicalFolder name="f2" displayName="usart" projectFiles="true">
+                  <logicalFolder name="f1" displayName="src" projectFiles="true">
+                    <itemPath>../src/system_config/default/framework/driver/usart/src/drv_usart_static_local.h</itemPath>
+                  </logicalFolder>
+                  <itemPath>../src/system_config/default/framework/driver/usart/drv_usart_static.h</itemPath>
+                </logicalFolder>
               </logicalFolder>
               <logicalFolder name="f2" displayName="system" projectFiles="true">
                 <logicalFolder name="f1" displayName="devcon" projectFiles="true">
@@ -19,6 +25,10 @@
                     <itemPath>../src/system_config/default/framework/system/devcon/src/sys_devcon_local.h</itemPath>
                   </logicalFolder>
                   <itemPath>../src/system_config/default/framework/system/devcon/sys_devcon.h</itemPath>
+                </logicalFolder>
+                <logicalFolder name="f2" displayName="fs" projectFiles="true">
+                  <itemPath>../src/system_config/default/framework/system/fs/nvm_disk_images.h</itemPath>
+                  <itemPath>../src/system_config/default/framework/system/fs/sram_disk_images.h</itemPath>
                 </logicalFolder>
               </logicalFolder>
             </logicalFolder>
@@ -30,10 +40,31 @@
         <itemPath>../src/bno055.h</itemPath>
         <itemPath>../src/Mc32_I2cUtilCCS.h</itemPath>
         <itemPath>../src/bno055_support.h</itemPath>
+        <itemPath>../src/sd_fat_gest.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="framework" projectFiles="true">
         <logicalFolder name="f1" displayName="driver" projectFiles="true">
-          <logicalFolder name="f1" displayName="tmr" projectFiles="true">
+          <logicalFolder name="f1" displayName="sdcard" projectFiles="true">
+            <logicalFolder name="f1" displayName="src" projectFiles="true">
+              <itemPath>../../../../../framework/driver/sdcard/src/drv_sdcard_variant_mapping.h</itemPath>
+              <itemPath>../../../../../framework/driver/sdcard/src/drv_sdcard_local.h</itemPath>
+            </logicalFolder>
+            <itemPath>../../../../../framework/driver/sdcard/drv_sdcard.h</itemPath>
+            <itemPath>../../../../../framework/driver/sdcard/drv_sdcard_mapping.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="f2" displayName="spi" projectFiles="true">
+            <logicalFolder name="f1" displayName="src" projectFiles="true">
+              <logicalFolder name="f1" displayName="dynamic" projectFiles="true">
+                <itemPath>../../../../../framework/driver/spi/src/dynamic/drv_spi_internal.h</itemPath>
+              </logicalFolder>
+              <itemPath>../../../../../framework/driver/spi/src/drv_spi_sys_queue.h</itemPath>
+              <itemPath>../../../../../framework/driver/spi/src/drv_spi_sys_queue_local_fifo.h</itemPath>
+              <itemPath>../../../../../framework/driver/spi/src/drv_spi_variant_mapping.h</itemPath>
+            </logicalFolder>
+            <itemPath>../../../../../framework/driver/spi/drv_spi.h</itemPath>
+            <itemPath>../../../../../framework/driver/spi/drv_spi_definitions.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="f3" displayName="tmr" projectFiles="true">
             <logicalFolder name="f1" displayName="src" projectFiles="true">
               <itemPath>../../../../../framework/driver/tmr/src/drv_tmr_variant_mapping.h</itemPath>
             </logicalFolder>
@@ -42,10 +73,9 @@
             <itemPath>../../../../../framework/driver/tmr/drv_tmr_compatibility.h</itemPath>
             <itemPath>../../../../../framework/driver/tmr/tmr_definitions_pic32m.h</itemPath>
           </logicalFolder>
-          <logicalFolder name="f2" displayName="usart" projectFiles="true">
+          <logicalFolder name="f4" displayName="usart" projectFiles="true">
             <logicalFolder name="f1" displayName="src" projectFiles="true">
               <itemPath>../../../../../framework/driver/usart/src/drv_usart_variant_mapping.h</itemPath>
-              <itemPath>../../../../../framework/driver/usart/src/drv_usart_local.h</itemPath>
             </logicalFolder>
             <itemPath>../../../../../framework/driver/usart/drv_usart.h</itemPath>
             <itemPath>../../../../../framework/driver/usart/drv_usart_definitions.h</itemPath>
@@ -73,11 +103,36 @@
           <logicalFolder name="f6" displayName="debug" projectFiles="true">
             <itemPath>../../../../../framework/system/debug/sys_debug.h</itemPath>
           </logicalFolder>
-          <logicalFolder name="f1" displayName="dma" projectFiles="true">
+          <logicalFolder name="f2" displayName="dma" projectFiles="true">
             <itemPath>../../../../../framework/system/dma/sys_dma.h</itemPath>
             <itemPath>../../../../../framework/system/dma/sys_dma_definitions.h</itemPath>
           </logicalFolder>
-          <logicalFolder name="f2" displayName="int" projectFiles="true">
+          <logicalFolder name="f7" displayName="fs" projectFiles="true">
+            <logicalFolder name="f2" displayName="fat_fs" projectFiles="true">
+              <logicalFolder name="f1" displayName="src" projectFiles="true">
+                <logicalFolder name="f1" displayName="file_system" projectFiles="true">
+                  <itemPath>../../../../../framework/system/fs/fat_fs/src/file_system/ff.h</itemPath>
+                  <itemPath>../../../../../framework/system/fs/fat_fs/src/file_system/ffconf.h</itemPath>
+                </logicalFolder>
+                <logicalFolder name="f2" displayName="hardware_access" projectFiles="true">
+                  <itemPath>../../../../../framework/system/fs/fat_fs/src/hardware_access/diskio.h</itemPath>
+                </logicalFolder>
+              </logicalFolder>
+            </logicalFolder>
+            <logicalFolder name="f3" displayName="mpfs" projectFiles="true">
+              <logicalFolder name="f1" displayName="src" projectFiles="true">
+                <itemPath>../../../../../framework/system/fs/mpfs/src/mpfs_local.h</itemPath>
+              </logicalFolder>
+              <itemPath>../../../../../framework/system/fs/mpfs/mpfs.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f1" displayName="src" projectFiles="true">
+              <itemPath>../../../../../framework/system/fs/src/sys_fs_local.h</itemPath>
+              <itemPath>../../../../../framework/system/fs/src/sys_fs_media_manager_local.h</itemPath>
+            </logicalFolder>
+            <itemPath>../../../../../framework/system/fs/sys_fs.h</itemPath>
+            <itemPath>../../../../../framework/system/fs/sys_fs_media_manager.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="f1" displayName="int" projectFiles="true">
             <logicalFolder name="f1" displayName="src" projectFiles="true">
               <itemPath>../../../../../framework/system/int/src/sys_int_private.h</itemPath>
             </logicalFolder>
@@ -88,9 +143,15 @@
             <itemPath>../../../../../framework/system/ports/sys_ports.h</itemPath>
             <itemPath>../../../../../framework/system/ports/sys_ports_definitions.h</itemPath>
           </logicalFolder>
-          <logicalFolder name="f7" displayName="rtcc" projectFiles="true">
+          <logicalFolder name="f8" displayName="rtcc" projectFiles="true">
             <itemPath>../../../../../framework/system/rtcc/sys_rtcc.h</itemPath>
             <itemPath>../../../../../framework/system/rtcc/sys_rtcc_pic32m.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="f9" displayName="tmr" projectFiles="true">
+            <logicalFolder name="f1" displayName="src" projectFiles="true">
+              <itemPath>../../../../../framework/system/tmr/src/sys_tmr_local.h</itemPath>
+            </logicalFolder>
+            <itemPath>../../../../../framework/system/tmr/sys_tmr.h</itemPath>
           </logicalFolder>
           <itemPath>../../../../../framework/system/system.h</itemPath>
         </logicalFolder>
@@ -108,10 +169,24 @@
           <logicalFolder name="f1" displayName="default" projectFiles="true">
             <logicalFolder name="f1" displayName="framework" projectFiles="true">
               <logicalFolder name="f1" displayName="driver" projectFiles="true">
-                <logicalFolder name="f1" displayName="tmr" projectFiles="true">
+                <logicalFolder name="f1" displayName="spi" projectFiles="true">
+                  <logicalFolder name="f1" displayName="dynamic" projectFiles="true">
+                    <itemPath>../src/system_config/default/framework/driver/spi/dynamic/drv_spi_tasks.c</itemPath>
+                    <itemPath>../src/system_config/default/framework/driver/spi/dynamic/drv_spi_api.c</itemPath>
+                    <itemPath>../src/system_config/default/framework/driver/spi/dynamic/drv_spi_master_ebm_tasks.c</itemPath>
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="f2" displayName="tmr" projectFiles="true">
                   <logicalFolder name="f1" displayName="src" projectFiles="true">
                     <itemPath>../src/system_config/default/framework/driver/tmr/src/drv_tmr_static.c</itemPath>
                     <itemPath>../src/system_config/default/framework/driver/tmr/src/drv_tmr_mapping.c</itemPath>
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="f3" displayName="usart" projectFiles="true">
+                  <logicalFolder name="f1" displayName="src" projectFiles="true">
+                    <itemPath>../src/system_config/default/framework/driver/usart/src/drv_usart_mapping.c</itemPath>
+                    <itemPath>../src/system_config/default/framework/driver/usart/src/drv_usart_static.c</itemPath>
+                    <itemPath>../src/system_config/default/framework/driver/usart/src/drv_usart_static_byte_model.c</itemPath>
                   </logicalFolder>
                 </logicalFolder>
               </logicalFolder>
@@ -148,22 +223,45 @@
         <itemPath>../src/bno055.c</itemPath>
         <itemPath>../src/Mc32_I2cUtilCCS.c</itemPath>
         <itemPath>../src/bno055_support.c</itemPath>
+        <itemPath>../src/sd_fat_gest.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="framework" projectFiles="true">
         <logicalFolder name="f1" displayName="driver" projectFiles="true">
-          <logicalFolder name="f1" displayName="usart" projectFiles="true">
+          <logicalFolder name="f1" displayName="sdcard" projectFiles="true">
             <logicalFolder name="f1" displayName="src" projectFiles="true">
               <logicalFolder name="f1" displayName="dynamic" projectFiles="true">
-                <itemPath>../../../../../framework/driver/usart/src/dynamic/drv_usart.c</itemPath>
-                <itemPath>../../../../../framework/driver/usart/src/dynamic/drv_usart_byte_model.c</itemPath>
+                <itemPath>../../../../../framework/driver/sdcard/src/dynamic/drv_sdcard.c</itemPath>
               </logicalFolder>
+            </logicalFolder>
+          </logicalFolder>
+          <logicalFolder name="f2" displayName="spi" projectFiles="true">
+            <logicalFolder name="f1" displayName="src" projectFiles="true">
+              <logicalFolder name="f1" displayName="dynamic" projectFiles="true">
+                <itemPath>../../../../../framework/driver/spi/src/dynamic/drv_spi.c</itemPath>
+              </logicalFolder>
+              <itemPath>../../../../../framework/driver/spi/src/drv_spi_sys_queue_fifo.c</itemPath>
             </logicalFolder>
           </logicalFolder>
         </logicalFolder>
         <logicalFolder name="f2" displayName="system" projectFiles="true">
-          <logicalFolder name="f1" displayName="int" projectFiles="true">
+          <logicalFolder name="f1" displayName="fs" projectFiles="true">
+            <logicalFolder name="f1" displayName="src" projectFiles="true">
+              <logicalFolder name="f1" displayName="dynamic" projectFiles="true">
+                <itemPath>../../../../../framework/system/fs/src/dynamic/sys_fs.c</itemPath>
+                <itemPath>../../../../../framework/system/fs/src/dynamic/sys_fs_media_manager.c</itemPath>
+              </logicalFolder>
+            </logicalFolder>
+            <itemPath>../../../../../framework/system/fs/fat_fs/src/file_system/ff.c</itemPath>
+            <itemPath>../../../../../framework/system/fs/fat_fs/src/hardware_access/diskio.c</itemPath>
+          </logicalFolder>
+          <logicalFolder name="f2" displayName="int" projectFiles="true">
             <logicalFolder name="f1" displayName="src" projectFiles="true">
               <itemPath>../../../../../framework/system/int/src/sys_int_pic32.c</itemPath>
+            </logicalFolder>
+          </logicalFolder>
+          <logicalFolder name="f3" displayName="tmr" projectFiles="true">
+            <logicalFolder name="f1" displayName="src" projectFiles="true">
+              <itemPath>../../../../../framework/system/tmr/src/sys_tmr.c</itemPath>
             </logicalFolder>
           </logicalFolder>
         </logicalFolder>

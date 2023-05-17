@@ -158,11 +158,14 @@ s32 bno055_read_routine(s_bno055_data *data)
 
     /* set the power mode as SUSPEND*/
     comres += bno055_set_power_mode(power_mode);
+    
+    /* Flag measure ready */
+    bno055_data.flagMeasReady = true;
 
     /*---------------------------------------------------------------------*
     ************************* END DE-INITIALIZATION **********************
     *---------------------------------------------------------------------*/
-    return comres;
+    return (comres);
 }
 
 /*--------------------------------------------------------------------------*
@@ -245,12 +248,20 @@ s8 BNO055_I2C_bus_write(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt)
      * For more information please refer data sheet SPI communication:
      */
     
-    if(BNO055_iERROR)
+    /*if(BNO055_iERROR)
         BNO055_iERROR = -1;
     else
         BNO055_iERROR = 0;
     
-     return (s8)(BNO055_iERROR);
+     return (s8)(BNO055_iERROR);*/
+    // Error comm return
+    
+    if(BNO055_iERROR-1 != 0)
+        BNO055_iERROR = -1;
+    else
+        BNO055_iERROR = 0;
+
+    return (s8)(BNO055_iERROR);
 }
 
 /*  \Brief: The API is used as I2C bus read
