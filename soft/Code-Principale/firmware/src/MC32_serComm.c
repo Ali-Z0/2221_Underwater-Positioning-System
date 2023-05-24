@@ -20,7 +20,7 @@
 /* Section: Included Files                                                    */
 /* ************************************************************************** */
 /* ************************************************************************** */
-#include "MC32_serComm.h"
+#include "Mc32_serComm.h"
 #include <stdio.h>
 
 /* This section lists the other files that are included in this file.
@@ -89,7 +89,7 @@ void serDisplayValues ( s_bno055_data *bno055_data )
     bno055_data->flagMeasReady = false;
 
     /* Preapare Gravity string */
-    sprintf(sendBuffer, "Gravity : X = %04.03lf\tY = %04.03lf\tZ = %04.03lf \n\r", bno055_data->gravity.x, bno055_data->gravity.y, bno055_data->gravity.z);
+    sprintf(sendBuffer, "TIME: %d ms\n\rGravity : X = %04.03lf\tY = %04.03lf\tZ = %04.03lf \n\r", (bno055_data->time *10), bno055_data->gravity.x, bno055_data->gravity.y, bno055_data->gravity.z);
     /* Transmit Gravity string */
     do{
         if(!PLIB_USART_TransmitterBufferIsFull(USART_ID_1))

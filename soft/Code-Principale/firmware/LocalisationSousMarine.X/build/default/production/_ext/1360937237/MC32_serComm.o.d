@@ -1,5 +1,5 @@
-build/default/production/_ext/1360937237/MC32_serComm.o: \
- ../src/MC32_serComm.c ../src/MC32_serComm.h ../src/app.h \
+build/default/production/_ext/1360937237/Mc32_serComm.o: \
+ ../src/Mc32_serComm.c ../src/Mc32_serComm.h ../src/app.h \
  ../src/system_config/default/system_config.h \
  ../src/system_config/default/system_definitions.h \
  ../../../../../../../../../../microchip/harmony/v2_06/framework/system/common/sys_common.h \
@@ -300,7 +300,7 @@ build/default/production/_ext/1360937237/MC32_serComm.o: \
  ../../../../../../../../../../microchip/harmony/v2_06/framework/driver/sdcard/drv_sdcard_mapping.h \
  ../src/app.h ../src/bno055.h
 
-../src/MC32_serComm.h:
+../src/Mc32_serComm.h:
 
 ../src/app.h:
 

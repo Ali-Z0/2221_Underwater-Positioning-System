@@ -57,8 +57,8 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include "bno055.h"
 #include "bno055_support.h"
 #include "Mc32_I2cUtilCCS.h"
-#include "MC32_serComm.h"
-#include "sd_fat_gest.h"
+#include "Mc32_serComm.h"
+#include "Mc32_sdFatGest.h"
 #include <stdio.h>
 
 // *****************************************************************************
@@ -90,7 +90,6 @@ APP_DATA appData;
 // *****************************************************************************
 // *****************************************************************************
 void MainTimer_callback(){
-    
     appData.TmrCnt ++;
 }
 
@@ -99,7 +98,7 @@ void DisplayTimer_callback()
     appData.TmrDisplay ++;
     appData.TmrMeas ++;
     
-    if ( ( appData.TmrMeas % 300 ) == 0)
+    if ( ( appData.TmrMeas % 140 ) == 0)
         appData.measTodoFlag = true;
 }
 /* TODO:  Add any necessary callback functions.
@@ -177,26 +176,14 @@ void APP_Tasks ( void )
     s_bno055_data bno055_local_data;
     
     // Main timer action     
-    if(appData.TmrDisplay <= 2){
+    if(appData.TmrDisplay <= 2)
         LED_BOn();
-    }
-    else {
+    else
         LED_BOff();
-    }
-
-    /*if ((appData.TmrDisplay%50) == 0){
-        serDisplayValues();
-    }*/
     
-    if (appData.TmrDisplay >= 350){
-        appData.TmrDisplay = 0; 
-    }
-    
-    // Precise timer action
-    /*if (appData.TmrTickFlag){
-        appData.TmrTickFlag = false;
-    }*/
-    
+    if(appData.TmrDisplay >= 250)
+        appData.TmrDisplay = 0;
+        
      /* Check the application's current state. */
     switch ( appData.state )
     {
@@ -223,8 +210,10 @@ void APP_Tasks ( void )
                 appData.measTodoFlag = false;
                 /* BNO055 Read all important info routine */
                 bno055_local_data.comres = bno055_read_routine(&bno055_local_data);
+                /* Time measure */
+                bno055_local_data.time = appData.TmrMeas;
                 /* Display value via UART */
-                serDisplayValues(&bno055_local_data);
+                //serDisplayValues(&bno055_local_data);
                 /* Write value to sdCard */
                 sd_BNO_scheduleWrite(&bno055_local_data);
                 /* If error detected, error LED */

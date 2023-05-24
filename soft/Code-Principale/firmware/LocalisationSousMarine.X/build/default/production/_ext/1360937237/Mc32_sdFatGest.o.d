@@ -1,4 +1,5 @@
-build/default/production/_ext/1360937237/app.o: ../src/app.c ../src/app.h \
+build/default/production/_ext/1360937237/Mc32_sdFatGest.o: \
+ ../src/Mc32_sdFatGest.c ../src/Mc32_sdFatGest.h ../src/app.h \
  ../src/system_config/default/system_config.h \
  ../src/system_config/default/system_definitions.h \
  ../../../../../../../../../../microchip/harmony/v2_06/framework/system/common/sys_common.h \
@@ -297,8 +298,9 @@ build/default/production/_ext/1360937237/app.o: ../src/app.c ../src/app.h \
  ../../../../../../../../../../microchip/harmony/v2_06/framework/driver/spi/drv_spi.h \
  ../../../../../../../../../../microchip/harmony/v2_06/framework/driver/spi/drv_spi_definitions.h \
  ../../../../../../../../../../microchip/harmony/v2_06/framework/driver/sdcard/drv_sdcard_mapping.h \
- ../src/app.h ../src/bno055.h ../src/bno055_support.h \
- ../src/Mc32_I2cUtilCCS.h ../src/Mc32_serComm.h ../src/Mc32_sdFatGest.h
+ ../src/app.h ../src/bno055.h ../src/bno055_support.h
+
+../src/Mc32_sdFatGest.h:
 
 ../src/app.h:
 
@@ -903,9 +905,3 @@ build/default/production/_ext/1360937237/app.o: ../src/app.c ../src/app.h \
 ../src/bno055.h:
 
 ../src/bno055_support.h:
-
-../src/Mc32_I2cUtilCCS.h:
-
-../src/Mc32_serComm.h:
-
-../src/Mc32_sdFatGest.h:

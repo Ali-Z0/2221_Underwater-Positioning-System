@@ -14,7 +14,7 @@
     This header file provides function prototypes and data type definitions for
     the application.  Some of these are required by the system (such as the
     "APP_Initialize" and "APP_Tasks" prototypes) and some of them are only used
-    internally by the application (such as the "APP_STATES" definition).  Both
+    internally by the application (such as the "APP_FAT_STATES" definition).  Both
     are defined here for convenience.
 *******************************************************************************/
 
@@ -43,8 +43,9 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
  *******************************************************************************/
 //DOM-IGNORE-END
 
-#ifndef _APP_H
-#define _APP_H
+#ifndef _SD_FAT_GEST_H
+#define _SD_FAT_GEST_H
+
 
 // *****************************************************************************
 // *****************************************************************************
@@ -52,42 +53,22 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 // *****************************************************************************
 // *****************************************************************************
 
-#include <stdint.h>
-#include <stdbool.h>
-#include <stddef.h>
-#include <stdlib.h>
-#include "system_config.h"
-#include "system_definitions.h"
-#include "bno055.h"
-
-// DOM-IGNORE-BEGIN
-#ifdef __cplusplus  // Provide C++ Compatibility
-
-extern "C" {
-
-#endif
-// DOM-IGNORE-END 
-    
-#define TIME_OUT 80000000U
+#include "app.h"
 
 // *****************************************************************************
 // *****************************************************************************
 // Section: Type Definitions
 // *****************************************************************************
 // *****************************************************************************
-typedef struct {
-    s32 comres;
-    bool flagMeasReady;
-    struct bno055_gravity_double_t gravity;
-    struct bno055_linear_accel_double_t linear_accel;
-    struct bno055_euler_double_t euler;
-    struct bno055_gyro_double_t gyro;
-    struct bno055_mag_double_t mag;
-    struct bno055_quaternion_t quaternion;
-    uint32_t time;
-}s_bno055_data;
+
+#ifdef DRV_SDHC_USE_DMA
+#define DATA_BUFFER_ALIGN             __attribute__((coherent, aligned(32)))
+#else
+#define DATA_BUFFER_ALIGN             __attribute__((aligned(32)))
+#endif
+
 // *****************************************************************************
-/* Application states
+/* Application States
 
   Summary:
     Application states enumeration
@@ -100,12 +81,28 @@ typedef struct {
 typedef enum
 {
 	/* Application's state machine's initial state. */
-	APP_STATE_INIT=0,
-	APP_STATE_SERVICE_TASKS,
+	/* The app mounts the disk */
+    APP_MOUNT_DISK = 0,
 
-	/* TODO: Define states used by the application state machine. */
+    /* Set the current drive */
+    APP_SET_CURRENT_DRIVE,
 
-} APP_STATES;
+	/* The app opens the file to read */
+    APP_WRITE_MEASURE_FILE,
+
+    /* The app reads from a file and writes to another file */
+    APP_WRITE_TO_MEASURE_FILE,
+
+    /* The app closes the file*/
+    APP_CLOSE_FILE,
+
+    /* The app closes the file and idles */
+    APP_IDLE,
+
+    /* An app error has occurred */
+    APP_ERROR
+
+} APP_FAT_STATES;
 
 
 // *****************************************************************************
@@ -123,25 +120,25 @@ typedef enum
 
 typedef struct
 {
-    /* The application's current state */
-    APP_STATES state;
+    /* SYS_FS File handle for 1st file */
+    SYS_FS_HANDLE      fileHandle;
 
-    /* Main Timer (1ms) */
-    bool mainTmrTickFlag;
-    uint32_t mainTmrCnt;
-    
-    /* Timer precis (1us) */
-    bool TmrTickFlag;
-    uint32_t TmrCnt;
-    
-    /* Measure todo flag */
-    uint32_t TmrMeas;
-    bool measTodoFlag;
-    
-    /* Timer display */
-    uint32_t TmrDisplay;
+    /* SYS_FS File handle for 2nd file */
+    SYS_FS_HANDLE      fileHandle1;
 
-} APP_DATA;
+    /* Application's current state */
+    APP_FAT_STATES         state;
+    
+    /* Application data buffer */
+    char           data[256] DATA_BUFFER_ALIGN;
+
+    uint32_t           nBytesWritten;
+
+    uint32_t           nBytesRead;
+    
+    uint32_t            nBytesToWrite;
+} APP_FAT_DATA;
+
 
 // *****************************************************************************
 // *****************************************************************************
@@ -150,6 +147,7 @@ typedef struct
 // *****************************************************************************
 /* These routines are called by drivers when certain events occur.
 */
+
 	
 // *****************************************************************************
 // *****************************************************************************
@@ -158,41 +156,7 @@ typedef struct
 // *****************************************************************************
 
 /*******************************************************************************
-  Function:
-    void APP_Initialize ( void )
 
-  Summary:
-     MPLAB Harmony application initialization routine.
-
-  Description:
-    This function initializes the Harmony application.  It places the 
-    application in its initial state and prepares it to run so that its 
-    APP_Tasks function can be called.
-
-  Precondition:
-    All other system initialization routines should be called before calling
-    this routine (in "SYS_Initialize").
-
-  Parameters:
-    None.
-
-  Returns:
-    None.
-
-  Example:
-    <code>
-    APP_Initialize();
-    </code>
-
-  Remarks:
-    This routine must be called from the SYS_Initialize function.
-*/
-
-void APP_Initialize ( void );
-
-void prepareBuffer( char * buffer );
-
-/*******************************************************************************
   Function:
     void APP_Tasks ( void )
 
@@ -222,23 +186,12 @@ void prepareBuffer( char * buffer );
     This routine must be called from SYS_Tasks() routine.
  */
 
-void APP_Tasks( void );
+void sd_fat_task ( void );
 
+void sd_BNO_scheduleWrite (s_bno055_data * data);
 
-// Callback main timer
-void MainTimer_callback( void );
-
-// Callback display timer
-void DisplayTimer_callback( void );
 
 #endif /* _APP_H */
-
-//DOM-IGNORE-BEGIN
-#ifdef __cplusplus
-}
-#endif
-//DOM-IGNORE-END
-
 /*******************************************************************************
  End of File
  */
