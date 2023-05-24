@@ -57,6 +57,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include "bno055.h"
 #include "bno055_support.h"
 #include "Mc32_I2cUtilCCS.h"
+#include "MC32_serComm.h"
 #include "sd_fat_gest.h"
 #include <stdio.h>
 
@@ -82,7 +83,6 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 */
 
 APP_DATA appData;
-s_bno055_data bno055_data;
 
 // *****************************************************************************
 // *****************************************************************************
@@ -158,11 +158,8 @@ void APP_Initialize ( void )
     RstImuOn();
     BNO055_delay_msek(100);
     
-    
-    //bno055_init(&bno055);
-    /* TODO: Initialize your application's state machine and other
-     * parameters.
-     */
+    DemulCBOff();
+    DemulCCOn();
 }
 
 
@@ -176,6 +173,9 @@ void APP_Initialize ( void )
 
 void APP_Tasks ( void )
 {
+    /* Local bno055 data */
+    s_bno055_data bno055_local_data;
+    
     // Main timer action     
     if(appData.TmrDisplay <= 2){
         LED_BOn();
@@ -203,38 +203,39 @@ void APP_Tasks ( void )
         /* Application's initial state. */
         case APP_STATE_INIT:
         {
-            bool appInitialized = true;
-            
             // Test DELAY 
-            BNO055_delay_msek(1000);
+            BNO055_delay_msek(500);
             
             // Measure all
             bno055_data_readout_template();
         
-            if (appInitialized)
-            {
+            /* Service task */
+            appData.state = APP_STATE_SERVICE_TASKS;
             
-                appData.state = APP_STATE_SERVICE_TASKS;
-            }
             break;
         }
 
         case APP_STATE_SERVICE_TASKS:
-        {
-            
+        {        
             if(appData.measTodoFlag)
             {
+                /* Reset measure flag */
                 appData.measTodoFlag = false;
-                bno055_data.comres = bno055_read_routine(&bno055_data);
-                serDisplayValues();
-                
-                if(bno055_data.comres != 0){
+                /* BNO055 Read all important info routine */
+                bno055_local_data.comres = bno055_read_routine(&bno055_local_data);
+                /* Display value via UART */
+                serDisplayValues(&bno055_local_data);
+                /* Write value to sdCard */
+                sd_BNO_scheduleWrite(&bno055_local_data);
+                /* If error detected, error LED */
+                if(bno055_local_data.comres != 0)
                     LED_ROn();
-                }
+                else
+                    LED_ROff();  
             }
             
+            /* FAT routine */
             sd_fat_task();
-
             
            break;
         }
@@ -251,101 +252,6 @@ void APP_Tasks ( void )
     }
 }
 
-void serDisplayValues ( void )
-{   
-    char sendBuffer[60] = {0};
-    uint8_t i = 0;
-    uint32_t ctnTimeout = 0;
-
-    if(bno055_data.flagMeasReady)
-    {
-        /* Reset the measure ready flag */
-        bno055_data.flagMeasReady = false;
-        
-        /* Preapare Gravity string */
-        sprintf(sendBuffer, "Gravity : X = %04.03lf\tY = %04.03lf\tZ = %04.03lf \n\r", bno055_data.gravity.x, bno055_data.gravity.y, bno055_data.gravity.z);
-        /* Transmit Gravity string */
-        do{
-            if(!PLIB_USART_TransmitterBufferIsFull(USART_ID_1))
-            {
-                PLIB_USART_TransmitterByteSend(USART_ID_1, sendBuffer[i]);
-                i++;
-            }
-            ctnTimeout++;
-        }while((sendBuffer[i-1] != '\r')&&(ctnTimeout<TIME_OUT));
-        i = 0;
-        
-        
-        /* Preapare gyroscope string */
-        sprintf(sendBuffer, "Gyro    : X = %04.03lf\tY = %04.03lf\tZ = %04.03lf \n\r", bno055_data.gyro.x, bno055_data.gyro.y, bno055_data.gyro.z);
-        /* Transmit Gravity string */
-        do{
-            if(!PLIB_USART_TransmitterBufferIsFull(USART_ID_1))
-            {
-                PLIB_USART_TransmitterByteSend(USART_ID_1, sendBuffer[i]);
-                i++;
-            }
-            ctnTimeout++;
-        }while((sendBuffer[i-1] != '\r')&&(ctnTimeout<TIME_OUT));
-        i = 0;
-        
-        
-        /* Preapare magnitude string */
-        sprintf(sendBuffer, "Mag     : X = %04.03lf\tY = %04.03lf\tZ = %04.03lf \n\r", bno055_data.mag.x, bno055_data.mag.y, bno055_data.mag.z);
-        /* Transmit Gravity string */
-        do{
-            if(!PLIB_USART_TransmitterBufferIsFull(USART_ID_1))
-            {
-                PLIB_USART_TransmitterByteSend(USART_ID_1, sendBuffer[i]);
-                i++;
-            }
-            ctnTimeout++;
-        }while((sendBuffer[i-1] != '\r')&&(ctnTimeout<TIME_OUT));
-        i = 0;
-        
-        /* Preapare linear acceleration string */
-        sprintf(sendBuffer, "Accel   : X = %04.03lf\tY = %04.03lf\tZ = %04.03lf \n\r", bno055_data.linear_accel.x, bno055_data.linear_accel.y, bno055_data.linear_accel.z);
-        /* Transmit Gravity string */
-        do{
-            if(!PLIB_USART_TransmitterBufferIsFull(USART_ID_1))
-            {
-                PLIB_USART_TransmitterByteSend(USART_ID_1, sendBuffer[i]);
-                i++;
-            }
-            ctnTimeout++;
-        }while((sendBuffer[i-1] != '\r')&&(ctnTimeout<TIME_OUT));
-        i = 0;
-
-        /* Preapare euler string */
-        sprintf(sendBuffer, "Euler   : H = %04.03lf\tP = %04.03lf\tR = %04.03lf \n\r", bno055_data.euler.h, bno055_data.euler.p, bno055_data.euler.r);
-        /* Transmit Gravity string */
-        do{
-            if(!PLIB_USART_TransmitterBufferIsFull(USART_ID_1))
-            {
-                PLIB_USART_TransmitterByteSend(USART_ID_1, sendBuffer[i]);
-                i++;
-            }
-            ctnTimeout++;
-        }while((sendBuffer[i-1] != '\r')&&(ctnTimeout<TIME_OUT));
-        i = 0;
-        
-        
-        /* Preapare quaternion string */
-        sprintf(sendBuffer, "Quater. : W = %05d\tX = %05d\tY = %05d\tZ = %05d \n\n\r", bno055_data.quaternion.w, bno055_data.quaternion.x, bno055_data.quaternion.y, bno055_data.quaternion.z);
-        /* Transmit Gravity string */
-        do{
-            if(!PLIB_USART_TransmitterBufferIsFull(USART_ID_1))
-            {
-                PLIB_USART_TransmitterByteSend(USART_ID_1, sendBuffer[i]);
-                i++;
-            }
-            ctnTimeout++;
-        }while((sendBuffer[i-1] != '\r')&&(ctnTimeout<TIME_OUT));
-        i = 0;
-    
-    }
-    
-}
  
 
 /*******************************************************************************

@@ -41,6 +41,7 @@
         <itemPath>../src/Mc32_I2cUtilCCS.h</itemPath>
         <itemPath>../src/bno055_support.h</itemPath>
         <itemPath>../src/sd_fat_gest.h</itemPath>
+        <itemPath>../src/MC32_serComm.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="framework" projectFiles="true">
         <logicalFolder name="f1" displayName="driver" projectFiles="true">
@@ -224,6 +225,7 @@
         <itemPath>../src/Mc32_I2cUtilCCS.c</itemPath>
         <itemPath>../src/bno055_support.c</itemPath>
         <itemPath>../src/sd_fat_gest.c</itemPath>
+        <itemPath>../src/MC32_serComm.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="framework" projectFiles="true">
         <logicalFolder name="f1" displayName="driver" projectFiles="true">

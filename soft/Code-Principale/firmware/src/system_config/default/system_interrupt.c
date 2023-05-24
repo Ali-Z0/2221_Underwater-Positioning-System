@@ -68,38 +68,19 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 // Section: System Interrupt Vector Functions
 // *****************************************************************************
 // *****************************************************************************
-void __ISR(_UART_1_VECTOR, ipl0AUTO) _IntHandlerDrvUsartInstance0(void)
-{
-    DRV_USART_TasksTransmit(sysObj.drvUsart0);
-    DRV_USART_TasksError(sysObj.drvUsart0);
-    DRV_USART_TasksReceive(sysObj.drvUsart0);
-}
 
- 
- 
-
- 
-
- 
-
- 
-
- 
-
- 
- 
 void __ISR(_RTCC_VECTOR, ipl1AUTO) _IntHandlerSysRtcc (void)
 {
     SYS_RTCC_Tasks(sysObj.sysRtcc);
 }
  
 
-void __ISR(_TIMER_1_VECTOR, ipl1AUTO) IntHandlerDrvTmrInstance0(void)
+void __ISR(_TIMER_1_VECTOR, ipl4AUTO) IntHandlerDrvTmrInstance0(void)
 {
     PLIB_INT_SourceFlagClear(INT_ID_0,INT_SOURCE_TIMER_1);
     MainTimer_callback();
 }
-void __ISR(_TIMER_2_VECTOR, ipl1AUTO) IntHandlerDrvTmrInstance1(void)
+void __ISR(_TIMER_2_VECTOR, ipl4AUTO) IntHandlerDrvTmrInstance1(void)
 {
     PLIB_INT_SourceFlagClear(INT_ID_0,INT_SOURCE_TIMER_2);
     DisplayTimer_callback();

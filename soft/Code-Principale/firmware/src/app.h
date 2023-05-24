@@ -58,6 +58,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include <stdlib.h>
 #include "system_config.h"
 #include "system_definitions.h"
+#include "bno055.h"
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
@@ -74,7 +75,16 @@ extern "C" {
 // Section: Type Definitions
 // *****************************************************************************
 // *****************************************************************************
-
+typedef struct {
+    s32 comres;
+    bool flagMeasReady;
+    struct bno055_gravity_double_t gravity;
+    struct bno055_linear_accel_double_t linear_accel;
+    struct bno055_euler_double_t euler;
+    struct bno055_gyro_double_t gyro;
+    struct bno055_mag_double_t mag;
+    struct bno055_quaternion_t quaternion;
+}s_bno055_data;
 // *****************************************************************************
 /* Application states
 
@@ -132,9 +142,6 @@ typedef struct
 
 } APP_DATA;
 
-// ********** SHARED VARIABLES **********
-extern APP_DATA appData;
-
 // *****************************************************************************
 // *****************************************************************************
 // Section: Application Callback Routines
@@ -182,7 +189,7 @@ extern APP_DATA appData;
 
 void APP_Initialize ( void );
 
-void serDisplayValues ( void );
+void prepareBuffer( char * buffer );
 
 /*******************************************************************************
   Function:

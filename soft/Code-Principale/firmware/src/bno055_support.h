@@ -43,19 +43,6 @@
 
 #define  BNO055_API
 
-typedef struct {
-    s32 comres;
-    bool flagMeasReady;
-    struct bno055_gravity_double_t gravity;
-    struct bno055_linear_accel_double_t linear_accel;
-    struct bno055_euler_double_t euler;
-    struct bno055_gyro_double_t gyro;
-    struct bno055_mag_double_t mag;
-    struct bno055_quaternion_t quaternion;
-}s_bno055_data;
-
-extern s_bno055_data bno055_data;
-
 /*----------------------------------------------------------------------------*
 *  The following APIs are used for reading and writing of
 *   sensor data using I2C communication

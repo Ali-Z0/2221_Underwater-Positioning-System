@@ -103,10 +103,10 @@ const DRV_SDCARD_INIT drvSDCardInit =
 {
     .spiId = SPI_ID_1,
     .spiIndex = 0,
-    .sdcardSpeedHz = 20000000,
+    .sdcardSpeedHz = 1000000,
     .spiClk = CLK_BUS_PERIPHERAL_1,
     .chipSelectPort = PORT_CHANNEL_A,
-    .chipSelectBitPosition = PORTS_BIT_POS_10,
+    .chipSelectBitPosition = PORTS_BIT_POS_0,
 };
 // </editor-fold>
 // <editor-fold defaultstate="collapsed" desc="DRV_SPI Initialization Data"> 
@@ -224,8 +224,6 @@ void SYS_Initialize ( void* data )
     DRV_TMR1_Initialize();
  
      sysObj.drvUsart0 = DRV_USART_Initialize(DRV_USART_INDEX_0, (SYS_MODULE_INIT *)NULL);
-    SYS_INT_VectorPrioritySet(INT_VECTOR_UART1, INT_DISABLE_INTERRUPT);
-    SYS_INT_VectorSubprioritySet(INT_VECTOR_UART1, INT_SUBPRIORITY_LEVEL0);
     /* RTCC System Service Initialization Call */
     sysObj.sysRtcc = SYS_RTCC_Initialize( );
 

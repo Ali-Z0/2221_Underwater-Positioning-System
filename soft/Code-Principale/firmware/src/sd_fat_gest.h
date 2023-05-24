@@ -84,26 +84,14 @@ typedef enum
 	/* The app mounts the disk */
     APP_MOUNT_DISK = 0,
 
-	/* The app unmounts the disk */
-    APP_UNMOUNT_DISK,
-
-	/* The app mounts the disk again */
-    APP_MOUNT_DISK_AGAIN,
-
-        /* Set the current drive */
+    /* Set the current drive */
     APP_SET_CURRENT_DRIVE,
 
 	/* The app opens the file to read */
-    APP_OPEN_FIRST_FILE,
-
-        /* Create directory */
-    APP_CREATE_DIRECTORY,
-
-        /* The app opens the file to write */
-    APP_OPEN_SECOND_FILE,
+    APP_WRITE_MEASURE_FILE,
 
     /* The app reads from a file and writes to another file */
-    APP_READ_WRITE_TO_FILE,
+    APP_WRITE_TO_MEASURE_FILE,
 
     /* The app closes the file*/
     APP_CLOSE_FILE,
@@ -142,11 +130,13 @@ typedef struct
     APP_FAT_STATES         state;
     
     /* Application data buffer */
-    uint32_t           data[256] DATA_BUFFER_ALIGN;
+    char           data[256] DATA_BUFFER_ALIGN;
 
     uint32_t           nBytesWritten;
 
     uint32_t           nBytesRead;
+    
+    uint32_t            nBytesToWrite;
 } APP_FAT_DATA;
 
 
@@ -198,7 +188,7 @@ typedef struct
 
 void sd_fat_task ( void );
 
-
+void sd_BNO_scheduleWrite (s_bno055_data * data);
 
 
 #endif /* _APP_H */

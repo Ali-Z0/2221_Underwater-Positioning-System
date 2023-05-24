@@ -298,7 +298,7 @@ build/default/production/_ext/1360937237/Mc32_I2cUtilCCS.o: \
  ../../../../../../../../../../microchip/harmony/v2_06/framework/driver/spi/drv_spi.h \
  ../../../../../../../../../../microchip/harmony/v2_06/framework/driver/spi/drv_spi_definitions.h \
  ../../../../../../../../../../microchip/harmony/v2_06/framework/driver/sdcard/drv_sdcard_mapping.h \
- ../src/app.h ../src/Mc32_I2cUtilCCS.h \
+ ../src/app.h ../src/bno055.h ../src/Mc32_I2cUtilCCS.h \
  ../../../../../../../../../../microchip/harmony/v2_06/framework/peripheral\i2c\plib_i2c.h \
  ../../../../../../../../../../microchip/harmony/v2_06/framework/peripheral/i2c/plib_i2c_helper_macros.h \
  ../../../../../../../../../../microchip/harmony/v2_06/framework/peripheral/i2c/processor/i2c_processor.h \
@@ -948,6 +948,8 @@ build/default/production/_ext/1360937237/Mc32_I2cUtilCCS.o: \
 ../../../../../../../../../../microchip/harmony/v2_06/framework/driver/sdcard/drv_sdcard_mapping.h:
 
 ../src/app.h:
+
+../src/bno055.h:
 
 ../src/Mc32_I2cUtilCCS.h:
 

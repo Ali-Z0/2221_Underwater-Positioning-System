@@ -298,7 +298,7 @@ build/default/production/_ext/1360937237/app.o: ../src/app.c ../src/app.h \
  ../../../../../../../../../../microchip/harmony/v2_06/framework/driver/spi/drv_spi_definitions.h \
  ../../../../../../../../../../microchip/harmony/v2_06/framework/driver/sdcard/drv_sdcard_mapping.h \
  ../src/app.h ../src/bno055.h ../src/bno055_support.h \
- ../src/Mc32_I2cUtilCCS.h ../src/sd_fat_gest.h
+ ../src/Mc32_I2cUtilCCS.h ../src/MC32_serComm.h ../src/sd_fat_gest.h
 
 ../src/app.h:
 
@@ -905,5 +905,7 @@ build/default/production/_ext/1360937237/app.o: ../src/app.c ../src/app.h \
 ../src/bno055_support.h:
 
 ../src/Mc32_I2cUtilCCS.h:
+
+../src/MC32_serComm.h:
 
 ../src/sd_fat_gest.h:

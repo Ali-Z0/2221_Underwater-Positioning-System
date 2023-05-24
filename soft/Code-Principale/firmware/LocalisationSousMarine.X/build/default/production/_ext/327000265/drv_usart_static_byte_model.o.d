@@ -298,7 +298,7 @@ build/default/production/_ext/327000265/drv_usart_static_byte_model.o: \
  ../../../../../../../../../../microchip/harmony/v2_06/framework/driver/spi/drv_spi.h \
  ../../../../../../../../../../microchip/harmony/v2_06/framework/driver/spi/drv_spi_definitions.h \
  ../../../../../../../../../../microchip/harmony/v2_06/framework/driver/sdcard/drv_sdcard_mapping.h \
- ../src/app.h
+ ../src/app.h ../src/bno055.h ../src/app.h
 
 ../src/system_config/default/system_config.h:
 
@@ -895,5 +895,9 @@ build/default/production/_ext/327000265/drv_usart_static_byte_model.o: \
 ../../../../../../../../../../microchip/harmony/v2_06/framework/driver/spi/drv_spi_definitions.h:
 
 ../../../../../../../../../../microchip/harmony/v2_06/framework/driver/sdcard/drv_sdcard_mapping.h:
+
+../src/app.h:
+
+../src/bno055.h:
 
 ../src/app.h:

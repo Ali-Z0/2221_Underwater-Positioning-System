@@ -48,8 +48,6 @@
 // Global variable
 APP_DATA appData;
 
-s_bno055_data bno055_data;
-
 #ifdef  BNO055_API
 
 s32 bno055_read_routine(s_bno055_data *data)
@@ -160,7 +158,7 @@ s32 bno055_read_routine(s_bno055_data *data)
     comres += bno055_set_power_mode(power_mode);
     
     /* Flag measure ready */
-    bno055_data.flagMeasReady = true;
+    data->flagMeasReady = true;
 
     /*---------------------------------------------------------------------*
     ************************* END DE-INITIALIZATION **********************

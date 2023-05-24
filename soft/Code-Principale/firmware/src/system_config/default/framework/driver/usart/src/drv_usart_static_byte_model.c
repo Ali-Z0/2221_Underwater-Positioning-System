@@ -82,7 +82,6 @@ void DRV_USART0_WriteByte(const uint8_t byte)
     while(PLIB_USART_TransmitterBufferIsFull(USART_ID_1));
     /* Send one byte */
     PLIB_USART_TransmitterByteSend(USART_ID_1, byte);
-    SYS_INT_SourceEnable(INT_SOURCE_USART_1_TRANSMIT);
 }
 
 unsigned int DRV_USART0_ReceiverBufferSizeGet(void)
