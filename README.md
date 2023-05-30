@@ -44,7 +44,7 @@ List the ready features here:
   - 3 à 5 slots libres MikroE pour autres mesures.
 - Possibilité de sauvegarder la localisation de points dintérêts par :
 Bouton de sauvegarde [A définir : Magnétique, Optique, Mécanique ou autre].
-- Batterie, autonomie minimum de 2 heures [10C].
+- Batterie, autonomie minimum de 2 heures.
 - Charge de la batterie par connecteur USB.
 - Lecture des données par connecteur USB (Interfaçage électronique, software
 optionnel dans cette version).
@@ -59,41 +59,20 @@ La carte éléctronique doit être assemblée en considération des fichiers de 
 
 
 ## Utilisation
-How does one go about using it?
-Provide various use cases and code examples here.
-
-`write-your-code-here`
+Il faut flâcher le code firmware par le bias de MPLAB-X avec harmony sur le microcontroleur du PCB produit, pour ce faire, il y a un connecteur de programmation BERG. Une fois le code flashé, le module sous-marin peut être utilisé et sous condition qu'une carte SD est insérée, les données de déplacements y seront sauvegardé en format CSV.
 
 
 ## Statut du projet
-Project is: _in progress_ / _complete_ / _no longer being worked on_. If you are no longer working on it, provide reasons why.
+Le projet est complété mais des améliorations peuvent toujours avoir lieu.
 
 
-## Room for Improvement
-Include areas you believe need improvement / could be improved. Also add TODOs for future development.
-
-Room for improvement:
-- Improvement to be done 1
-- Improvement to be done 2
-
+## Améliorations
 To do:
-- Feature to be added 1
-- Feature to be added 2
-
-
-## Acknowledgements
-Give credit here.
-- This project was inspired by...
-- This project was based on [this tutorial](https://www.example.com).
-- Many thanks to...
+- SCK VALABLE QUE A LA PIN 14 aulieu de 20
+- CHANGER PIN U2TX (PIN14) POUR UNE AUTRE PIN
+- OSCILLATEUR EXTERNE DOIT ETRES CONNECTER COMME OSCILLATEUR SECONDAIRE ET NON PRINCIPALE
 
 
 ## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
+Créer par Ali Zoubir : ali.zoubir@etml-es.ch
 
-
-<!-- Optional -->
-<!-- ## License -->
-<!-- This project is open source and available under the [... License](). -->
-
-<!-- You don't have to include all sections - just the one's relevant to your project -->
