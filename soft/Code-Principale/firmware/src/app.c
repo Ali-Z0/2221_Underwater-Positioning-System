@@ -59,6 +59,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include "Mc32_I2cUtilCCS.h"
 #include "Mc32_serComm.h"
 #include "Mc32_sdFatGest.h"
+#include "Mc32_PressAdc.h"
 #include <stdio.h>
 
 // *****************************************************************************
@@ -133,7 +134,7 @@ void APP_Initialize ( void )
 {
     /* Place the App state machine in its initial state. */
     appData.state = APP_STATE_INIT;
-    
+    /* Reset all counters */
     appData.mainTmrCnt = 0;
     appData.mainTmrTickFlag = 0;
     appData.TmrCnt = 0;
@@ -141,11 +142,13 @@ void APP_Initialize ( void )
     appData.TmrDisplay = 0;
     appData.measTodoFlag = false;
     
+    /* Hold the device on */
     PwrHoldOn();
-    
+    /* Peripherals init */
     DRV_TMR0_Start();
     DRV_TMR1_Start();
     i2c_init(1);
+    //Press_InitADC();
     
     LED_BOn();
     BNO055_delay_msek(500);
@@ -159,6 +162,11 @@ void APP_Initialize ( void )
     
     DemulCBOff();
     DemulCCOn();
+    
+    /* Enable 5V regulator */
+    EN_5VOn();
+    
+    
 }
 
 
@@ -204,6 +212,10 @@ void APP_Tasks ( void )
 
         case APP_STATE_SERVICE_TASKS:
         {        
+            //static S_ADCResults adcRes;
+            
+            //adcRes = Press_ReadAllADC();
+            
             if(appData.measTodoFlag)
             {
                 /* Reset measure flag */
