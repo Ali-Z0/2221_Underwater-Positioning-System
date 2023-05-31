@@ -46,7 +46,8 @@ extern "C" {
 #define     V_MAX               4
 #define     P_RANGE             10.0
 #define     OPAMP_GAIN          0.5913
-#define     ADC_AN_SCAN_ADDRES  0x0004
+#define     ADC_RES             (3.3/1024)
+#define     ADC_AN_SCAN_ADDRES  0x0008
     /* ************************************************************************** */
     
 
@@ -76,6 +77,8 @@ extern "C" {
     void Press_InitADC (void);
     
     S_ADCResults Press_ReadAllADC( void );
+    
+    float Press_readPressure( void );
     // *****************************************************************************
     
 

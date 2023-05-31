@@ -9,13 +9,10 @@
           <logicalFolder name="f1" displayName="default" projectFiles="true">
             <logicalFolder name="f1" displayName="framework" projectFiles="true">
               <logicalFolder name="f1" displayName="driver" projectFiles="true">
-                <logicalFolder name="f1" displayName="adc" projectFiles="true">
-                  <itemPath>../src/system_config/default/framework/driver/adc/drv_adc_static.h</itemPath>
-                </logicalFolder>
-                <logicalFolder name="f2" displayName="tmr" projectFiles="true">
+                <logicalFolder name="f1" displayName="tmr" projectFiles="true">
                   <itemPath>../src/system_config/default/framework/driver/tmr/drv_tmr_static.h</itemPath>
                 </logicalFolder>
-                <logicalFolder name="f3" displayName="usart" projectFiles="true">
+                <logicalFolder name="f2" displayName="usart" projectFiles="true">
                   <logicalFolder name="f1" displayName="src" projectFiles="true">
                     <itemPath>../src/system_config/default/framework/driver/usart/src/drv_usart_static_local.h</itemPath>
                   </logicalFolder>
@@ -46,6 +43,7 @@
         <itemPath>../src/Mc32_sdFatGest.h</itemPath>
         <itemPath>../src/Mc32_serComm.h</itemPath>
         <itemPath>../src/Mc32_PressAdc.h</itemPath>
+        <itemPath>../src/Mc32Debounce.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="framework" projectFiles="true">
         <logicalFolder name="f1" displayName="driver" projectFiles="true">
@@ -174,25 +172,20 @@
           <logicalFolder name="f1" displayName="default" projectFiles="true">
             <logicalFolder name="f1" displayName="framework" projectFiles="true">
               <logicalFolder name="f1" displayName="driver" projectFiles="true">
-                <logicalFolder name="f1" displayName="adc" projectFiles="true">
-                  <logicalFolder name="f1" displayName="src" projectFiles="true">
-                    <itemPath>../src/system_config/default/framework/driver/adc/src/drv_adc_static.c</itemPath>
-                  </logicalFolder>
-                </logicalFolder>
-                <logicalFolder name="f2" displayName="spi" projectFiles="true">
+                <logicalFolder name="f1" displayName="spi" projectFiles="true">
                   <logicalFolder name="f1" displayName="dynamic" projectFiles="true">
                     <itemPath>../src/system_config/default/framework/driver/spi/dynamic/drv_spi_tasks.c</itemPath>
                     <itemPath>../src/system_config/default/framework/driver/spi/dynamic/drv_spi_api.c</itemPath>
                     <itemPath>../src/system_config/default/framework/driver/spi/dynamic/drv_spi_master_ebm_tasks.c</itemPath>
                   </logicalFolder>
                 </logicalFolder>
-                <logicalFolder name="f3" displayName="tmr" projectFiles="true">
+                <logicalFolder name="f2" displayName="tmr" projectFiles="true">
                   <logicalFolder name="f1" displayName="src" projectFiles="true">
                     <itemPath>../src/system_config/default/framework/driver/tmr/src/drv_tmr_static.c</itemPath>
                     <itemPath>../src/system_config/default/framework/driver/tmr/src/drv_tmr_mapping.c</itemPath>
                   </logicalFolder>
                 </logicalFolder>
-                <logicalFolder name="f4" displayName="usart" projectFiles="true">
+                <logicalFolder name="f3" displayName="usart" projectFiles="true">
                   <logicalFolder name="f1" displayName="src" projectFiles="true">
                     <itemPath>../src/system_config/default/framework/driver/usart/src/drv_usart_mapping.c</itemPath>
                     <itemPath>../src/system_config/default/framework/driver/usart/src/drv_usart_static.c</itemPath>
@@ -236,6 +229,7 @@
         <itemPath>../src/Mc32_sdFatGest.c</itemPath>
         <itemPath>../src/Mc32_serComm.c</itemPath>
         <itemPath>../src/Mc32_PressAdc.c</itemPath>
+        <itemPath>../src/Mc32Debounce.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="framework" projectFiles="true">
         <logicalFolder name="f1" displayName="driver" projectFiles="true">

@@ -130,7 +130,7 @@ typedef struct
     APP_FAT_STATES         state;
     
     /* Application data buffer */
-    char           data[256] DATA_BUFFER_ALIGN;
+    char                data[256] DATA_BUFFER_ALIGN;
 
     uint32_t           nBytesWritten;
 

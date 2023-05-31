@@ -60,6 +60,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include "Mc32_serComm.h"
 #include "Mc32_sdFatGest.h"
 #include "Mc32_PressAdc.h"
+#include "Mc32Debounce.h"
 #include <stdio.h>
 
 // *****************************************************************************
@@ -67,7 +68,8 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 // Section: Global Data Definitions
 // *****************************************************************************
 // *****************************************************************************
-
+/* Switch descriptor */
+S_SwitchDescriptor switchDescr;
 // *****************************************************************************
 /* Application Data
 
@@ -99,7 +101,7 @@ void DisplayTimer_callback()
     appData.TmrDisplay ++;
     appData.TmrMeas ++;
     
-    if ( ( appData.TmrMeas % 140 ) == 0)
+    if ( ( appData.TmrMeas % 150 ) == 0)
         appData.measTodoFlag = true;
 }
 /* TODO:  Add any necessary callback functions.
@@ -136,9 +138,8 @@ void APP_Initialize ( void )
     appData.state = APP_STATE_INIT;
     /* Reset all counters */
     appData.mainTmrCnt = 0;
-    appData.mainTmrTickFlag = 0;
     appData.TmrCnt = 0;
-    appData.TmrTickFlag = 0; 
+    appData.TmrTickFlag = false; 
     appData.TmrDisplay = 0;
     appData.measTodoFlag = false;
     
@@ -148,7 +149,7 @@ void APP_Initialize ( void )
     DRV_TMR0_Start();
     DRV_TMR1_Start();
     i2c_init(1);
-    //Press_InitADC();
+    Press_InitADC();
     
     LED_BOn();
     BNO055_delay_msek(500);
@@ -183,15 +184,14 @@ void APP_Tasks ( void )
     /* Local bno055 data */
     s_bno055_data bno055_local_data;
     
-    // Main timer action     
+    // --- Main timer action ---
     if(appData.TmrDisplay <= 2)
-        LED_BOn();
+        LED_GOn();
     else
-        LED_BOff();
-    
+        LED_GOff();
     if(appData.TmrDisplay >= 250)
         appData.TmrDisplay = 0;
-        
+    
      /* Check the application's current state. */
     switch ( appData.state )
     {
@@ -200,21 +200,16 @@ void APP_Tasks ( void )
         {
             // Test DELAY 
             BNO055_delay_msek(500);
-            
             // Measure all
             bno055_data_readout_template();
-        
             /* Service task */
-            appData.state = APP_STATE_SERVICE_TASKS;
+            appData.state = APP_STATE_LOGGING;
             
             break;
         }
 
-        case APP_STATE_SERVICE_TASKS:
-        {        
-            //static S_ADCResults adcRes;
-            
-            //adcRes = Press_ReadAllADC();
+        case APP_STATE_LOGGING:
+        {    
             
             if(appData.measTodoFlag)
             {
@@ -224,8 +219,12 @@ void APP_Tasks ( void )
                 bno055_local_data.comres = bno055_read_routine(&bno055_local_data);
                 /* Time measure */
                 bno055_local_data.time = appData.TmrMeas;
+                /* Pressure measure */
+                bno055_local_data.pressure = Press_readPressure();
+                
                 /* Display value via UART */
                 //serDisplayValues(&bno055_local_data);
+                
                 /* Write value to sdCard */
                 sd_BNO_scheduleWrite(&bno055_local_data);
                 /* If error detected, error LED */
@@ -237,6 +236,14 @@ void APP_Tasks ( void )
             
             /* FAT routine */
             sd_fat_task();
+            /* Debounce routine */
+            //DoDebounce(&switchDescr, ButtonMFStateGet());
+                        
+            //if(DebounceIsPressed(&switchDescr))
+            //{
+            //    DebounceClearPressed(&switchDescr);
+            //    LED_BToggle();
+            //}
             
            break;
         }

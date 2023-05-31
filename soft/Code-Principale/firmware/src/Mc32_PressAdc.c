@@ -22,6 +22,7 @@
 /* ************************************************************************** */
 #include "Mc32_PressAdc.h"
 #include "app.h"
+#include "peripheral/adc/plib_adc.h"
 /* This section lists the other files that are included in this file.
  */
 
@@ -116,20 +117,34 @@ S_ADCResults Press_ReadAllADC( void ) {
 
 float Press_RawToVoltage(float raw){
     float voltage = 0;
-    
-    voltage = 18 * raw;
-    
-    voltage = voltage * OPAMP_GAIN;
-    
-    return raw;
-    
+    /* Raw ADC to voltage */
+    voltage = raw * ADC_RES;
+    /* Voltage before op-amp */
+    voltage = voltage / OPAMP_GAIN;
+    return voltage;    
 }
 
 float Press_voltageToPressure(float voltage) {
     float pressure = 0;
-    
-    /* Convet voltage to pressure in bar */
+        /* Convet voltage to pressure in bar */
     pressure = ((voltage - V_MIN)*P_RANGE)/V_MAX;
+    
+    return pressure;
+}
+
+float Press_readPressure( void ) {
+    //structure de valeurs brutes des ADCs
+    volatile S_ADCResults rawResult;
+    /* Voltage variable */
+    float voltage = 0;
+    /* Pressure variable */
+    float pressure = 0;
+    /* Read ADC */
+    rawResult = Press_ReadAllADC();
+    /* Convert raw data to voltage */
+    voltage = Press_RawToVoltage(rawResult.AN3);
+    /* Get the pressure from the voltage */
+    pressure = Press_voltageToPressure(voltage);
     
     return pressure;
 }

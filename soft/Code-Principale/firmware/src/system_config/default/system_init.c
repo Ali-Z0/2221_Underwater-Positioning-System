@@ -103,7 +103,7 @@ const DRV_SDCARD_INIT drvSDCardInit =
 {
     .spiId = SPI_ID_1,
     .spiIndex = 0,
-    .sdcardSpeedHz = 150000,
+    .sdcardSpeedHz = 500000,
     .spiClk = CLK_BUS_PERIPHERAL_1,
     .chipSelectPort = PORT_CHANNEL_A,
     .chipSelectBitPosition = PORTS_BIT_POS_0,
@@ -211,10 +211,6 @@ void SYS_Initialize ( void* data )
     SYS_DEVCON_PerformanceConfig(SYS_CLK_SystemFrequencyGet());
 
     /* Initialize Drivers */
-
-    /* Initialize ADC */
-    DRV_ADC_Initialize();
-
     sysObj.drvSDCard = DRV_SDCARD_Initialize(DRV_SDCARD_INDEX_0,(SYS_MODULE_INIT *)&drvSDCardInit);
 
     /*** SPI Driver Index 0 initialization***/

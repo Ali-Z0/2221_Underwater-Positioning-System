@@ -78,13 +78,15 @@ extern "C" {
 typedef struct {
     s32 comres;
     bool flagMeasReady;
+    bool flagImportantMeas;
     struct bno055_gravity_double_t gravity;
     struct bno055_linear_accel_double_t linear_accel;
     struct bno055_euler_double_t euler;
     struct bno055_gyro_double_t gyro;
     struct bno055_mag_double_t mag;
     struct bno055_quaternion_t quaternion;
-    uint32_t time;
+    unsigned long time;
+    float pressure;
 }s_bno055_data;
 // *****************************************************************************
 /* Application states
@@ -101,8 +103,8 @@ typedef enum
 {
 	/* Application's state machine's initial state. */
 	APP_STATE_INIT=0,
-	APP_STATE_SERVICE_TASKS,
-
+    APP_STATE_LOGGING,
+	APP_STATE_SHUTDOWN
 	/* TODO: Define states used by the application state machine. */
 
 } APP_STATES;
@@ -127,7 +129,6 @@ typedef struct
     APP_STATES state;
 
     /* Main Timer (1ms) */
-    bool mainTmrTickFlag;
     uint32_t mainTmrCnt;
     
     /* Timer precis (1us) */

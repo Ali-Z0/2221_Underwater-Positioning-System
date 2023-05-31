@@ -116,30 +116,24 @@ s32 bno055_read_routine(s_bno055_data *data)
      * based on the user need configure the operation mode*/
     comres += bno055_set_operation_mode(BNO055_OPERATION_MODE_NDOF);
     
-    BNO055_delay_msek(5);
     /*  Raw Quaternion W, X, Y and Z data can read from the register
      * page - page 0
      * register - 0x20 to 0x27 */
     comres += bno055_read_quaternion_wxyz(&data->quaternion);
-    BNO055_delay_msek(5);
     /************************* END READ RAW FUSION DATA  ************/
     /******************START READ CONVERTED SENSOR DATA****************/
     /*  API used to read mag data output as double  - uT(micro Tesla)
      * float functions also available in the BNO055 API */
     comres += bno055_convert_double_mag_xyz_uT(&data->mag);
-    BNO055_delay_msek(5);
     /*  API used to read gyro data output as double  - dps and rps
      * float functions also available in the BNO055 API */
     comres += bno055_convert_double_gyro_xyz_dps(&data->gyro);
-    BNO055_delay_msek(5);
     /*  API used to read Euler data output as double  - degree and radians
      * float functions also available in the BNO055 API */
     comres += bno055_convert_double_euler_hpr_deg(&data->euler);
-    BNO055_delay_msek(5);
     /*  API used to read Linear acceleration data output as m/s2
      * float functions also available in the BNO055 API */
     comres += bno055_convert_double_linear_accel_xyz_msq(&data->linear_accel);
-    BNO055_delay_msek(5);
     comres += bno055_convert_double_gravity_xyz_msq(&data->gravity);
 
     /*-----------------------------------------------------------------------*
