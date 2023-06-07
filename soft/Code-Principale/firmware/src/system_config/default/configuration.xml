@@ -328,7 +328,7 @@
       <Template dnOrder="13">
         <Name dnOrder="0">system_init.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/default</Path>
-        <Checksum dnOrder="2">89E5DD3C9E028F6B98AC39A4CCFA908C</Checksum>
+        <Checksum dnOrder="2">1B7F3AD14E92DE5B9A78D23D56E832E2</Checksum>
       </Template>
       <Template dnOrder="14">
         <Name dnOrder="0">main.c</Name>
@@ -376,7 +376,7 @@
       <Template dnOrder="23">
         <Name dnOrder="0">system_config.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app/system_config/default</Path>
-        <Checksum dnOrder="2">9FC3DF702DAECA7F57F40BD5C93648CF</Checksum>
+        <Checksum dnOrder="2">4A4028DE5ACDAB12D1DC27836F4ADA0F</Checksum>
       </Template>
       <Template dnOrder="24">
         <Name dnOrder="0">app.h</Name>

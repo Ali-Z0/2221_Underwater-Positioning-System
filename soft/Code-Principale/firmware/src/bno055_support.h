@@ -43,6 +43,8 @@
 
 #define  BNO055_API
 
+#define  FLAG_MEAS_ON    1
+#define  FLAG_MEAS_OFF   0
 /*----------------------------------------------------------------------------*
 *  The following APIs are used for reading and writing of
 *   sensor data using I2C communication
@@ -90,7 +92,7 @@ void BNO055_delay_msek(u32 msek);
  *  \param: None
  *  \return: communication result
  */
-s32 bno055_data_readout_template(void);
+s32 bno055_init_readout(void);
 
 s32 bno055_read_routine(s_bno055_data *data);
 

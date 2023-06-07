@@ -100,8 +100,12 @@ void DisplayTimer_callback()
 {
     appData.TmrDisplay ++;
     appData.TmrMeas ++;
+    appData.TmrTickFlag = true;
     
-    if ( ( appData.TmrMeas % 150 ) == 0)
+    /* Debounce routine */
+    //DoDebounce(&switchDescr, ButtonMFStateGet());
+        
+    if ( ( appData.TmrMeas % 15 ) == 0)
         appData.measTodoFlag = true;
 }
 /* TODO:  Add any necessary callback functions.
@@ -185,12 +189,14 @@ void APP_Tasks ( void )
     s_bno055_data bno055_local_data;
     
     // --- Main timer action ---
-    if(appData.TmrDisplay <= 2)
+    /*if((appData.TmrDisplay <= 2))
         LED_GOn();
     else
-        LED_GOff();
+        LED_GOff();*/
+    
     if(appData.TmrDisplay >= 250)
         appData.TmrDisplay = 0;
+        
     
      /* Check the application's current state. */
     switch ( appData.state )
@@ -200,8 +206,8 @@ void APP_Tasks ( void )
         {
             // Test DELAY 
             BNO055_delay_msek(500);
-            // Measure all
-            bno055_data_readout_template();
+            // Init and Measure all
+            bno055_init_readout();
             /* Service task */
             appData.state = APP_STATE_LOGGING;
             
@@ -211,41 +217,60 @@ void APP_Tasks ( void )
         case APP_STATE_LOGGING:
         {    
             
-            if(appData.measTodoFlag)
+            if((appData.measTodoFlag)&&(sd_getState() == APP_IDLE))
             {
                 /* Reset measure flag */
                 appData.measTodoFlag = false;
+                LED_GOn();
                 /* BNO055 Read all important info routine */
                 bno055_local_data.comres = bno055_read_routine(&bno055_local_data);
+                LED_GOff();
                 /* Time measure */
                 bno055_local_data.time = appData.TmrMeas;
                 /* Pressure measure */
                 bno055_local_data.pressure = Press_readPressure();
+                
+                bno055_local_data.flagImportantMeas = FLAG_MEAS_OFF;
                 
                 /* Display value via UART */
                 //serDisplayValues(&bno055_local_data);
                 
                 /* Write value to sdCard */
                 sd_BNO_scheduleWrite(&bno055_local_data);
+                
+                if(bno055_local_data.flagImportantMeas == FLAG_MEAS_ON){
+                    /* Rest important measure flag */
+                    bno055_local_data.flagImportantMeas = FLAG_MEAS_OFF;
+                    LED_BOff();
+                }
+
                 /* If error detected, error LED */
-                if(bno055_local_data.comres != 0)
+                if((bno055_local_data.comres != 0)||(sd_getState() == APP_MOUNT_DISK))
                     LED_ROn();
                 else
                     LED_ROff();  
             }
-            
+            LED_BOn();
             /* FAT routine */
             sd_fat_task();
-            /* Debounce routine */
-            //DoDebounce(&switchDescr, ButtonMFStateGet());
+            LED_BOff();
                         
-            //if(DebounceIsPressed(&switchDescr))
-            //{
-            //    DebounceClearPressed(&switchDescr);
-            //    LED_BToggle();
-            //}
+            /*if(DebounceIsPressed(&switchDescr))
+            {
+                DebounceClearPressed(&switchDescr);
+                bno055_local_data.flagImportantMeas = FLAG_MEAS_ON;
+                LED_BOn();
+            }*/
             
            break;
+        }
+        case APP_STATE_FLAG_MEAS:
+        {
+            if(appData.measTodoFlag)
+            {
+                
+            }
+            
         }
         
         /* TODO: implement your application state machine.*/

@@ -78,7 +78,7 @@ extern "C" {
 typedef struct {
     s32 comres;
     bool flagMeasReady;
-    bool flagImportantMeas;
+    uint8_t flagImportantMeas;
     struct bno055_gravity_double_t gravity;
     struct bno055_linear_accel_double_t linear_accel;
     struct bno055_euler_double_t euler;
@@ -104,6 +104,7 @@ typedef enum
 	/* Application's state machine's initial state. */
 	APP_STATE_INIT=0,
     APP_STATE_LOGGING,
+    APP_STATE_FLAG_MEAS,
 	APP_STATE_SHUTDOWN
 	/* TODO: Define states used by the application state machine. */
 

@@ -190,6 +190,7 @@ void sd_fat_task ( void );
 
 void sd_BNO_scheduleWrite (s_bno055_data * data);
 
+APP_FAT_STATES sd_getState( void );
 
 #endif /* _APP_H */
 /*******************************************************************************

@@ -57,32 +57,7 @@ s32 bno055_read_routine(s_bno055_data *data)
     s32 comres = BNO055_ERROR;
 
     /* variable used to set the power mode of the sensor*/
-    u8 power_mode = BNO055_INIT_VALUE;
-
-    /*---------------------------------------------------------------------------*
-     *********************** START INITIALIZATION ************************
-     *--------------------------------------------------------------------------*/
-#ifdef  BNO055_API
-    /*  Based on the user need configure I2C interface.
-     *  It is example code to explain how to use the bno055 API*/
-    I2C_routine();
-#endif
-
-    /*--------------------------------------------------------------------------*
-     *  This API used to assign the value/reference of
-     *  the following parameters
-     *  I2C address
-     *  Bus Write
-     *  Bus read
-     *  Chip id
-     *  Page id
-     *  Accel revision id
-     *  Mag revision id
-     *  Gyro revision id
-     *  Boot loader revision id
-     *  Software revision id
-     *-------------------------------------------------------------------------*/
-    comres = bno055_init(&bno055);
+    //u8 power_mode = BNO055_INIT_VALUE;
 
     /*  For initializing the BNO sensor it is required to the operation mode
      * of the sensor as NORMAL
@@ -90,10 +65,10 @@ s32 bno055_read_routine(s_bno055_data *data)
      * Page - page0
      * register - 0x3E
      * bit positions - 0 and 1*/
-    power_mode = BNO055_POWER_MODE_NORMAL;
+    //power_mode = BNO055_POWER_MODE_NORMAL;
 
     /* set the power mode as NORMAL*/
-    comres += bno055_set_power_mode(power_mode);
+    //comres += bno055_set_power_mode(power_mode);
 
     /*----------------------------------------------------------------*
      ************************* END INITIALIZATION *************************
@@ -114,7 +89,7 @@ s32 bno055_read_routine(s_bno055_data *data)
      * 0x0B - BNO055_OPERATION_MODE_NDOF_FMC_OFF
      * 0x0C - BNO055_OPERATION_MODE_NDOF
      * based on the user need configure the operation mode*/
-    comres += bno055_set_operation_mode(BNO055_OPERATION_MODE_NDOF);
+    //comres += bno055_set_operation_mode(BNO055_OPERATION_MODE_NDOF);
     
     /*  Raw Quaternion W, X, Y and Z data can read from the register
      * page - page 0
@@ -146,10 +121,10 @@ s32 bno055_read_routine(s_bno055_data *data)
      * Page - page0
      * register - 0x3E
      * bit positions - 0 and 1*/
-    power_mode = BNO055_POWER_MODE_SUSPEND;
+    //power_mode = BNO055_POWER_MODE_SUSPEND;
 
     /* set the power mode as SUSPEND*/
-    comres += bno055_set_power_mode(power_mode);
+    //comres += bno055_set_power_mode(power_mode);
     
     /* Flag measure ready */
     data->flagMeasReady = true;
@@ -157,7 +132,7 @@ s32 bno055_read_routine(s_bno055_data *data)
     /*---------------------------------------------------------------------*
     ************************* END DE-INITIALIZATION **********************
     *---------------------------------------------------------------------*/
-    return (comres);
+    return (comres+1);
 }
 
 /*--------------------------------------------------------------------------*
@@ -333,7 +308,7 @@ void BNO055_delay_msek(u32 msek)
 #endif
 
 
-s32 bno055_data_readout_template(void)
+s32 bno055_init_readout(void)
 {
     /* Variable used to return value of
      * communication routine*/
@@ -611,11 +586,11 @@ s32 bno055_data_readout_template(void)
      * Page - page0
      * register - 0x3E
      * bit positions - 0 and 1*/
-    power_mode = BNO055_POWER_MODE_SUSPEND;
+    //power_mode = BNO055_POWER_MODE_SUSPEND;
 
     /* set the power mode as SUSPEND*/
-    comres += bno055_set_power_mode(power_mode);
-
+    //comres += bno055_set_power_mode(power_mode);
+    comres += bno055_set_operation_mode(BNO055_OPERATION_MODE_NDOF);
     /*---------------------------------------------------------------------*
     ************************* END DE-INITIALIZATION **********************
     *---------------------------------------------------------------------*/
