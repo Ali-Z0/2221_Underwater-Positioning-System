@@ -86,6 +86,8 @@ typedef struct {
     struct bno055_mag_double_t mag;
     struct bno055_quaternion_t quaternion;
     unsigned long time;
+    unsigned long l_time;
+    uint16_t d_time;
     float pressure;
 }s_bno055_data;
 // *****************************************************************************
@@ -137,7 +139,8 @@ typedef struct
     uint32_t TmrCnt;
     
     /* Measure todo flag */
-    uint32_t TmrMeas;
+    unsigned long TmrMeas;
+    unsigned long ltime;
     bool measTodoFlag;
     
     /* Timer display */

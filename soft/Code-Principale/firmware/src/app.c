@@ -146,7 +146,7 @@ void APP_Initialize ( void )
     appData.TmrTickFlag = false; 
     appData.TmrDisplay = 0;
     appData.measTodoFlag = false;
-    
+        
     /* Hold the device on */
     PwrHoldOn();
     /* Peripherals init */
@@ -210,7 +210,8 @@ void APP_Tasks ( void )
             bno055_init_readout();
             /* Service task */
             appData.state = APP_STATE_LOGGING;
-            
+            /* Init ltime counter */
+            appData.ltime = 0;
             break;
         }
 
@@ -219,12 +220,10 @@ void APP_Tasks ( void )
             
             if((appData.measTodoFlag == true )&&(sd_getState() == APP_IDLE))
             {
-                LED_GOn();
                 /* BNO055 Read all important info routine */
                 bno055_local_data.comres = bno055_read_routine(&bno055_local_data);
-                LED_GOff();
-                /* Time measure */
-                bno055_local_data.time = appData.TmrMeas;
+                /* Delta time */
+                bno055_local_data.d_time = appData.TmrMeas - appData.ltime;
                 /* Pressure measure */
                 bno055_local_data.pressure = Press_readPressure();
                 
@@ -241,20 +240,22 @@ void APP_Tasks ( void )
                     bno055_local_data.flagImportantMeas = FLAG_MEAS_OFF;
                     LED_BOff();
                 }
-
-                /* If error detected, error LED */
-                if((bno055_local_data.comres != 0)||(sd_getState() == APP_MOUNT_DISK))
-                    LED_ROn();
-                else
-                    LED_ROff();  
-                
                 /* Reset measure flag */
                 appData.measTodoFlag = false;
+                
+                appData.ltime = appData.TmrMeas;
             }
-            LED_BOn();
+            
+            /* If error detected, error LED */
+            if((bno055_local_data.comres != 0)||(sd_getState() == APP_MOUNT_DISK))
+                LED_ROn();
+            else
+                LED_ROff();
+            
+            LED_GOn();
             /* FAT routine */
             sd_fat_task();
-            LED_BOff();
+            LED_GOff();
                
             /*if(DebounceIsPressed(&switchDescr))
             {

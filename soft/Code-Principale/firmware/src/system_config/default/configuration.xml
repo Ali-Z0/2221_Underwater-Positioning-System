@@ -328,7 +328,7 @@
       <Template dnOrder="13">
         <Name dnOrder="0">system_init.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/default</Path>
-        <Checksum dnOrder="2">E3A0FBABAD38FABA56D0A26D252F77C1</Checksum>
+        <Checksum dnOrder="2">D90B367060BC632EC1D5E85C72C779EE</Checksum>
       </Template>
       <Template dnOrder="14">
         <Name dnOrder="0">main.c</Name>
