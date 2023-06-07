@@ -105,7 +105,7 @@ void DisplayTimer_callback()
     /* Debounce routine */
     //DoDebounce(&switchDescr, ButtonMFStateGet());
         
-    if ( ( appData.TmrMeas % 16 ) == 0)
+    if ( ( appData.TmrMeas % 9 ) == 0)
         appData.measTodoFlag = true;
 }
 /* TODO:  Add any necessary callback functions.

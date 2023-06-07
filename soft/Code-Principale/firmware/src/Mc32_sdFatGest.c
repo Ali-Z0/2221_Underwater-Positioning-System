@@ -170,7 +170,7 @@ void sd_BNO_scheduleWrite (s_bno055_data * data)
     {
         appFatData.state = APP_WRITE_MEASURE_FILE;
 
-        sprintf(appFatData.data, "%d;%lu;%f;%.4f;%.4f;%.4f;%.4f;%.4f;%.4f;%.4f;%.4f;%.4f;%.4f;%.4f;%.4f;%.4f;%.4f;%.4f;%d;%d;%d;%d;"
+        sprintf(appFatData.data, "%d0;%lu;%f;%.4f;%.4f;%.4f;%.4f;%.4f;%.4f;%.4f;%.4f;%.4f;%.4f;%.4f;%.4f;%.4f;%.4f;%.4f;%d;%d;%d;%d;"
                                   ,data->flagImportantMeas, (data->time), data->pressure, data->gravity.x, data->gravity.y, data->gravity.z, data->gyro.x, data->gyro.y, data->gyro.z
                                   ,data->mag.x, data->mag.y, data->mag.z, data->linear_accel.x, data->linear_accel.y, data->linear_accel.z
                                   ,data->euler.h, data->euler.p, data->euler.r, data->quaternion.w, data->quaternion.x, data->quaternion.y, data->quaternion.z);
