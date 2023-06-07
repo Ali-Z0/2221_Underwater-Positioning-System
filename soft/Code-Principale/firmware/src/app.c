@@ -105,7 +105,7 @@ void DisplayTimer_callback()
     /* Debounce routine */
     //DoDebounce(&switchDescr, ButtonMFStateGet());
         
-    if ( ( appData.TmrMeas % 15 ) == 0)
+    if ( ( appData.TmrMeas % 16 ) == 0)
         appData.measTodoFlag = true;
 }
 /* TODO:  Add any necessary callback functions.
@@ -217,10 +217,8 @@ void APP_Tasks ( void )
         case APP_STATE_LOGGING:
         {    
             
-            if((appData.measTodoFlag)&&(sd_getState() == APP_IDLE))
+            if((appData.measTodoFlag == true )&&(sd_getState() == APP_IDLE))
             {
-                /* Reset measure flag */
-                appData.measTodoFlag = false;
                 LED_GOn();
                 /* BNO055 Read all important info routine */
                 bno055_local_data.comres = bno055_read_routine(&bno055_local_data);
@@ -249,12 +247,15 @@ void APP_Tasks ( void )
                     LED_ROn();
                 else
                     LED_ROff();  
+                
+                /* Reset measure flag */
+                appData.measTodoFlag = false;
             }
             LED_BOn();
             /* FAT routine */
             sd_fat_task();
             LED_BOff();
-                        
+               
             /*if(DebounceIsPressed(&switchDescr))
             {
                 DebounceClearPressed(&switchDescr);
@@ -285,6 +286,10 @@ void APP_Tasks ( void )
     }
 }
 
+void App_resetMeasFlag( void )
+{
+    appData.measTodoFlag = false;
+}
  
 
 /*******************************************************************************

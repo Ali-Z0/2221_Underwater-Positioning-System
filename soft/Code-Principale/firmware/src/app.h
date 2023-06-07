@@ -150,9 +150,6 @@ typedef struct
 // Section: Application Callback Routines
 // *****************************************************************************
 // *****************************************************************************
-/* These routines are called by drivers when certain events occur.
-*/
-	
 // *****************************************************************************
 // *****************************************************************************
 // Section: Application Initialization and State Machine Functions
@@ -193,6 +190,8 @@ typedef struct
 void APP_Initialize ( void );
 
 void prepareBuffer( char * buffer );
+
+void App_resetMeasFlag( void );
 
 /*******************************************************************************
   Function:

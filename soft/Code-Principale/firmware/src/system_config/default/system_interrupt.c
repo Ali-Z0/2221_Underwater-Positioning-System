@@ -80,7 +80,7 @@ void __ISR(_TIMER_1_VECTOR, ipl4AUTO) IntHandlerDrvTmrInstance0(void)
     PLIB_INT_SourceFlagClear(INT_ID_0,INT_SOURCE_TIMER_1);
     MainTimer_callback();
 }
-void __ISR(_TIMER_2_VECTOR, ipl4AUTO) IntHandlerDrvTmrInstance1(void)
+void __ISR(_TIMER_2_VECTOR, ipl6AUTO) IntHandlerDrvTmrInstance1(void)
 {
     PLIB_INT_SourceFlagClear(INT_ID_0,INT_SOURCE_TIMER_2);
     DisplayTimer_callback();
