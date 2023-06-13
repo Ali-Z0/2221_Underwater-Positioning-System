@@ -40,19 +40,61 @@
 	\label{fig:baspcb}
 \end{figure}
 
+J'ai décidé de placer en bas du PCB les parties d'alimentations du projet. Cette zone comporte :
+
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+\begin{table}[h]
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{|c|l|l|}
+			\hline
+			Composant &
+			\multicolumn{1}{c|}{Detail} &
+			\multicolumn{1}{c|}{Justification} \\ \hline
+			USB &
+			FTDI, piste 5V, pistes différentiels &
+			Bord du PCB pour cablage ergonomique \\ \hline
+			Capteur de pression &
+			\begin{tabular}[c]{@{}l@{}}Connecteur, Jumper choix alim,\\ Choix mode (courant,tension,i2c)\end{tabular} &
+			\begin{tabular}[c]{@{}l@{}}Capteur de pression proche du bord\\ branchement plus simple\end{tabular} \\ \hline
+			Carte SD &
+			Condos de découplages, pistes SPI &
+			Plus grand consommateur \\ \hline
+			Gestion batterie &
+			\begin{tabular}[c]{@{}l@{}}Régulateur de charge, bouton ON/OFF,\\ régulateur 3.3V\end{tabular} &
+			Zone dédiée, proche de la batterie \\ \hline
+			Boost 5V (bottom) &
+			Circuit de boost 3.3-5V &
+			\begin{tabular}[c]{@{}l@{}}Isolé, loin des petits signaux (bruit).\\ Proche du capteur de pression (5V)\end{tabular} \\ \hline
+		\end{tabular}%
+	}
+	\caption{Composants de la zone et justification}
+	\label{tab:PlacementBas}
+\end{table}
+\clearpage
+
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.7\linewidth]{Figures/hautPCB}
+	\includegraphics[width=0.56\linewidth]{Figures/hautPCB}
 	\caption{Placement signaux}
 	\label{fig:hautpcb}
 \end{figure}
 
-	
+Le microcontrôleur est plus ou moins centrée par rapport aux différents périphériques, afin de minimiser la longueur des pistes des petits signaux. Il y a un bouton de reset, un multiplexeur et un oscillateur externe, au plus proche du MCU.
 }
 \clearpage
 
 \subsection{Routage} \label{ssec:routage}
-{}
+{
+	\begin{figure}[h]
+		\centering
+		\includegraphics[height=0.615\pageheight]{Figures/Pistes}
+		\caption{Pistes du PCB}
+		\label{fig:pistes}
+	\end{figure}
+	
+}
 \clearpage
 
 \subsection{Points d'améliorations} \label{ssec:pointAmel}
