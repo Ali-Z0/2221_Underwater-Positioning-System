@@ -24,7 +24,7 @@
 		\includegraphics[width=1\linewidth]{Figures/Dev-SCH/PIC32-choisi}
 		\caption{Périphériques disponibles du PIC}
 		\label{fig:pic32-choisi}
-		\source{PIC32MM0256GPM064 family datasheet}
+		\source{\href{https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/DataSheets/PIC32MM0256GPM064-Family-Data-Sheet-DS60001387D.pdf}{PIC32MM0256GPM064 family datasheet}}
 	\end{figure}
 	
 	Nous pouvons constater sur la figure \ref{fig:pic32-choisi} que les critères minimaux de mon projet sont respectés :
@@ -41,14 +41,14 @@
 	{
 		\begin{figure}[th]
 			\centering
-			\includegraphics[width=1.1\linewidth]{Figures/Dev-SCH/schemaBloc}
+			\includegraphics[width=\textwidth]{Figures/Dev-SCH/schemaBloc}
 			\caption{Schéma bloc de la schématique}
 			\source{Auteur}
 			\label{fig:schemablocSCH}
 		\end{figure} \vspace{-5mm}
 		Nous pouvons constater sur la figure \ref{fig:schemablocSCH} la structure des différents blocs du schéma : 
 		
-		\begin{tabularx}{18cm}{|X|X|}
+		\begin{tabularx}{16cm}{|X|X|}
 			\hline
 			Bloc & Description \\
 			\hline
@@ -74,7 +74,7 @@
 			\fbox{\textit{MCU - 30mA}} \fbox{\textit{BNO055 - 12.3mA}} \fbox{\textit{Capt. Pression - 4mA}} \fbox{\textit{\textcolor{red}{Carte-SD - 100mA}}} \fbox{\textit{MikroE - ??mA}} \fbox{\textit{Régulateurs - 40uA}} \fbox{\textit{LED RGB - 25mA}} 
 		\end{center}
 		
-		Nous pouvons constater que la plus grande consommation vient de la carte micro-SD, qui au maximum peut induire 100mA. \footnote{Selon datasheet SanDisk : https://images-na.ssl-images-amazon.com/images/I/91tTtUMDM3L.pdf}
+		Nous pouvons constater que la plus grande consommation vient de la carte micro-SD, qui au maximum peut induire 100mA. \footnote{\href{https://images-na.ssl-images-amazon.com/images/I/91tTtUMDM3L.pdf}{Datasheet SanDisk} }
 		
 		
 		Afin d'obtenir une autonomie d'au moins 2h (selon CDC), il faudrait une capacité de :
@@ -272,7 +272,7 @@
 	}
 	
 	\clearpage
-	\subsubsection{Conclusion et perspectives de l'étude} \label{sssec:conclusionEtude}
+	\subsubsection{Synthèse et perspectives de l'étude} \label{sssec:conclusionEtude}
 	{
 		Lors du développement de la schématique, je n'ai pas eu de grands dimensionnements à faire mais plutôt dû mettre en place des mécanismes permettant la communication avec tous les senseurs et périphériques du système. J'ai essayé d'être le plus explicite possible lors de la création des différents blocs du schéma électrique, pour permettre une compréhension aisée de celui-ci. 
 		J'ai pû faire un contrôle mutuel de la schématique avec mon collègue M. Meven Ricchieri.

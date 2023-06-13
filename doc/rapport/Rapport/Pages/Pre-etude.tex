@@ -16,23 +16,23 @@ L'objectif de cette pré-étude, est de se pencher sur le fonctionnement plus fo
 
 \clearpage
 
-\underline{Capteurs :} 
-\\ Les différents capteurs sont interfacés sur le même bus, et ont comme master le microcontrôleur en communication bidirectionnel, afin d'à la fois configurer les registres des périphériques et de lire leurs mesures.\\
+\paragraph{Capteurs :} 
+Les différents capteurs sont interfacés sur le même bus, et ont comme master le microcontrôleur en communication bidirectionnel, afin d'à la fois configurer les registres des périphériques et de lire leurs mesures.\\
 
-\underline{Carte SD :}
-\\ La carte SD est interfacée en SPI et va contenir les données des différents capteurs ainsi que leurs éventuels flags d'importance (sauvegarde), sa taille sera dimensionnée ultérieurement.\\
+\paragraph{Carte SD :}
+La carte SD est interfacée en SPI et va contenir les données des différents capteurs ainsi que leurs éventuels flags d'importance (sauvegarde), sa taille sera dimensionnée ultérieurement.\\
 
-\underline{Port USB \& charge :}
-\\ Un port USB est présent, afin charger les batteries par un IC de gestion de charge connecté directement au 5V. De plus le port USB est communiquant avec le microcontrôleur par un driver FTDI, afin d'éventuellement ajouter un système de lecture de la carte SD, directement par USB. Ceci dans cette version ou une ultérieure. Le port USB pourrait aussi servir a fixer la référence de la RTC. \\
+\paragraph{Port USB \& charge :}
+Un port USB est présent, afin charger les batteries par un IC de gestion de charge connecté directement au 5V. De plus le port USB est communiquant avec le microcontrôleur par un driver FTDI, afin d'éventuellement ajouter un système de lecture de la carte SD, directement par USB. Ceci dans cette version ou une ultérieure. Le port USB pourrait aussi servir a fixer la référence de la RTC. \\
 
-\underline{Bouton multifonction :}
-\\ Sachant qu'un bouton étanche est déjà présent sur le module, l'exploiter en tant que bouton multifonction est une solution ergonomique pour ne pas mettre en péril l'étanchéité globale. Ce bouton ferait office de ON/OFF et de "sauvegarde" de point d'intérêt. Pour se faire, le bouton contrôlerait par un transistor de commutation l'alimentation du système, puis lors de l'allumage du microcontrôleur, le MCU prendrait la relève en maintenant le système allumé a sont tour, permettant ainsi de lire le bouton et de sur une pression longue déconnecter l'alimentation.\\
+\paragraph{Bouton multifonction :}
+Sachant qu'un bouton étanche est déjà présent sur le module, l'exploiter en tant que bouton multifonction est une solution ergonomique pour ne pas mettre en péril l'étanchéité globale. Ce bouton ferait office de ON/OFF et de "sauvegarde" de point d'intérêt. Pour se faire, le bouton contrôlerait par un transistor de commutation l'alimentation du système, puis lors de l'allumage du microcontrôleur, le MCU prendrait la relève en maintenant le système allumé a sont tour, permettant ainsi de lire le bouton et de sur une pression longue déconnecter l'alimentation.\\
 
-\underline{Affichage :}
-\\ L'affichage permettra de visualiser différentes données, dont les plus importantes tel que la pression ou le statut de la batterie. \\ La forme de l'affichage est encore a définir selon la mécanique du module, mais le plus élégant, serait l'utilisation d'un petit écran OLED.\\
+\paragraph{Affichage :}
+L'affichage permettra de visualiser différentes données, dont les plus importantes tel que la pression ou le statut de la batterie. \\ La forme de l'affichage est encore a définir selon la mécanique du module, mais le plus élégant, serait l'utilisation d'un petit écran OLED.\\
 
-\underline{Capteur de pression :}
-\\ Le capteur de pression devra avoir un contact direct avec l'eau, cela impliquera de la mécanique et de la gestion d'étanchéité. Une autre possibilité aurait été de mesurer optiquement la déformation du boîtier pour en déduire la pression, mais la complexité est trop importante.\\
+\paragraph{Capteur de pression :}
+Le capteur de pression devra avoir un contact direct avec l'eau, cela impliquera de la mécanique et de la gestion d'étanchéité. Une autre possibilité aurait été de mesurer optiquement la déformation du boîtier pour en déduire la pression, mais la complexité est trop importante.\\
 }
 
 \clearpage
@@ -43,13 +43,13 @@ L'objectif de cette pré-étude, est de se pencher sur le fonctionnement plus fo
 
 \subsubsection{Senseur absolu}
 {
-    Pour le senseur absolu, il existe des IC permettant directement de faire la fusion des senseurs (\textbf{Accéléromètre, gyroscope, magnétomètre et thermomètre}), ce qui épargne toute une phase de calcul chronophage, en permettant directement de lire les \textbf{quaternion, angles de Euler, vecteurs de rotations, cap de direction etc...} directement sur le composant. Il existe différents IC dont deux ce sont montrés très intéressants, le \textbf{BNO85} et le \textbf{BNO55}, les deux étant PIN-Compatibles, j'ai décidé d'opter pour le \textbf{\underline{BNO055}}\footnote{K:/ES/PROJETS/SLO/2221\_LocalisationSousMarine/doc/composants/9DOF-BNO055}.
+    Pour le senseur absolu, il existe des IC permettant directement de faire la fusion des senseurs (\textbf{Accéléromètre, gyroscope, magnétomètre et thermomètre}), ce qui épargne toute une phase de calcul chronophage, en permettant directement de lire les \textbf{quaternion, angles de Euler, vecteurs de rotations, cap de direction etc...} directement sur le composant. Il existe différents IC dont deux ce sont montrés très intéressants, le \textbf{BNO85} et le \textbf{BNO55}, les deux étant PIN-Compatibles, j'ai décidé d'opter pour le \textbf{\underline{BNO055}}\footnote{\href{K:/ES/PROJETS/SLO/2221\_LocalisationSousMarine/doc/composants/9DOF-BNO055}{K:/ES/PROJETS/SLO/2221\_LocalisationSousMarine/doc/composants/9DOF-BNO055}}.
     
     \begin{figure}[h]
     \centering
     \includegraphics[width=.4\textwidth]{Figures/BNO055-Illustration}
     \caption{Schéma bloc du module}
-    \source{https://www.mouser.ch/new/bosch/bosch-bno55-sensor/}
+    \source{\href{https://www.mouser.ch/new/bosch/bosch-bno55-sensor/}{https://www.mouser.ch/new/bosch/bosch-bno55-sensor/}}
     \label{fig:SchemaBloc}
     \end{figure}
     
@@ -72,7 +72,7 @@ L'objectif de cette pré-étude, est de se pencher sur le fonctionnement plus fo
         \centering
         \includegraphics[width=.68\textwidth]{Figures/DATAS-BNO055}
         \caption{Donnée de sortie de l'IC (43 bytes)}
-        \source{ https://cdn-shop.adafruit.com/datasheets/BST\_BNO055\_DS000\_12.pdf }
+        \source{ \href{https://cdn-shop.adafruit.com/datasheets/BST\_BNO055\_DS000\_12.pdf}{https://cdn-shop.adafruit.com/datasheets/BST\_BNO055\_DS000\_12.pdf} }
         \label{fig:BnoOut}
     \end{figure}
 }
@@ -88,7 +88,7 @@ Pour le capteur de pression, une modification mécanique du boîter sera très p
     \centering
     \includegraphics[width=.4\textwidth]{Figures/Capteur-pression}
     \caption{Illustration capteur de pression}
-    \source{Distrelec, PTE7300-14AN-1B016BN}
+    \source{Distrelec, \href{https://www.distrelec.ch/fr/capteur-de-pression-hermetique-numerique-industriel-g1-16bar-module-sensata-pte7300-14an-1b016bn/p/30302457}{PTE7300-14AN-1B016BN}}
     \label{fig:CaptPress}
 \end{figure}
 
@@ -109,29 +109,29 @@ L'avantage avec le capteur ci-dessus est le système hermétique pour le trou, u
 \newpage
 \subsubsection{Carte SD} \label{sssec:CarteSD}
 {
-    \underline{Taille mémoire :} \\
+    \paragraph{Taille mémoire : }
     Afin de dimensionner la taille de stockage de la carte SD, il faut utiliser les différentes caractéristiques du projet. Normalement la taille de la carte SD n'est clairement pas un problème, sachant que seulement du texte est enregistré et que les tailles mémoires disponibles peuvent être très élevées. Néanmoins il est intéressant de faire le dimensionnement pour connaître le minimum, et pour éventuellement adapter le projet avec d'autres systèmes de mémorisation.  \\
     Où : \vspace{+14pt} \\
     \begin{tabular}{l l ll|l}
        $ T_{rec} $ & = &  $7200'000$ & $[ms]$ & Temps a enregistrer \\
        $ T_{ech}$ & = & $100$  & $[ms]$ & Temps d'un échantillon \\
-       $ S_{mes} $ & = & $43$ & $[bytes]$ & Taille de toutes les données de mesures  \\
-       $ S_{timestamp} $ & = & $\sim$23 & $[bytes]$ & Taille de l'information de temporalité  \\
+       $ S_{mes} $ & = & $150$ & $[bytes]$ & Taille de toutes les données de mesures  \\
+       $ S_{timestamp} $ & = & $\sim$3 & $[bytes]$ & Taille de l'information de temporalité  \\
        $ S_{flag} $ & = & $ 1 $ & $[bytes]$ & Taille de l'indication d'importance 
     \end{tabular}
     \vspace{+14pt}
     \\
-    Nombre de mesure a effectuer : \\ 
+   \paragraph{ Nombre de mesure a effectuer :}
     \begin{equation} \label{equ:NbMes}
         Nb_{mesures} = \frac{T_{rec}}{T_{ech}}
     \end{equation} 
     D'après (\ref{equ:NbMes}), nous avons un nombre de mesure de 72'000.  \vspace{+8pt} \\
     
-    Taille minimum : \\
+   \paragraph{Taille minimum :}
     \begin{equation} \label{equ:TailleMin}
         Taille_{min} = Nb_{mesures} * (S_{mes}+S_{timestamp}+S_{flag}) 
     \end{equation}
-    D'après (\ref{equ:TailleMin}), la taille mémoire minimum doit être de \textbf{$\sim$5MB}. \vspace{+8pt} \\ 
+    D'après (\ref{equ:TailleMin}), la taille mémoire minimum doit être de \textbf{$\sim$11MB}. \vspace{+8pt} \\ 
     Nous pouvons donc constater que pour une utilisation standard de 2h, la mémoire occupée est très faible, d'où l'intérêt de sauvegarder dans la carte SD la date, afin de pouvoir faire plusieurs "expéditions" en "une fois", sans avoir à vider la carte.
 }
 
@@ -144,17 +144,9 @@ L'avantage avec le capteur ci-dessus est le système hermétique pour le trou, u
 
     La RTC devra pouvoir tenir le minimum de 2 heure d'utilisation, à cette fin, la batterie LI-ION déjà présente sera suffisante. \\ 
     La RTC devra avoir une faible consommation, le calendrier ainsi qu'une bonne précision. A cette fin, la RTC \textbf{S-35390A-T8T1G} est assez générique et possède une bonne documentation.
-    
-    \begin{figure}[h] 
-        \centering
-        \includegraphics[width=.4\textwidth]{Figures/RTC}
-        \caption{Illustration de la RTC}
-        \source{ https://www.digikey.com/en/products/detail/ablic-inc/S-35390A-T8T1G/1628383 }
-        \label{fig:RTC}
-    \end{figure}    
+     
     
 }
-\clearpage
 
 \subsubsection{Microcontrôleur}
 {
@@ -171,7 +163,7 @@ L'avantage avec le capteur ci-dessus est le système hermétique pour le trou, u
         \centering
         \includegraphics[width=.4\textwidth]{Figures/PIC32MX795F512L-V7X-Regular}
         \caption{Illustration du modèle MCU du kit ETML-ES}
-        \source{ https://www.microchip.com/en-us/product/PIC32MX795F512L }
+        \source{\href{https://www.microchip.com/en-us/product/PIC32MX795F512L}{https://www.microchip.com/en-us/product/PIC32MX795F512L}}
         \label{fig:MCU}
     \end{figure}
     
@@ -242,10 +234,7 @@ Pour des raisons de praticité et étant-donné la documentation plus importante
 
 }
 
-\newpage
-
-
-\subsection{Conclusion et perspectives} \label{ssec:PreeConc}
+\subsection{Synthèse développement} \label{ssec:PreeConc}
 {
 
 J'ai pu lors de cette pré-étude, établir le fonctionnement global du système, choisir certaines technologies et composants importants, ainsi que pu procéder a certains dimensionnements utiles quant au futur développement. 
