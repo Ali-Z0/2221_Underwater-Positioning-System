@@ -1,28 +1,54 @@
 % ------------------------- MAIN TASK ---------------------------------
 \section{Développement du PCB}
 
-\subsection{Footprints} \label{ssec:Footprints}
-{}
-\clearpage
-
 \subsection{Bill of materials} \label{ssec:BOM}
-{}
+{
+	La BOM complète est disponible dans les répertoires du projet, voici un extrait des prix des composants importants :
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{Figures/Prix_Composants}
+		\caption{Prix des composants}
+		\label{fig:prixcomposants}
+	\end{figure}
+	
+}
 \clearpage
 
 \subsection{Mécanique du projet} \label{ssec:mechProjet}
-{}
-\clearpage
-
-\subsection{Restrictions mécaniques} \label{ssec:RestrictionMech}
-{}
-\clearpage
-
-\subsection{Planification PCB} \label{ssec:planifPCB}
-{}
+{
+	Afin d'installer le PCB dans le boitier de la lampe, les deux tiges internes du boitier peuvent avec des attaches servir de support. Pour se faire, imprimer une pièce a visser en 3d ou en utilisant simplement des brides, pourrait permettre de maintenir la carte dans le boitier. Il faudra donc mettre des trous dans le PCB pour permettre des visses ou des brides.
+	
+	
+	\subsubsection{Considérations mécaniques} \label{ssec:RestrictionMech}
+	\paragraph{Tige conductrice :} Sachant que les tiges de support de la lampe sont conductrices, il faut donc prévoir une zone sans composant, sans cuivre apparent et si possible sans pistes sur les bords de la couche \textit{bottom}.
+	\paragraph{Carte SD : } La carte SD requiert un support relativement grand et un espace doit être prévu pour pouvoir insérer/retirer la carte facilement et sans qu'elle dépasse trop du PCB.
+	\paragraph{Centra inertielle :} La centrale inertielle, se connecte via des bergs femelles et vas par conséquent prendre de la place en hauteur, ce qui doit être considéré.
+	\paragraph{Slot MIKROE :} Un slot mikroe est présent dans le projet et pour être implémenté, vas requérir un allongement mécanique du bouton de la lampe, pour gagner de la place. Cette pièce doit être produite et usinée, car elle requiert d'être étanche. 
+	\paragraph{LED RGB :} La LED en bout du PCB peut exploiter le réfracteur déjà présent de la lampe.
+	\paragraph{Connecteur USB :} Pour charger l'appareil, un port USB devrait être disponible au bord du PCB.
+}
 \clearpage
 
 \subsection{Placement des composants} \label{ssec:placementComp}
-{}
+{
+\paragraph{Alimentation :}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{Figures/BasPCB}
+	\caption{Placement alimentations}
+	\label{fig:baspcb}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{Figures/hautPCB}
+	\caption{Placement signaux}
+	\label{fig:hautpcb}
+\end{figure}
+
+	
+}
 \clearpage
 
 \subsection{Routage} \label{ssec:routage}
