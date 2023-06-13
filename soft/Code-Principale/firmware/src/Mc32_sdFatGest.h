@@ -100,7 +100,10 @@ typedef enum
     APP_IDLE,
 
     /* An app error has occurred */
-    APP_ERROR
+    APP_ERROR,
+            
+    /* Unmount disk */
+    APP_UNMOUNT_DISK
 
 } APP_FAT_STATES;
 
@@ -191,6 +194,8 @@ void sd_fat_task ( void );
 void sd_BNO_scheduleWrite (s_bno055_data * data);
 
 APP_FAT_STATES sd_getState( void );
+
+void sd_setState( APP_FAT_STATES newState );
 
 #endif /* _APP_H */
 /*******************************************************************************

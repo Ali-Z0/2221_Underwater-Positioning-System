@@ -69,6 +69,7 @@ extern "C" {
 // DOM-IGNORE-END 
     
 #define TIME_OUT 80000000U
+#define TIME_FLAG_MEASURE   500
 
 // *****************************************************************************
 // *****************************************************************************
@@ -145,7 +146,11 @@ typedef struct
     
     /* Timer display */
     uint32_t TmrDisplay;
-
+    
+    /* Tmr wait shutdown */
+    bool flagCountBtnPressed;
+    uint32_t TmrBtnPressed;
+    
 } APP_DATA;
 
 // *****************************************************************************

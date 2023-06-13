@@ -102,9 +102,12 @@ void DisplayTimer_callback()
     appData.TmrMeas ++;
     appData.TmrTickFlag = true;
     
-    /* Debounce routine */
-    //DoDebounce(&switchDescr, ButtonMFStateGet());
-        
+    if(appData.flagCountBtnPressed){
+        appData.TmrBtnPressed++;
+    }
+     /* Do debounce */
+     DoDebounce(&switchDescr, ButtonMFStateGet());
+            
     if ( ( appData.TmrMeas % 9 ) == 0)
         appData.measTodoFlag = true;
 }
@@ -146,6 +149,8 @@ void APP_Initialize ( void )
     appData.TmrTickFlag = false; 
     appData.TmrDisplay = 0;
     appData.measTodoFlag = false;
+    appData.flagCountBtnPressed = false;
+    appData.TmrBtnPressed = 0;
         
     /* Hold the device on */
     PwrHoldOn();
@@ -186,18 +191,8 @@ void APP_Initialize ( void )
 void APP_Tasks ( void )
 {
     /* Local bno055 data */
-    s_bno055_data bno055_local_data;
-    
-    // --- Main timer action ---
-    /*if((appData.TmrDisplay <= 2))
-        LED_GOn();
-    else
-        LED_GOff();*/
-    
-    if(appData.TmrDisplay >= 250)
-        appData.TmrDisplay = 0;
-        
-    
+    s_bno055_data bno055_local_data;  
+    static bool Hold = false;
      /* Check the application's current state. */
     switch ( appData.state )
     {
@@ -217,7 +212,14 @@ void APP_Tasks ( void )
 
         case APP_STATE_LOGGING:
         {    
-            
+            if(appData.TmrDisplay >= 320)
+                appData.TmrDisplay = 0;
+            // --- Display LED ---
+            if((appData.TmrDisplay <= 1))
+                LED_GOn();
+            else
+                LED_GOff();
+
             if((appData.measTodoFlag == true )&&(sd_getState() == APP_IDLE))
             {
                 /* BNO055 Read all important info routine */
@@ -226,9 +228,7 @@ void APP_Tasks ( void )
                 bno055_local_data.d_time = appData.TmrMeas - appData.ltime;
                 /* Pressure measure */
                 bno055_local_data.pressure = Press_readPressure();
-                
-                bno055_local_data.flagImportantMeas = FLAG_MEAS_OFF;
-                
+                                
                 /* Display value via UART */
                 //serDisplayValues(&bno055_local_data);
                 
@@ -245,6 +245,10 @@ void APP_Tasks ( void )
                 
                 appData.ltime = appData.TmrMeas;
             }
+            else
+            {
+                bno055_local_data.comres = 0;
+            }
             
             /* If error detected, error LED */
             if((bno055_local_data.comres != 0)||(sd_getState() == APP_MOUNT_DISK))
@@ -252,27 +256,50 @@ void APP_Tasks ( void )
             else
                 LED_ROff();
             
-            LED_GOn();
             /* FAT routine */
             sd_fat_task();
-            LED_GOff();
                
-            /*if(DebounceIsPressed(&switchDescr))
+            if(((ButtonMFStateGet()))||(Hold == true))
             {
-                DebounceClearPressed(&switchDescr);
-                bno055_local_data.flagImportantMeas = FLAG_MEAS_ON;
-                LED_BOn();
-            }*/
+                Hold = true;
+                appData.flagCountBtnPressed = true;
+                if (ButtonMFStateGet() == 0)
+                {
+                    appData.flagCountBtnPressed = false;
+                    DebounceClearReleased(&switchDescr);
+                    if(appData.TmrBtnPressed <= TIME_FLAG_MEASURE){
+                        bno055_local_data.flagImportantMeas = FLAG_MEAS_ON;
+                        LED_BOn();
+                    }
+                    else{
+                        appData.state = APP_STATE_SHUTDOWN;
+                    }
+                    appData.TmrBtnPressed = 0;
+                    Hold = false;
+                }
+            }
             
            break;
         }
-        case APP_STATE_FLAG_MEAS:
+        case APP_STATE_SHUTDOWN:
         {
-            if(appData.measTodoFlag)
-            {
-                
+            LED_BOff();
+            LED_GOff();
+            LED_ROn();
+            
+            /* unmount disk, blocking method */
+            while(sd_getState() != APP_IDLE){
+                sd_fat_task();
+            }
+            sd_setState(APP_UNMOUNT_DISK);
+            while(sd_getState() != APP_IDLE){
+                sd_fat_task();
             }
             
+            /* turn off the device */
+            PwrHoldOff();
+            
+            break;
         }
         
         /* TODO: implement your application state machine.*/

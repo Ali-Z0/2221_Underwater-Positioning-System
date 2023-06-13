@@ -157,6 +157,21 @@ void sd_fat_task ( void )
             break;
         default:
             break;
+            
+        case APP_UNMOUNT_DISK:
+            if(SYS_FS_Unmount("/mnt/myDrive") != 0)
+            {
+                /* The disk could not be un mounted. Try
+                 * un mounting again untill success. */
+
+                appFatData.state = APP_UNMOUNT_DISK;
+            }
+            else
+            {
+                /* UnMount was successful. Mount the disk again */
+                appFatData.state = APP_IDLE;
+            }
+            break;
 
     }
 
@@ -183,6 +198,11 @@ void sd_BNO_scheduleWrite (s_bno055_data * data)
 APP_FAT_STATES sd_getState( void )
 {
     return appFatData.state;
+}
+
+void sd_setState( APP_FAT_STATES newState )
+{
+    appFatData.state = newState;
 }
 
 /* *****************************************************************************
