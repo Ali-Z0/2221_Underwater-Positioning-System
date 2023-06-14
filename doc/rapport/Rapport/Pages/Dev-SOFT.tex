@@ -164,8 +164,42 @@ s8 BNO055_I2C_bus_write(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt)
 	return (s8)(BNO055_iERROR);
 }
 \end{lstlisting}
-	\clearpage
+	Pour ce qui est de l'utilisation de la libraire haut-niveau bno055\_support, voici la préparation et la lecture des données : 
+	
+	\begin{lstlisting}[frame=single, language=C, caption={Code lecture des données par la librairie}, captionpos=b, breaklines=true]
+/* BNO055 Read all important info routine */
+bno055_local_data.comres = bno055_read_routine(&bno055_local_data);
+/* Delta time */
+bno055_local_data.d_time = timerData.TmrMeas - timerData.ltime;
+/* Pressure measure */
+bno055_local_data.pressure = Press_readPressure();
+/* Flag measure value */
+bno055_local_data.flagImportantMeas = flagMeas;
+	\end{lstlisting}
+
 	\subsubsection{Carte SD}
+	La carte SD sa communication fonctionne sous forme d'une machine d'état non-bloquante, permettant ainsi de s'adapter aux situations de la carte sans bloquer le système pour autant.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.6\linewidth]{Figures/Dev-SOFT/mermaid-diagram-2023-06-14-162436}
+		\caption{Machine d'état de la carte SD}
+		\label{fig:mermaid-diagram-2023-06-14-162436}
+	\end{figure}
+
+	\clearpage
+	
+	\paragraph{Planification d'une écriture}
+	Afin de lancer une écriture d'un set de mesure sur la carte SD, il faut utiliser la fonction \textit{sd\_BNO\_scheduleWrite()} qui vas préparer le buffer d'écriture et modifier l'état de la carte SD : 
+	\begin{lstlisting}[frame=single, language=C, caption={Lancement d'une écriture sur la carte SD}, captionpos=b, breaklines=true]
+/* Write measures to sdCard */
+sd_BNO_scheduleWrite(&bno055_local_data);
+	\end{lstlisting}
+	
+	
+	
+	
+	
 	
 	
 	
