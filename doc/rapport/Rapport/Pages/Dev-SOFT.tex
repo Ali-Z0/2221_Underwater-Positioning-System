@@ -127,7 +127,7 @@ Le processus de programmation du code dans le PIC32MX130F256D implique plusieurs
 	
 	Pour faire le lien entre la librairie haut-niveau et bas-niveau, j'ai utilisé un pointeur de fonction présent dans la structure de donnée du BNO :
 	
-\begin{lstlisting}[frame=single]
+\begin{lstlisting}[frame=single, language=C, caption={Code lien pointeur de fonction}, captionpos=b]
 s8 I2C_routine(void)
 {
 	bno055.bus_write = BNO055_I2C_bus_write;
@@ -137,7 +137,34 @@ s8 I2C_routine(void)
 	return BNO055_INIT_VALUE;
 }
 \end{lstlisting}
+
+	Voici le code une écriture sur le BNO055 par I2C :
+\begin{lstlisting}[frame=single, language=C, caption={Code écriture au BNO055}, captionpos=b, breaklines=true]
+s8 BNO055_I2C_bus_write(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt)
+{
+	s8 BNO055_iERROR = BNO055_INIT_VALUE;
+	u8 array[I2C_BUFFER_LEN];
+	u8 stringpos = BNO055_INIT_VALUE;
+	array[BNO055_INIT_VALUE] = reg_addr;
 	
+	i2c_start();
+	BNO055_iERROR = i2c_write(dev_addr<<1);
+	
+	for (stringpos = BNO055_INIT_VALUE; stringpos < (cnt+BNO055_I2C_BUS_WRITE_ARRAY_INDEX); stringpos++)
+	{
+		BNO055_iERROR = i2c_write(array[stringpos]);
+		array[stringpos + BNO055_I2C_BUS_WRITE_ARRAY_INDEX] = *(reg_data + stringpos);
+	}
+	
+	i2c_stop();
+	if(BNO055_iERROR-1 != 0)
+		BNO055_iERROR = -1;
+	else
+		BNO055_iERROR = 0;
+	return (s8)(BNO055_iERROR);
+}
+\end{lstlisting}
+	\clearpage
 	\subsubsection{Carte SD}
 	
 	
