@@ -93,21 +93,23 @@ APP_DATA appData;
 // *****************************************************************************
 // *****************************************************************************
 void MainTimer_callback(){
+    /* Increment delay timer */
     appData.TmrCnt ++;
 }
 
 void DisplayTimer_callback()
 {
+    /* Increment utility timers */
     appData.TmrDisplay ++;
     appData.TmrMeas ++;
     appData.TmrTickFlag = true;
-    
+    /* If button is pressed, count pressed time */
     if(appData.flagCountBtnPressed){
         appData.TmrBtnPressed++;
     }
-     /* Do debounce */
+     /* Do debounce every 10 ms */
      DoDebounce(&switchDescr, ButtonMFStateGet());
-            
+    /* Start a measure set each 90ms */        
     if ( ( appData.TmrMeas % 9 ) == 0)
         appData.measTodoFlag = true;
 }
@@ -143,7 +145,7 @@ void APP_Initialize ( void )
 {
     /* Place the App state machine in its initial state. */
     appData.state = APP_STATE_INIT;
-    /* Reset all counters */
+    /* Init all counters and flags */
     appData.mainTmrCnt = 0;
     appData.TmrCnt = 0;
     appData.TmrTickFlag = false; 
@@ -160,6 +162,7 @@ void APP_Initialize ( void )
     i2c_init(1);
     Press_InitADC();
     
+    /* System ON display */
     LED_BOn();
     BNO055_delay_msek(500);
     LED_BOff();
@@ -170,6 +173,7 @@ void APP_Initialize ( void )
     RstImuOn();
     BNO055_delay_msek(100);
     
+    /* Demuliplexer config */
     DemulCBOff();
     DemulCCOn();
     
@@ -199,11 +203,11 @@ void APP_Tasks ( void )
         /* Application's initial state. */
         case APP_STATE_INIT:
         {
-            // Test DELAY 
+            // Init delay
             BNO055_delay_msek(500);
-            // Init and Measure all
+            // Init and Measure set
             bno055_init_readout();
-            /* Service task */
+            /* go to service task */
             appData.state = APP_STATE_LOGGING;
             /* Init ltime counter */
             appData.ltime = 0;
@@ -212,6 +216,7 @@ void APP_Tasks ( void )
 
         case APP_STATE_LOGGING:
         {    
+            /* Display period */
             if(appData.TmrDisplay >= 320)
                 appData.TmrDisplay = 0;
             // --- Display LED ---
@@ -228,13 +233,11 @@ void APP_Tasks ( void )
                 bno055_local_data.d_time = appData.TmrMeas - appData.ltime;
                 /* Pressure measure */
                 bno055_local_data.pressure = Press_readPressure();
-                                
                 /* Display value via UART */
                 //serDisplayValues(&bno055_local_data);
-                
                 /* Write value to sdCard */
                 sd_BNO_scheduleWrite(&bno055_local_data);
-                
+                /* Reset measure flag */
                 if(bno055_local_data.flagImportantMeas == FLAG_MEAS_ON){
                     /* Rest important measure flag */
                     bno055_local_data.flagImportantMeas = FLAG_MEAS_OFF;
@@ -242,36 +245,44 @@ void APP_Tasks ( void )
                 }
                 /* Reset measure flag */
                 appData.measTodoFlag = false;
-                
+                /* Update last time counter */
                 appData.ltime = appData.TmrMeas;
             }
             else
             {
+                /* No comm, so no error */
                 bno055_local_data.comres = 0;
             }
             
-            /* If error detected, error LED */
+            /* If error detected : error LED */
             if((bno055_local_data.comres != 0)||(sd_getState() == APP_MOUNT_DISK))
                 LED_ROn();
             else
                 LED_ROff();
             
-            /* FAT routine */
+            /* --- SD FAT routine --- */
             sd_fat_task();
                
+            /* Button management : if rising edge detected */
             if(((ButtonMFStateGet()))||(Hold == true))
             {
+                /* Hold until falling edge */
                 Hold = true;
+                /* Start counting pressed time */
                 appData.flagCountBtnPressed = true;
+                /* If falling edge detected */
                 if (ButtonMFStateGet() == 0)
                 {
+                    /* Reset flag and switchdescr */
                     appData.flagCountBtnPressed = false;
                     DebounceClearReleased(&switchDescr);
-                    if(appData.TmrBtnPressed <= TIME_FLAG_MEASURE){
+                    /* If pressed time less than power off time */
+                    if(appData.TmrBtnPressed <= TIME_POWER_OFF){
                         bno055_local_data.flagImportantMeas = FLAG_MEAS_ON;
                         LED_BOn();
                     }
                     else{
+                        /* Power off the system */
                         appData.state = APP_STATE_SHUTDOWN;
                     }
                     appData.TmrBtnPressed = 0;
@@ -283,15 +294,19 @@ void APP_Tasks ( void )
         }
         case APP_STATE_SHUTDOWN:
         {
+            /* Display shutting off mode */
             LED_BOff();
             LED_GOff();
             LED_ROn();
             
-            /* unmount disk, blocking method */
+            /* Wait until SD availaible */
             while(sd_getState() != APP_IDLE){
+                /* SD FAT routine */
                 sd_fat_task();
             }
+            /* Unmount disk */
             sd_setState(APP_UNMOUNT_DISK);
+            /* Wait until unmounted*/
             while(sd_getState() != APP_IDLE){
                 sd_fat_task();
             }
