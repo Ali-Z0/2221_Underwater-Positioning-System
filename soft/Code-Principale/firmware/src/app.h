@@ -131,27 +131,25 @@ typedef struct
 {
     /* The application's current state */
     APP_STATES state;
+} APP_DATA;
 
+typedef struct
+{
     /* Main Timer (1ms) */
     uint32_t mainTmrCnt;
-    
     /* Timer precis (1us) */
     bool TmrTickFlag;
     uint32_t TmrCnt;
-    
     /* Measure todo flag */
     unsigned long TmrMeas;
     unsigned long ltime;
     bool measTodoFlag;
-    
     /* Timer display */
     uint32_t TmrDisplay;
-    
     /* Tmr wait shutdown */
     bool flagCountBtnPressed;
     uint32_t TmrBtnPressed;
-    
-} APP_DATA;
+}TIMER_DATA;
 
 // *****************************************************************************
 // *****************************************************************************

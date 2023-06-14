@@ -86,6 +86,7 @@ S_SwitchDescriptor switchDescr;
 */
 
 APP_DATA appData;
+TIMER_DATA timerData;
 
 // *****************************************************************************
 // *****************************************************************************
@@ -94,24 +95,24 @@ APP_DATA appData;
 // *****************************************************************************
 void MainTimer_callback(){
     /* Increment delay timer */
-    appData.TmrCnt ++;
+    timerData.TmrCnt ++;
 }
 
 void DisplayTimer_callback()
 {
     /* Increment utility timers */
-    appData.TmrDisplay ++;
-    appData.TmrMeas ++;
-    appData.TmrTickFlag = true;
+    timerData.TmrDisplay ++;
+    timerData.TmrMeas ++;
+    timerData.TmrTickFlag = true;
     /* If button is pressed, count pressed time */
-    if(appData.flagCountBtnPressed){
-        appData.TmrBtnPressed++;
+    if(timerData.flagCountBtnPressed){
+        timerData.TmrBtnPressed++;
     }
      /* Do debounce every 10 ms */
      DoDebounce(&switchDescr, ButtonMFStateGet());
     /* Start a measure set each 90ms */        
-    if ( ( appData.TmrMeas % 9 ) == 0)
-        appData.measTodoFlag = true;
+    if ( ( timerData.TmrMeas % 9 ) == 0)
+        timerData.measTodoFlag = true;
 }
 /* TODO:  Add any necessary callback functions.
 */
@@ -146,13 +147,13 @@ void APP_Initialize ( void )
     /* Place the App state machine in its initial state. */
     appData.state = APP_STATE_INIT;
     /* Init all counters and flags */
-    appData.mainTmrCnt = 0;
-    appData.TmrCnt = 0;
-    appData.TmrTickFlag = false; 
-    appData.TmrDisplay = 0;
-    appData.measTodoFlag = false;
-    appData.flagCountBtnPressed = false;
-    appData.TmrBtnPressed = 0;
+    timerData.mainTmrCnt = 0;
+    timerData.TmrCnt = 0;
+    timerData.TmrTickFlag = false; 
+    timerData.TmrDisplay = 0;
+    timerData.measTodoFlag = false;
+    timerData.flagCountBtnPressed = false;
+    timerData.TmrBtnPressed = 0;
         
     /* Hold the device on */
     PwrHoldOn();
@@ -197,6 +198,7 @@ void APP_Tasks ( void )
     /* Local bno055 data */
     s_bno055_data bno055_local_data;  
     static bool Hold = false;
+    static uint8_t flagMeas = false;
      /* Check the application's current state. */
     switch ( appData.state )
     {
@@ -210,43 +212,47 @@ void APP_Tasks ( void )
             /* go to service task */
             appData.state = APP_STATE_LOGGING;
             /* Init ltime counter */
-            appData.ltime = 0;
+            timerData.ltime = 0;
+            /* Init first measure flag */
+            flagMeas = FLAG_MEAS_OFF;
             break;
         }
 
         case APP_STATE_LOGGING:
         {    
             /* Display period */
-            if(appData.TmrDisplay >= 320)
-                appData.TmrDisplay = 0;
+            if(timerData.TmrDisplay >= 320)
+                timerData.TmrDisplay = 0;
             // --- Display LED ---
-            if((appData.TmrDisplay <= 1))
+            if((timerData.TmrDisplay <= 1)&&(sd_getState() != APP_MOUNT_DISK))
                 LED_GOn();
             else
                 LED_GOff();
 
-            if((appData.measTodoFlag == true )&&(sd_getState() == APP_IDLE))
+            if((timerData.measTodoFlag == true )&&(sd_getState() == APP_IDLE))
             {
                 /* BNO055 Read all important info routine */
                 bno055_local_data.comres = bno055_read_routine(&bno055_local_data);
                 /* Delta time */
-                bno055_local_data.d_time = appData.TmrMeas - appData.ltime;
+                bno055_local_data.d_time = timerData.TmrMeas - timerData.ltime;
                 /* Pressure measure */
                 bno055_local_data.pressure = Press_readPressure();
+                /* Flag measure value */
+                bno055_local_data.flagImportantMeas = flagMeas;
                 /* Display value via UART */
                 //serDisplayValues(&bno055_local_data);
                 /* Write value to sdCard */
                 sd_BNO_scheduleWrite(&bno055_local_data);
                 /* Reset measure flag */
-                if(bno055_local_data.flagImportantMeas == FLAG_MEAS_ON){
+                if(flagMeas == FLAG_MEAS_ON){
                     /* Rest important measure flag */
-                    bno055_local_data.flagImportantMeas = FLAG_MEAS_OFF;
+                    flagMeas = FLAG_MEAS_OFF;
                     LED_BOff();
                 }
                 /* Reset measure flag */
-                appData.measTodoFlag = false;
+                timerData.measTodoFlag = false;
                 /* Update last time counter */
-                appData.ltime = appData.TmrMeas;
+                timerData.ltime = timerData.TmrMeas;
             }
             else
             {
@@ -269,23 +275,23 @@ void APP_Tasks ( void )
                 /* Hold until falling edge */
                 Hold = true;
                 /* Start counting pressed time */
-                appData.flagCountBtnPressed = true;
+                timerData.flagCountBtnPressed = true;
                 /* If falling edge detected */
                 if (ButtonMFStateGet() == 0)
                 {
                     /* Reset flag and switchdescr */
-                    appData.flagCountBtnPressed = false;
+                    timerData.flagCountBtnPressed = false;
                     DebounceClearReleased(&switchDescr);
                     /* If pressed time less than power off time */
-                    if(appData.TmrBtnPressed <= TIME_POWER_OFF){
-                        bno055_local_data.flagImportantMeas = FLAG_MEAS_ON;
+                    if((timerData.TmrBtnPressed <= TIME_POWER_OFF)&&(sd_getState() != APP_MOUNT_DISK)){
+                        flagMeas = FLAG_MEAS_ON;
                         LED_BOn();
                     }
                     else{
                         /* Power off the system */
                         appData.state = APP_STATE_SHUTDOWN;
                     }
-                    appData.TmrBtnPressed = 0;
+                    timerData.TmrBtnPressed = 0;
                     Hold = false;
                 }
             }
@@ -299,16 +305,19 @@ void APP_Tasks ( void )
             LED_GOff();
             LED_ROn();
             
-            /* Wait until SD availaible */
-            while(sd_getState() != APP_IDLE){
-                /* SD FAT routine */
-                sd_fat_task();
-            }
-            /* Unmount disk */
-            sd_setState(APP_UNMOUNT_DISK);
-            /* Wait until unmounted*/
-            while(sd_getState() != APP_IDLE){
-                sd_fat_task();
+            /* If and SD card is mounted */
+            if(sd_getState() != APP_MOUNT_DISK){
+                /* Wait until SD availaible */
+                while(sd_getState() != APP_IDLE){
+                    /* SD FAT routine */
+                    sd_fat_task();
+                }
+                /* Unmount disk */
+                sd_setState(APP_UNMOUNT_DISK);
+                /* Wait until unmounted*/
+                while(sd_getState() != APP_IDLE){
+                    sd_fat_task();
+                }
             }
             
             /* turn off the device */
@@ -331,7 +340,7 @@ void APP_Tasks ( void )
 
 void App_resetMeasFlag( void )
 {
-    appData.measTodoFlag = false;
+    timerData.measTodoFlag = false;
 }
  
 

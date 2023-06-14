@@ -46,7 +46,7 @@
 #include "driver/tmr/drv_tmr_static.h"
 
 // Global variable
-APP_DATA appData;
+TIMER_DATA timerData;
 
 #ifdef  BNO055_API
 
@@ -298,9 +298,9 @@ void BNO055_delay_msek(u32 msek)
     /*Delay routine*/
     DRV_TMR0_Stop();
     DRV_TMR0_CounterClear();
-    appData.TmrCnt = 0;
+    timerData.TmrCnt = 0;
     DRV_TMR0_Start();
-    while (appData.TmrCnt < msek) 
+    while (timerData.TmrCnt < msek) 
     { } 
     DRV_TMR0_Stop();
 }

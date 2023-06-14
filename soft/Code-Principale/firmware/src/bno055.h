@@ -143,8 +143,8 @@ typedef int64_t s64; /**< used for signed 64bit */
  *  define your data types based on your
  *  machine/compiler/controller configuration
  */
-//#define  MACHINE_32_BIT
-#define  MACHINE_16_BIT
+#define  MACHINE_32_BIT
+//#define  MACHINE_16_BIT
 
 /*! @brief
  *  If your machine support 16 bit
