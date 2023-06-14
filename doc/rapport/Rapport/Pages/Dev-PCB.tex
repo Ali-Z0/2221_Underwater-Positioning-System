@@ -85,22 +85,31 @@ Le microcontrôleur est plus ou moins centrée par rapport aux différents péri
 }
 \clearpage
 
+\subsection{Mécanique du PCB}
+{
+
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/2221_PCB_MechDims_page-0001}
+		\caption{Plan mécanique du PCB}
+		\label{fig:2221pcbmechdimspage-0001}
+	\end{figure}
+	La conception du PCB comprend des dimensions spécifiques, avec une longueur de 188.15 mm, une largeur de 40.51 mm et une hauteur de 27 mm. Pour faciliter l'installation et la fixation, cinq trous M3 sont répartis le long du PCB. Cependant, la présence du socle de la pile, qui a une hauteur de 15.9 mm, peut poser un problème, car il peut entraver le placement du PCB.
+	Afin de résoudre cette contrainte, une décision a été prise de positionner le socle de la pile au centre du PCB. Cette disposition permet de mieux répartir l'espace disponible et d'éviter que le socle de la pile ne perturbe les autres contraintes mécaniques.
+	En examinant une représentation en 3D de la carte, on peut constater que la carte SD simulée s'intègre parfaitement à la surface du PCB et ne dépasse pas ses dimensions.
+}
+
+\clearpage
 \subsection{Routage} \label{ssec:routage}
 {
 	\begin{figure}[h]
 		\centering
-		\includegraphics[height=0.615\pageheight]{Figures/Pistes}
+		\includegraphics[height=.67\textheight]{Figures/Pistes_PCB}
 		\caption{Pistes du PCB}
-		\label{fig:pistes}
+		\label{fig:pistespcb}
 	\end{figure}
 	
+	Routage sur 4 couches, chacune possède une orientation de piste : Top-Horizontal, Bottom-Vertical, Layer1-Vertical, Layer2-Vertical. La zone la plus denses est celle du microcontrôleur, c'est aussi où il y a le plus de vias. On peut voir que les pistes du bas sur la figure \ref{fig:pistespcb} sont plus épaisses, c'est parce que ce sont les pistes d'alimentations principales. Le 3.3V a une arborescence en arbre, avec le tronc qui traverse le PCB et les branches qui vont alimenter les différents systèmes, en passant bien d'abord par les condensateur de découplages de chacun. 
+	\paragraph{Piste différentiel :} L'USB possède une piste différentiel Data+/Data-, on peut la voir en bas de la figure \ref{fig:pistespcb} (Couche brune).
 }
-\clearpage
-
-\subsection{Points d'améliorations} \label{ssec:pointAmel}
-{}
-\clearpage
-
-\subsection{Conclusion du projet} \label{ssec:conclusionG}
-{}
 \clearpage
