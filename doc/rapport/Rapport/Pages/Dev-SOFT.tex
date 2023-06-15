@@ -1,6 +1,7 @@
+% !TeX spellcheck = fr_FR
 \section{Développement firmware}
-Dans cette section, nous allons décrire et expliquer le procédé de programmation du code qui a été implémenté dans le microcontrôleur PIC32MX130F256D.
-Le processus de programmation du code dans le PIC32MX130F256D implique plusieurs étapes. Tout d'abord, il est nécessaire de disposer d'un environnement de développement intégré (IDE) adapté à ce microcontrôleur, ici, MPLAB X IDE, avec l'environnement Harmony permettant l'utilisation d'un configurateur graphiques pour les différentes libraires du PIC.
+Dans cette section, nous allons décrire et expliquer le processus de programmation du code qui a été implémenté dans le microcontrôleur PIC32MX130F256D.
+Le processus de programmation du code dans le PIC32MX130F256D comprend plusieurs étapes. Tout d'abord, il est nécessaire de disposer d'un environnement de développement intégré (IDE) adapté à ce microcontrôleur, tel que MPLAB X IDE. Cet IDE est équipé de l'environnement Harmony, qui permet l'utilisation d'un configurateur graphique pour les différentes bibliothèques du PIC.
 
 \subsection{Configuration des PINs dans Harmony}
 {
@@ -17,7 +18,7 @@ Le processus de programmation du code dans le PIC32MX130F256D implique plusieurs
 		\label{fig:mcu-harmony}
 	\end{figure}
 	
-	On peut voir que la PIN 20 (SCK) est en haute impédance dans harmony, tandis que la PIN14 qui était supposée être \textit{U2TX} est devenue SCK, ceci étant dû à une erreur : SCK n'est que valable sur la PIN14, il a donc fallut ajouter un fil extérieur pour router Pin14 à Pin20, sacrifiant ainsi la communication USB sur l'UART2, cette modification sera décrite ultérieurement.
+	On peut constater que la PIN 20 (SCK) est en haute impédance dans Harmony, tandis que la PIN 14, qui était supposée être \textit{U2TX}, est maintenant configurée en tant que SCK. Cela est dû à une erreur : SCK ne peut être assigné qu'à la PIN 14. Par conséquent, il a été nécessaire d'ajouter un fil externe pour relier la PIN 14 à la PIN 20, ce qui a entraîné la perte de la communication USB sur l'UART2. Cette modification sera expliquée en détail ultérieurement.
 	
 	
 }
@@ -40,7 +41,7 @@ Le processus de programmation du code dans le PIC32MX130F256D implique plusieurs
 		\end{tabular}
 	\end{table}
 
-	La clock du système a été accélérée a 48MHz, cela dans le but d'accéléré le système dans sa globalité, sachant qu'il y a beaucoup de communication qui nécessite des opérations rapides, que ce soit dans la préparation des buffers ou les différents calculs.
+	La fréquence de l'horloge système a été augmentée à 48 MHz dans le but d'accélérer l'ensemble du système, étant donné qu'il implique de nombreuses communications nécessitant des opérations rapides, que ce soit pour la préparation des tampons de données ou les divers calculs.
 	
 	\begin{figure}[h]
 		\centering
@@ -72,7 +73,7 @@ Le processus de programmation du code dans le PIC32MX130F256D implique plusieurs
 	\clearpage
 
 	\subsubsection{USART} \label{ssec:Usart}
-	Dans le but  de vérifier les données de mesures en temps réelles, simplifiant ainsi le debuggage, une communication sérielle UART a été mise en place. Pour se faire, le périphériques UART1 prévu à la base pour le slot mikroe a été utilisé. Un module USB-to-TTL externe permettra de lire les données via Putty sur un ordinateur.
+	Dans le but de vérifier les données de mesure en temps réel et de faciliter le débogage, une communication sérielle UART a été mise en place. Pour cela, le périphérique UART1, initialement prévu pour le slot mikroe, a été utilisé. Un module USB-to-TTL externe sera utilisé pour lire les données via Putty sur un ordinateur.
 	
 	\begin{figure}[h]
 		\centering
@@ -86,7 +87,7 @@ Le processus de programmation du code dans le PIC32MX130F256D implique plusieurs
 
 	\subsubsection{Carte SD - SPI} 
 	{
-	L'utilisation du SPI a été optimisée en choisissant une fréquence de 5 MHz afin de minimiser le temps d'exécution sur le microcontrôleur, sachant que les opérations FAT nécessitent de nombreuses trames. Cependant, j'ai rencontré un problème lié à la clock du SPI. Étant donné la vitesse élevée et les modifications que j'ai dû effectuer, la clock interfère avec le FTDI inutilement, et un fil relie SCK et U2TX, créant ainsi une inductance parasite. Pour résoudre ce problème, j'ai dû ajouter un condensateur de \textbf{33pF} entre SCK et GND, pour stabiliser la communication. Voir la configuration harmony de la carte SD sur la figure \ref{fig:configsdspi}.
+	L'utilisation du SPI a été optimisée en choisissant une fréquence de 5 MHz afin de réduire le temps d'exécution sur le microcontrôleur, compte tenu du grand nombre de trames nécessaires pour les opérations FAT. Cependant, j'ai rencontré un problème lié à la clock du SPI. En raison de la vitesse élevée et des modifications que j'ai dû apporter, la clock interfère inutilement avec le FTDI, et un fil relie SCK et U2TX, créant ainsi une inductance parasite. Pour résoudre ce problème, j'ai ajouté un condensateur de \textbf{33pF} entre SCK et GND pour stabiliser la communication. Vous pouvez consulter la configuration Harmony de la carte SD sur la figure \ref{fig:configsdspi}.
 	\clearpage
 	\begin{figure}[h]
 		\centering
@@ -109,7 +110,7 @@ Le processus de programmation du code dans le PIC32MX130F256D implique plusieurs
 	
 	\subsubsection{Callbacks}
 	{
-	Chacun des timers appellent dans leur interruption une fonction appartenante au fichier \textit{app.c} qui contient les actions définies pour chaque lapse de temps fixés. On peut visualiser cela sur le diagramme de la figure \ref{fig:callbacks}.
+	Chacun des timers appelle dans leur interruption une fonction appartenant au fichier \textit{app.c}, qui contient les actions définies pour chaque intervalle de temps spécifique. On peut visualiser cela sur le diagramme présenté dans la figure \ref{fig:callbacks}.
 	
 	\begin{figure}[h!]
 		\centering
@@ -123,9 +124,9 @@ Le processus de programmation du code dans le PIC32MX130F256D implique plusieurs
 	
 	\clearpage
 	\subsubsection{Centrale inertielle BNO055}
-	Pour ce qui est de la centrale inertielle BNO055, j'ai utilisé la libraire de BOSCH \footnote{\href{https://github.com/BoschSensortec/BNO055_driver}{Librairie du fabricant}}; Que j'ai configuré en 32bits, puis j'ai créer les fonctions bas-niveau (i2c) et ai faire le liens avec la libraire BOSCH. Le tout dans le fichier BNO055\_support.c.
+	Pour ce qui est de la centrale inertielle BNO055, j'ai utilisé la bibliothèque de BOSCH \footnote{\href{https://github.com/BoschSensortec/BNO055_driver}{Bibliothèque du fabricant}}. Je l'ai configurée en 32 bits et j'ai créé les fonctions de bas niveau (i2c) en établissant le lien avec la bibliothèque BOSCH. Tout cela a été fait dans le fichier BNO055\_support.c.
 	
-	Pour faire le lien entre la librairie haut-niveau et bas-niveau, j'ai utilisé un pointeur de fonction présent dans la structure de donnée du BNO comme sur le listing \ref{lst:lienPointeur}.
+	Pour faire le lien entre la bibliothèque de haut niveau et la bibliothèque de bas niveau, j'ai utilisé un pointeur de fonction présent dans la structure de données du BNO, comme illustré dans le listing \ref{lst:lienPointeur}.
 	
 \begin{lstlisting}[frame=single, label={lst:lienPointeur}, language=C, caption={Code lien pointeur de fonction}, captionpos=b]
 s8 I2C_routine(void)
@@ -137,9 +138,7 @@ s8 I2C_routine(void)
 	return BNO055_INIT_VALUE;
 }
 \end{lstlisting}
-
-	Voici le code une écriture sur le BNO055 par I2C :
-\begin{lstlisting}[frame=single, language=C, caption={Code écriture au BNO055}, captionpos=b, breaklines=true]
+\begin{lstlisting}[frame=single, language=C, caption={Code écriture i2c au BNO055}, captionpos=b, breaklines=true]
 s8 BNO055_I2C_bus_write(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt)
 {
 	s8 BNO055_iERROR = BNO055_INIT_VALUE;

@@ -26,7 +26,7 @@ La carte SD est interfacée en SPI et va contenir les données des différents c
 Un port USB est présent, afin charger les batteries par un IC de gestion de charge connecté directement au 5V. De plus le port USB est communiquant avec le microcontrôleur par un driver FTDI, afin d'éventuellement ajouter un système de lecture de la carte SD, directement par USB. Ceci dans cette version ou une ultérieure. Le port USB pourrait aussi servir a fixer la référence de la RTC. 
 
 \paragraph{Bouton multifonction :}
-Sachant qu'un bouton étanche est déjà présent sur le module, l'exploiter en tant que bouton multifonction est une solution ergonomique pour ne pas mettre en péril l'étanchéité globale. Ce bouton ferait office de ON/OFF et de "sauvegarde" de point d'intérêt. Pour se faire, le bouton contrôlerait par un transistor de commutation l'alimentation du système, puis lors de l'allumage du microcontrôleur, le MCU prendrait la relève en maintenant le système allumé a sont tour, permettant ainsi de lire le bouton et de sur une pression longue déconnecter l'alimentation.
+Un bouton étanche sera présent sur le module, l'exploiter en tant que bouton multifonction est une solution ergonomique pour ne pas mettre en péril l'étanchéité globale. Ce bouton ferait office de ON/OFF et de "sauvegarde" de point d'intérêt. Pour se faire, le bouton contrôlerait par un transistor de commutation l'alimentation du système, puis lors de l'allumage du microcontrôleur, le MCU prendrait la relève en maintenant le système allumé a sont tour, permettant ainsi de lire le bouton et de sur une pression longue déconnecter l'alimentation.
 
 \paragraph{Affichage :}
 L'affichage permettra de visualiser différentes données, dont les plus importantes tel que la pression ou le statut de la batterie. La forme de l'affichage est encore a définir selon la mécanique du module, mais le plus élégant, serait l'utilisation d'un petit écran OLED.
@@ -86,13 +86,24 @@ Pour le capteur de pression, une modification mécanique du boîter sera très p
 
 \begin{figure}[h] 
     \centering
-    \includegraphics[width=.4\textwidth]{Figures/Capteur-pression}
+    \includegraphics[width=.3\textwidth]{Figures/Capteur-pression}
     \caption{Illustration capteur de pression}
     \source{Distrelec, \href{https://www.distrelec.ch/fr/capteur-de-pression-hermetique-numerique-industriel-g1-16bar-module-sensata-pte7300-14an-1b016bn/p/30302457}{PTE7300-14AN-1B016BN}}
     \label{fig:CaptPress}
 \end{figure}
 
 L'avantage avec le capteur ci-dessus est le système hermétique pour le trou, un autre capteur peut être utilisé lors de l'étude, néanmoins la modification mécanique étant probablement inévitable, le système de vissage de la figure \ref{fig:CaptPress} est intéréssant.
+
+\paragraph{Changement :} Le capteur de pression n'étant plus disponible, nous avons dû opter pour une alternative qui est :
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.2\linewidth]{Figures/Capteur-pression_2}
+	\caption{Capteur de pression alternatif}
+	\source{Distrelec, \href{https://www.distrelec.ch/fr/capteur-de-pression-isoles-du-milieu-m12-10-bar-pression-absolue-honeywell-mipam1xx010baaax/p/30173754?&cq_src=google_ads&cq_cmp=19758639358&cq_con=151805764732&cq_term=mipam1xx010baaax&cq_med=&cq_plac=&cq_net=g&cq_pos=&cq_plt=gp&gclid=CjwKCAjwvdajBhBEEiwAeMh1Uyl3DOfTkv33H5syuiNFOhUY_MK2YczwDmxlMngI98OroKwHaxZB8hoC96EQAvD_BwE&gclsrc=aw.ds}{MIPAM1XX010BAAAX}}
+	\label{fig:capteur-pression2}
+\end{figure}
+
 
 }
 
@@ -101,9 +112,6 @@ L'avantage avec le capteur ci-dessus est le système hermétique pour le trou, u
     Pour l'affichage, je vais essayer d'opter pour un petit afficheur OLED, en gardant la possibilité en cas de de complication lors de l'étude, l'utilisation de simples LEDS d'indications.
     \\
     Il existe plusieurs affichages OLED rond petits formats, sur lesquels je me pencherais plus en détail lors de l'étude.
-    
-
-
 }
 
 \newpage
@@ -144,6 +152,8 @@ L'avantage avec le capteur ci-dessus est le système hermétique pour le trou, u
 
     La RTC devra pouvoir tenir le minimum de 2 heure d'utilisation, à cette fin, la batterie LI-ION déjà présente sera suffisante. \\ 
     La RTC devra avoir une faible consommation, le calendrier ainsi qu'une bonne précision. A cette fin, la RTC \textbf{S-35390A-T8T1G} est assez générique et possède une bonne documentation.
+    
+    \paragraph{changement :} L'utilisation d'une RTC/RTCC a été remplacée par une simple mesure de différence de temps entre chaque mesures.
      
     
 }
