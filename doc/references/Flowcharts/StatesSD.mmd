@@ -1,0 +1,20 @@
+stateDiagram-v2
+    [*] --> APP_MOUNT_DISK
+
+    APP_MOUNT_DISK --> APP_MOUNT_DISK : Echec
+    APP_MOUNT_DISK --> APP_SET_CURRENT_DRIVE : Réussite
+
+    APP_SET_CURRENT_DRIVE --> APP_ERROR : Echec
+    APP_SET_CURRENT_DRIVE --> APP_IDLE : Réussite
+
+    APP_IDLE --> APP_WRITE_MEASURE_FILE : sd_BNO_scheduleWrite()
+
+    APP_WRITE_MEASURE_FILE --> APP_ERROR : Echec
+    APP_WRITE_MEASURE_FILE --> APP_WRITE_TO_MEASURE_FILE : Réussite
+
+    APP_WRITE_TO_MEASURE_FILE --> APP_ERROR : Echec
+    APP_WRITE_TO_MEASURE_FILE --> APP_CLOSE_FILE : Réussite
+
+    APP_CLOSE_FILE --> APP_IDLE : SYS_FS_FileClose()
+    
+    APP_ERROR --> [*]

@@ -113,7 +113,7 @@ Le processus de programmation du code dans le PIC32MX130F256D implique plusieurs
 	
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[width=.9\textwidth]{Figures/Dev-SOFT/Callbacks}
+		\includegraphics[width=1\textwidth]{Figures/Dev-SOFT/Callbacks}
 		\caption{Interactions des interruptions et des callbacks}
 		\label{fig:callbacks}
 	\end{figure}
@@ -123,11 +123,11 @@ Le processus de programmation du code dans le PIC32MX130F256D implique plusieurs
 	
 	\clearpage
 	\subsubsection{Centrale inertielle BNO055}
-	Pour ce qui est de la centrale inertielle BNO055, j'ai utilisé la libraire de BOSCH \footnote{\href{https://github.com/BoschSensortec/BNO055_driver}{Librairie du fabricant}}; La configurer pour du 32bits, créer les fonctions bas-niveau (i2c) et faire le liens avec la libraire BOSCH. Le tout dans le fichier BNO055\_support.c.
+	Pour ce qui est de la centrale inertielle BNO055, j'ai utilisé la libraire de BOSCH \footnote{\href{https://github.com/BoschSensortec/BNO055_driver}{Librairie du fabricant}}; Que j'ai configuré en 32bits, puis j'ai créer les fonctions bas-niveau (i2c) et ai faire le liens avec la libraire BOSCH. Le tout dans le fichier BNO055\_support.c.
 	
-	Pour faire le lien entre la librairie haut-niveau et bas-niveau, j'ai utilisé un pointeur de fonction présent dans la structure de donnée du BNO :
+	Pour faire le lien entre la librairie haut-niveau et bas-niveau, j'ai utilisé un pointeur de fonction présent dans la structure de donnée du BNO comme sur le listing \ref{lst:lienPointeur}.
 	
-\begin{lstlisting}[frame=single, language=C, caption={Code lien pointeur de fonction}, captionpos=b]
+\begin{lstlisting}[frame=single, label={lst:lienPointeur}, language=C, caption={Code lien pointeur de fonction}, captionpos=b]
 s8 I2C_routine(void)
 {
 	bno055.bus_write = BNO055_I2C_bus_write;
@@ -178,7 +178,7 @@ bno055_local_data.flagImportantMeas = flagMeas;
 	\end{lstlisting}
 
 	\subsubsection{Carte SD}
-	La carte SD sa communication fonctionne sous forme d'une machine d'état non-bloquante, permettant ainsi de s'adapter aux situations de la carte sans bloquer le système pour autant.
+	La  communication de la carte SD fonctionne sous forme d'une machine d'état non-bloquante, permettant ainsi de s'adapter aux situations de la carte sans bloquer le système pour autant.
 	
 	\begin{figure}[h]
 		\centering
@@ -212,7 +212,27 @@ sd_BNO_scheduleWrite(&bno055_local_data);
 	\paragraph{Exemple trame CSV :} 
 	0;372;1.025;-0.2500;0.3800;9.7900;-0.1250;0.1250;-0.0625;-44.8750;35.0625;-7.2500;0.0000;-0.0100;-0.2700;0.0000;-2.1875;-1.5000;16379;320;216;-1;
 
-		
+	
+	\subsubsection{Application main}
+	On peut visualiser la machine d'état de l'application principale sur la figure \ref{fig:stateapp}.
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.28\linewidth]{Figures/Dev-SOFT/StateApp}
+		\caption{}
+		\label{fig:stateapp}
+	\end{figure}
+
+	\clearpage
+	
+	\paragraph{Fonctionnement APP\_STATE\_LOGGING :} Une fois que l'application est en mode logging, le fonctionnement est décris sur la figure \ref{fig:appstatelogging} sous forme de flowchart.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.446\linewidth]{Figures/Dev-SOFT/app_state_logging}
+		\caption{Fowchart state logging}
+		\label{fig:appstatelogging}
+	\end{figure}
+
 	\clearpage
 	
 

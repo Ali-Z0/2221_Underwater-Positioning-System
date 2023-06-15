@@ -1,0 +1,25 @@
+flowchart TD
+    Start[Start]
+    Start --> 
+    Display[[Gestion affichage LED RGB]] -->
+    SiMes{Si flag mesure a faire = true \n et que SD_CARD montée} --Oui-->
+
+    Mesure1["Lecture I2C dans bno055_local_data
+            Résultat com dans comres"] -->
+    Mesure2["Mesure Delta de temps"] -->
+    Mesure3["Mesure de pression ADC"] -->
+    Mesure4["Attribution flag mesure importante"] -->
+    EcrSD[["sd_BNO_scheduleWrite(&bno055_local_data)"]] -->
+
+    siFlagMes{"Si flag mesure = true"} --Oui-->
+    FlagFaux[Flag Mesure = false] --> b[Led Bleue off] --> FlagMesOff
+    siFlagMes --Non-->
+    FlagMesOff[Flag mesure = false] -->
+    Ltime["Met à jour ltime"] -->
+    Err[[Gestion erreur]] -->
+    GestBTN[[Gestion du bouton]]
+    SiMes --Non--> Comres[Comres = 0] --> Err
+    
+    
+
+    
