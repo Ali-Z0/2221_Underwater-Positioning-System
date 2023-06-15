@@ -88,7 +88,7 @@
 	
 	\paragraph{Apports} Ce projet a permis d'acquérir une expérience précieuse dans le domaine de la conception et du développement de systèmes électroniques. Il a également mis en évidence l'importance de l'organisation, de la structure et de la vérification étape par étape des éléments du design.
 	
-	\paragraph{Correctifs} Afin de simplifier la mise en place du système, des correctifs mentionnés dans le fichier MODIF permettrait de palier a certaines erreurs non-critiques de développements.
+	\paragraph{Correctifs} Afin de simplifier la mise en place du système, des correctifs mentionnés dans le fichier MODIF (Section \ref{ssec:Modif}) permettrait de palier a certaines erreurs non-critiques de développements.
 	
 	\paragraph{Améliorations} Des améliorations et des développements futurs peuvent être envisagés, tels que l'ajout de fonctionnalités supplémentaires, l'optimisation de la communication, l'extension des capacités de stockage ainsi que la mise en place d'une communication USB directement par le FTDI en corrigeant le pinning de SCK. Ces évolutions permettraient d'explorer de nouvelles possibilités d'application de ce système de localisation sous-marine.
 }
@@ -103,7 +103,23 @@
 % ANNEXES
 \clearpage
 \section{Annexes}
-\includepdf[scale=0.8,pages=1,pagecommand=\subsection{Bill of materials}]{../../bom/Bill of Materials.pdf}
+
+% Dossier Modif
+\includepdf[scale=0.8,pages=1,pagecommand=\subsection{Fichier de modifs}\label{ssec:Modif}]{../../2221_LocalisationSousMarine-MOD-v1.pdf}
+
+% Schema
+\includepdf[landscape=true, scale=0.9,pages=1,pagecommand=\subsection{Schéma électronique}\label{ssec:Schema}]{../../2221_Schematique.PDF}
+\includepdf[landscape=true, scale=0.9,pages=2]{../../2221_Schematique.PDF}
+\includepdf[landscape=true, scale=0.9,pages=3]{../../2221_Schematique.PDF}
+\includepdf[landscape=true, scale=0.9,pages=4]{../../2221_Schematique.PDF}
+\includepdf[landscape=true, scale=0.9,pages=5]{../../2221_Schematique.PDF}
+
+% BOM
+\includepdf[scale=0.8,pages=1,pagecommand=\subsection{Bill of materials}\label{ssec:BomAnnexe}]{../../bom/Bill of Materials.pdf}
 \includepdf[scale=0.8,pages=2]{../../bom/Bill of Materials.pdf}
+
+% Implémentation
+\includepdf[scale=0.8,pages=1,pagecommand=\subsection{Implémentation}\label{ssec:Implementation}]{../../2221_Implémentation.PDF}
+\includepdf[scale=0.8,pages=2]{../../2221_Implémentation.PDF}
 
 \end{document}
