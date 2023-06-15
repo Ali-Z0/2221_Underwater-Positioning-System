@@ -30,9 +30,17 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{listings}
+\usepackage{afterpage}
 
+\usepackage{textcomp}
 
 \newcommand{\source}[1]{\vspace{-11pt} \caption*{\small \textit{Source: {#1}} }}
+
+\newcommand\blankpage{%
+	\null
+	\thispagestyle{empty}%
+	\addtocounter{page}{-1}%
+	\newpage}
 
 \usepackage{verbatim}
 
@@ -47,6 +55,8 @@
 
 % ------------------------- TITLE PAGE INSERTION ------------------------
 \input{Pages/titlepage} 
+\afterpage{\blankpage}
+
 \clearpage
 
 % --------------------- TABLE OF CONTENTS  ------------------------------- 
@@ -91,6 +101,10 @@
 	\paragraph{Correctifs} Afin de simplifier la mise en place du système, des correctifs mentionnés dans le fichier MODIF (Section \ref{ssec:Modif}) permettrait de palier a certaines erreurs non-critiques de développements.
 	
 	\paragraph{Améliorations} Des améliorations et des développements futurs peuvent être envisagés, tels que l'ajout de fonctionnalités supplémentaires, l'optimisation de la communication, l'extension des capacités de stockage ainsi que la mise en place d'une communication USB directement par le FTDI en corrigeant le pinning de SCK. Ces évolutions permettraient d'explorer de nouvelles possibilités d'application de ce système de localisation sous-marine.
+	
+	\paragraph{Remerciements} Je tiens à remercier sincèrement M. Juan José Moreno, mon responsable de projet, Dr. Gaston Baudat pour avoir mandaté le projet et pour sa contribution algorithmique sur la localisation, et M. Fréderic Mueller pour son aide mécanique et pour la conception de la rallonge du module. Leur soutien et leur expertise ont été essentiels pour mener à bien ce projet. Je suis reconnaissant de leur précieuse collaboration et de leurs conseils tout au long du processus.
+	
+	
 }
 
 
@@ -104,8 +118,22 @@
 \clearpage
 \section{Annexes}
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{Figures/Annexes}
+	\caption{Illustation annexes}
+	\label{fig:annexes}
+	\source{https://www.alamyimages.fr/photo-image-vecteur-icone-annexe-175637003.html}
+\end{figure}
+
 % Dossier Modif
 \includepdf[scale=0.8,pages=1,pagecommand=\subsection{Fichier de modifs}\label{ssec:Modif}]{../../2221_LocalisationSousMarine-MOD-v1.pdf}
+
+% Affiche
+\includepdf[scale=0.8,pages=1,pagecommand=\subsection{Affiche du projet}\label{ssec:Affiche}]{../../2221_LocalisationSousMarine-AFFICHE.pdf}
+
+% Résumé
+\includepdf[scale=0.8,pages=1,pagecommand=\subsection{Résumé}\label{ssec:Resume}]{../../2221_LocalisationSousMarine-Résumé.pdf}
 
 % Schema
 \includepdf[landscape=true, scale=0.9,pages=1,pagecommand=\subsection{Schéma électronique}\label{ssec:Schema}]{../../2221_Schematique.PDF}
