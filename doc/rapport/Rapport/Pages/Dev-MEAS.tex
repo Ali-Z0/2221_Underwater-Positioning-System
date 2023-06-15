@@ -138,14 +138,22 @@ Lors de cette section, sera décrite la procédure de vérification des caracté
 		N_{op} = T_{dispo} * F_{sys} = 6*10^{-3} * 48*10^{6} = 288'000 
 	\end{equation}
 	
-	D'après le calcul \ref{equ:Noperations} nous savons que le MCU peut effectuer $288'000$ opérations durant ce temps disponible. Nous considérons ce nombre d'opérations suffisants au système, sachant qu'il n'y a pas beaucoup d'autre opérations. \textbf{Cet élément est à prendre en compte en cas d'ajout de fonctionnalité dans le système}.
+	D'après le calcul \ref{equ:Noperations} nous savons que le MCU peut effectuer $288'000$ cycles machines durant ce temps disponible. Nous considérons ce nombre d'opérations suffisants au système, sachant qu'il n'y a pas beaucoup d'autre opérations. \textbf{Cet élément est à prendre en compte en cas d'ajout de fonctionnalité dans le système}.
 	
-	\paragraph{Mesure début de trame :} Sur la figure \ref{} nous pouvons observer à quoi ressemble un début de trame sur la carte SD pour système FAT.
+	\paragraph{Mesure début de trame :} Sur la figure \ref{fig:spisdtramedepartupscaled} nous pouvons observer à quoi ressemble un début de trame sur la carte SD pour système FAT.
 	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\linewidth]{Mesures/SPI_SD_Trame_Depart_Upscaled}
+		\caption{Mesure début de trame}
+		\label{fig:spisdtramedepartupscaled}
+	\end{figure}
 	
 	
 	
 }
+
+\clearpage
 
 \section{Caractéristiques du produit fini}
 
