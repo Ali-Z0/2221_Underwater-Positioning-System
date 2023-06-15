@@ -131,6 +131,16 @@ Lors de cette section, sera décrite la procédure de vérification des caracté
 	Nous pouvons observer sur la figure \ref{fig:spisdtempreentre2commsupscaled} que le temps mesuré entre une première écriture et le début de la suivante est de $89.804 ms$. Le temps disponible entre deux écritures est d'environ $\sim6ms$.
 	Nous pouvons donc constater l'importance d'une vitesse élevée sur la communication SPI et sur le microcontrôleur.
 	
+	Avec une fréquence d'horloge de $48MHz$, on peut donc déduire :
+	
+	\begin{equation} 
+		\label{equ:Noperations}
+		N_{op} = T_{dispo} * F_{sys} = 6*10^{-3} * 48*10^{6} = 288'000 
+	\end{equation}
+	
+	D'après le calcul \ref{equ:Noperations} nous savons que le MCU peut effectuer $288'000$ opérations durant ce temps disponible. Nous considérons ce nombre d'opérations suffisants au système, sachant qu'il n'y a pas beaucoup d'autre opérations. \textbf{Cet élément est à prendre en compte en cas d'ajout de fonctionnalité dans le système}.
+	
+	\paragraph{Mesure début de trame :} Sur la figure \ref{} nous pouvons observer à quoi ressemble un début de trame sur la carte SD pour système FAT.
 	
 	
 	
