@@ -89,7 +89,7 @@ void serDisplayValues ( s_bno055_data *bno055_data )
     bno055_data->flagMeasReady = false;
 
     /* Preapare Gravity string */
-    sprintf(sendBuffer, "TIME: %d ms\n\rPRESSURE = %f\n\rGravity : X = %04.03lf\tY = %04.03lf\tZ = %04.03lf \n\r", (bno055_data->d_time), bno055_data->pressure, bno055_data->gravity.x, bno055_data->gravity.y, bno055_data->gravity.z);
+    sprintf(sendBuffer, "DT: %d0 ms\tPRESSURE = %f\tGravity : X = %04.03lf\tY = %04.03lf\tZ = %04.03lf \n\r", (bno055_data->d_time), bno055_data->pressure, bno055_data->gravity.x, bno055_data->gravity.y, bno055_data->gravity.z);
     /* Transmit Gravity string */
     do{
         if(!PLIB_USART_TransmitterBufferIsFull(USART_ID_1))
