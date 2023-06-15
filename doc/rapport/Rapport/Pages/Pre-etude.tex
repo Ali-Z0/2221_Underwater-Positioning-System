@@ -17,22 +17,22 @@ L'objectif de cette pré-étude, est de se pencher sur le fonctionnement plus fo
 \clearpage
 
 \paragraph{Capteurs :} 
-Les différents capteurs sont interfacés sur le même bus, et ont comme master le microcontrôleur en communication bidirectionnel, afin d'à la fois configurer les registres des périphériques et de lire leurs mesures.\\
+Les différents capteurs sont interfacés sur le même bus, et ont comme master le microcontrôleur en communication bidirectionnel, afin d'à la fois configurer les registres des périphériques et de lire leurs mesures.
 
 \paragraph{Carte SD :}
-La carte SD est interfacée en SPI et va contenir les données des différents capteurs ainsi que leurs éventuels flags d'importance (sauvegarde), sa taille sera dimensionnée ultérieurement.\\
+La carte SD est interfacée en SPI et va contenir les données des différents capteurs ainsi que leurs éventuels flags d'importance (sauvegarde), sa taille sera dimensionnée ultérieurement.
 
 \paragraph{Port USB \& charge :}
-Un port USB est présent, afin charger les batteries par un IC de gestion de charge connecté directement au 5V. De plus le port USB est communiquant avec le microcontrôleur par un driver FTDI, afin d'éventuellement ajouter un système de lecture de la carte SD, directement par USB. Ceci dans cette version ou une ultérieure. Le port USB pourrait aussi servir a fixer la référence de la RTC. \\
+Un port USB est présent, afin charger les batteries par un IC de gestion de charge connecté directement au 5V. De plus le port USB est communiquant avec le microcontrôleur par un driver FTDI, afin d'éventuellement ajouter un système de lecture de la carte SD, directement par USB. Ceci dans cette version ou une ultérieure. Le port USB pourrait aussi servir a fixer la référence de la RTC. 
 
 \paragraph{Bouton multifonction :}
-Sachant qu'un bouton étanche est déjà présent sur le module, l'exploiter en tant que bouton multifonction est une solution ergonomique pour ne pas mettre en péril l'étanchéité globale. Ce bouton ferait office de ON/OFF et de "sauvegarde" de point d'intérêt. Pour se faire, le bouton contrôlerait par un transistor de commutation l'alimentation du système, puis lors de l'allumage du microcontrôleur, le MCU prendrait la relève en maintenant le système allumé a sont tour, permettant ainsi de lire le bouton et de sur une pression longue déconnecter l'alimentation.\\
+Sachant qu'un bouton étanche est déjà présent sur le module, l'exploiter en tant que bouton multifonction est une solution ergonomique pour ne pas mettre en péril l'étanchéité globale. Ce bouton ferait office de ON/OFF et de "sauvegarde" de point d'intérêt. Pour se faire, le bouton contrôlerait par un transistor de commutation l'alimentation du système, puis lors de l'allumage du microcontrôleur, le MCU prendrait la relève en maintenant le système allumé a sont tour, permettant ainsi de lire le bouton et de sur une pression longue déconnecter l'alimentation.
 
 \paragraph{Affichage :}
-L'affichage permettra de visualiser différentes données, dont les plus importantes tel que la pression ou le statut de la batterie. \\ La forme de l'affichage est encore a définir selon la mécanique du module, mais le plus élégant, serait l'utilisation d'un petit écran OLED.\\
+L'affichage permettra de visualiser différentes données, dont les plus importantes tel que la pression ou le statut de la batterie. La forme de l'affichage est encore a définir selon la mécanique du module, mais le plus élégant, serait l'utilisation d'un petit écran OLED.
 
 \paragraph{Capteur de pression :}
-Le capteur de pression devra avoir un contact direct avec l'eau, cela impliquera de la mécanique et de la gestion d'étanchéité. Une autre possibilité aurait été de mesurer optiquement la déformation du boîtier pour en déduire la pression, mais la complexité est trop importante.\\
+Le capteur de pression devra avoir un contact direct avec l'eau, cela impliquera de la mécanique et de la gestion d'étanchéité. Une autre possibilité aurait été de mesurer optiquement la déformation du boîtier pour en déduire la pression, mais la complexité est trop importante.
 }
 
 \clearpage
