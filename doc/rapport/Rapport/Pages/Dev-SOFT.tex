@@ -71,8 +71,8 @@ Le processus de programmation du code dans le PIC32MX130F256D implique plusieurs
 
 	\clearpage
 
-	\subsubsection{USART} 
-	J'ai décidé de configurer une communication série dans le but  de vérifier mes données de mesures en temps réelles, simplifiant ainsi le debuggage. Pour se faire, j'ai décidé d'utiliser le périphériques UART1 prévu à la base pour le slot mikroe. Je viendrais ensuite me connecter avec un module USB-to-TTL externe pour lire les données via Putty sur mon ordinateur portable.
+	\subsubsection{USART} \label{ssec:Usart}
+	Dans le but  de vérifier les données de mesures en temps réelles, simplifiant ainsi le debuggage, une communication sérielle UART a été mise en place. Pour se faire, le périphériques UART1 prévu à la base pour le slot mikroe a été utilisé. Un module USB-to-TTL externe permettra de lire les données via Putty sur un ordinateur.
 	
 	\begin{figure}[h]
 		\centering
@@ -82,11 +82,11 @@ Le processus de programmation du code dans le PIC32MX130F256D implique plusieurs
 	\end{figure}
 	
 	
-	On peut constater sur la figure \ref{fig:configuart} que l'UART est configuré sans interruption a un bauderate de 115200.
+	Nous pouvons constater sur la figure \ref{fig:configuart} que l'UART est configuré sans interruption à un bauderate de 115200.
 
 	\subsubsection{Carte SD - SPI} 
 	{
-	J'ai optimisé l'utilisation du SPI en choisissant une fréquence de 5 MHz afin de minimiser le temps d'exécution sur le microcontrôleur, sachant que les opérations FAT nécessitent de nombreuses trames. Cependant, j'ai rencontré un problème lié à la clock du SPI. Étant donné la vitesse élevée et les modifications que j'ai dû effectuer, la clock interfère avec le FTDI inutilement, et un fil relie SCK et U2TX, créant ainsi une inductance parasite. Pour résoudre ce problème, j'ai dû ajouter un condensateur de \textbf{33pF} entre SCK et GND, pour stabiliser la communication. Voir la configuration harmony de la carte SD sur la figure \ref{fig:configsdspi}.
+	L'utilisation du SPI a été optimisée en choisissant une fréquence de 5 MHz afin de minimiser le temps d'exécution sur le microcontrôleur, sachant que les opérations FAT nécessitent de nombreuses trames. Cependant, j'ai rencontré un problème lié à la clock du SPI. Étant donné la vitesse élevée et les modifications que j'ai dû effectuer, la clock interfère avec le FTDI inutilement, et un fil relie SCK et U2TX, créant ainsi une inductance parasite. Pour résoudre ce problème, j'ai dû ajouter un condensateur de \textbf{33pF} entre SCK et GND, pour stabiliser la communication. Voir la configuration harmony de la carte SD sur la figure \ref{fig:configsdspi}.
 	\clearpage
 	\begin{figure}[h]
 		\centering

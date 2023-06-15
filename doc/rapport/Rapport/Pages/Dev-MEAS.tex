@@ -1,12 +1,12 @@
 \section{Validation du design}
 Lors de cette section, sera décrite la procédure de vérification des caractéristiques du projet ainsi la validation de celui-ci.
-\subsection{Liste de matériel}
+\subsection{Liste de matériel} \label{ssec:ListeMateriel}
 {
 	\begin{enumerate}
-		\item Oscilloscope Tektronix RTB2004 ES.SLO2.05.01.16
-		\item USB Logic Analyzer, 8-Canaux, 24MHz
-		\item USB TO TLL HW-597
-		\item Carte Localisation-Sous-Marine V0.0
+		\item Oscilloscope Tektronix RTB2004 ES.SLO2.05.01.16 \label{enum:oscillo}
+		\item USB Logic Analyzer, 8-Canaux, 24MHz \label{enum:logicAnalyzer}
+		\item USB TO TLL HW-597 \label{enum:USB-TTL}
+		\item Carte Localisation-Sous-Marine V0.0 \label{enum:PCBL}
 	\end{enumerate}
 }
 
@@ -51,15 +51,52 @@ Lors de cette section, sera décrite la procédure de vérification des caracté
 	\label{fig:Mesure3.3et5V}
 	\end{figure}
 	
-	\paragraph{Analyse :} On peut constater que les valeurs des tensions respective sur les figures \ref{fig:Mes3.3V} et \ref{fig:Mes5V}, sont proches. La tension d'alimentation du microcontrôleur est 3.125V ce qui peut être expliqué par une chute de la tension de la batterie LI-ION qui a besoin d'être chargée. La tension 3.3V oscille un peu, sachant qu'il s'agit de l'alimentation de l'entièreté de la carte et que des signaux rapides sont générés.
+	\paragraph{Analyse :} Nous pouvons observer les valeurs respective des tensions sur les figures \ref{fig:Mes3.3V} et \ref{fig:Mes5V}. La tension d'alimentation du microcontrôleur est mesurée à \textit{3.125V} ce qui peut être expliqué par une chute de tension aux bornes de la batterie LI-ION qui par conséquent à besoin d'être chargée. La tension 3.3V oscille légèrement, ceci peut s'expliquer par le fait qu'il s'agit de l'alimentation principale de la carte avec le plus de consommateurs. Mais également par le fait que des signaux rapides sont générés par le microcontrôleur et ses différents périphériques.
+	
+	La tension d'alimentation du capteur de pression dont la tension dimensionnée est de 5V est quant-à-elle mesurée à \textit{5.0295V} ce qui signifie une bonne précision de la part du circuit de boost. On peut également voir que la tension n'oscille pas et ne vas donc pas perturber le capteur de pression.
+	
+	Nous pouvons donc confirmer le fonctionnement des blocs d'alimentation du projet.
 	
 }
 
 \subsection{Communication UART}
 {
+	Comme décrit lors de la sous-section \ref{ssec:Usart} une communication série est implémenté dans projet. Cette communication n'est pas critique pour le projet mais il est important de vérifier son fonctionnement pour d'éventuelles versions ultérieures.
 	\subsubsection{Méthodologie}
+	Pour la mesure, l'analyseur logique (Numéro \ref{enum:logicAnalyzer} de la liste de matériel \ref{ssec:ListeMateriel}) a été utilisé. Les trames U1TX et U1RX ont été mesurée sur le connecteur P4 :
 	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.2\linewidth]{Figures/DEV_MEAS/SchUart1}
+		\caption{Schéma de mesure UART1}
+		\label{fig:schuart1}
+	\end{figure}
+	\clearpage	
 	\subsubsection{Mesures}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.1\linewidth]{Mesures/MesureTrameUart_Upscaled}
+		\caption{Mesures trames UART}
+		\label{fig:mesuretrameuart}
+	\end{figure}
+
+	\paragraph{Analyse :} On peut lire en caractères ascii sur la trame de la figure \ref{fig:mesuretrameuart} : 
+	\begin{lstlisting}[frame=single, caption={Trame UART en ASCII}, captionpos=b, breaklines=true]
+TIME: 7 ms 
+Gyro    : X = 0.000	Y 
+	\end{lstlisting} 
+
+	En connectant le module USB-TO-TTL (Numéro \ref{enum:USB-TTL} de la liste de matériel \ref{ssec:ListeMateriel}) au broches Tx et Rx de la figure \ref{fig:mesuretrameuart}. Puis en ouvrant une communication série via PuTTY à un bauderate 115200. On obtient la communication de la figure \ref{} dans la console :
+	
+	\begin{figure}[h]
+		\centering
+		\fbox{\includegraphics[width=0.7\linewidth]{Mesures/PuttYSerComm}}
+		\caption{Récéption UART PuTTY}
+		\label{fig:puttysercomm}
+	\end{figure}
+	
+	
 
 }
 
@@ -72,3 +109,5 @@ Lors de cette section, sera décrite la procédure de vérification des caracté
 }
 
 \section{Caractéristiques du produit finis}
+
+% J'ai pus sans difficulté faire un logging sur 5h et ai récolté 30MB de données dans le fichier CSV, ce qui correspond aux $\sim5$ heures de logging
