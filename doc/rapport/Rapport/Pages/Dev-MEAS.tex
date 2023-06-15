@@ -1,22 +1,55 @@
-\section{Mise en oeuvre}
-
+\section{Validation du design}
+Lors de cette section, sera décrite la procédure de vérification des caractéristiques du projet ainsi la validation de celui-ci.
 \subsection{Liste de matériel}
 {
+	\begin{enumerate}
+		\item Oscilloscope Tektronix RTB2004 ES.SLO2.05.01.16
+		\item USB Logic Analyzer, 8-Canaux, 24MHz
+		\item USB TO TLL HW-597
+		\item Carte Localisation-Sous-Marine V0.0
+	\end{enumerate}
+}
+
+\subsection{Contrôle des tensions}
+{
+	En premier lieu, une vérification des tensions d'alimentation permet de valider un aspect critique et fondamentale de la carte.
+	\subsubsection{Méthodologie}
+	\paragraph{Mesure du 3.3V :} Alimentation de la carte par une connections brève entre les pins du connecteur du bouton \textbf{P15}. Mesure sur le testpoint \textit{V\_regOUT5} voir figure \ref{fig:sch3}.
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.3\linewidth]{Figures/DEV_MEAS/Sch3.3V}
+		\caption{Testpoint mesure 3.3V}
+		\label{fig:sch3}
+	\end{figure}
+	
+	\paragraph{Mesure du 5V :} Pour mesurer le 5V, il faut ponter par une résistance $0\Omega$ la résistance R50, ainsi que activer la Pin RC5 / EN\_5V. Ensuite la mesure a été prise sur le connecteur P16, pin-3 :
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.3\linewidth]{Figures/DEV_MEAS/Sch5V}
+		\caption{Mesure 5V}
+		\label{fig:sch5v}
+	\end{figure}
+
+	\clearpage
+	\subsubsection{Mesures}
+	
 	
 }
 
-\subsection{Mesures tensions}
+\subsection{Communication UART}
 {
+	\subsubsection{Méthodologie}
+	
+	\subsubsection{Mesures}
 
 }
 
-\subsection{Mesure UART}
+\subsection{Communication SPI, carte SD}
 {
+	\subsubsection{Méthodologie}
+	
+	\subsubsection{Mesures}
 
 }
 
-\subsection{Mesure SPI}
-{
-
-}
-
+\section{Caractéristiques du produit finis}
