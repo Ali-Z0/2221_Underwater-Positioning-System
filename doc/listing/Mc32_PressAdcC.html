@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Mc32_PressAdc.c</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Monospaced}
+pre {color: #000000; background-color: #ffffff; font-family: Monospaced}
+table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
+.preprocessor {color: #009b00}
+.ST2 {font-family: Monospaced; font-weight: bold}
+.comment {color: #748ab0}
+.ST1 {color: #748ab0; font-family: Monospaced; font-weight: bold}
+.ST3 {color: #9933cc}
+.literal {color: #0a0a7c}
+.ST4 {color: #989800}
+.pragma-omp-keyword-directive {color: #2e92c7}
+.string {color: #cc7800}
+.ST0 {color: #748ab0; background-color: #f1f1da}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">C:\microchip\harmony\v2_06\apps\PROJ\Code-Principale\firmware\src\Mc32_PressAdc.c</td></tr></table>
+<pre>
+  1 <span class="ST0">/*</span><span class="ST0"> ************************************************************************** </span><span class="ST0">*/</span>
+  2 <span class="comment">/**</span> <span class="comment">Descriptive</span> <span class="comment">File</span> <span class="comment">Name</span>
+  3 
+  4   <span class="ST1">@Company</span>
+  5     <span class="comment">Company</span> <span class="comment">Name</span>
+  6 
+  7   <span class="ST1">@File</span> <span class="comment">Name</span>
+  8     <span class="comment">filename</span><span class="comment">.</span><span class="comment">c</span>
+  9 
+ 10   <span class="ST1">@Summary</span>
+ 11     <span class="comment">Brief</span> <span class="comment">description</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">file</span><span class="comment">.</span>
+ 12 
+ 13   <span class="ST1">@Description</span>
+ 14     <span class="comment">Describe</span> <span class="comment">the</span> <span class="comment">purpose</span> <span class="comment">of</span> <span class="comment">this</span> <span class="comment">file</span><span class="comment">.</span>
+ 15  <span class="comment">*/</span>
+ 16 <span class="comment">/*</span><span class="comment"> ************************************************************************** </span><span class="comment">*/</span>
+ 17 
+ 18 <span class="comment">/*</span><span class="comment"> ************************************************************************** </span><span class="comment">*/</span>
+ 19 <span class="comment">/*</span><span class="comment"> ************************************************************************** </span><span class="comment">*/</span>
+ 20 <span class="comment">/*</span> <span class="comment">Section</span><span class="comment">: </span><span class="comment">Included</span> <span class="comment">Files</span>                                                    <span class="comment">*/</span>
+ 21 <span class="comment">/*</span><span class="comment"> ************************************************************************** </span><span class="comment">*/</span>
+ 22 <span class="comment">/*</span><span class="comment"> ************************************************************************** </span><span class="comment">*/</span>
+ 23 <span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="string">&quot;Mc32_PressAdc.h&quot;</span>
+ 24 <span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="string">&quot;app.h&quot;</span>
+ 25 <span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="string">&quot;peripheral/adc/plib_adc.h&quot;</span>
+ 26 <span class="comment">/*</span> <span class="comment">This</span> <span class="comment">section</span> <span class="comment">lists</span> <span class="comment">the</span> <span class="comment">other</span> <span class="comment">files</span> <span class="comment">that</span> <span class="comment">are</span> <span class="comment">included</span> <span class="comment">in</span> <span class="comment">this</span> <span class="comment">file</span><span class="comment">.</span>
+ 27  <span class="comment">*/</span>
+ 28 
+ 29 <span class="comment">/*</span> <span class="comment">TODO</span><span class="comment">:  </span><span class="comment">Include</span> <span class="comment">other</span> <span class="comment">files</span> <span class="comment">here</span> <span class="comment">if</span> <span class="comment">needed</span><span class="comment">.</span> <span class="comment">*/</span>
+ 30 
+ 31 
+ 32 <span class="comment">/*</span><span class="comment"> ************************************************************************** </span><span class="comment">*/</span>
+ 33 <span class="comment">/*</span><span class="comment"> ************************************************************************** </span><span class="comment">*/</span>
+ 34 <span class="comment">/*</span> <span class="comment">Section</span><span class="comment">: </span><span class="comment">File</span> <span class="comment">Scope</span> <span class="comment">or</span> <span class="comment">Global</span> <span class="comment">Data</span>                                         <span class="comment">*/</span>
+ 35 <span class="comment">/*</span><span class="comment"> ************************************************************************** </span><span class="comment">*/</span>
+ 36 <span class="comment">/*</span><span class="comment"> ************************************************************************** </span><span class="comment">*/</span>
+ 37 
+ 38 <span class="comment">/*</span>  <span class="comment">A</span> <span class="comment">brief</span> <span class="comment">description</span> <span class="comment">of</span> <span class="comment">a</span> <span class="comment">section</span> <span class="comment">can</span> <span class="comment">be</span> <span class="comment">given</span> <span class="comment">directly</span> <span class="comment">below</span> <span class="comment">the</span> <span class="comment">section</span>
+ 39     <span class="comment">banner</span><span class="comment">.</span>
+ 40  <span class="comment">*/</span>
+ 41 
+ 42 <span class="comment">/*</span><span class="comment"> ************************************************************************** </span><span class="comment">*/</span>
+ 43 
+ 44 
+ 45 
+ 46 <span class="comment">/*</span><span class="comment"> ************************************************************************** </span><span class="comment">*/</span>
+ 47 <span class="comment">/*</span><span class="comment"> ************************************************************************** </span><span class="comment">*/</span>
+ 48 <span class="comment">//</span> <span class="comment">Section</span><span class="comment">: </span><span class="comment">Local</span> <span class="comment">Functions</span><span class="comment">                                                   */</span>
+ 49 <span class="comment">/*</span><span class="comment"> ************************************************************************** </span><span class="comment">*/</span>
+ 50 <span class="comment">/*</span><span class="comment"> ************************************************************************** </span><span class="comment">*/</span>
+ 51 
+ 52 <span class="comment">/*</span><span class="comment"> ************************************************************************** </span><span class="comment">*/</span>
+ 53 
+ 54 
+ 55 <span class="comment">/*</span><span class="comment"> ************************************************************************** </span><span class="comment">*/</span>
+ 56 <span class="comment">/*</span><span class="comment"> ************************************************************************** </span><span class="comment">*/</span>
+ 57 <span class="comment">//</span> <span class="comment">Section</span><span class="comment">: </span><span class="comment">Interface</span> <span class="comment">Functions</span><span class="comment">                                               */</span>
+ 58 <span class="comment">/*</span><span class="comment"> ************************************************************************** </span><span class="comment">*/</span>
+ 59 <span class="comment">/*</span><span class="comment"> ************************************************************************** </span><span class="comment">*/</span>
+ 60 
+ 61 <span class="comment">/*</span>  <span class="comment">A</span> <span class="comment">brief</span> <span class="comment">description</span> <span class="comment">of</span> <span class="comment">a</span> <span class="comment">section</span> <span class="comment">can</span> <span class="comment">be</span> <span class="comment">given</span> <span class="comment">directly</span> <span class="comment">below</span> <span class="comment">the</span> <span class="comment">section</span>
+ 62     <span class="comment">banner</span><span class="comment">.</span>
+ 63  <span class="comment">*/</span>
+ 64 
+ 65 <span class="comment">//</span><span class="comment"> *****************************************************************************</span>
+ 66 
+ 67 <span class="literal">void</span> <span class="ST2">Press_InitADC</span> (<span class="literal">void</span>){
+ 68     <span class="comment">//</span><span class="comment">Configuration</span> <span class="comment">de</span> <span class="comment">l</span><span class="comment">&#39;</span><span class="comment">adresse</span> <span class="comment">choisi</span> <span class="comment">ADC</span>
+ 69     PLIB_ADC_InputScanMaskAdd(ADC_ID_1, <span class="pragma-omp-keyword-directive">ADC_AN_SCAN_ADDRES</span>);
+ 70     <span class="comment">//</span> <span class="comment">Configure</span> <span class="comment">l</span><span class="comment">&#39;</span><span class="comment">ADC</span> <span class="comment">en</span> <span class="comment">mode</span> <span class="comment">altern</span><span class="comment">é</span>
+ 71     PLIB_ADC_ResultFormatSelect(ADC_ID_1, ADC_RESULT_FORMAT_INTEGER_16BIT);
+ 72     <span class="comment">//</span><span class="comment">Choisir</span> <span class="comment">ce</span> <span class="comment">mode</span><span class="comment"> -&gt; </span><span class="comment">Buffer</span> <span class="comment">altern</span><span class="comment">é</span>
+ 73     PLIB_ADC_ResultBufferModeSelect(ADC_ID_1, ADC_BUFFER_MODE_TWO_8WORD_BUFFERS);
+ 74     <span class="comment">//</span><span class="comment">mode</span> <span class="comment">multiplexage</span>
+ 75     PLIB_ADC_SamplingModeSelect(ADC_ID_1, ADC_SAMPLING_MODE_MUXA);
+ 76     
+ 77     <span class="comment">//</span><span class="comment">la</span> <span class="comment">lecture</span> <span class="comment">des</span> <span class="comment">ADC</span> <span class="comment">est</span> <span class="comment">cadens</span><span class="comment">é</span><span class="comment">e</span> <span class="comment">par</span> <span class="comment">le</span> <span class="comment">timer</span> <span class="comment">interne</span>
+ 78     PLIB_ADC_ConversionTriggerSourceSelect(ADC_ID_1, ADC_CONVERSION_TRIGGER_INTERNAL_COUNT);
+ 79     <span class="comment">//</span><span class="comment">Tension</span> <span class="comment">de</span> <span class="comment">r</span><span class="comment">é</span><span class="comment">ference</span> <span class="comment">de</span> <span class="comment">l</span><span class="comment">&#39;</span><span class="comment">ADC</span> <span class="comment">alimentation</span><span class="comment"> 3</span><span class="comment">V3</span>
+ 80     PLIB_ADC_VoltageReferenceSelect(ADC_ID_1, ADC_REFERENCE_VDD_TO_AVSS);
+ 81     PLIB_ADC_SampleAcquisitionTimeSet(ADC_ID_1, <span class="string">0x1F</span>);
+ 82     PLIB_ADC_ConversionClockSet(ADC_ID_1, <span class="pragma-omp-keyword-directive">SYS_CLK_FREQ</span>, <span class="string">32</span>);
+ 83     
+ 84     <span class="comment">//</span><span class="comment">ADC</span> <span class="comment">fait</span><span class="comment"> 3 </span><span class="comment">mesures</span> <span class="comment">par</span> <span class="comment">interruption</span><span class="comment"> (</span><span class="comment">car</span><span class="comment"> 3 </span><span class="comment">canaux</span> <span class="comment">utilis</span><span class="comment">é</span><span class="comment">s</span><span class="comment">) -&gt; </span><span class="comment">adapter</span> <span class="comment">en</span> <span class="comment">fct</span> <span class="comment">des</span> <span class="comment">ADC</span> <span class="comment">utilis</span><span class="comment">é</span><span class="comment">s</span>
+ 85     PLIB_ADC_SamplesPerInterruptSelect(ADC_ID_1, ADC_1SAMPLE_PER_INTERRUPT);
+ 86     <span class="comment">//</span><span class="comment">active</span> <span class="comment">le</span> <span class="comment">scan</span> <span class="comment">en</span> <span class="comment">mode</span> <span class="comment">multiplexage</span> <span class="comment">des</span> <span class="comment">entr</span><span class="comment">é</span><span class="comment">es</span> <span class="comment">AN</span>
+ 87     PLIB_ADC_MuxAInputScanEnable(ADC_ID_1);
+ 88     
+ 89     <span class="comment">//</span> <span class="comment">Enable</span> <span class="comment">the</span> <span class="comment">ADC</span> <span class="comment">module</span>
+ 90     PLIB_ADC_Enable(ADC_ID_1);
+ 91     
+ 92 }
+ 93 
+ 94 <span class="ST3">S_ADCResults</span> <span class="ST2">Press_ReadAllADC</span>( <span class="literal">void</span> ) {
+ 95     <span class="comment">//</span><span class="comment">structure</span> <span class="comment">de</span> <span class="comment">valeurs</span> <span class="comment">brutes</span> <span class="comment">des</span> <span class="comment">ADCs</span>
+ 96     <span class="literal">volatile</span> <span class="ST3">S_ADCResults</span> rawResult;
+ 97     <span class="comment">//</span> <span class="comment">Traitement</span> <span class="comment">buffer</span>
+ 98     <span class="ST3">ADC_RESULT_BUF_STATUS</span> BufStatus;
+ 99     <span class="comment">//</span><span class="comment">stop</span> <span class="comment">sample</span><span class="comment">/</span><span class="comment">convert</span>
+100     PLIB_ADC_SampleAutoStartDisable(ADC_ID_1);
+101     <span class="comment">//</span> <span class="comment">traitement</span> <span class="comment">avec</span> <span class="comment">buffer</span> <span class="comment">altern</span><span class="comment">é</span>
+102     BufStatus = PLIB_ADC_ResultBufferStatusGet(ADC_ID_1);
+103     <span class="comment">//</span><span class="comment">Buffer</span><span class="comment"> 8 </span><span class="comment">bits</span><span class="comment"> -&gt; 0 à 7 -&gt; </span><span class="comment">expliqu</span><span class="comment">é </span><span class="comment">apr</span><span class="comment">è</span><span class="comment">s</span>
+104     <span class="preprocessor">if</span> (BufStatus == ADC_FILLING_BUF_0TO7) {
+105         rawResult.<span class="ST4">AN3</span> = PLIB_ADC_ResultGetByIndex(ADC_ID_1, <span class="string">0</span>);
+106     }
+107     <span class="preprocessor">else</span> <span class="comment">//</span><span class="comment">Buffer</span><span class="comment"> 8 </span><span class="comment">bits</span><span class="comment"> -&gt; 8 à 15</span>
+108     {
+109         rawResult.<span class="ST4">AN3</span> = PLIB_ADC_ResultGetByIndex(ADC_ID_1, <span class="string">8</span>);
+110     }
+111     <span class="comment">//</span> <span class="comment">Retablit</span> <span class="comment">Auto</span> <span class="comment">start</span> <span class="comment">sampling</span>
+112     PLIB_ADC_SampleAutoStartEnable(ADC_ID_1);
+113 
+114     <span class="comment">//</span><span class="comment">retourner</span> <span class="comment">valeurs</span> <span class="comment">lue</span>
+115     <span class="preprocessor">return</span> rawResult;
+116 }
+117 
+118 <span class="literal">float</span> <span class="ST2">Press_RawToVoltage</span>(<span class="literal">float</span> raw){
+119     <span class="literal">float</span> voltage = <span class="string">0</span>;
+120     <span class="comment">/*</span> <span class="comment">Raw</span> <span class="comment">ADC</span> <span class="comment">to</span> <span class="comment">voltage</span> <span class="comment">*/</span>
+121     voltage = raw * <span class="pragma-omp-keyword-directive">ADC_RES</span>;
+122     <span class="comment">/*</span> <span class="comment">Voltage</span> <span class="comment">before</span> <span class="comment">op</span><span class="comment">-</span><span class="comment">amp</span> <span class="comment">*/</span>
+123     voltage = voltage / <span class="pragma-omp-keyword-directive">OPAMP_GAIN</span>;
+124     <span class="preprocessor">return</span> voltage;    
+125 }
+126 
+127 <span class="literal">float</span> <span class="ST2">Press_voltageToPressure</span>(<span class="literal">float</span> voltage) {
+128     <span class="literal">float</span> pressure = <span class="string">0</span>;
+129         <span class="comment">/*</span> <span class="comment">Convet</span> <span class="comment">voltage</span> <span class="comment">to</span> <span class="comment">pressure</span> <span class="comment">in</span> <span class="comment">bar</span> <span class="comment">*/</span>
+130     pressure = ((voltage - <span class="pragma-omp-keyword-directive">V_MIN</span>)*<span class="pragma-omp-keyword-directive">P_RANGE</span>)/<span class="pragma-omp-keyword-directive">V_MAX</span>;
+131     
+132     <span class="preprocessor">return</span> pressure;
+133 }
+134 
+135 <span class="literal">float</span> <span class="ST2">Press_readPressure</span>( <span class="literal">void</span> ) {
+136     <span class="comment">//</span><span class="comment">structure</span> <span class="comment">de</span> <span class="comment">valeurs</span> <span class="comment">brutes</span> <span class="comment">des</span> <span class="comment">ADCs</span>
+137     <span class="literal">volatile</span> <span class="ST3">S_ADCResults</span> rawResult;
+138     <span class="comment">/*</span> <span class="comment">Voltage</span> <span class="comment">variable</span> <span class="comment">*/</span>
+139     <span class="literal">float</span> voltage = <span class="string">0</span>;
+140     <span class="comment">/*</span> <span class="comment">Pressure</span> <span class="comment">variable</span> <span class="comment">*/</span>
+141     <span class="literal">float</span> pressure = <span class="string">0</span>;
+142     <span class="comment">/*</span> <span class="comment">Read</span> <span class="comment">ADC</span> <span class="comment">*/</span>
+143     rawResult = Press_ReadAllADC();
+144     <span class="comment">/*</span> <span class="comment">Convert</span> <span class="comment">raw</span> <span class="comment">data</span> <span class="comment">to</span> <span class="comment">voltage</span> <span class="comment">*/</span>
+145     voltage = Press_RawToVoltage(rawResult.<span class="ST4">AN3</span>);
+146     <span class="comment">/*</span> <span class="comment">Get</span> <span class="comment">the</span> <span class="comment">pressure</span> <span class="comment">from</span> <span class="comment">the</span> <span class="comment">voltage</span> <span class="comment">*/</span>
+147     pressure = Press_voltageToPressure(voltage);
+148     
+149     <span class="preprocessor">return</span> pressure;
+150 }
+151 
+152 
+153 <span class="comment">/*</span><span class="comment"> *****************************************************************************</span>
+154  <span class="comment">End</span> <span class="comment">of</span> <span class="comment">File</span>
+155  <span class="comment">*/</span>
+156 
+</pre></body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>app.h</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Monospaced}
+pre {color: #000000; background-color: #ffffff; font-family: Monospaced}
+table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
+.preprocessor {color: #009b00}
+.ST1 {color: #969696}
+.ST5 {font-family: Monospaced; font-weight: bold}
+.comment {color: #748ab0}
+.ST2 {color: #9933cc}
+.ST4 {color: #748ab0; font-family: Monospaced; font-weight: bold}
+.literal {color: #0a0a7c}
+.ST3 {color: #989800}
+.pragma-omp-keyword-directive {color: #2e92c7}
+.string {color: #cc7800}
+.ST0 {color: #748ab0; background-color: #f1f1da}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">C:\microchip\harmony\v2_06\apps\PROJ\Code-Principale\firmware\src\app.h</td></tr></table>
+<pre>
+  1 <span class="ST0">/**</span><span class="ST0">*****************************************************************************</span>
+  2   <span class="comment">MPLAB</span> <span class="comment">Harmony</span> <span class="comment">Application</span> <span class="comment">Header</span> <span class="comment">File</span>
+  3 
+  4   <span class="comment">Company</span><span class="comment">:</span>
+  5     <span class="comment">Microchip</span> <span class="comment">Technology</span> <span class="comment">Inc</span><span class="comment">.</span>
+  6 
+  7   <span class="comment">File</span> <span class="comment">Name</span><span class="comment">:</span>
+  8     <span class="comment">app</span><span class="comment">.</span><span class="comment">h</span>
+  9 
+ 10   <span class="comment">Summary</span><span class="comment">:</span>
+ 11     <span class="comment">This</span> <span class="comment">header</span> <span class="comment">file</span> <span class="comment">provides</span> <span class="comment">prototypes</span> <span class="comment">and</span> <span class="comment">definitions</span> <span class="comment">for</span> <span class="comment">the</span> <span class="comment">application</span><span class="comment">.</span>
+ 12 
+ 13   <span class="comment">Description</span><span class="comment">:</span>
+ 14     <span class="comment">This</span> <span class="comment">header</span> <span class="comment">file</span> <span class="comment">provides</span> <span class="comment">function</span> <span class="comment">prototypes</span> <span class="comment">and</span> <span class="comment">data</span> <span class="comment">type</span> <span class="comment">definitions</span> <span class="comment">for</span>
+ 15     <span class="comment">the</span> <span class="comment">application</span><span class="comment">.</span>  <span class="comment">Some</span> <span class="comment">of</span> <span class="comment">these</span> <span class="comment">are</span> <span class="comment">required</span> <span class="comment">by</span> <span class="comment">the</span> <span class="comment">system</span><span class="comment"> (</span><span class="comment">such</span> <span class="comment">as</span> <span class="comment">the</span>
+ 16     <span class="comment">&quot;</span><span class="comment">APP_Initialize</span><span class="comment">&quot; </span><span class="comment">and</span><span class="comment"> &quot;</span><span class="comment">APP_Tasks</span><span class="comment">&quot; </span><span class="comment">prototypes</span><span class="comment">) </span><span class="comment">and</span> <span class="comment">some</span> <span class="comment">of</span> <span class="comment">them</span> <span class="comment">are</span> <span class="comment">only</span> <span class="comment">used</span>
+ 17     <span class="comment">internally</span> <span class="comment">by</span> <span class="comment">the</span> <span class="comment">application</span><span class="comment"> (</span><span class="comment">such</span> <span class="comment">as</span> <span class="comment">the</span><span class="comment"> &quot;</span><span class="comment">APP_STATES</span><span class="comment">&quot; </span><span class="comment">definition</span><span class="comment">)</span><span class="comment">.</span>  <span class="comment">Both</span>
+ 18     <span class="comment">are</span> <span class="comment">defined</span> <span class="comment">here</span> <span class="comment">for</span> <span class="comment">convenience</span><span class="comment">.</span>
+ 19 <span class="comment">******************************************************************************</span><span class="comment">*/</span>
+ 20 
+ 21 <span class="comment">//</span><span class="comment">DOM</span><span class="comment">-</span><span class="comment">IGNORE</span><span class="comment">-</span><span class="comment">BEGIN</span>
+ 22 <span class="comment">/**</span><span class="comment">*****************************************************************************</span>
+ 23 <span class="comment">Copyright</span><span class="comment"> (</span><span class="comment">c</span><span class="comment">) 2013-2014 </span><span class="comment">released</span> <span class="comment">Microchip</span> <span class="comment">Technology</span> <span class="comment">Inc</span><span class="comment">.</span>  <span class="comment">All</span> <span class="comment">rights</span> <span class="comment">reserved</span><span class="comment">.</span>
+ 24 
+ 25 <span class="comment">Microchip</span> <span class="comment">licenses</span> <span class="comment">to</span> <span class="comment">you</span> <span class="comment">the</span> <span class="comment">right</span> <span class="comment">to</span> <span class="comment">use</span><span class="comment">, </span><span class="comment">modify</span><span class="comment">, </span><span class="comment">copy</span> <span class="comment">and</span> <span class="comment">distribute</span>
+ 26 <span class="comment">Software</span> <span class="comment">only</span> <span class="comment">when</span> <span class="comment">embedded</span> <span class="comment">on</span> <span class="comment">a</span> <span class="comment">Microchip</span> <span class="comment">microcontroller</span> <span class="comment">or</span> <span class="comment">digital</span> <span class="comment">signal</span>
+ 27 <span class="comment">controller</span> <span class="comment">that</span> <span class="comment">is</span> <span class="comment">integrated</span> <span class="comment">into</span> <span class="comment">your</span> <span class="comment">product</span> <span class="comment">or</span> <span class="comment">third</span> <span class="comment">party</span> <span class="comment">product</span>
+ 28 <span class="comment">(</span><span class="comment">pursuant</span> <span class="comment">to</span> <span class="comment">the</span> <span class="comment">sublicense</span> <span class="comment">terms</span> <span class="comment">in</span> <span class="comment">the</span> <span class="comment">accompanying</span> <span class="comment">license</span> <span class="comment">agreement</span><span class="comment">)</span><span class="comment">.</span>
+ 29 
+ 30 <span class="comment">You</span> <span class="comment">should</span> <span class="comment">refer</span> <span class="comment">to</span> <span class="comment">the</span> <span class="comment">license</span> <span class="comment">agreement</span> <span class="comment">accompanying</span> <span class="comment">this</span> <span class="comment">Software</span> <span class="comment">for</span>
+ 31 <span class="comment">additional</span> <span class="comment">information</span> <span class="comment">regarding</span> <span class="comment">your</span> <span class="comment">rights</span> <span class="comment">and</span> <span class="comment">obligations</span><span class="comment">.</span>
+ 32 
+ 33 <span class="comment">SOFTWARE</span> <span class="comment">AND</span> <span class="comment">DOCUMENTATION</span> <span class="comment">ARE</span> <span class="comment">PROVIDED</span><span class="comment"> &quot;</span><span class="comment">AS</span> <span class="comment">IS</span><span class="comment">&quot; </span><span class="comment">WITHOUT</span> <span class="comment">WARRANTY</span> <span class="comment">OF</span> <span class="comment">ANY</span> <span class="comment">KIND</span><span class="comment">,</span>
+ 34 <span class="comment">EITHER</span> <span class="comment">EXPRESS</span> <span class="comment">OR</span> <span class="comment">IMPLIED</span><span class="comment">, </span><span class="comment">INCLUDING</span> <span class="comment">WITHOUT</span> <span class="comment">LIMITATION</span><span class="comment">, </span><span class="comment">ANY</span> <span class="comment">WARRANTY</span> <span class="comment">OF</span>
+ 35 <span class="comment">MERCHANTABILITY</span><span class="comment">, </span><span class="comment">TITLE</span><span class="comment">, </span><span class="comment">NON</span><span class="comment">-</span><span class="comment">INFRINGEMENT</span> <span class="comment">AND</span> <span class="comment">FITNESS</span> <span class="comment">FOR</span> <span class="comment">A</span> <span class="comment">PARTICULAR</span> <span class="comment">PURPOSE</span><span class="comment">.</span>
+ 36 <span class="comment">IN</span> <span class="comment">NO</span> <span class="comment">EVENT</span> <span class="comment">SHALL</span> <span class="comment">MICROCHIP</span> <span class="comment">OR</span> <span class="comment">ITS</span> <span class="comment">LICENSORS</span> <span class="comment">BE</span> <span class="comment">LIABLE</span> <span class="comment">OR</span> <span class="comment">OBLIGATED</span> <span class="comment">UNDER</span>
+ 37 <span class="comment">CONTRACT</span><span class="comment">, </span><span class="comment">NEGLIGENCE</span><span class="comment">, </span><span class="comment">STRICT</span> <span class="comment">LIABILITY</span><span class="comment">, </span><span class="comment">CONTRIBUTION</span><span class="comment">, </span><span class="comment">BREACH</span> <span class="comment">OF</span> <span class="comment">WARRANTY</span><span class="comment">, </span><span class="comment">OR</span>
+ 38 <span class="comment">OTHER</span> <span class="comment">LEGAL</span> <span class="comment">EQUITABLE</span> <span class="comment">THEORY</span> <span class="comment">ANY</span> <span class="comment">DIRECT</span> <span class="comment">OR</span> <span class="comment">INDIRECT</span> <span class="comment">DAMAGES</span> <span class="comment">OR</span> <span class="comment">EXPENSES</span>
+ 39 <span class="comment">INCLUDING</span> <span class="comment">BUT</span> <span class="comment">NOT</span> <span class="comment">LIMITED</span> <span class="comment">TO</span> <span class="comment">ANY</span> <span class="comment">INCIDENTAL</span><span class="comment">, </span><span class="comment">SPECIAL</span><span class="comment">, </span><span class="comment">INDIRECT</span><span class="comment">, </span><span class="comment">PUNITIVE</span> <span class="comment">OR</span>
+ 40 <span class="comment">CONSEQUENTIAL</span> <span class="comment">DAMAGES</span><span class="comment">, </span><span class="comment">LOST</span> <span class="comment">PROFITS</span> <span class="comment">OR</span> <span class="comment">LOST</span> <span class="comment">DATA</span><span class="comment">, </span><span class="comment">COST</span> <span class="comment">OF</span> <span class="comment">PROCUREMENT</span> <span class="comment">OF</span>
+ 41 <span class="comment">SUBSTITUTE</span> <span class="comment">GOODS</span><span class="comment">, </span><span class="comment">TECHNOLOGY</span><span class="comment">, </span><span class="comment">SERVICES</span><span class="comment">, </span><span class="comment">OR</span> <span class="comment">ANY</span> <span class="comment">CLAIMS</span> <span class="comment">BY</span> <span class="comment">THIRD</span> <span class="comment">PARTIES</span>
+ 42 <span class="comment">(</span><span class="comment">INCLUDING</span> <span class="comment">BUT</span> <span class="comment">NOT</span> <span class="comment">LIMITED</span> <span class="comment">TO</span> <span class="comment">ANY</span> <span class="comment">DEFENSE</span> <span class="comment">THEREOF</span><span class="comment">), </span><span class="comment">OR</span> <span class="comment">OTHER</span> <span class="comment">SIMILAR</span> <span class="comment">COSTS</span><span class="comment">.</span>
+ 43  <span class="comment">******************************************************************************</span><span class="comment">*/</span>
+ 44 <span class="comment">//</span><span class="comment">DOM</span><span class="comment">-</span><span class="comment">IGNORE</span><span class="comment">-</span><span class="comment">END</span>
+ 45 
+ 46 <span class="preprocessor">#</span><span class="preprocessor">ifndef</span> _APP_H
+ 47 <span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="pragma-omp-keyword-directive">_APP_H</span>
+ 48 
+ 49 <span class="comment">//</span><span class="comment"> *****************************************************************************</span>
+ 50 <span class="comment">//</span><span class="comment"> *****************************************************************************</span>
+ 51 <span class="comment">//</span> <span class="comment">Section</span><span class="comment">: </span><span class="comment">Included</span> <span class="comment">Files</span>
+ 52 <span class="comment">//</span><span class="comment"> *****************************************************************************</span>
+ 53 <span class="comment">//</span><span class="comment"> *****************************************************************************</span>
+ 54 
+ 55 <span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="string">&lt;stdint.h&gt;</span>
+ 56 <span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="string">&lt;stdbool.h&gt;</span>
+ 57 <span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="string">&lt;stddef.h&gt;</span>
+ 58 <span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="string">&lt;stdlib.h&gt;</span>
+ 59 <span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="string">&quot;system_config.h&quot;</span>
+ 60 <span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="string">&quot;system_definitions.h&quot;</span>
+ 61 <span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="string">&quot;bno055.h&quot;</span>
+ 62 
+ 63 <span class="comment">//</span> <span class="comment">DOM</span><span class="comment">-</span><span class="comment">IGNORE</span><span class="comment">-</span><span class="comment">BEGIN</span>
+ 64 <span class="preprocessor">#</span><span class="preprocessor">ifdef</span> __cplusplus  <span class="comment">//</span> <span class="comment">Provide</span> <span class="comment">C</span><span class="comment">++ </span><span class="comment">Compatibility</span>
+ 65 
+ 66 <span class="ST1">extern</span> <span class="ST1">&quot;</span><span class="ST1">C</span><span class="ST1">&quot;</span> <span class="ST1">{</span>
+ 67 
+ 68 <span class="preprocessor">#</span><span class="preprocessor">endif</span>
+ 69 <span class="comment">//</span> <span class="comment">DOM</span><span class="comment">-</span><span class="comment">IGNORE</span><span class="comment">-</span><span class="comment">END</span> 
+ 70     
+ 71 <span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="pragma-omp-keyword-directive">TIME_OUT</span> <span class="string">80000000U</span>
+ 72 <span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="pragma-omp-keyword-directive">TIME_POWER_OFF</span>   <span class="string">500</span>
+ 73 
+ 74 <span class="comment">//</span><span class="comment"> *****************************************************************************</span>
+ 75 <span class="comment">//</span><span class="comment"> *****************************************************************************</span>
+ 76 <span class="comment">//</span> <span class="comment">Section</span><span class="comment">: </span><span class="comment">Type</span> <span class="comment">Definitions</span>
+ 77 <span class="comment">//</span><span class="comment"> *****************************************************************************</span>
+ 78 <span class="comment">//</span><span class="comment"> *****************************************************************************</span>
+ 79 <span class="literal">typedef</span> <span class="literal">struct</span> {
+ 80     <span class="ST2">s32</span> <span class="ST3">comres</span>;
+ 81     <span class="pragma-omp-keyword-directive">bool</span> <span class="ST3">flagMeasReady</span>;
+ 82     <span class="pragma-omp-keyword-directive">uint8_t</span> <span class="ST3">flagImportantMeas</span>;
+ 83     <span class="literal">struct</span> bno055_gravity_double_t <span class="ST3">gravity</span>;
+ 84     <span class="literal">struct</span> bno055_linear_accel_double_t <span class="ST3">linear_accel</span>;
+ 85     <span class="literal">struct</span> bno055_euler_double_t <span class="ST3">euler</span>;
+ 86     <span class="literal">struct</span> bno055_gyro_double_t <span class="ST3">gyro</span>;
+ 87     <span class="literal">struct</span> bno055_mag_double_t <span class="ST3">mag</span>;
+ 88     <span class="literal">struct</span> bno055_quaternion_t <span class="ST3">quaternion</span>;
+ 89     <span class="literal">unsigned</span> <span class="literal">long</span> <span class="ST3">time</span>;
+ 90     <span class="literal">unsigned</span> <span class="literal">long</span> <span class="ST3">l_time</span>;
+ 91     <span class="pragma-omp-keyword-directive">uint16_t</span> <span class="ST3">d_time</span>;
+ 92     <span class="literal">float</span> <span class="ST3">pressure</span>;
+ 93 }<span class="ST2">s_bno055_data</span>;
+ 94 <span class="comment">//</span><span class="comment"> *****************************************************************************</span>
+ 95 <span class="comment">/*</span> <span class="comment">Application</span> <span class="comment">states</span>
+ 96 
+ 97   <span class="comment">Summary</span><span class="comment">:</span>
+ 98     <span class="comment">Application</span> <span class="comment">states</span> <span class="comment">enumeration</span>
+ 99 
+100   <span class="comment">Description</span><span class="comment">:</span>
+101     <span class="comment">This</span> <span class="comment">enumeration</span> <span class="comment">defines</span> <span class="comment">the</span> <span class="comment">valid</span> <span class="comment">application</span> <span class="comment">states</span><span class="comment">.</span>  <span class="comment">These</span> <span class="comment">states</span>
+102     <span class="comment">determine</span> <span class="comment">the</span> <span class="comment">behavior</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">application</span> <span class="comment">at</span> <span class="comment">various</span> <span class="comment">times</span><span class="comment">.</span>
+103 <span class="comment">*/</span>
+104 
+105 <span class="literal">typedef</span> <span class="literal">enum</span>
+106 {
+107         <span class="comment">/*</span> <span class="comment">Application</span><span class="comment">&#39;</span><span class="comment">s</span> <span class="comment">state</span> <span class="comment">machine</span><span class="comment">&#39;</span><span class="comment">s</span> <span class="comment">initial</span> <span class="comment">state</span><span class="comment">.</span> <span class="comment">*/</span>
+108         APP_STATE_INIT=<span class="string">0</span>,
+109     APP_STATE_LOGGING,
+110     APP_STATE_FLAG_MEAS,
+111         APP_STATE_SHUTDOWN
+112         <span class="comment">/*</span> <span class="comment">TODO</span><span class="comment">: </span><span class="comment">Define</span> <span class="comment">states</span> <span class="comment">used</span> <span class="comment">by</span> <span class="comment">the</span> <span class="comment">application</span> <span class="comment">state</span> <span class="comment">machine</span><span class="comment">.</span> <span class="comment">*/</span>
+113 
+114 } <span class="ST2">APP_STATES</span>;
+115 
+116 
+117 <span class="comment">//</span><span class="comment"> *****************************************************************************</span>
+118 <span class="comment">/*</span> <span class="comment">Application</span> <span class="comment">Data</span>
+119 
+120   <span class="comment">Summary</span><span class="comment">:</span>
+121     <span class="comment">Holds</span> <span class="comment">application</span> <span class="comment">data</span>
+122 
+123   <span class="comment">Description</span><span class="comment">:</span>
+124     <span class="comment">This</span> <span class="comment">structure</span> <span class="comment">holds</span> <span class="comment">the</span> <span class="comment">application</span><span class="comment">&#39;</span><span class="comment">s</span> <span class="comment">data</span><span class="comment">.</span>
+125 
+126   <span class="comment">Remarks</span><span class="comment">:</span>
+127     <span class="comment">Application</span> <span class="comment">strings</span> <span class="comment">and</span> <span class="comment">buffers</span> <span class="comment">are</span> <span class="comment">be</span> <span class="comment">defined</span> <span class="comment">outside</span> <span class="comment">this</span> <span class="comment">structure</span><span class="comment">.</span>
+128  <span class="comment">*/</span>
+129 
+130 <span class="literal">typedef</span> <span class="literal">struct</span>
+131 {
+132     <span class="comment">/*</span> <span class="comment">The</span> <span class="comment">application</span><span class="comment">&#39;</span><span class="comment">s</span> <span class="comment">current</span> <span class="comment">state</span> <span class="comment">*/</span>
+133     <span class="ST2">APP_STATES</span> <span class="ST3">state</span>;
+134 } <span class="ST2">APP_DATA</span>;
+135 
+136 <span class="literal">typedef</span> <span class="literal">struct</span>
+137 {
+138     <span class="comment">/*</span> <span class="comment">Main</span> <span class="comment">Timer</span><span class="comment"> (1</span><span class="comment">ms</span><span class="comment">) </span><span class="comment">*/</span>
+139     <span class="pragma-omp-keyword-directive">uint32_t</span> <span class="ST3">mainTmrCnt</span>;
+140     <span class="comment">/*</span> <span class="comment">Timer</span> <span class="comment">precis</span><span class="comment"> (1</span><span class="comment">us</span><span class="comment">) </span><span class="comment">*/</span>
+141     <span class="pragma-omp-keyword-directive">bool</span> <span class="ST3">TmrTickFlag</span>;
+142     <span class="pragma-omp-keyword-directive">uint32_t</span> <span class="ST3">TmrCnt</span>;
+143     <span class="comment">/*</span> <span class="comment">Measure</span> <span class="comment">todo</span> <span class="comment">flag</span> <span class="comment">*/</span>
+144     <span class="literal">unsigned</span> <span class="literal">long</span> <span class="ST3">TmrMeas</span>;
+145     <span class="literal">unsigned</span> <span class="literal">long</span> <span class="ST3">ltime</span>;
+146     <span class="pragma-omp-keyword-directive">bool</span> <span class="ST3">measTodoFlag</span>;
+147     <span class="comment">/*</span> <span class="comment">Timer</span> <span class="comment">display</span> <span class="comment">*/</span>
+148     <span class="pragma-omp-keyword-directive">uint32_t</span> <span class="ST3">TmrDisplay</span>;
+149     <span class="comment">/*</span> <span class="comment">Tmr</span> <span class="comment">wait</span> <span class="comment">shutdown</span> <span class="comment">*/</span>
+150     <span class="pragma-omp-keyword-directive">bool</span> <span class="ST3">flagCountBtnPressed</span>;
+151     <span class="pragma-omp-keyword-directive">uint32_t</span> <span class="ST3">TmrBtnPressed</span>;
+152 }<span class="ST2">TIMER_DATA</span>;
+153 
+154 <span class="comment">//</span><span class="comment"> *****************************************************************************</span>
+155 <span class="comment">//</span><span class="comment"> *****************************************************************************</span>
+156 <span class="comment">//</span> <span class="comment">Section</span><span class="comment">: </span><span class="comment">Application</span> <span class="comment">Callback</span> <span class="comment">Routines</span>
+157 <span class="comment">//</span><span class="comment"> *****************************************************************************</span>
+158 <span class="comment">//</span><span class="comment"> *****************************************************************************</span>
+159 <span class="comment">//</span><span class="comment"> *****************************************************************************</span>
+160 <span class="comment">//</span><span class="comment"> *****************************************************************************</span>
+161 <span class="comment">//</span> <span class="comment">Section</span><span class="comment">: </span><span class="comment">Application</span> <span class="comment">Initialization</span> <span class="comment">and</span> <span class="comment">State</span> <span class="comment">Machine</span> <span class="comment">Functions</span>
+162 <span class="comment">//</span><span class="comment"> *****************************************************************************</span>
+163 <span class="comment">//</span><span class="comment"> *****************************************************************************</span>
+164 
+165 <span class="comment">/**</span><span class="comment">*****************************************************************************</span>
+166   <span class="comment">Function</span><span class="comment">:</span>
+167     <span class="comment">void</span> <span class="comment">APP_Initialize</span><span class="comment"> ( </span><span class="comment">void</span><span class="comment"> )</span>
+168 
+169   <span class="comment">Summary</span><span class="comment">:</span>
+170      <span class="comment">MPLAB</span> <span class="comment">Harmony</span> <span class="comment">application</span> <span class="comment">initialization</span> <span class="comment">routine</span><span class="comment">.</span>
+171 
+172   <span class="comment">Description</span><span class="comment">:</span>
+173     <span class="comment">This</span> <span class="comment">function</span> <span class="comment">initializes</span> <span class="comment">the</span> <span class="comment">Harmony</span> <span class="comment">application</span><span class="comment">.</span>  <span class="comment">It</span> <span class="comment">places</span> <span class="comment">the</span> 
+174     <span class="comment">application</span> <span class="comment">in</span> <span class="comment">its</span> <span class="comment">initial</span> <span class="comment">state</span> <span class="comment">and</span> <span class="comment">prepares</span> <span class="comment">it</span> <span class="comment">to</span> <span class="comment">run</span> <span class="comment">so</span> <span class="comment">that</span> <span class="comment">its</span> 
+175     <span class="comment">APP_Tasks</span> <span class="comment">function</span> <span class="comment">can</span> <span class="comment">be</span> <span class="comment">called</span><span class="comment">.</span>
+176 
+177   <span class="comment">Precondition</span><span class="comment">:</span>
+178     <span class="comment">All</span> <span class="comment">other</span> <span class="comment">system</span> <span class="comment">initialization</span> <span class="comment">routines</span> <span class="comment">should</span> <span class="comment">be</span> <span class="comment">called</span> <span class="comment">before</span> <span class="comment">calling</span>
+179     <span class="comment">this</span> <span class="comment">routine</span><span class="comment"> (</span><span class="comment">in</span><span class="comment"> &quot;</span><span class="comment">SYS_Initialize</span><span class="comment">&quot;)</span><span class="comment">.</span>
+180 
+181   <span class="comment">Parameters</span><span class="comment">:</span>
+182     <span class="comment">None</span><span class="comment">.</span>
+183 
+184   <span class="comment">Returns</span><span class="comment">:</span>
+185     <span class="comment">None</span><span class="comment">.</span>
+186 
+187   <span class="comment">Example</span><span class="comment">:</span>
+188     <span class="ST4">&lt;code&gt;</span>
+189     <span class="comment">APP_Initialize</span><span class="comment">();</span>
+190     <span class="ST4">&lt;/code&gt;</span>
+191 
+192   <span class="comment">Remarks</span><span class="comment">:</span>
+193     <span class="comment">This</span> <span class="comment">routine</span> <span class="comment">must</span> <span class="comment">be</span> <span class="comment">called</span> <span class="comment">from</span> <span class="comment">the</span> <span class="comment">SYS_Initialize</span> <span class="comment">function</span><span class="comment">.</span>
+194 <span class="comment">*/</span>
+195 
+196 <span class="literal">void</span> <span class="ST5">APP_Initialize</span> ( <span class="literal">void</span> );
+197 
+198 <span class="literal">void</span> <span class="ST5">prepareBuffer</span>( <span class="literal">char</span> * buffer );
+199 
+200 <span class="literal">void</span> <span class="ST5">App_resetMeasFlag</span>( <span class="literal">void</span> );
+201 
+202 <span class="comment">/**</span><span class="comment">*****************************************************************************</span>
+203   <span class="comment">Function</span><span class="comment">:</span>
+204     <span class="comment">void</span> <span class="comment">APP_Tasks</span><span class="comment"> ( </span><span class="comment">void</span><span class="comment"> )</span>
+205 
+206   <span class="comment">Summary</span><span class="comment">:</span>
+207     <span class="comment">MPLAB</span> <span class="comment">Harmony</span> <span class="comment">Demo</span> <span class="comment">application</span> <span class="comment">tasks</span> <span class="comment">function</span>
+208 
+209   <span class="comment">Description</span><span class="comment">:</span>
+210     <span class="comment">This</span> <span class="comment">routine</span> <span class="comment">is</span> <span class="comment">the</span> <span class="comment">Harmony</span> <span class="comment">Demo</span> <span class="comment">application</span><span class="comment">&#39;</span><span class="comment">s</span> <span class="comment">tasks</span> <span class="comment">function</span><span class="comment">.</span>  <span class="comment">It</span>
+211     <span class="comment">defines</span> <span class="comment">the</span> <span class="comment">application</span><span class="comment">&#39;</span><span class="comment">s</span> <span class="comment">state</span> <span class="comment">machine</span> <span class="comment">and</span> <span class="comment">core</span> <span class="comment">logic</span><span class="comment">.</span>
+212 
+213   <span class="comment">Precondition</span><span class="comment">:</span>
+214     <span class="comment">The</span> <span class="comment">system</span> <span class="comment">and</span> <span class="comment">application</span> <span class="comment">initialization</span><span class="comment"> (&quot;</span><span class="comment">SYS_Initialize</span><span class="comment">&quot;) </span><span class="comment">should</span> <span class="comment">be</span>
+215     <span class="comment">called</span> <span class="comment">before</span> <span class="comment">calling</span> <span class="comment">this</span><span class="comment">.</span>
+216 
+217   <span class="comment">Parameters</span><span class="comment">:</span>
+218     <span class="comment">None</span><span class="comment">.</span>
+219 
+220   <span class="comment">Returns</span><span class="comment">:</span>
+221     <span class="comment">None</span><span class="comment">.</span>
+222 
+223   <span class="comment">Example</span><span class="comment">:</span>
+224     <span class="ST4">&lt;code&gt;</span>
+225     <span class="comment">APP_Tasks</span><span class="comment">();</span>
+226     <span class="ST4">&lt;/code&gt;</span>
+227 
+228   <span class="comment">Remarks</span><span class="comment">:</span>
+229     <span class="comment">This</span> <span class="comment">routine</span> <span class="comment">must</span> <span class="comment">be</span> <span class="comment">called</span> <span class="comment">from</span> <span class="comment">SYS_Tasks</span><span class="comment">() </span><span class="comment">routine</span><span class="comment">.</span>
+230  <span class="comment">*/</span>
+231 
+232 <span class="literal">void</span> <span class="ST5">APP_Tasks</span>( <span class="literal">void</span> );
+233 
+234 
+235 <span class="comment">//</span> <span class="comment">Callback</span> <span class="comment">main</span> <span class="comment">timer</span>
+236 <span class="literal">void</span> <span class="ST5">MainTimer_callback</span>( <span class="literal">void</span> );
+237 
+238 <span class="comment">//</span> <span class="comment">Callback</span> <span class="comment">display</span> <span class="comment">timer</span>
+239 <span class="literal">void</span> <span class="ST5">DisplayTimer_callback</span>( <span class="literal">void</span> );
+240 
+241 <span class="preprocessor">#</span><span class="preprocessor">endif</span> <span class="comment">/*</span> <span class="comment">_APP_H</span> <span class="comment">*/</span>
+242 
+243 <span class="comment">//</span><span class="comment">DOM</span><span class="comment">-</span><span class="comment">IGNORE</span><span class="comment">-</span><span class="comment">BEGIN</span>
+244 <span class="preprocessor">#</span><span class="preprocessor">ifdef</span> __cplusplus
+245 <span class="ST1">}</span>
+246 <span class="preprocessor">#</span><span class="preprocessor">endif</span>
+247 <span class="comment">//</span><span class="comment">DOM</span><span class="comment">-</span><span class="comment">IGNORE</span><span class="comment">-</span><span class="comment">END</span>
+248 
+249 <span class="comment">/**</span><span class="comment">*****************************************************************************</span>
+250  <span class="comment">End</span> <span class="comment">of</span> <span class="comment">File</span>
+251  <span class="comment">*/</span>
+252 
+253 
+</pre></body>
+</html>

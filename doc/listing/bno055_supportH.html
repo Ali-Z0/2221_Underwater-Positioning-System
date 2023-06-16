@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>bno055_support.h</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Monospaced}
+pre {color: #000000; background-color: #ffffff; font-family: Monospaced}
+table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
+.preprocessor {color: #009b00}
+.ST3 {font-family: Monospaced; font-weight: bold}
+.comment {color: #748ab0}
+.ST1 {color: #748ab0; font-family: Monospaced; font-weight: bold}
+.ST2 {color: #9933cc}
+.literal {color: #0a0a7c}
+.pragma-omp-keyword-directive {color: #2e92c7}
+.string {color: #cc7800}
+.ST0 {color: #748ab0; background-color: #f1f1da}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">C:\microchip\harmony\v2_06\apps\PROJ\Code-Principale\firmware\src\bno055_support.h</td></tr></table>
+<pre>
+  1 <span class="ST0">/**</span>
+  2 <span class="comment">* </span><span class="comment">Copyright</span><span class="comment"> (</span><span class="comment">c</span><span class="comment">) 2020 </span><span class="comment">Bosch</span> <span class="comment">Sensortec</span> <span class="comment">GmbH</span><span class="comment">.</span> <span class="comment">All</span> <span class="comment">rights</span> <span class="comment">reserved</span><span class="comment">.</span>
+  3 <span class="comment">*</span>
+  4 <span class="comment">* </span><span class="comment">BSD</span><span class="comment">-3-</span><span class="comment">Clause</span>
+  5 <span class="comment">*</span>
+  6 <span class="comment">* </span><span class="comment">Redistribution</span> <span class="comment">and</span> <span class="comment">use</span> <span class="comment">in</span> <span class="comment">source</span> <span class="comment">and</span> <span class="comment">binary</span> <span class="comment">forms</span><span class="comment">, </span><span class="comment">with</span> <span class="comment">or</span> <span class="comment">without</span>
+  7 <span class="comment">* </span><span class="comment">modification</span><span class="comment">, </span><span class="comment">are</span> <span class="comment">permitted</span> <span class="comment">provided</span> <span class="comment">that</span> <span class="comment">the</span> <span class="comment">following</span> <span class="comment">conditions</span> <span class="comment">are</span> <span class="comment">met</span><span class="comment">:</span>
+  8 <span class="comment">*</span>
+  9 <span class="comment">* 1</span><span class="comment">.</span> <span class="comment">Redistributions</span> <span class="comment">of</span> <span class="comment">source</span> <span class="comment">code</span> <span class="comment">must</span> <span class="comment">retain</span> <span class="comment">the</span> <span class="comment">above</span> <span class="comment">copyright</span>
+ 10 <span class="comment">*    </span><span class="comment">notice</span><span class="comment">, </span><span class="comment">this</span> <span class="comment">list</span> <span class="comment">of</span> <span class="comment">conditions</span> <span class="comment">and</span> <span class="comment">the</span> <span class="comment">following</span> <span class="comment">disclaimer</span><span class="comment">.</span>
+ 11 <span class="comment">*</span>
+ 12 <span class="comment">* 2</span><span class="comment">.</span> <span class="comment">Redistributions</span> <span class="comment">in</span> <span class="comment">binary</span> <span class="comment">form</span> <span class="comment">must</span> <span class="comment">reproduce</span> <span class="comment">the</span> <span class="comment">above</span> <span class="comment">copyright</span>
+ 13 <span class="comment">*    </span><span class="comment">notice</span><span class="comment">, </span><span class="comment">this</span> <span class="comment">list</span> <span class="comment">of</span> <span class="comment">conditions</span> <span class="comment">and</span> <span class="comment">the</span> <span class="comment">following</span> <span class="comment">disclaimer</span> <span class="comment">in</span> <span class="comment">the</span>
+ 14 <span class="comment">*    </span><span class="comment">documentation</span> <span class="comment">and</span><span class="comment">/</span><span class="comment">or</span> <span class="comment">other</span> <span class="comment">materials</span> <span class="comment">provided</span> <span class="comment">with</span> <span class="comment">the</span> <span class="comment">distribution</span><span class="comment">.</span>
+ 15 <span class="comment">*</span>
+ 16 <span class="comment">* 3</span><span class="comment">.</span> <span class="comment">Neither</span> <span class="comment">the</span> <span class="comment">name</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">copyright</span> <span class="comment">holder</span> <span class="comment">nor</span> <span class="comment">the</span> <span class="comment">names</span> <span class="comment">of</span> <span class="comment">its</span>
+ 17 <span class="comment">*    </span><span class="comment">contributors</span> <span class="comment">may</span> <span class="comment">be</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">endorse</span> <span class="comment">or</span> <span class="comment">promote</span> <span class="comment">products</span> <span class="comment">derived</span> <span class="comment">from</span>
+ 18 <span class="comment">*    </span><span class="comment">this</span> <span class="comment">software</span> <span class="comment">without</span> <span class="comment">specific</span> <span class="comment">prior</span> <span class="comment">written</span> <span class="comment">permission</span><span class="comment">.</span>
+ 19 <span class="comment">*</span>
+ 20 <span class="comment">* </span><span class="comment">THIS</span> <span class="comment">SOFTWARE</span> <span class="comment">IS</span> <span class="comment">PROVIDED</span> <span class="comment">BY</span> <span class="comment">THE</span> <span class="comment">COPYRIGHT</span> <span class="comment">HOLDERS</span> <span class="comment">AND</span> <span class="comment">CONTRIBUTORS</span>
+ 21 <span class="comment">* &quot;</span><span class="comment">AS</span> <span class="comment">IS</span><span class="comment">&quot; </span><span class="comment">AND</span> <span class="comment">ANY</span> <span class="comment">EXPRESS</span> <span class="comment">OR</span> <span class="comment">IMPLIED</span> <span class="comment">WARRANTIES</span><span class="comment">, </span><span class="comment">INCLUDING</span><span class="comment">, </span><span class="comment">BUT</span> <span class="comment">NOT</span>
+ 22 <span class="comment">* </span><span class="comment">LIMITED</span> <span class="comment">TO</span><span class="comment">, </span><span class="comment">THE</span> <span class="comment">IMPLIED</span> <span class="comment">WARRANTIES</span> <span class="comment">OF</span> <span class="comment">MERCHANTABILITY</span> <span class="comment">AND</span> <span class="comment">FITNESS</span>
+ 23 <span class="comment">* </span><span class="comment">FOR</span> <span class="comment">A</span> <span class="comment">PARTICULAR</span> <span class="comment">PURPOSE</span> <span class="comment">ARE</span> <span class="comment">DISCLAIMED</span><span class="comment">.</span> <span class="comment">IN</span> <span class="comment">NO</span> <span class="comment">EVENT</span> <span class="comment">SHALL</span> <span class="comment">THE</span>
+ 24 <span class="comment">* </span><span class="comment">COPYRIGHT</span> <span class="comment">HOLDER</span> <span class="comment">OR</span> <span class="comment">CONTRIBUTORS</span> <span class="comment">BE</span> <span class="comment">LIABLE</span> <span class="comment">FOR</span> <span class="comment">ANY</span> <span class="comment">DIRECT</span><span class="comment">, </span><span class="comment">INDIRECT</span><span class="comment">,</span>
+ 25 <span class="comment">* </span><span class="comment">INCIDENTAL</span><span class="comment">, </span><span class="comment">SPECIAL</span><span class="comment">, </span><span class="comment">EXEMPLARY</span><span class="comment">, </span><span class="comment">OR</span> <span class="comment">CONSEQUENTIAL</span> <span class="comment">DAMAGES</span>
+ 26 <span class="comment">* (</span><span class="comment">INCLUDING</span><span class="comment">, </span><span class="comment">BUT</span> <span class="comment">NOT</span> <span class="comment">LIMITED</span> <span class="comment">TO</span><span class="comment">, </span><span class="comment">PROCUREMENT</span> <span class="comment">OF</span> <span class="comment">SUBSTITUTE</span> <span class="comment">GOODS</span> <span class="comment">OR</span>
+ 27 <span class="comment">* </span><span class="comment">SERVICES</span><span class="comment">; </span><span class="comment">LOSS</span> <span class="comment">OF</span> <span class="comment">USE</span><span class="comment">, </span><span class="comment">DATA</span><span class="comment">, </span><span class="comment">OR</span> <span class="comment">PROFITS</span><span class="comment">; </span><span class="comment">OR</span> <span class="comment">BUSINESS</span> <span class="comment">INTERRUPTION</span><span class="comment">)</span>
+ 28 <span class="comment">* </span><span class="comment">HOWEVER</span> <span class="comment">CAUSED</span> <span class="comment">AND</span> <span class="comment">ON</span> <span class="comment">ANY</span> <span class="comment">THEORY</span> <span class="comment">OF</span> <span class="comment">LIABILITY</span><span class="comment">, </span><span class="comment">WHETHER</span> <span class="comment">IN</span> <span class="comment">CONTRACT</span><span class="comment">,</span>
+ 29 <span class="comment">* </span><span class="comment">STRICT</span> <span class="comment">LIABILITY</span><span class="comment">, </span><span class="comment">OR</span> <span class="comment">TORT</span><span class="comment"> (</span><span class="comment">INCLUDING</span> <span class="comment">NEGLIGENCE</span> <span class="comment">OR</span> <span class="comment">OTHERWISE</span><span class="comment">) </span><span class="comment">ARISING</span>
+ 30 <span class="comment">* </span><span class="comment">IN</span> <span class="comment">ANY</span> <span class="comment">WAY</span> <span class="comment">OUT</span> <span class="comment">OF</span> <span class="comment">THE</span> <span class="comment">USE</span> <span class="comment">OF</span> <span class="comment">THIS</span> <span class="comment">SOFTWARE</span><span class="comment">, </span><span class="comment">EVEN</span> <span class="comment">IF</span> <span class="comment">ADVISED</span> <span class="comment">OF</span> <span class="comment">THE</span>
+ 31 <span class="comment">* </span><span class="comment">POSSIBILITY</span> <span class="comment">OF</span> <span class="comment">SUCH</span> <span class="comment">DAMAGE</span><span class="comment">.</span>
+ 32 <span class="comment">*</span>
+ 33 <span class="comment">* </span><span class="ST1">@file</span> <span class="comment">bno055_support</span><span class="comment">.</span><span class="comment">c</span>
+ 34 <span class="comment">* </span><span class="ST1">@date</span><span class="comment"> 10/01/2020</span>
+ 35 <span class="comment">* </span><span class="ST1">@version</span><span class="comment">  2</span><span class="comment">.</span><span class="comment">0</span><span class="comment">.</span><span class="comment">6</span>
+ 36 <span class="comment">*</span>
+ 37 <span class="comment">*/</span>
+ 38 
+ 39 <span class="comment">/*</span><span class="comment">---------------------------------------------------------------------------*</span>
+ 40 <span class="comment">*  </span><span class="comment">Includes</span>
+ 41 <span class="comment">*---------------------------------------------------------------------------</span><span class="comment">*/</span>
+ 42 <span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="string">&quot;bno055.h&quot;</span>
+ 43 
+ 44 <span class="preprocessor">#</span><span class="preprocessor">define</span>  <span class="pragma-omp-keyword-directive">BNO055_API</span>
+ 45 
+ 46 <span class="preprocessor">#</span><span class="preprocessor">define</span>  <span class="pragma-omp-keyword-directive">FLAG_MEAS_ON</span>    <span class="string">1</span>
+ 47 <span class="preprocessor">#</span><span class="preprocessor">define</span>  <span class="pragma-omp-keyword-directive">FLAG_MEAS_OFF</span>   <span class="string">0</span>
+ 48 <span class="comment">/*</span><span class="comment">----------------------------------------------------------------------------*</span>
+ 49 <span class="comment">*  </span><span class="comment">The</span> <span class="comment">following</span> <span class="comment">APIs</span> <span class="comment">are</span> <span class="comment">used</span> <span class="comment">for</span> <span class="comment">reading</span> <span class="comment">and</span> <span class="comment">writing</span> <span class="comment">of</span>
+ 50 <span class="comment">*   </span><span class="comment">sensor</span> <span class="comment">data</span> <span class="comment">using</span> <span class="comment">I2C</span> <span class="comment">communication</span>
+ 51 <span class="comment">*----------------------------------------------------------------------------</span><span class="comment">*/</span>
+ 52 <span class="preprocessor">#</span><span class="preprocessor">ifdef</span>  <span class="pragma-omp-keyword-directive">BNO055_API</span>
+ 53 <span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="pragma-omp-keyword-directive">BNO055_I2C_BUS_WRITE_ARRAY_INDEX</span> ((<span class="ST2">u8</span>)<span class="string">1</span>)
+ 54 
+ 55 <span class="comment">/*</span>  <span class="ST1">\Brief</span><span class="comment">: </span><span class="comment">The</span> <span class="comment">API</span> <span class="comment">is</span> <span class="comment">used</span> <span class="comment">as</span> <span class="comment">I2C</span> <span class="comment">bus</span> <span class="comment">read</span>
+ 56  <span class="comment">*  </span><span class="ST1">\Return</span><span class="comment"> : </span><span class="comment">Status</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">I2C</span> <span class="comment">read</span>
+ 57  <span class="comment">*  </span><span class="ST1">\param</span> <span class="comment">dev_addr</span><span class="comment"> : </span><span class="comment">The</span> <span class="comment">device</span> <span class="comment">address</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">sensor</span>
+ 58  <span class="comment">*  </span><span class="ST1">\param</span> <span class="comment">reg_addr</span><span class="comment"> : </span><span class="comment">Address</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">first</span> <span class="comment">register</span><span class="comment">,</span>
+ 59  <span class="comment">*   </span><span class="comment">will</span> <span class="comment">data</span> <span class="comment">is</span> <span class="comment">going</span> <span class="comment">to</span> <span class="comment">be</span> <span class="comment">read</span>
+ 60  <span class="comment">*  </span><span class="ST1">\param</span> <span class="comment">reg_data</span><span class="comment"> : </span><span class="comment">This</span> <span class="comment">data</span> <span class="comment">read</span> <span class="comment">from</span> <span class="comment">the</span> <span class="comment">sensor</span><span class="comment">,</span>
+ 61  <span class="comment">*   </span><span class="comment">which</span> <span class="comment">is</span> <span class="comment">hold</span> <span class="comment">in</span> <span class="comment">an</span> <span class="comment">array</span>
+ 62  <span class="comment">*  </span><span class="ST1">\param</span> <span class="comment">cnt</span><span class="comment"> : </span><span class="comment">The</span> <span class="comment">no</span> <span class="comment">of</span> <span class="comment">byte</span> <span class="comment">of</span> <span class="comment">data</span> <span class="comment">to</span> <span class="comment">be</span> <span class="comment">read</span>
+ 63  <span class="comment">*/</span>
+ 64 <span class="ST2">s8</span> <span class="ST3">BNO055_I2C_bus_read</span>(<span class="ST2">u8</span> dev_addr, <span class="ST2">u8</span> reg_addr, <span class="ST2">u8</span> *reg_data, <span class="ST2">u8</span> cnt);
+ 65 
+ 66 <span class="comment">/*</span>  <span class="ST1">\Brief</span><span class="comment">: </span><span class="comment">The</span> <span class="comment">API</span> <span class="comment">is</span> <span class="comment">used</span> <span class="comment">as</span> <span class="comment">SPI</span> <span class="comment">bus</span> <span class="comment">write</span>
+ 67  <span class="comment">*  </span><span class="ST1">\Return</span><span class="comment"> : </span><span class="comment">Status</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">SPI</span> <span class="comment">write</span>
+ 68  <span class="comment">*  </span><span class="ST1">\param</span> <span class="comment">dev_addr</span><span class="comment"> : </span><span class="comment">The</span> <span class="comment">device</span> <span class="comment">address</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">sensor</span>
+ 69  <span class="comment">*  </span><span class="ST1">\param</span> <span class="comment">reg_addr</span><span class="comment"> : </span><span class="comment">Address</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">first</span> <span class="comment">register</span><span class="comment">,</span>
+ 70  <span class="comment">*   </span><span class="comment">will</span> <span class="comment">data</span> <span class="comment">is</span> <span class="comment">going</span> <span class="comment">to</span> <span class="comment">be</span> <span class="comment">written</span>
+ 71  <span class="comment">*  </span><span class="ST1">\param</span> <span class="comment">reg_data</span><span class="comment"> : </span><span class="comment">It</span> <span class="comment">is</span> <span class="comment">a</span> <span class="comment">value</span> <span class="comment">hold</span> <span class="comment">in</span> <span class="comment">the</span> <span class="comment">array</span><span class="comment">,</span>
+ 72  <span class="comment">*  </span><span class="comment">will</span> <span class="comment">be</span> <span class="comment">used</span> <span class="comment">for</span> <span class="comment">write</span> <span class="comment">the</span> <span class="comment">value</span> <span class="comment">into</span> <span class="comment">the</span> <span class="comment">register</span>
+ 73  <span class="comment">*  </span><span class="ST1">\param</span> <span class="comment">cnt</span><span class="comment"> : </span><span class="comment">The</span> <span class="comment">no</span> <span class="comment">of</span> <span class="comment">byte</span> <span class="comment">of</span> <span class="comment">data</span> <span class="comment">to</span> <span class="comment">be</span> <span class="comment">write</span>
+ 74  <span class="comment">*/</span>
+ 75 <span class="ST2">s8</span> <span class="ST3">BNO055_I2C_bus_write</span>(<span class="ST2">u8</span> dev_addr, <span class="ST2">u8</span> reg_addr, <span class="ST2">u8</span> *reg_data, <span class="ST2">u8</span> cnt);
+ 76 
+ 77 <span class="comment">/*</span>
+ 78  <span class="comment">* </span><span class="ST1">\Brief</span><span class="comment">: </span><span class="comment">I2C</span> <span class="comment">init</span> <span class="comment">routine</span>
+ 79  <span class="comment">*/</span>
+ 80 <span class="ST2">s8</span> <span class="ST3">I2C_routine</span>(<span class="literal">void</span>);
+ 81 
+ 82 <span class="comment">/*</span>  <span class="comment">Brief</span><span class="comment"> : </span><span class="comment">The</span> <span class="comment">delay</span> <span class="comment">routine</span>
+ 83  <span class="comment">*  </span><span class="ST1">\param</span><span class="comment"> : </span><span class="comment">delay</span> <span class="comment">in</span> <span class="comment">ms</span>
+ 84  <span class="comment">*/</span>
+ 85 <span class="literal">void</span> <span class="ST3">BNO055_delay_msek</span>(<span class="ST2">u32</span> msek);
+ 86 
+ 87 <span class="preprocessor">#</span><span class="preprocessor">endif</span>
+ 88 
+ 89 <span class="comment">/**</span><span class="comment">******************</span><span class="comment">End</span> <span class="comment">of</span> <span class="comment">I2C</span> <span class="comment">APIs</span> <span class="comment">declarations</span><span class="comment">**********************</span><span class="comment">*/</span>
+ 90 
+ 91 <span class="comment">/*</span> <span class="comment">This</span> <span class="comment">API</span> <span class="comment">is</span> <span class="comment">an</span> <span class="comment">example</span> <span class="comment">for</span> <span class="comment">reading</span> <span class="comment">sensor</span> <span class="comment">data</span>
+ 92  <span class="comment">*  </span><span class="ST1">\param</span><span class="comment">: </span><span class="comment">None</span>
+ 93  <span class="comment">*  </span><span class="ST1">\return</span><span class="comment">: </span><span class="comment">communication</span> <span class="comment">result</span>
+ 94  <span class="comment">*/</span>
+ 95 <span class="ST2">s32</span> <span class="ST3">bno055_init_readout</span>(<span class="literal">void</span>);
+ 96 
+ 97 <span class="ST2">s32</span> <span class="ST3">bno055_read_routine</span>(<span class="ST2">s_bno055_data</span> *data);
+ 98 
+ 99 <span class="comment">/*</span><span class="comment">----------------------------------------------------------------------------*</span>
+100  <span class="comment">*  </span><span class="comment">struct</span> <span class="comment">bno055_t</span> <span class="comment">parameters</span> <span class="comment">can</span> <span class="comment">be</span> <span class="comment">accessed</span> <span class="comment">by</span> <span class="comment">using</span> <span class="comment">BNO055</span>
+101  <span class="comment">*  </span><span class="comment">BNO055_t</span> <span class="comment">having</span> <span class="comment">the</span> <span class="comment">following</span> <span class="comment">parameters</span>
+102  <span class="comment">*  </span><span class="comment">Bus</span> <span class="comment">write</span> <span class="comment">function</span> <span class="comment">pointer</span><span class="comment">: </span><span class="comment">BNO055_WR_FUNC_PTR</span>
+103  <span class="comment">*  </span><span class="comment">Bus</span> <span class="comment">read</span> <span class="comment">function</span> <span class="comment">pointer</span><span class="comment">: </span><span class="comment">BNO055_RD_FUNC_PTR</span>
+104  <span class="comment">*  </span><span class="comment">Burst</span> <span class="comment">read</span> <span class="comment">function</span> <span class="comment">pointer</span><span class="comment">: </span><span class="comment">BNO055_BRD_FUNC_PTR</span>
+105  <span class="comment">*  </span><span class="comment">Delay</span> <span class="comment">function</span> <span class="comment">pointer</span><span class="comment">: </span><span class="comment">delay_msec</span>
+106  <span class="comment">*  </span><span class="comment">I2C</span> <span class="comment">address</span><span class="comment">: </span><span class="comment">dev_addr</span>
+107  <span class="comment">*  </span><span class="comment">Chip</span> <span class="comment">id</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">sensor</span><span class="comment">: </span><span class="comment">chip_id</span>
+108  <span class="comment">*---------------------------------------------------------------------------</span><span class="comment">*/</span>
+109 <span class="literal">struct</span> bno055_t bno055;
+110 
+</pre></body>
+</html>

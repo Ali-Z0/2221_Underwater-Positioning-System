@@ -135,6 +135,23 @@
 % Résumé
 \includepdf[scale=0.8,pages=1,pagecommand=\subsection{Résumé}\label{ssec:Resume}]{../../2221_LocalisationSousMarine-Résumé.pdf}
 
+\subsection{Mode d'emploi}
+\begin{enumerate}
+	\item Insérer la carte SD format FAT.
+	\item Allumer le système avec une impulsion sur le bouton.
+	\subitem Si la LED clignote en vert,  le logging est en cours.
+	\subitem Si la LED s'allume en rouge, il y a une erreur (Vérifier carte SD ou relancer système).
+	\item Presser brièvement sur le bouton pour mettre la prochaine mesure en importance haute (1 dans CSV).
+	\item Une fois le logging terminé, maintenir le bouton plus de 5 secondes pour éteindre le système.
+
+\paragraph{Notes} Il est conseillé de bien éteindre le système par le bouton, pour ne pas mettre en danger l'intégrité de la carte SD. \vspace{+5mm}
+
+	\item Retirer la carte SD.
+	\item Insérer la carte SD sur un ordinateur avec un adaptateur.
+	\item Récupérer le fichier \textit{MESURES.CSV}.
+	\item Recommencer le cycle.
+\end{enumerate}
+
 % Schema
 \includepdf[landscape=true, scale=0.9,pages=1,pagecommand=\subsection{Schéma électronique}\label{ssec:Schema}]{../../2221_Schematique.PDF}
 \includepdf[landscape=true, scale=0.9,pages=2]{../../2221_Schematique.PDF}
@@ -149,5 +166,20 @@
 % Implémentation
 \includepdf[scale=0.8,pages=1,pagecommand=\subsection{Implémentation}\label{ssec:Implementation}]{../../2221_Implémentation.PDF}
 \includepdf[scale=0.8,pages=2]{../../2221_Implémentation.PDF}
+
+\subsection{Code}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{Figures/Illustration_code}
+	\caption{Illustration code}
+	\label{fig:illustrationcode}
+	\source{https://www.vecteezy.com/vector-art/21464998-screen-coding-vector-illustration-on-a-background-premium-quality-symbols-vector-icons-for-concept-and-graphic-design}
+\end{figure}
+
+
+% Code
+\includepdf[pages=-]{../../listing/LISTING.pdf}
+
 
 \end{document}

@@ -1,0 +1,627 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>bno055_support.c</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Monospaced}
+pre {color: #000000; background-color: #ffffff; font-family: Monospaced}
+table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
+.preprocessor {color: #009b00}
+.ST3 {font-family: Monospaced; font-weight: bold}
+.comment {color: #748ab0}
+.ST1 {color: #748ab0; font-family: Monospaced; font-weight: bold}
+.ST2 {color: #9933cc}
+.literal {color: #0a0a7c}
+.ST4 {color: #989800}
+.pragma-omp-keyword-directive {color: #2e92c7}
+.string {color: #cc7800}
+.ST0 {color: #748ab0; background-color: #f1f1da}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">C:\microchip\harmony\v2_06\apps\PROJ\Code-Principale\firmware\src\bno055_support.c</td></tr></table>
+<pre>
+  1 <span class="ST0">/**</span>
+  2 <span class="comment">* </span><span class="comment">Copyright</span><span class="comment"> (</span><span class="comment">c</span><span class="comment">) 2020 </span><span class="comment">Bosch</span> <span class="comment">Sensortec</span> <span class="comment">GmbH</span><span class="comment">.</span> <span class="comment">All</span> <span class="comment">rights</span> <span class="comment">reserved</span><span class="comment">.</span>
+  3 <span class="comment">*</span>
+  4 <span class="comment">* </span><span class="comment">BSD</span><span class="comment">-3-</span><span class="comment">Clause</span>
+  5 <span class="comment">*</span>
+  6 <span class="comment">* </span><span class="comment">Redistribution</span> <span class="comment">and</span> <span class="comment">use</span> <span class="comment">in</span> <span class="comment">source</span> <span class="comment">and</span> <span class="comment">binary</span> <span class="comment">forms</span><span class="comment">, </span><span class="comment">with</span> <span class="comment">or</span> <span class="comment">without</span>
+  7 <span class="comment">* </span><span class="comment">modification</span><span class="comment">, </span><span class="comment">are</span> <span class="comment">permitted</span> <span class="comment">provided</span> <span class="comment">that</span> <span class="comment">the</span> <span class="comment">following</span> <span class="comment">conditions</span> <span class="comment">are</span> <span class="comment">met</span><span class="comment">:</span>
+  8 <span class="comment">*</span>
+  9 <span class="comment">* 1</span><span class="comment">.</span> <span class="comment">Redistributions</span> <span class="comment">of</span> <span class="comment">source</span> <span class="comment">code</span> <span class="comment">must</span> <span class="comment">retain</span> <span class="comment">the</span> <span class="comment">above</span> <span class="comment">copyright</span>
+ 10 <span class="comment">*    </span><span class="comment">notice</span><span class="comment">, </span><span class="comment">this</span> <span class="comment">list</span> <span class="comment">of</span> <span class="comment">conditions</span> <span class="comment">and</span> <span class="comment">the</span> <span class="comment">following</span> <span class="comment">disclaimer</span><span class="comment">.</span>
+ 11 <span class="comment">*</span>
+ 12 <span class="comment">* 2</span><span class="comment">.</span> <span class="comment">Redistributions</span> <span class="comment">in</span> <span class="comment">binary</span> <span class="comment">form</span> <span class="comment">must</span> <span class="comment">reproduce</span> <span class="comment">the</span> <span class="comment">above</span> <span class="comment">copyright</span>
+ 13 <span class="comment">*    </span><span class="comment">notice</span><span class="comment">, </span><span class="comment">this</span> <span class="comment">list</span> <span class="comment">of</span> <span class="comment">conditions</span> <span class="comment">and</span> <span class="comment">the</span> <span class="comment">following</span> <span class="comment">disclaimer</span> <span class="comment">in</span> <span class="comment">the</span>
+ 14 <span class="comment">*    </span><span class="comment">documentation</span> <span class="comment">and</span><span class="comment">/</span><span class="comment">or</span> <span class="comment">other</span> <span class="comment">materials</span> <span class="comment">provided</span> <span class="comment">with</span> <span class="comment">the</span> <span class="comment">distribution</span><span class="comment">.</span>
+ 15 <span class="comment">*</span>
+ 16 <span class="comment">* 3</span><span class="comment">.</span> <span class="comment">Neither</span> <span class="comment">the</span> <span class="comment">name</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">copyright</span> <span class="comment">holder</span> <span class="comment">nor</span> <span class="comment">the</span> <span class="comment">names</span> <span class="comment">of</span> <span class="comment">its</span>
+ 17 <span class="comment">*    </span><span class="comment">contributors</span> <span class="comment">may</span> <span class="comment">be</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">endorse</span> <span class="comment">or</span> <span class="comment">promote</span> <span class="comment">products</span> <span class="comment">derived</span> <span class="comment">from</span>
+ 18 <span class="comment">*    </span><span class="comment">this</span> <span class="comment">software</span> <span class="comment">without</span> <span class="comment">specific</span> <span class="comment">prior</span> <span class="comment">written</span> <span class="comment">permission</span><span class="comment">.</span>
+ 19 <span class="comment">*</span>
+ 20 <span class="comment">* </span><span class="comment">THIS</span> <span class="comment">SOFTWARE</span> <span class="comment">IS</span> <span class="comment">PROVIDED</span> <span class="comment">BY</span> <span class="comment">THE</span> <span class="comment">COPYRIGHT</span> <span class="comment">HOLDERS</span> <span class="comment">AND</span> <span class="comment">CONTRIBUTORS</span>
+ 21 <span class="comment">* &quot;</span><span class="comment">AS</span> <span class="comment">IS</span><span class="comment">&quot; </span><span class="comment">AND</span> <span class="comment">ANY</span> <span class="comment">EXPRESS</span> <span class="comment">OR</span> <span class="comment">IMPLIED</span> <span class="comment">WARRANTIES</span><span class="comment">, </span><span class="comment">INCLUDING</span><span class="comment">, </span><span class="comment">BUT</span> <span class="comment">NOT</span>
+ 22 <span class="comment">* </span><span class="comment">LIMITED</span> <span class="comment">TO</span><span class="comment">, </span><span class="comment">THE</span> <span class="comment">IMPLIED</span> <span class="comment">WARRANTIES</span> <span class="comment">OF</span> <span class="comment">MERCHANTABILITY</span> <span class="comment">AND</span> <span class="comment">FITNESS</span>
+ 23 <span class="comment">* </span><span class="comment">FOR</span> <span class="comment">A</span> <span class="comment">PARTICULAR</span> <span class="comment">PURPOSE</span> <span class="comment">ARE</span> <span class="comment">DISCLAIMED</span><span class="comment">.</span> <span class="comment">IN</span> <span class="comment">NO</span> <span class="comment">EVENT</span> <span class="comment">SHALL</span> <span class="comment">THE</span>
+ 24 <span class="comment">* </span><span class="comment">COPYRIGHT</span> <span class="comment">HOLDER</span> <span class="comment">OR</span> <span class="comment">CONTRIBUTORS</span> <span class="comment">BE</span> <span class="comment">LIABLE</span> <span class="comment">FOR</span> <span class="comment">ANY</span> <span class="comment">DIRECT</span><span class="comment">, </span><span class="comment">INDIRECT</span><span class="comment">,</span>
+ 25 <span class="comment">* </span><span class="comment">INCIDENTAL</span><span class="comment">, </span><span class="comment">SPECIAL</span><span class="comment">, </span><span class="comment">EXEMPLARY</span><span class="comment">, </span><span class="comment">OR</span> <span class="comment">CONSEQUENTIAL</span> <span class="comment">DAMAGES</span>
+ 26 <span class="comment">* (</span><span class="comment">INCLUDING</span><span class="comment">, </span><span class="comment">BUT</span> <span class="comment">NOT</span> <span class="comment">LIMITED</span> <span class="comment">TO</span><span class="comment">, </span><span class="comment">PROCUREMENT</span> <span class="comment">OF</span> <span class="comment">SUBSTITUTE</span> <span class="comment">GOODS</span> <span class="comment">OR</span>
+ 27 <span class="comment">* </span><span class="comment">SERVICES</span><span class="comment">; </span><span class="comment">LOSS</span> <span class="comment">OF</span> <span class="comment">USE</span><span class="comment">, </span><span class="comment">DATA</span><span class="comment">, </span><span class="comment">OR</span> <span class="comment">PROFITS</span><span class="comment">; </span><span class="comment">OR</span> <span class="comment">BUSINESS</span> <span class="comment">INTERRUPTION</span><span class="comment">)</span>
+ 28 <span class="comment">* </span><span class="comment">HOWEVER</span> <span class="comment">CAUSED</span> <span class="comment">AND</span> <span class="comment">ON</span> <span class="comment">ANY</span> <span class="comment">THEORY</span> <span class="comment">OF</span> <span class="comment">LIABILITY</span><span class="comment">, </span><span class="comment">WHETHER</span> <span class="comment">IN</span> <span class="comment">CONTRACT</span><span class="comment">,</span>
+ 29 <span class="comment">* </span><span class="comment">STRICT</span> <span class="comment">LIABILITY</span><span class="comment">, </span><span class="comment">OR</span> <span class="comment">TORT</span><span class="comment"> (</span><span class="comment">INCLUDING</span> <span class="comment">NEGLIGENCE</span> <span class="comment">OR</span> <span class="comment">OTHERWISE</span><span class="comment">) </span><span class="comment">ARISING</span>
+ 30 <span class="comment">* </span><span class="comment">IN</span> <span class="comment">ANY</span> <span class="comment">WAY</span> <span class="comment">OUT</span> <span class="comment">OF</span> <span class="comment">THE</span> <span class="comment">USE</span> <span class="comment">OF</span> <span class="comment">THIS</span> <span class="comment">SOFTWARE</span><span class="comment">, </span><span class="comment">EVEN</span> <span class="comment">IF</span> <span class="comment">ADVISED</span> <span class="comment">OF</span> <span class="comment">THE</span>
+ 31 <span class="comment">* </span><span class="comment">POSSIBILITY</span> <span class="comment">OF</span> <span class="comment">SUCH</span> <span class="comment">DAMAGE</span><span class="comment">.</span>
+ 32 <span class="comment">*</span>
+ 33 <span class="comment">* </span><span class="ST1">@file</span> <span class="comment">bno055_support</span><span class="comment">.</span><span class="comment">c</span>
+ 34 <span class="comment">* </span><span class="ST1">@date</span><span class="comment"> 10/01/2020</span>
+ 35 <span class="comment">* </span><span class="ST1">@version</span><span class="comment">  2</span><span class="comment">.</span><span class="comment">0</span><span class="comment">.</span><span class="comment">6</span>
+ 36 <span class="comment">*</span>
+ 37 <span class="comment">*/</span>
+ 38 
+ 39 <span class="comment">/*</span><span class="comment">---------------------------------------------------------------------------*</span>
+ 40 <span class="comment">*  </span><span class="comment">Includes</span>
+ 41 <span class="comment">*---------------------------------------------------------------------------</span><span class="comment">*/</span>
+ 42 <span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="string">&quot;app.h&quot;</span>
+ 43 <span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="string">&quot;bno055.h&quot;</span>
+ 44 <span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="string">&quot;bno055_support.h&quot;</span>
+ 45 <span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="string">&quot;Mc32_I2cUtilCCS.h&quot;</span>
+ 46 <span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="string">&quot;driver/tmr/drv_tmr_static.h&quot;</span>
+ 47 
+ 48 <span class="comment">//</span> <span class="comment">Global</span> <span class="comment">variable</span>
+ 49 <span class="ST2">TIMER_DATA</span> timerData;
+ 50 
+ 51 <span class="preprocessor">#</span><span class="preprocessor">ifdef</span>  <span class="pragma-omp-keyword-directive">BNO055_API</span>
+ 52 
+ 53 <span class="ST2">s32</span> <span class="ST3">bno055_read_routine</span>(<span class="ST2">s_bno055_data</span> *data)
+ 54 {
+ 55       <span class="comment">/*</span> <span class="comment">Variable</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">return</span> <span class="comment">value</span> <span class="comment">of</span>
+ 56      <span class="comment">* </span><span class="comment">communication</span> <span class="comment">routine</span><span class="comment">*/</span>
+ 57     <span class="ST2">s32</span> comres = <span class="pragma-omp-keyword-directive">BNO055_ERROR</span>;
+ 58 
+ 59     <span class="comment">/*</span> <span class="comment">variable</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">set</span> <span class="comment">the</span> <span class="comment">power</span> <span class="comment">mode</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">sensor</span><span class="comment">*/</span>
+ 60     <span class="comment">//</span><span class="comment">u8</span> <span class="comment">power_mode</span><span class="comment"> = </span><span class="comment">BNO055_INIT_VALUE</span><span class="comment">;</span>
+ 61 
+ 62     <span class="comment">/*</span>  <span class="comment">For</span> <span class="comment">initializing</span> <span class="comment">the</span> <span class="comment">BNO</span> <span class="comment">sensor</span> <span class="comment">it</span> <span class="comment">is</span> <span class="comment">required</span> <span class="comment">to</span> <span class="comment">the</span> <span class="comment">operation</span> <span class="comment">mode</span>
+ 63      <span class="comment">* </span><span class="comment">of</span> <span class="comment">the</span> <span class="comment">sensor</span> <span class="comment">as</span> <span class="comment">NORMAL</span>
+ 64      <span class="comment">* </span><span class="comment">Normal</span> <span class="comment">mode</span> <span class="comment">can</span> <span class="comment">set</span> <span class="comment">from</span> <span class="comment">the</span> <span class="comment">register</span>
+ 65      <span class="comment">* </span><span class="comment">Page</span><span class="comment"> - </span><span class="comment">page0</span>
+ 66      <span class="comment">* </span><span class="comment">register</span><span class="comment"> - 0</span><span class="comment">x3E</span>
+ 67      <span class="comment">* </span><span class="comment">bit</span> <span class="comment">positions</span><span class="comment"> - 0 </span><span class="comment">and</span><span class="comment"> 1</span><span class="comment">*/</span>
+ 68     <span class="comment">//</span><span class="comment">power_mode</span><span class="comment"> = </span><span class="comment">BNO055_POWER_MODE_NORMAL</span><span class="comment">;</span>
+ 69 
+ 70     <span class="comment">/*</span> <span class="comment">set</span> <span class="comment">the</span> <span class="comment">power</span> <span class="comment">mode</span> <span class="comment">as</span> <span class="comment">NORMAL</span><span class="comment">*/</span>
+ 71     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_set_power_mode</span><span class="comment">(</span><span class="comment">power_mode</span><span class="comment">);</span>
+ 72 
+ 73     <span class="comment">/*</span><span class="comment">----------------------------------------------------------------*</span>
+ 74      <span class="comment">************************* </span><span class="comment">END</span> <span class="comment">INITIALIZATION</span><span class="comment"> *************************</span>
+ 75      <span class="comment">*-----------------------------------------------------------------</span><span class="comment">*/</span>
+ 76 
+ 77     <span class="comment">/**</span><span class="comment">*********************** </span><span class="comment">START</span> <span class="comment">READ</span> <span class="comment">RAW</span> <span class="comment">FUSION</span> <span class="comment">DATA</span><span class="comment"> ********</span>
+ 78      <span class="comment">* </span><span class="comment">For</span> <span class="comment">reading</span> <span class="comment">fusion</span> <span class="comment">data</span> <span class="comment">it</span> <span class="comment">is</span> <span class="comment">required</span> <span class="comment">to</span> <span class="comment">set</span> <span class="comment">the</span>
+ 79      <span class="comment">* </span><span class="comment">operation</span> <span class="comment">modes</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">sensor</span>
+ 80      <span class="comment">* </span><span class="comment">operation</span> <span class="comment">mode</span> <span class="comment">can</span> <span class="comment">set</span> <span class="comment">from</span> <span class="comment">the</span> <span class="comment">register</span>
+ 81      <span class="comment">* </span><span class="comment">page</span><span class="comment"> - </span><span class="comment">page0</span>
+ 82      <span class="comment">* </span><span class="comment">register</span><span class="comment"> - 0</span><span class="comment">x3D</span>
+ 83      <span class="comment">* </span><span class="comment">bit</span><span class="comment"> - 0 </span><span class="comment">to</span><span class="comment"> 3</span>
+ 84      <span class="comment">* </span><span class="comment">for</span> <span class="comment">sensor</span> <span class="comment">data</span> <span class="comment">read</span> <span class="comment">following</span> <span class="comment">operation</span> <span class="comment">mode</span> <span class="comment">have</span> <span class="comment">to</span> <span class="comment">set</span>
+ 85      <span class="comment">* </span><span class="comment">FUSION</span> <span class="comment">MODE</span>
+ 86      <span class="comment">* 0</span><span class="comment">x08</span><span class="comment"> - </span><span class="comment">BNO055_OPERATION_MODE_IMUPLUS</span>
+ 87      <span class="comment">* 0</span><span class="comment">x09</span><span class="comment"> - </span><span class="comment">BNO055_OPERATION_MODE_COMPASS</span>
+ 88      <span class="comment">* 0</span><span class="comment">x0A</span><span class="comment"> - </span><span class="comment">BNO055_OPERATION_MODE_M4G</span>
+ 89      <span class="comment">* 0</span><span class="comment">x0B</span><span class="comment"> - </span><span class="comment">BNO055_OPERATION_MODE_NDOF_FMC_OFF</span>
+ 90      <span class="comment">* 0</span><span class="comment">x0C</span><span class="comment"> - </span><span class="comment">BNO055_OPERATION_MODE_NDOF</span>
+ 91      <span class="comment">* </span><span class="comment">based</span> <span class="comment">on</span> <span class="comment">the</span> <span class="comment">user</span> <span class="comment">need</span> <span class="comment">configure</span> <span class="comment">the</span> <span class="comment">operation</span> <span class="comment">mode</span><span class="comment">*/</span>
+ 92     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_set_operation_mode</span><span class="comment">(</span><span class="comment">BNO055_OPERATION_MODE_NDOF</span><span class="comment">);</span>
+ 93     
+ 94     <span class="comment">/*</span>  <span class="comment">Raw</span> <span class="comment">Quaternion</span> <span class="comment">W</span><span class="comment">, </span><span class="comment">X</span><span class="comment">, </span><span class="comment">Y</span> <span class="comment">and</span> <span class="comment">Z</span> <span class="comment">data</span> <span class="comment">can</span> <span class="comment">read</span> <span class="comment">from</span> <span class="comment">the</span> <span class="comment">register</span>
+ 95      <span class="comment">* </span><span class="comment">page</span><span class="comment"> - </span><span class="comment">page</span><span class="comment"> 0</span>
+ 96      <span class="comment">* </span><span class="comment">register</span><span class="comment"> - 0</span><span class="comment">x20</span> <span class="comment">to</span><span class="comment"> 0</span><span class="comment">x27</span> <span class="comment">*/</span>
+ 97     comres += bno055_read_quaternion_wxyz(&amp;data-&gt;<span class="ST4">quaternion</span>);
+ 98     <span class="comment">/**</span><span class="comment">*********************** </span><span class="comment">END</span> <span class="comment">READ</span> <span class="comment">RAW</span> <span class="comment">FUSION</span> <span class="comment">DATA</span><span class="comment">  ***********</span><span class="comment">*/</span>
+ 99     <span class="comment">/**</span><span class="comment">****************</span><span class="comment">START</span> <span class="comment">READ</span> <span class="comment">CONVERTED</span> <span class="comment">SENSOR</span> <span class="comment">DATA</span><span class="comment">***************</span><span class="comment">*/</span>
+100     <span class="comment">/*</span>  <span class="comment">API</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">read</span> <span class="comment">mag</span> <span class="comment">data</span> <span class="comment">output</span> <span class="comment">as</span> <span class="comment">double</span><span class="comment">  - </span><span class="comment">uT</span><span class="comment">(</span><span class="comment">micro</span> <span class="comment">Tesla</span><span class="comment">)</span>
+101      <span class="comment">* </span><span class="comment">float</span> <span class="comment">functions</span> <span class="comment">also</span> <span class="comment">available</span> <span class="comment">in</span> <span class="comment">the</span> <span class="comment">BNO055</span> <span class="comment">API</span> <span class="comment">*/</span>
+102     comres += bno055_convert_double_mag_xyz_uT(&amp;data-&gt;<span class="ST4">mag</span>);
+103     <span class="comment">/*</span>  <span class="comment">API</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">read</span> <span class="comment">gyro</span> <span class="comment">data</span> <span class="comment">output</span> <span class="comment">as</span> <span class="comment">double</span><span class="comment">  - </span><span class="comment">dps</span> <span class="comment">and</span> <span class="comment">rps</span>
+104      <span class="comment">* </span><span class="comment">float</span> <span class="comment">functions</span> <span class="comment">also</span> <span class="comment">available</span> <span class="comment">in</span> <span class="comment">the</span> <span class="comment">BNO055</span> <span class="comment">API</span> <span class="comment">*/</span>
+105     comres += bno055_convert_double_gyro_xyz_dps(&amp;data-&gt;<span class="ST4">gyro</span>);
+106     <span class="comment">/*</span>  <span class="comment">API</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">read</span> <span class="comment">Euler</span> <span class="comment">data</span> <span class="comment">output</span> <span class="comment">as</span> <span class="comment">double</span><span class="comment">  - </span><span class="comment">degree</span> <span class="comment">and</span> <span class="comment">radians</span>
+107      <span class="comment">* </span><span class="comment">float</span> <span class="comment">functions</span> <span class="comment">also</span> <span class="comment">available</span> <span class="comment">in</span> <span class="comment">the</span> <span class="comment">BNO055</span> <span class="comment">API</span> <span class="comment">*/</span>
+108     comres += bno055_convert_double_euler_hpr_deg(&amp;data-&gt;<span class="ST4">euler</span>);
+109     <span class="comment">/*</span>  <span class="comment">API</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">read</span> <span class="comment">Linear</span> <span class="comment">acceleration</span> <span class="comment">data</span> <span class="comment">output</span> <span class="comment">as</span> <span class="comment">m</span><span class="comment">/</span><span class="comment">s2</span>
+110      <span class="comment">* </span><span class="comment">float</span> <span class="comment">functions</span> <span class="comment">also</span> <span class="comment">available</span> <span class="comment">in</span> <span class="comment">the</span> <span class="comment">BNO055</span> <span class="comment">API</span> <span class="comment">*/</span>
+111     comres += bno055_convert_double_linear_accel_xyz_msq(&amp;data-&gt;<span class="ST4">linear_accel</span>);
+112     comres += bno055_convert_double_gravity_xyz_msq(&amp;data-&gt;<span class="ST4">gravity</span>);
+113 
+114     <span class="comment">/*</span><span class="comment">-----------------------------------------------------------------------*</span>
+115      <span class="comment">************************* </span><span class="comment">START</span> <span class="comment">DE</span><span class="comment">-</span><span class="comment">INITIALIZATION</span><span class="comment"> ***********************</span>
+116      <span class="comment">*-------------------------------------------------------------------------</span><span class="comment">*/</span>
+117 
+118     <span class="comment">/*</span>  <span class="comment">For</span> <span class="comment">de</span><span class="comment"> - </span><span class="comment">initializing</span> <span class="comment">the</span> <span class="comment">BNO</span> <span class="comment">sensor</span> <span class="comment">it</span> <span class="comment">is</span> <span class="comment">required</span>
+119      <span class="comment">* </span><span class="comment">to</span> <span class="comment">the</span> <span class="comment">operation</span> <span class="comment">mode</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">sensor</span> <span class="comment">as</span> <span class="comment">SUSPEND</span>
+120      <span class="comment">* </span><span class="comment">Suspend</span> <span class="comment">mode</span> <span class="comment">can</span> <span class="comment">set</span> <span class="comment">from</span> <span class="comment">the</span> <span class="comment">register</span>
+121      <span class="comment">* </span><span class="comment">Page</span><span class="comment"> - </span><span class="comment">page0</span>
+122      <span class="comment">* </span><span class="comment">register</span><span class="comment"> - 0</span><span class="comment">x3E</span>
+123      <span class="comment">* </span><span class="comment">bit</span> <span class="comment">positions</span><span class="comment"> - 0 </span><span class="comment">and</span><span class="comment"> 1</span><span class="comment">*/</span>
+124     <span class="comment">//</span><span class="comment">power_mode</span><span class="comment"> = </span><span class="comment">BNO055_POWER_MODE_SUSPEND</span><span class="comment">;</span>
+125 
+126     <span class="comment">/*</span> <span class="comment">set</span> <span class="comment">the</span> <span class="comment">power</span> <span class="comment">mode</span> <span class="comment">as</span> <span class="comment">SUSPEND</span><span class="comment">*/</span>
+127     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_set_power_mode</span><span class="comment">(</span><span class="comment">power_mode</span><span class="comment">);</span>
+128     
+129     <span class="comment">/*</span> <span class="comment">Flag</span> <span class="comment">measure</span> <span class="comment">ready</span> <span class="comment">*/</span>
+130     data-&gt;<span class="ST4">flagMeasReady</span> = <span class="pragma-omp-keyword-directive">true</span>;
+131 
+132     <span class="comment">/*</span><span class="comment">---------------------------------------------------------------------*</span>
+133     <span class="comment">************************* </span><span class="comment">END</span> <span class="comment">DE</span><span class="comment">-</span><span class="comment">INITIALIZATION</span><span class="comment"> **********************</span>
+134     <span class="comment">*---------------------------------------------------------------------</span><span class="comment">*/</span>
+135     <span class="preprocessor">return</span> (comres+<span class="string">1</span>);
+136 }
+137 
+138 <span class="comment">/*</span><span class="comment">--------------------------------------------------------------------------*</span>
+139  <span class="comment">*  </span><span class="comment">The</span> <span class="comment">following</span> <span class="comment">API</span> <span class="comment">is</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">map</span> <span class="comment">the</span> <span class="comment">I2C</span> <span class="comment">bus</span> <span class="comment">read</span><span class="comment">, </span><span class="comment">write</span><span class="comment">, </span><span class="comment">delay</span> <span class="comment">and</span>
+140  <span class="comment">*  </span><span class="comment">device</span> <span class="comment">address</span> <span class="comment">with</span> <span class="comment">global</span> <span class="comment">structure</span> <span class="comment">bno055_t</span>
+141  <span class="comment">*-------------------------------------------------------------------------</span><span class="comment">*/</span>
+142 
+143 <span class="comment">/*</span><span class="comment">-------------------------------------------------------------------------*</span>
+144  <span class="comment">*  </span><span class="comment">By</span> <span class="comment">using</span> <span class="comment">bno055</span> <span class="comment">the</span> <span class="comment">following</span> <span class="comment">structure</span> <span class="comment">parameter</span> <span class="comment">can</span> <span class="comment">be</span> <span class="comment">accessed</span>
+145  <span class="comment">*  </span><span class="comment">Bus</span> <span class="comment">write</span> <span class="comment">function</span> <span class="comment">pointer</span><span class="comment">: </span><span class="comment">BNO055_WR_FUNC_PTR</span>
+146  <span class="comment">*  </span><span class="comment">Bus</span> <span class="comment">read</span> <span class="comment">function</span> <span class="comment">pointer</span><span class="comment">: </span><span class="comment">BNO055_RD_FUNC_PTR</span>
+147  <span class="comment">*  </span><span class="comment">Delay</span> <span class="comment">function</span> <span class="comment">pointer</span><span class="comment">: </span><span class="comment">delay_msec</span>
+148  <span class="comment">*  </span><span class="comment">I2C</span> <span class="comment">address</span><span class="comment">: </span><span class="comment">dev_addr</span>
+149  <span class="comment">*--------------------------------------------------------------------------</span><span class="comment">*/</span>
+150 <span class="ST2">s8</span> <span class="ST3">I2C_routine</span>(<span class="literal">void</span>)
+151 {
+152     bno055.<span class="ST4">bus_write</span> = BNO055_I2C_bus_write;
+153     bno055.<span class="ST4">bus_read</span> = BNO055_I2C_bus_read;
+154     bno055.<span class="ST4">delay_msec</span> = BNO055_delay_msek;
+155     bno055.<span class="ST4">dev_addr</span> = <span class="pragma-omp-keyword-directive">BNO055_I2C_ADDR1</span>;
+156     <span class="preprocessor">return</span> <span class="pragma-omp-keyword-directive">BNO055_INIT_VALUE</span>;
+157 }
+158 
+159 <span class="comment">/**</span><span class="comment">************ </span><span class="comment">I2C</span> <span class="comment">buffer</span> <span class="comment">length</span><span class="comment">*****</span><span class="comment">*/</span>
+160 
+161 <span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="pragma-omp-keyword-directive">I2C_BUFFER_LEN</span> <span class="string">8</span>
+162 <span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="pragma-omp-keyword-directive">I2C0</span>           <span class="string">5</span>
+163 
+164 <span class="comment">/*</span><span class="comment">-------------------------------------------------------------------*</span>
+165  <span class="comment">*</span>
+166  <span class="comment">*  </span><span class="comment">This</span> <span class="comment">is</span> <span class="comment">a</span> <span class="comment">sample</span> <span class="comment">code</span> <span class="comment">for</span> <span class="comment">read</span> <span class="comment">and</span> <span class="comment">write</span> <span class="comment">the</span> <span class="comment">data</span> <span class="comment">by</span> <span class="comment">using</span> <span class="comment">I2C</span>
+167  <span class="comment">*  </span><span class="comment">Use</span> <span class="comment">either</span> <span class="comment">I2C</span>  <span class="comment">based</span> <span class="comment">on</span> <span class="comment">your</span> <span class="comment">need</span>
+168  <span class="comment">*  </span><span class="comment">The</span> <span class="comment">device</span> <span class="comment">address</span> <span class="comment">defined</span> <span class="comment">in</span> <span class="comment">the</span> <span class="comment">bno055</span><span class="comment">.</span><span class="comment">h</span> <span class="comment">file</span>
+169  <span class="comment">*</span>
+170  <span class="comment">*--------------------------------------------------------------------</span><span class="comment">*/</span>
+171 
+172 <span class="comment">/*</span>  <span class="ST1">\Brief</span><span class="comment">: </span><span class="comment">The</span> <span class="comment">API</span> <span class="comment">is</span> <span class="comment">used</span> <span class="comment">as</span> <span class="comment">I2C</span> <span class="comment">bus</span> <span class="comment">write</span>
+173  <span class="comment">*  </span><span class="ST1">\Return</span><span class="comment"> : </span><span class="comment">Status</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">I2C</span> <span class="comment">write</span>
+174  <span class="comment">*  </span><span class="ST1">\param</span> <span class="comment">dev_addr</span><span class="comment"> : </span><span class="comment">The</span> <span class="comment">device</span> <span class="comment">address</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">sensor</span>
+175  <span class="comment">*  </span><span class="ST1">\param</span> <span class="comment">reg_addr</span><span class="comment"> : </span><span class="comment">Address</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">first</span> <span class="comment">register</span><span class="comment">,</span>
+176  <span class="comment">*   </span><span class="comment">will</span> <span class="comment">data</span> <span class="comment">is</span> <span class="comment">going</span> <span class="comment">to</span> <span class="comment">be</span> <span class="comment">written</span>
+177  <span class="comment">*  </span><span class="ST1">\param</span> <span class="comment">reg_data</span><span class="comment"> : </span><span class="comment">It</span> <span class="comment">is</span> <span class="comment">a</span> <span class="comment">value</span> <span class="comment">hold</span> <span class="comment">in</span> <span class="comment">the</span> <span class="comment">array</span><span class="comment">,</span>
+178  <span class="comment">*      </span><span class="comment">will</span> <span class="comment">be</span> <span class="comment">used</span> <span class="comment">for</span> <span class="comment">write</span> <span class="comment">the</span> <span class="comment">value</span> <span class="comment">into</span> <span class="comment">the</span> <span class="comment">register</span>
+179  <span class="comment">*  </span><span class="ST1">\param</span> <span class="comment">cnt</span><span class="comment"> : </span><span class="comment">The</span> <span class="comment">no</span> <span class="comment">of</span> <span class="comment">byte</span> <span class="comment">of</span> <span class="comment">data</span> <span class="comment">to</span> <span class="comment">be</span> <span class="comment">write</span>
+180  <span class="comment">*/</span>
+181 <span class="ST2">s8</span> <span class="ST3">BNO055_I2C_bus_write</span>(<span class="ST2">u8</span> dev_addr, <span class="ST2">u8</span> reg_addr, <span class="ST2">u8</span> *reg_data, <span class="ST2">u8</span> cnt)
+182 {
+183     <span class="ST2">s8</span> BNO055_iERROR = <span class="pragma-omp-keyword-directive">BNO055_INIT_VALUE</span>;
+184     <span class="ST2">u8</span> array[<span class="pragma-omp-keyword-directive">I2C_BUFFER_LEN</span>];
+185     <span class="ST2">u8</span> stringpos = <span class="pragma-omp-keyword-directive">BNO055_INIT_VALUE</span>;
+186 
+187     array[<span class="pragma-omp-keyword-directive">BNO055_INIT_VALUE</span>] = reg_addr;
+188     
+189     i2c_start();
+190     BNO055_iERROR = i2c_write(dev_addr&lt;&lt;<span class="string">1</span>);
+191     
+192     <span class="preprocessor">for</span> (stringpos = <span class="pragma-omp-keyword-directive">BNO055_INIT_VALUE</span>; stringpos &lt; (cnt+<span class="pragma-omp-keyword-directive">BNO055_I2C_BUS_WRITE_ARRAY_INDEX</span>); stringpos++)
+193     {
+194         BNO055_iERROR = i2c_write(array[stringpos]);
+195         array[stringpos + <span class="pragma-omp-keyword-directive">BNO055_I2C_BUS_WRITE_ARRAY_INDEX</span>] = *(reg_data + stringpos);
+196     }
+197     
+198     i2c_stop();
+199 
+200 
+201     <span class="comment">/*</span>
+202      <span class="comment">* </span><span class="comment">Please</span> <span class="comment">take</span> <span class="comment">the</span> <span class="comment">below</span> <span class="comment">APIs</span> <span class="comment">as</span> <span class="comment">your</span> <span class="comment">reference</span> <span class="comment">for</span>
+203      <span class="comment">* </span><span class="comment">write</span> <span class="comment">the</span> <span class="comment">data</span> <span class="comment">using</span> <span class="comment">I2C</span> <span class="comment">communication</span>
+204      <span class="comment">* &quot;</span><span class="comment">BNO055_iERROR</span><span class="comment"> = </span><span class="comment">I2C_WRITE_STRING</span><span class="comment">(</span><span class="comment">DEV_ADDR</span><span class="comment">, </span><span class="comment">ARRAY</span><span class="comment">, </span><span class="comment">CNT</span><span class="comment">+1)&quot;</span>
+205      <span class="comment">* </span><span class="comment">add</span> <span class="comment">your</span> <span class="comment">I2C</span> <span class="comment">write</span> <span class="comment">APIs</span> <span class="comment">here</span>
+206      <span class="comment">* </span><span class="comment">BNO055_iERROR</span> <span class="comment">is</span> <span class="comment">an</span> <span class="comment">return</span> <span class="comment">value</span> <span class="comment">of</span> <span class="comment">I2C</span> <span class="comment">read</span> <span class="comment">API</span>
+207      <span class="comment">* </span><span class="comment">Please</span> <span class="comment">select</span> <span class="comment">your</span> <span class="comment">valid</span> <span class="comment">return</span> <span class="comment">value</span>
+208      <span class="comment">* </span><span class="comment">In</span> <span class="comment">the</span> <span class="comment">driver</span> <span class="comment">BNO055_SUCCESS</span> <span class="comment">defined</span> <span class="comment">as</span><span class="comment"> 0</span>
+209      <span class="comment">* </span><span class="comment">and</span> <span class="comment">FAILURE</span> <span class="comment">defined</span> <span class="comment">as</span><span class="comment"> -1</span>
+210      <span class="comment">* </span><span class="comment">Note</span><span class="comment"> :</span>
+211      <span class="comment">* </span><span class="comment">This</span> <span class="comment">is</span> <span class="comment">a</span> <span class="comment">full</span> <span class="comment">duplex</span> <span class="comment">operation</span><span class="comment">,</span>
+212      <span class="comment">* </span><span class="comment">The</span> <span class="comment">first</span> <span class="comment">read</span> <span class="comment">data</span> <span class="comment">is</span> <span class="comment">discarded</span><span class="comment">, </span><span class="comment">for</span> <span class="comment">that</span> <span class="comment">extra</span> <span class="comment">write</span> <span class="comment">operation</span>
+213      <span class="comment">* </span><span class="comment">have</span> <span class="comment">to</span> <span class="comment">be</span> <span class="comment">initiated</span><span class="comment">.</span> <span class="comment">For</span> <span class="comment">that</span> <span class="comment">cnt</span><span class="comment">+1 </span><span class="comment">operation</span> <span class="comment">done</span>
+214      <span class="comment">* </span><span class="comment">in</span> <span class="comment">the</span> <span class="comment">I2C</span> <span class="comment">write</span> <span class="comment">string</span> <span class="comment">function</span>
+215      <span class="comment">* </span><span class="comment">For</span> <span class="comment">more</span> <span class="comment">information</span> <span class="comment">please</span> <span class="comment">refer</span> <span class="comment">data</span> <span class="comment">sheet</span> <span class="comment">SPI</span> <span class="comment">communication</span><span class="comment">:</span>
+216      <span class="comment">*/</span>
+217     
+218     <span class="comment">/*</span><span class="comment">if</span><span class="comment">(</span><span class="comment">BNO055_iERROR</span><span class="comment">)</span>
+219         <span class="comment">BNO055_iERROR</span><span class="comment"> = -1;</span>
+220     <span class="comment">else</span>
+221         <span class="comment">BNO055_iERROR</span><span class="comment"> = 0;</span>
+222     
+223      <span class="comment">return</span><span class="comment"> (</span><span class="comment">s8</span><span class="comment">)(</span><span class="comment">BNO055_iERROR</span><span class="comment">);</span><span class="comment">*/</span>
+224     <span class="comment">//</span> <span class="comment">Error</span> <span class="comment">comm</span> <span class="comment">return</span>
+225     
+226     <span class="preprocessor">if</span>(BNO055_iERROR-<span class="string">1</span> != <span class="string">0</span>)
+227         BNO055_iERROR = -<span class="string">1</span>;
+228     <span class="preprocessor">else</span>
+229         BNO055_iERROR = <span class="string">0</span>;
+230 
+231     <span class="preprocessor">return</span> (<span class="ST2">s8</span>)(BNO055_iERROR);
+232 }
+233 
+234 <span class="comment">/*</span>  <span class="ST1">\Brief</span><span class="comment">: </span><span class="comment">The</span> <span class="comment">API</span> <span class="comment">is</span> <span class="comment">used</span> <span class="comment">as</span> <span class="comment">I2C</span> <span class="comment">bus</span> <span class="comment">read</span>
+235  <span class="comment">*  </span><span class="ST1">\Return</span><span class="comment"> : </span><span class="comment">Status</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">I2C</span> <span class="comment">read</span>
+236  <span class="comment">*  </span><span class="ST1">\param</span> <span class="comment">dev_addr</span><span class="comment"> : </span><span class="comment">The</span> <span class="comment">device</span> <span class="comment">address</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">sensor</span>
+237  <span class="comment">*  </span><span class="ST1">\param</span> <span class="comment">reg_addr</span><span class="comment"> : </span><span class="comment">Address</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">first</span> <span class="comment">register</span><span class="comment">,</span>
+238  <span class="comment">*  </span><span class="comment">will</span> <span class="comment">data</span> <span class="comment">is</span> <span class="comment">going</span> <span class="comment">to</span> <span class="comment">be</span> <span class="comment">read</span>
+239  <span class="comment">*  </span><span class="ST1">\param</span> <span class="comment">reg_data</span><span class="comment"> : </span><span class="comment">This</span> <span class="comment">data</span> <span class="comment">read</span> <span class="comment">from</span> <span class="comment">the</span> <span class="comment">sensor</span><span class="comment">,</span>
+240  <span class="comment">*   </span><span class="comment">which</span> <span class="comment">is</span> <span class="comment">hold</span> <span class="comment">in</span> <span class="comment">an</span> <span class="comment">array</span>
+241  <span class="comment">*  </span><span class="ST1">\param</span> <span class="comment">cnt</span><span class="comment"> : </span><span class="comment">The</span> <span class="comment">no</span> <span class="comment">of</span> <span class="comment">byte</span> <span class="comment">of</span> <span class="comment">data</span> <span class="comment">to</span> <span class="comment">be</span> <span class="comment">read</span>
+242  <span class="comment">*/</span>
+243 <span class="ST2">s8</span> <span class="ST3">BNO055_I2C_bus_read</span>(<span class="ST2">u8</span> dev_addr, <span class="ST2">u8</span> reg_addr, <span class="ST2">u8</span> *reg_data, <span class="ST2">u8</span> cnt)
+244 {
+245     <span class="ST2">s8</span> BNO055_iERROR = <span class="pragma-omp-keyword-directive">BNO055_INIT_VALUE</span>;
+246     <span class="ST2">u8</span> array[<span class="pragma-omp-keyword-directive">I2C_BUFFER_LEN</span>] = { <span class="pragma-omp-keyword-directive">BNO055_INIT_VALUE</span> };
+247     <span class="ST2">u8</span> stringpos = <span class="pragma-omp-keyword-directive">BNO055_INIT_VALUE</span>;
+248 
+249     array[<span class="pragma-omp-keyword-directive">BNO055_INIT_VALUE</span>] = reg_addr;
+250     
+251     i2c_start();
+252     <span class="comment">//</span> <span class="comment">Write</span> <span class="comment">asked</span> <span class="comment">register</span>
+253     BNO055_iERROR = i2c_write(dev_addr&lt;&lt;<span class="string">1</span>);   
+254     BNO055_iERROR = i2c_write(reg_addr);
+255     <span class="comment">//</span> <span class="comment">Send</span> <span class="comment">read</span> <span class="comment">address</span> 
+256     i2c_reStart();
+257     dev_addr = (dev_addr&lt;&lt;<span class="string">1</span>) | <span class="string">0b00000001</span>;
+258     BNO055_iERROR = i2c_write(dev_addr);
+259 
+260     <span class="comment">/*</span> <span class="comment">Please</span> <span class="comment">take</span> <span class="comment">the</span> <span class="comment">below</span> <span class="comment">API</span> <span class="comment">as</span> <span class="comment">your</span> <span class="comment">reference</span>
+261      <span class="comment">* </span><span class="comment">for</span> <span class="comment">read</span> <span class="comment">the</span> <span class="comment">data</span> <span class="comment">using</span> <span class="comment">I2C</span> <span class="comment">communication</span>
+262      <span class="comment">* </span><span class="comment">add</span> <span class="comment">your</span> <span class="comment">I2C</span> <span class="comment">read</span> <span class="comment">API</span> <span class="comment">here</span><span class="comment">.</span>
+263      <span class="comment">* &quot;</span><span class="comment">BNO055_iERROR</span><span class="comment"> = </span><span class="comment">I2C_WRITE_READ_STRING</span><span class="comment">(</span><span class="comment">DEV_ADDR</span><span class="comment">,</span>
+264      <span class="comment">* </span><span class="comment">ARRAY</span><span class="comment">, </span><span class="comment">ARRAY</span><span class="comment">, 1, </span><span class="comment">CNT</span><span class="comment">)&quot;</span>
+265      <span class="comment">* </span><span class="comment">BNO055_iERROR</span> <span class="comment">is</span> <span class="comment">an</span> <span class="comment">return</span> <span class="comment">value</span> <span class="comment">of</span> <span class="comment">SPI</span> <span class="comment">write</span> <span class="comment">API</span>
+266      <span class="comment">* </span><span class="comment">Please</span> <span class="comment">select</span> <span class="comment">your</span> <span class="comment">valid</span> <span class="comment">return</span> <span class="comment">value</span>
+267      <span class="comment">* </span><span class="comment">In</span> <span class="comment">the</span> <span class="comment">driver</span> <span class="comment">BNO055_SUCCESS</span> <span class="comment">defined</span> <span class="comment">as</span><span class="comment"> 0</span>
+268      <span class="comment">* </span><span class="comment">and</span> <span class="comment">FAILURE</span> <span class="comment">defined</span> <span class="comment">as</span><span class="comment"> -1</span>
+269      <span class="comment">*/</span>
+270     <span class="preprocessor">for</span> (stringpos = <span class="pragma-omp-keyword-directive">BNO055_INIT_VALUE</span>; stringpos &lt; cnt; stringpos++)
+271     {
+272 
+273         <span class="preprocessor">if</span>(((stringpos+<span class="string">1</span>) &lt; cnt)&amp;&amp;(cnt &gt; <span class="pragma-omp-keyword-directive">BNO055_I2C_BUS_WRITE_ARRAY_INDEX</span>))
+274             array[stringpos] = i2c_read(<span class="string">1</span>);
+275         <span class="preprocessor">else</span>
+276             array[stringpos] = i2c_read(<span class="string">0</span>);
+277         
+278         *(reg_data + stringpos) = array[stringpos];
+279         
+280     }
+281     
+282     i2c_stop();
+283     
+284     <span class="comment">//</span> <span class="comment">Error</span> <span class="comment">comm</span> <span class="comment">return</span>
+285     <span class="preprocessor">if</span>(BNO055_iERROR-<span class="string">1</span> != <span class="string">0</span>)
+286         BNO055_iERROR = -<span class="string">1</span>;
+287     <span class="preprocessor">else</span>
+288         BNO055_iERROR = <span class="string">0</span>;
+289 
+290     <span class="preprocessor">return</span> (<span class="ST2">s8</span>)(BNO055_iERROR);
+291 }
+292 
+293 <span class="comment">/*</span>  <span class="comment">Brief</span><span class="comment"> : </span><span class="comment">The</span> <span class="comment">delay</span> <span class="comment">routine</span>
+294  <span class="comment">*  </span><span class="ST1">\param</span><span class="comment"> : </span><span class="comment">delay</span> <span class="comment">in</span> <span class="comment">ms</span>
+295  <span class="comment">*/</span>
+296 <span class="literal">void</span> <span class="ST3">BNO055_delay_msek</span>(<span class="ST2">u32</span> msek)
+297 {
+298     <span class="comment">/*</span><span class="comment">Delay</span> <span class="comment">routine</span><span class="comment">*/</span>
+299     DRV_TMR0_Stop();
+300     DRV_TMR0_CounterClear();
+301     timerData.<span class="ST4">TmrCnt</span> = <span class="string">0</span>;
+302     DRV_TMR0_Start();
+303     <span class="preprocessor">while</span> (timerData.<span class="ST4">TmrCnt</span> &lt; msek) 
+304     { } 
+305     DRV_TMR0_Stop();
+306 }
+307 
+308 <span class="preprocessor">#</span><span class="preprocessor">endif</span>
+309 
+310 
+311 <span class="ST2">s32</span> <span class="ST3">bno055_init_readout</span>(<span class="literal">void</span>)
+312 {
+313     <span class="comment">/*</span> <span class="comment">Variable</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">return</span> <span class="comment">value</span> <span class="comment">of</span>
+314      <span class="comment">* </span><span class="comment">communication</span> <span class="comment">routine</span><span class="comment">*/</span>
+315     <span class="ST2">s32</span> comres = <span class="pragma-omp-keyword-directive">BNO055_ERROR</span>;
+316 
+317     <span class="comment">/*</span> <span class="comment">variable</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">set</span> <span class="comment">the</span> <span class="comment">power</span> <span class="comment">mode</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">sensor</span><span class="comment">*/</span>
+318     <span class="ST2">u8</span> power_mode = <span class="pragma-omp-keyword-directive">BNO055_INIT_VALUE</span>;
+319 
+320 
+321     <span class="comment">/*</span> <span class="comment">variable</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">read</span> <span class="comment">the</span> <span class="comment">accel</span> <span class="comment">xyz</span> <span class="comment">data</span> <span class="comment">*/</span>
+322     <span class="literal">struct</span> bno055_accel_t accel_xyz;
+323 
+324     <span class="comment">/**</span><span class="comment">*******</span><span class="comment">read</span> <span class="comment">raw</span> <span class="comment">mag</span> <span class="comment">data</span><span class="comment">**********</span><span class="comment">*/</span>
+325     <span class="comment">/*</span> <span class="comment">structure</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">read</span> <span class="comment">the</span> <span class="comment">mag</span> <span class="comment">xyz</span> <span class="comment">data</span> <span class="comment">*/</span>
+326     <span class="literal">struct</span> bno055_mag_t mag_xyz;
+327 
+328     <span class="comment">/**</span><span class="comment">*********</span><span class="comment">read</span> <span class="comment">raw</span> <span class="comment">gyro</span> <span class="comment">data</span><span class="comment">**********</span><span class="comment">*/</span>
+329     <span class="comment">/*</span> <span class="comment">structure</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">read</span> <span class="comment">the</span> <span class="comment">gyro</span> <span class="comment">xyz</span> <span class="comment">data</span> <span class="comment">*/</span>
+330     <span class="literal">struct</span> bno055_gyro_t gyro_xyz;
+331 
+332     <span class="comment">/**</span><span class="comment">***********</span><span class="comment">read</span> <span class="comment">raw</span> <span class="comment">Euler</span> <span class="comment">data</span><span class="comment">***********</span><span class="comment">*/</span>
+333     <span class="comment">/*</span> <span class="comment">structure</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">read</span> <span class="comment">the</span> <span class="comment">euler</span> <span class="comment">hrp</span> <span class="comment">data</span> <span class="comment">*/</span>
+334     <span class="literal">struct</span> bno055_euler_t euler_hrp;
+335 
+336     <span class="comment">/**</span><span class="comment">**********</span><span class="comment">read</span> <span class="comment">raw</span> <span class="comment">quaternion</span> <span class="comment">data</span><span class="comment">*************</span><span class="comment">*/</span>
+337     <span class="comment">/*</span> <span class="comment">structure</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">read</span> <span class="comment">the</span> <span class="comment">quaternion</span> <span class="comment">wxyz</span> <span class="comment">data</span> <span class="comment">*/</span>
+338     <span class="literal">struct</span> bno055_quaternion_t quaternion_wxyz;
+339 
+340     <span class="comment">/**</span><span class="comment">**********</span><span class="comment">read</span> <span class="comment">raw</span> <span class="comment">linear</span> <span class="comment">acceleration</span> <span class="comment">data</span><span class="comment">**********</span><span class="comment">*/</span>
+341     <span class="comment">/*</span> <span class="comment">structure</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">read</span> <span class="comment">the</span> <span class="comment">linear</span> <span class="comment">accel</span> <span class="comment">xyz</span> <span class="comment">data</span> <span class="comment">*/</span>
+342     <span class="literal">struct</span> bno055_linear_accel_t linear_acce_xyz;
+343 
+344     <span class="comment">/**</span><span class="comment">***************</span><span class="comment">read</span> <span class="comment">raw</span> <span class="comment">gravity</span> <span class="comment">sensor</span> <span class="comment">data</span><span class="comment">***************</span><span class="comment">*/</span>
+345     <span class="comment">/*</span> <span class="comment">structure</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">read</span> <span class="comment">the</span> <span class="comment">gravity</span> <span class="comment">xyz</span> <span class="comment">data</span> <span class="comment">*/</span>
+346     <span class="literal">struct</span> bno055_gravity_t gravity_xyz;
+347 
+348     <span class="comment">/**</span><span class="comment">***********</span><span class="comment">read</span> <span class="comment">accel</span> <span class="comment">converted</span> <span class="comment">data</span><span class="comment">**************</span><span class="comment">*/</span>
+349     <span class="comment">/*</span> <span class="comment">structure</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">read</span> <span class="comment">the</span> <span class="comment">accel</span> <span class="comment">xyz</span> <span class="comment">data</span> <span class="comment">output</span> <span class="comment">as</span> <span class="comment">m</span><span class="comment">/</span><span class="comment">s2</span> <span class="comment">or</span> <span class="comment">mg</span> <span class="comment">*/</span>
+350     <span class="literal">struct</span> bno055_accel_double_t d_accel_xyz;
+351 
+352     <span class="comment">/**</span><span class="comment">****************</span><span class="comment">read</span> <span class="comment">mag</span> <span class="comment">converted</span> <span class="comment">data</span><span class="comment">*******************</span><span class="comment">*/</span>
+353     <span class="comment">/*</span> <span class="comment">structure</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">read</span> <span class="comment">the</span> <span class="comment">mag</span> <span class="comment">xyz</span> <span class="comment">data</span> <span class="comment">output</span> <span class="comment">as</span> <span class="comment">uT</span><span class="comment">*/</span>
+354     <span class="literal">struct</span> bno055_mag_double_t d_mag_xyz;
+355 
+356     <span class="comment">/**</span><span class="comment">***************</span><span class="comment">read</span> <span class="comment">gyro</span> <span class="comment">converted</span> <span class="comment">data</span><span class="comment">***********************</span><span class="comment">*/</span>
+357     <span class="comment">/*</span> <span class="comment">structure</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">read</span> <span class="comment">the</span> <span class="comment">gyro</span> <span class="comment">xyz</span> <span class="comment">data</span> <span class="comment">output</span> <span class="comment">as</span> <span class="comment">dps</span> <span class="comment">or</span> <span class="comment">rps</span> <span class="comment">*/</span>
+358     <span class="literal">struct</span> bno055_gyro_double_t d_gyro_xyz;
+359 
+360     <span class="comment">/**</span><span class="comment">*****************</span><span class="comment">read</span> <span class="comment">euler</span> <span class="comment">converted</span> <span class="comment">data</span><span class="comment">******************</span><span class="comment">*/</span>
+361     <span class="comment">/*</span> <span class="comment">variable</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">read</span> <span class="comment">the</span> <span class="comment">euler</span> <span class="comment">h</span> <span class="comment">data</span> <span class="comment">output</span>
+362      <span class="comment">* </span><span class="comment">as</span> <span class="comment">degree</span> <span class="comment">or</span> <span class="comment">radians</span><span class="comment">*/</span>
+363     <span class="literal">double</span> d_euler_data_h = <span class="pragma-omp-keyword-directive">BNO055_INIT_VALUE</span>;
+364     <span class="comment">/*</span> <span class="comment">variable</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">read</span> <span class="comment">the</span> <span class="comment">euler</span> <span class="comment">r</span> <span class="comment">data</span> <span class="comment">output</span>
+365      <span class="comment">* </span><span class="comment">as</span> <span class="comment">degree</span> <span class="comment">or</span> <span class="comment">radians</span><span class="comment">*/</span>
+366     <span class="literal">double</span> d_euler_data_r = <span class="pragma-omp-keyword-directive">BNO055_INIT_VALUE</span>;
+367     <span class="comment">/*</span> <span class="comment">variable</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">read</span> <span class="comment">the</span> <span class="comment">euler</span> <span class="comment">p</span> <span class="comment">data</span> <span class="comment">output</span>
+368      <span class="comment">* </span><span class="comment">as</span> <span class="comment">degree</span> <span class="comment">or</span> <span class="comment">radians</span><span class="comment">*/</span>
+369     <span class="literal">double</span> d_euler_data_p = <span class="pragma-omp-keyword-directive">BNO055_INIT_VALUE</span>;
+370     <span class="comment">/*</span> <span class="comment">structure</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">read</span> <span class="comment">the</span> <span class="comment">euler</span> <span class="comment">hrp</span> <span class="comment">data</span> <span class="comment">output</span>
+371      <span class="comment">* </span><span class="comment">as</span> <span class="comment">as</span> <span class="comment">degree</span> <span class="comment">or</span> <span class="comment">radians</span> <span class="comment">*/</span>
+372     <span class="literal">struct</span> bno055_euler_double_t d_euler_hpr;
+373 
+374     <span class="comment">/**</span><span class="comment">*******</span><span class="comment">read</span> <span class="comment">linear</span> <span class="comment">acceleration</span> <span class="comment">converted</span> <span class="comment">data</span><span class="comment">*********</span><span class="comment">*/</span>
+375     <span class="comment">/*</span> <span class="comment">structure</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">read</span> <span class="comment">the</span> <span class="comment">linear</span> <span class="comment">accel</span> <span class="comment">xyz</span> <span class="comment">data</span> <span class="comment">output</span> <span class="comment">as</span> <span class="comment">m</span><span class="comment">/</span><span class="comment">s2</span><span class="comment">*/</span>
+376     <span class="literal">struct</span> bno055_linear_accel_double_t d_linear_accel_xyz;
+377 
+378     <span class="comment">/**</span><span class="comment">******************</span><span class="comment">Gravity</span> <span class="comment">converted</span> <span class="comment">data</span><span class="comment">*********************</span><span class="comment">*/</span>
+379     <span class="comment">/*</span> <span class="comment">structure</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">read</span> <span class="comment">the</span> <span class="comment">gravity</span> <span class="comment">xyz</span> <span class="comment">data</span> <span class="comment">output</span> <span class="comment">as</span> <span class="comment">m</span><span class="comment">/</span><span class="comment">s2</span><span class="comment">*/</span>
+380     <span class="literal">struct</span> bno055_gravity_double_t d_gravity_xyz;
+381 
+382     <span class="comment">/*</span><span class="comment">---------------------------------------------------------------------------*</span>
+383      <span class="comment">*********************** </span><span class="comment">START</span> <span class="comment">INITIALIZATION</span><span class="comment"> ************************</span>
+384      <span class="comment">*--------------------------------------------------------------------------</span><span class="comment">*/</span>
+385 <span class="preprocessor">#</span><span class="preprocessor">ifdef</span>  <span class="pragma-omp-keyword-directive">BNO055_API</span>
+386 
+387     <span class="comment">/*</span>  <span class="comment">Based</span> <span class="comment">on</span> <span class="comment">the</span> <span class="comment">user</span> <span class="comment">need</span> <span class="comment">configure</span> <span class="comment">I2C</span> <span class="comment">interface</span><span class="comment">.</span>
+388      <span class="comment">*  </span><span class="comment">It</span> <span class="comment">is</span> <span class="comment">example</span> <span class="comment">code</span> <span class="comment">to</span> <span class="comment">explain</span> <span class="comment">how</span> <span class="comment">to</span> <span class="comment">use</span> <span class="comment">the</span> <span class="comment">bno055</span> <span class="comment">API</span><span class="comment">*/</span>
+389     I2C_routine();
+390 <span class="preprocessor">#</span><span class="preprocessor">endif</span>
+391 
+392     <span class="comment">/*</span><span class="comment">--------------------------------------------------------------------------*</span>
+393      <span class="comment">*  </span><span class="comment">This</span> <span class="comment">API</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">assign</span> <span class="comment">the</span> <span class="comment">value</span><span class="comment">/</span><span class="comment">reference</span> <span class="comment">of</span>
+394      <span class="comment">*  </span><span class="comment">the</span> <span class="comment">following</span> <span class="comment">parameters</span>
+395      <span class="comment">*  </span><span class="comment">I2C</span> <span class="comment">address</span>
+396      <span class="comment">*  </span><span class="comment">Bus</span> <span class="comment">Write</span>
+397      <span class="comment">*  </span><span class="comment">Bus</span> <span class="comment">read</span>
+398      <span class="comment">*  </span><span class="comment">Chip</span> <span class="comment">id</span>
+399      <span class="comment">*  </span><span class="comment">Page</span> <span class="comment">id</span>
+400      <span class="comment">*  </span><span class="comment">Accel</span> <span class="comment">revision</span> <span class="comment">id</span>
+401      <span class="comment">*  </span><span class="comment">Mag</span> <span class="comment">revision</span> <span class="comment">id</span>
+402      <span class="comment">*  </span><span class="comment">Gyro</span> <span class="comment">revision</span> <span class="comment">id</span>
+403      <span class="comment">*  </span><span class="comment">Boot</span> <span class="comment">loader</span> <span class="comment">revision</span> <span class="comment">id</span>
+404      <span class="comment">*  </span><span class="comment">Software</span> <span class="comment">revision</span> <span class="comment">id</span>
+405      <span class="comment">*-------------------------------------------------------------------------</span><span class="comment">*/</span>
+406     comres = bno055_init(&amp;bno055);
+407 
+408     <span class="comment">/*</span>  <span class="comment">For</span> <span class="comment">initializing</span> <span class="comment">the</span> <span class="comment">BNO</span> <span class="comment">sensor</span> <span class="comment">it</span> <span class="comment">is</span> <span class="comment">required</span> <span class="comment">to</span> <span class="comment">the</span> <span class="comment">operation</span> <span class="comment">mode</span>
+409      <span class="comment">* </span><span class="comment">of</span> <span class="comment">the</span> <span class="comment">sensor</span> <span class="comment">as</span> <span class="comment">NORMAL</span>
+410      <span class="comment">* </span><span class="comment">Normal</span> <span class="comment">mode</span> <span class="comment">can</span> <span class="comment">set</span> <span class="comment">from</span> <span class="comment">the</span> <span class="comment">register</span>
+411      <span class="comment">* </span><span class="comment">Page</span><span class="comment"> - </span><span class="comment">page0</span>
+412      <span class="comment">* </span><span class="comment">register</span><span class="comment"> - 0</span><span class="comment">x3E</span>
+413      <span class="comment">* </span><span class="comment">bit</span> <span class="comment">positions</span><span class="comment"> - 0 </span><span class="comment">and</span><span class="comment"> 1</span><span class="comment">*/</span>
+414     power_mode = <span class="pragma-omp-keyword-directive">BNO055_POWER_MODE_NORMAL</span>;
+415 
+416     <span class="comment">/*</span> <span class="comment">set</span> <span class="comment">the</span> <span class="comment">power</span> <span class="comment">mode</span> <span class="comment">as</span> <span class="comment">NORMAL</span><span class="comment">*/</span>
+417     comres += bno055_set_power_mode(power_mode);
+418 
+419     <span class="comment">/*</span><span class="comment">----------------------------------------------------------------*</span>
+420      <span class="comment">************************* </span><span class="comment">END</span> <span class="comment">INITIALIZATION</span><span class="comment"> *************************</span>
+421      <span class="comment">*-----------------------------------------------------------------</span><span class="comment">*/</span>
+422 
+423     <span class="comment">/**</span><span class="comment">*********************** </span><span class="comment">START</span> <span class="comment">READ</span> <span class="comment">RAW</span> <span class="comment">SENSOR</span> <span class="comment">DATA</span><span class="comment">***************</span><span class="comment">*/</span>
+424 
+425     <span class="comment">/*</span>  <span class="comment">Using</span> <span class="comment">BNO055</span> <span class="comment">sensor</span> <span class="comment">we</span> <span class="comment">can</span> <span class="comment">read</span> <span class="comment">the</span> <span class="comment">following</span> <span class="comment">sensor</span> <span class="comment">data</span> <span class="comment">and</span>
+426      <span class="comment">* </span><span class="comment">virtual</span> <span class="comment">sensor</span> <span class="comment">data</span>
+427      <span class="comment">* </span><span class="comment">Sensor</span> <span class="comment">data</span><span class="comment">:</span>
+428      <span class="comment">* </span><span class="comment">Accel</span>
+429      <span class="comment">* </span><span class="comment">Mag</span>
+430      <span class="comment">* </span><span class="comment">Gyro</span>
+431      <span class="comment">* </span><span class="comment">Virtual</span> <span class="comment">sensor</span> <span class="comment">data</span>
+432      <span class="comment">* </span><span class="comment">Euler</span>
+433      <span class="comment">* </span><span class="comment">Quaternion</span>
+434      <span class="comment">* </span><span class="comment">Linear</span> <span class="comment">acceleration</span>
+435      <span class="comment">* </span><span class="comment">Gravity</span> <span class="comment">sensor</span> <span class="comment">*/</span>
+436 
+437     <span class="comment">/*</span>  <span class="comment">For</span> <span class="comment">reading</span> <span class="comment">sensor</span> <span class="comment">raw</span> <span class="comment">data</span> <span class="comment">it</span> <span class="comment">is</span> <span class="comment">required</span> <span class="comment">to</span> <span class="comment">set</span> <span class="comment">the</span>
+438      <span class="comment">* </span><span class="comment">operation</span> <span class="comment">modes</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">sensor</span>
+439      <span class="comment">* </span><span class="comment">operation</span> <span class="comment">mode</span> <span class="comment">can</span> <span class="comment">set</span> <span class="comment">from</span> <span class="comment">the</span> <span class="comment">register</span>
+440      <span class="comment">* </span><span class="comment">page</span><span class="comment"> - </span><span class="comment">page0</span>
+441      <span class="comment">* </span><span class="comment">register</span><span class="comment"> - 0</span><span class="comment">x3D</span>
+442      <span class="comment">* </span><span class="comment">bit</span><span class="comment"> - 0 </span><span class="comment">to</span><span class="comment"> 3</span>
+443      <span class="comment">* </span><span class="comment">for</span> <span class="comment">sensor</span> <span class="comment">data</span> <span class="comment">read</span> <span class="comment">following</span> <span class="comment">operation</span> <span class="comment">mode</span> <span class="comment">have</span> <span class="comment">to</span> <span class="comment">set</span>
+444      <span class="comment">* </span><span class="comment">SENSOR</span> <span class="comment">MODE</span>
+445      <span class="comment">* 0</span><span class="comment">x01</span><span class="comment"> - </span><span class="comment">BNO055_OPERATION_MODE_ACCONLY</span>
+446      <span class="comment">* 0</span><span class="comment">x02</span><span class="comment"> - </span><span class="comment">BNO055_OPERATION_MODE_MAGONLY</span>
+447      <span class="comment">* 0</span><span class="comment">x03</span><span class="comment"> - </span><span class="comment">BNO055_OPERATION_MODE_GYRONLY</span>
+448      <span class="comment">* 0</span><span class="comment">x04</span><span class="comment"> - </span><span class="comment">BNO055_OPERATION_MODE_ACCMAG</span>
+449      <span class="comment">* 0</span><span class="comment">x05</span><span class="comment"> - </span><span class="comment">BNO055_OPERATION_MODE_ACCGYRO</span>
+450      <span class="comment">* 0</span><span class="comment">x06</span><span class="comment"> - </span><span class="comment">BNO055_OPERATION_MODE_MAGGYRO</span>
+451      <span class="comment">* 0</span><span class="comment">x07</span><span class="comment"> - </span><span class="comment">BNO055_OPERATION_MODE_AMG</span>
+452      <span class="comment">* </span><span class="comment">based</span> <span class="comment">on</span> <span class="comment">the</span> <span class="comment">user</span> <span class="comment">need</span> <span class="comment">configure</span> <span class="comment">the</span> <span class="comment">operation</span> <span class="comment">mode</span><span class="comment">*/</span>
+453     comres += bno055_set_operation_mode(<span class="pragma-omp-keyword-directive">BNO055_OPERATION_MODE_AMG</span>);
+454 
+455     <span class="comment">/*</span>  <span class="comment">Raw</span> <span class="comment">accel</span> <span class="comment">X</span><span class="comment">, </span><span class="comment">Y</span> <span class="comment">and</span> <span class="comment">Z</span> <span class="comment">data</span> <span class="comment">can</span> <span class="comment">read</span> <span class="comment">from</span> <span class="comment">the</span> <span class="comment">register</span>
+456      <span class="comment">* </span><span class="comment">page</span><span class="comment"> - </span><span class="comment">page</span><span class="comment"> 0</span>
+457      <span class="comment">* </span><span class="comment">register</span><span class="comment"> - 0</span><span class="comment">x08</span> <span class="comment">to</span><span class="comment"> 0</span><span class="comment">x0D</span><span class="comment">*/</span>
+458     comres += bno055_read_accel_xyz(&amp;accel_xyz);
+459 
+460     <span class="comment">/*</span>  <span class="comment">Raw</span> <span class="comment">mag</span> <span class="comment">X</span><span class="comment">, </span><span class="comment">Y</span> <span class="comment">and</span> <span class="comment">Z</span> <span class="comment">data</span> <span class="comment">can</span> <span class="comment">read</span> <span class="comment">from</span> <span class="comment">the</span> <span class="comment">register</span>
+461      <span class="comment">* </span><span class="comment">page</span><span class="comment"> - </span><span class="comment">page</span><span class="comment"> 0</span>
+462      <span class="comment">* </span><span class="comment">register</span><span class="comment"> - 0</span><span class="comment">x0E</span> <span class="comment">to</span><span class="comment"> 0</span><span class="comment">x13</span><span class="comment">*/</span>
+463     comres += bno055_read_mag_xyz(&amp;mag_xyz);
+464 
+465     <span class="comment">/*</span>  <span class="comment">Raw</span> <span class="comment">gyro</span> <span class="comment">X</span><span class="comment">, </span><span class="comment">Y</span> <span class="comment">and</span> <span class="comment">Z</span> <span class="comment">data</span> <span class="comment">can</span> <span class="comment">read</span> <span class="comment">from</span> <span class="comment">the</span> <span class="comment">register</span>
+466      <span class="comment">* </span><span class="comment">page</span><span class="comment"> - </span><span class="comment">page</span><span class="comment"> 0</span>
+467      <span class="comment">* </span><span class="comment">register</span><span class="comment"> - 0</span><span class="comment">x14</span> <span class="comment">to</span><span class="comment"> 0</span><span class="comment">x19</span><span class="comment">*/</span>
+468     comres += bno055_read_gyro_xyz(&amp;gyro_xyz);
+469 
+470     <span class="comment">/**</span><span class="comment">*********************** </span><span class="comment">END</span> <span class="comment">READ</span> <span class="comment">RAW</span> <span class="comment">SENSOR</span> <span class="comment">DATA</span><span class="comment">***************</span><span class="comment">*/</span>
+471 
+472     <span class="comment">/**</span><span class="comment">*********************** </span><span class="comment">START</span> <span class="comment">READ</span> <span class="comment">RAW</span> <span class="comment">FUSION</span> <span class="comment">DATA</span><span class="comment"> ********</span>
+473      <span class="comment">* </span><span class="comment">For</span> <span class="comment">reading</span> <span class="comment">fusion</span> <span class="comment">data</span> <span class="comment">it</span> <span class="comment">is</span> <span class="comment">required</span> <span class="comment">to</span> <span class="comment">set</span> <span class="comment">the</span>
+474      <span class="comment">* </span><span class="comment">operation</span> <span class="comment">modes</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">sensor</span>
+475      <span class="comment">* </span><span class="comment">operation</span> <span class="comment">mode</span> <span class="comment">can</span> <span class="comment">set</span> <span class="comment">from</span> <span class="comment">the</span> <span class="comment">register</span>
+476      <span class="comment">* </span><span class="comment">page</span><span class="comment"> - </span><span class="comment">page0</span>
+477      <span class="comment">* </span><span class="comment">register</span><span class="comment"> - 0</span><span class="comment">x3D</span>
+478      <span class="comment">* </span><span class="comment">bit</span><span class="comment"> - 0 </span><span class="comment">to</span><span class="comment"> 3</span>
+479      <span class="comment">* </span><span class="comment">for</span> <span class="comment">sensor</span> <span class="comment">data</span> <span class="comment">read</span> <span class="comment">following</span> <span class="comment">operation</span> <span class="comment">mode</span> <span class="comment">have</span> <span class="comment">to</span> <span class="comment">set</span>
+480      <span class="comment">* </span><span class="comment">FUSION</span> <span class="comment">MODE</span>
+481      <span class="comment">* 0</span><span class="comment">x08</span><span class="comment"> - </span><span class="comment">BNO055_OPERATION_MODE_IMUPLUS</span>
+482      <span class="comment">* 0</span><span class="comment">x09</span><span class="comment"> - </span><span class="comment">BNO055_OPERATION_MODE_COMPASS</span>
+483      <span class="comment">* 0</span><span class="comment">x0A</span><span class="comment"> - </span><span class="comment">BNO055_OPERATION_MODE_M4G</span>
+484      <span class="comment">* 0</span><span class="comment">x0B</span><span class="comment"> - </span><span class="comment">BNO055_OPERATION_MODE_NDOF_FMC_OFF</span>
+485      <span class="comment">* 0</span><span class="comment">x0C</span><span class="comment"> - </span><span class="comment">BNO055_OPERATION_MODE_NDOF</span>
+486      <span class="comment">* </span><span class="comment">based</span> <span class="comment">on</span> <span class="comment">the</span> <span class="comment">user</span> <span class="comment">need</span> <span class="comment">configure</span> <span class="comment">the</span> <span class="comment">operation</span> <span class="comment">mode</span><span class="comment">*/</span>
+487     comres += bno055_set_operation_mode(<span class="pragma-omp-keyword-directive">BNO055_OPERATION_MODE_NDOF</span>);
+488 
+489     <span class="comment">/*</span>  <span class="comment">Raw</span> <span class="comment">Euler</span> <span class="comment">H</span><span class="comment">, </span><span class="comment">R</span> <span class="comment">and</span> <span class="comment">P</span> <span class="comment">data</span> <span class="comment">can</span> <span class="comment">read</span> <span class="comment">from</span> <span class="comment">the</span> <span class="comment">register</span>
+490      <span class="comment">* </span><span class="comment">page</span><span class="comment"> - </span><span class="comment">page</span><span class="comment"> 0</span>
+491      <span class="comment">* </span><span class="comment">register</span><span class="comment"> - 0</span><span class="comment">x1A</span> <span class="comment">to</span><span class="comment"> 0</span><span class="comment">x1E</span> <span class="comment">*/</span>
+492     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_read_euler_h</span><span class="comment">(&amp;</span><span class="comment">euler_data_h</span><span class="comment">);</span>
+493     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_read_euler_r</span><span class="comment">(&amp;</span><span class="comment">euler_data_r</span><span class="comment">);</span>
+494     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_read_euler_p</span><span class="comment">(&amp;</span><span class="comment">euler_data_p</span><span class="comment">);</span>
+495     comres += bno055_read_euler_hrp(&amp;euler_hrp);
+496 
+497     <span class="comment">/*</span>  <span class="comment">Raw</span> <span class="comment">Quaternion</span> <span class="comment">W</span><span class="comment">, </span><span class="comment">X</span><span class="comment">, </span><span class="comment">Y</span> <span class="comment">and</span> <span class="comment">Z</span> <span class="comment">data</span> <span class="comment">can</span> <span class="comment">read</span> <span class="comment">from</span> <span class="comment">the</span> <span class="comment">register</span>
+498      <span class="comment">* </span><span class="comment">page</span><span class="comment"> - </span><span class="comment">page</span><span class="comment"> 0</span>
+499      <span class="comment">* </span><span class="comment">register</span><span class="comment"> - 0</span><span class="comment">x20</span> <span class="comment">to</span><span class="comment"> 0</span><span class="comment">x27</span> <span class="comment">*/</span>
+500     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_read_quaternion_w</span><span class="comment">(&amp;</span><span class="comment">quaternion_data_w</span><span class="comment">);</span>
+501     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_read_quaternion_x</span><span class="comment">(&amp;</span><span class="comment">quaternion_data_x</span><span class="comment">);</span>
+502     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_read_quaternion_y</span><span class="comment">(&amp;</span><span class="comment">quaternion_data_y</span><span class="comment">);</span>
+503     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_read_quaternion_z</span><span class="comment">(&amp;</span><span class="comment">quaternion_data_z</span><span class="comment">);</span>
+504     comres += bno055_read_quaternion_wxyz(&amp;quaternion_wxyz);
+505 
+506     <span class="comment">/*</span>  <span class="comment">Raw</span> <span class="comment">Linear</span> <span class="comment">accel</span> <span class="comment">X</span><span class="comment">, </span><span class="comment">Y</span> <span class="comment">and</span> <span class="comment">Z</span> <span class="comment">data</span> <span class="comment">can</span> <span class="comment">read</span> <span class="comment">from</span> <span class="comment">the</span> <span class="comment">register</span>
+507      <span class="comment">* </span><span class="comment">page</span><span class="comment"> - </span><span class="comment">page</span><span class="comment"> 0</span>
+508      <span class="comment">* </span><span class="comment">register</span><span class="comment"> - 0</span><span class="comment">x28</span> <span class="comment">to</span><span class="comment"> 0</span><span class="comment">x2D</span> <span class="comment">*/</span>
+509     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_read_linear_accel_x</span><span class="comment">(&amp;</span><span class="comment">linear_accel_data_x</span><span class="comment">);</span>
+510     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_read_linear_accel_y</span><span class="comment">(&amp;</span><span class="comment">linear_accel_data_y</span><span class="comment">);</span>
+511     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_read_linear_accel_z</span><span class="comment">(&amp;</span><span class="comment">linear_accel_data_z</span><span class="comment">);</span>
+512     comres += bno055_read_linear_accel_xyz(&amp;linear_acce_xyz);
+513 
+514     <span class="comment">/*</span>  <span class="comment">Raw</span> <span class="comment">Gravity</span> <span class="comment">sensor</span> <span class="comment">X</span><span class="comment">, </span><span class="comment">Y</span> <span class="comment">and</span> <span class="comment">Z</span> <span class="comment">data</span> <span class="comment">can</span> <span class="comment">read</span> <span class="comment">from</span> <span class="comment">the</span> <span class="comment">register</span>
+515      <span class="comment">* </span><span class="comment">page</span><span class="comment"> - </span><span class="comment">page</span><span class="comment"> 0</span>
+516      <span class="comment">* </span><span class="comment">register</span><span class="comment"> - 0</span><span class="comment">x2E</span> <span class="comment">to</span><span class="comment"> 0</span><span class="comment">x33</span> <span class="comment">*/</span>
+517     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_read_gravity_x</span><span class="comment">(&amp;</span><span class="comment">gravity_data_x</span><span class="comment">);</span>
+518     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_read_gravity_y</span><span class="comment">(&amp;</span><span class="comment">gravity_data_y</span><span class="comment">);</span>
+519     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_read_gravity_z</span><span class="comment">(&amp;</span><span class="comment">gravity_data_z</span><span class="comment">);</span>
+520     comres += bno055_read_gravity_xyz(&amp;gravity_xyz);
+521 
+522     <span class="comment">/**</span><span class="comment">*********************** </span><span class="comment">END</span> <span class="comment">READ</span> <span class="comment">RAW</span> <span class="comment">FUSION</span> <span class="comment">DATA</span><span class="comment">  ***********</span><span class="comment">*/</span>
+523     <span class="comment">/**</span><span class="comment">****************</span><span class="comment">START</span> <span class="comment">READ</span> <span class="comment">CONVERTED</span> <span class="comment">SENSOR</span> <span class="comment">DATA</span><span class="comment">***************</span><span class="comment">*/</span>
+524 
+525     <span class="comment">/*</span>  <span class="comment">API</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">read</span> <span class="comment">accel</span> <span class="comment">data</span> <span class="comment">output</span> <span class="comment">as</span> <span class="comment">double</span><span class="comment">  - </span><span class="comment">m</span><span class="comment">/</span><span class="comment">s2</span> <span class="comment">and</span> <span class="comment">mg</span>
+526      <span class="comment">* </span><span class="comment">float</span> <span class="comment">functions</span> <span class="comment">also</span> <span class="comment">available</span> <span class="comment">in</span> <span class="comment">the</span> <span class="comment">BNO055</span> <span class="comment">API</span> <span class="comment">*/</span>
+527     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_convert_double_accel_x_msq</span><span class="comment">(&amp;</span><span class="comment">d_accel_datax</span><span class="comment">);</span>
+528     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_convert_double_accel_x_mg</span><span class="comment">(&amp;</span><span class="comment">d_accel_datax</span><span class="comment">);</span>
+529     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_convert_double_accel_y_msq</span><span class="comment">(&amp;</span><span class="comment">d_accel_datay</span><span class="comment">);</span>
+530     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_convert_double_accel_y_mg</span><span class="comment">(&amp;</span><span class="comment">d_accel_datay</span><span class="comment">);</span>
+531     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_convert_double_accel_z_msq</span><span class="comment">(&amp;</span><span class="comment">d_accel_dataz</span><span class="comment">);</span>
+532     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_convert_double_accel_z_mg</span><span class="comment">(&amp;</span><span class="comment">d_accel_dataz</span><span class="comment">);</span>
+533     comres += bno055_convert_double_accel_xyz_msq(&amp;d_accel_xyz);
+534     comres += bno055_convert_double_accel_xyz_mg(&amp;d_accel_xyz);
+535 
+536     <span class="comment">/*</span>  <span class="comment">API</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">read</span> <span class="comment">mag</span> <span class="comment">data</span> <span class="comment">output</span> <span class="comment">as</span> <span class="comment">double</span><span class="comment">  - </span><span class="comment">uT</span><span class="comment">(</span><span class="comment">micro</span> <span class="comment">Tesla</span><span class="comment">)</span>
+537      <span class="comment">* </span><span class="comment">float</span> <span class="comment">functions</span> <span class="comment">also</span> <span class="comment">available</span> <span class="comment">in</span> <span class="comment">the</span> <span class="comment">BNO055</span> <span class="comment">API</span> <span class="comment">*/</span>
+538     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_convert_double_mag_x_uT</span><span class="comment">(&amp;</span><span class="comment">d_mag_datax</span><span class="comment">);</span>
+539     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_convert_double_mag_y_uT</span><span class="comment">(&amp;</span><span class="comment">d_mag_datay</span><span class="comment">);</span>
+540     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_convert_double_mag_z_uT</span><span class="comment">(&amp;</span><span class="comment">d_mag_dataz</span><span class="comment">);</span>
+541     comres += bno055_convert_double_mag_xyz_uT(&amp;d_mag_xyz);
+542 
+543     <span class="comment">/*</span>  <span class="comment">API</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">read</span> <span class="comment">gyro</span> <span class="comment">data</span> <span class="comment">output</span> <span class="comment">as</span> <span class="comment">double</span><span class="comment">  - </span><span class="comment">dps</span> <span class="comment">and</span> <span class="comment">rps</span>
+544      <span class="comment">* </span><span class="comment">float</span> <span class="comment">functions</span> <span class="comment">also</span> <span class="comment">available</span> <span class="comment">in</span> <span class="comment">the</span> <span class="comment">BNO055</span> <span class="comment">API</span> <span class="comment">*/</span>
+545     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_convert_double_gyro_x_dps</span><span class="comment">(&amp;</span><span class="comment">d_gyro_datax</span><span class="comment">);</span>
+546     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_convert_double_gyro_y_dps</span><span class="comment">(&amp;</span><span class="comment">d_gyro_datay</span><span class="comment">);</span>
+547     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_convert_double_gyro_z_dps</span><span class="comment">(&amp;</span><span class="comment">d_gyro_dataz</span><span class="comment">);</span>
+548     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_convert_double_gyro_x_rps</span><span class="comment">(&amp;</span><span class="comment">d_gyro_datax</span><span class="comment">);</span>
+549     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_convert_double_gyro_y_rps</span><span class="comment">(&amp;</span><span class="comment">d_gyro_datay</span><span class="comment">);</span>
+550     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_convert_double_gyro_z_rps</span><span class="comment">(&amp;</span><span class="comment">d_gyro_dataz</span><span class="comment">);</span>
+551     comres += bno055_convert_double_gyro_xyz_dps(&amp;d_gyro_xyz);
+552     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_convert_double_gyro_xyz_rps</span><span class="comment">(&amp;</span><span class="comment">d_gyro_xyz</span><span class="comment">);</span>
+553 
+554     <span class="comment">/*</span>  <span class="comment">API</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">read</span> <span class="comment">Euler</span> <span class="comment">data</span> <span class="comment">output</span> <span class="comment">as</span> <span class="comment">double</span><span class="comment">  - </span><span class="comment">degree</span> <span class="comment">and</span> <span class="comment">radians</span>
+555      <span class="comment">* </span><span class="comment">float</span> <span class="comment">functions</span> <span class="comment">also</span> <span class="comment">available</span> <span class="comment">in</span> <span class="comment">the</span> <span class="comment">BNO055</span> <span class="comment">API</span> <span class="comment">*/</span>
+556     comres += bno055_convert_double_euler_h_deg(&amp;d_euler_data_h);
+557     comres += bno055_convert_double_euler_r_deg(&amp;d_euler_data_r);
+558     comres += bno055_convert_double_euler_p_deg(&amp;d_euler_data_p);
+559     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_convert_double_euler_h_rad</span><span class="comment">(&amp;</span><span class="comment">d_euler_data_h</span><span class="comment">);</span>
+560     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_convert_double_euler_r_rad</span><span class="comment">(&amp;</span><span class="comment">d_euler_data_r</span><span class="comment">);</span>
+561     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_convert_double_euler_p_rad</span><span class="comment">(&amp;</span><span class="comment">d_euler_data_p</span><span class="comment">);</span>
+562     comres += bno055_convert_double_euler_hpr_deg(&amp;d_euler_hpr);
+563     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_convert_double_euler_hpr_rad</span><span class="comment">(&amp;</span><span class="comment">d_euler_hpr</span><span class="comment">);</span>
+564 
+565     <span class="comment">/*</span>  <span class="comment">API</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">read</span> <span class="comment">Linear</span> <span class="comment">acceleration</span> <span class="comment">data</span> <span class="comment">output</span> <span class="comment">as</span> <span class="comment">m</span><span class="comment">/</span><span class="comment">s2</span>
+566      <span class="comment">* </span><span class="comment">float</span> <span class="comment">functions</span> <span class="comment">also</span> <span class="comment">available</span> <span class="comment">in</span> <span class="comment">the</span> <span class="comment">BNO055</span> <span class="comment">API</span> <span class="comment">*/</span>
+567     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_convert_double_linear_accel_x_msq</span><span class="comment">(&amp;</span><span class="comment">d_linear_accel_datax</span><span class="comment">);</span>
+568     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_convert_double_linear_accel_y_msq</span><span class="comment">(&amp;</span><span class="comment">d_linear_accel_datay</span><span class="comment">);</span>
+569     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_convert_double_linear_accel_z_msq</span><span class="comment">(&amp;</span><span class="comment">d_linear_accel_dataz</span><span class="comment">);</span>
+570     comres += bno055_convert_double_linear_accel_xyz_msq(&amp;d_linear_accel_xyz);
+571 
+572     <span class="comment">/*</span>  <span class="comment">API</span> <span class="comment">used</span> <span class="comment">to</span> <span class="comment">read</span> <span class="comment">Gravity</span> <span class="comment">sensor</span> <span class="comment">data</span> <span class="comment">output</span> <span class="comment">as</span> <span class="comment">m</span><span class="comment">/</span><span class="comment">s2</span>
+573      <span class="comment">* </span><span class="comment">float</span> <span class="comment">functions</span> <span class="comment">also</span> <span class="comment">available</span> <span class="comment">in</span> <span class="comment">the</span> <span class="comment">BNO055</span> <span class="comment">API</span> <span class="comment">*/</span>
+574     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_convert_gravity_double_x_msq</span><span class="comment">(&amp;</span><span class="comment">d_gravity_data_x</span><span class="comment">);</span>
+575     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_convert_gravity_double_y_msq</span><span class="comment">(&amp;</span><span class="comment">d_gravity_data_y</span><span class="comment">);</span>
+576     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_convert_gravity_double_z_msq</span><span class="comment">(&amp;</span><span class="comment">d_gravity_data_z</span><span class="comment">);</span>
+577     comres += bno055_convert_double_gravity_xyz_msq(&amp;d_gravity_xyz);
+578 
+579     <span class="comment">/*</span><span class="comment">-----------------------------------------------------------------------*</span>
+580      <span class="comment">************************* </span><span class="comment">START</span> <span class="comment">DE</span><span class="comment">-</span><span class="comment">INITIALIZATION</span><span class="comment"> ***********************</span>
+581      <span class="comment">*-------------------------------------------------------------------------</span><span class="comment">*/</span>
+582 
+583     <span class="comment">/*</span>  <span class="comment">For</span> <span class="comment">de</span><span class="comment"> - </span><span class="comment">initializing</span> <span class="comment">the</span> <span class="comment">BNO</span> <span class="comment">sensor</span> <span class="comment">it</span> <span class="comment">is</span> <span class="comment">required</span>
+584      <span class="comment">* </span><span class="comment">to</span> <span class="comment">the</span> <span class="comment">operation</span> <span class="comment">mode</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">sensor</span> <span class="comment">as</span> <span class="comment">SUSPEND</span>
+585      <span class="comment">* </span><span class="comment">Suspend</span> <span class="comment">mode</span> <span class="comment">can</span> <span class="comment">set</span> <span class="comment">from</span> <span class="comment">the</span> <span class="comment">register</span>
+586      <span class="comment">* </span><span class="comment">Page</span><span class="comment"> - </span><span class="comment">page0</span>
+587      <span class="comment">* </span><span class="comment">register</span><span class="comment"> - 0</span><span class="comment">x3E</span>
+588      <span class="comment">* </span><span class="comment">bit</span> <span class="comment">positions</span><span class="comment"> - 0 </span><span class="comment">and</span><span class="comment"> 1</span><span class="comment">*/</span>
+589     <span class="comment">//</span><span class="comment">power_mode</span><span class="comment"> = </span><span class="comment">BNO055_POWER_MODE_SUSPEND</span><span class="comment">;</span>
+590 
+591     <span class="comment">/*</span> <span class="comment">set</span> <span class="comment">the</span> <span class="comment">power</span> <span class="comment">mode</span> <span class="comment">as</span> <span class="comment">SUSPEND</span><span class="comment">*/</span>
+592     <span class="comment">//</span><span class="comment">comres</span><span class="comment"> += </span><span class="comment">bno055_set_power_mode</span><span class="comment">(</span><span class="comment">power_mode</span><span class="comment">);</span>
+593     comres += bno055_set_operation_mode(<span class="pragma-omp-keyword-directive">BNO055_OPERATION_MODE_NDOF</span>);
+594     <span class="comment">/*</span><span class="comment">---------------------------------------------------------------------*</span>
+595     <span class="comment">************************* </span><span class="comment">END</span> <span class="comment">DE</span><span class="comment">-</span><span class="comment">INITIALIZATION</span><span class="comment"> **********************</span>
+596     <span class="comment">*---------------------------------------------------------------------</span><span class="comment">*/</span>
+597     <span class="preprocessor">return</span> comres;
+598 }
+599 
+</pre></body>
+</html>
