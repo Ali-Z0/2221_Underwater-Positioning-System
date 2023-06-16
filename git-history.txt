@@ -1,0 +1,187 @@
+2023-06-16 02:21:37 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> eb5b2b8 Rapport-final
+2023-06-16 02:12:37 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 3b6605a Rapport-avec-listing
+2023-06-16 01:35:50 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 779144d Update-rapport
+2023-06-16 00:28:21 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> bfe370a Big-update-rapport
+2023-06-16 00:08:18 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 0111649 Update-rapport
+2023-06-15 21:28:13 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 1891661 Update-rapport
+2023-06-15 20:59:46 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 280b70c Am-nagement-du-dossier
+2023-06-15 20:35:09 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 3aa4809 Update-code
+2023-06-15 20:34:45 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> cccd727 Update-rapport
+2023-06-15 20:14:44 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> d8d8e52 Raccourci-mesure
+2023-06-15 20:13:50 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> f2db082 Big-update-rapport
+2023-06-15 18:07:41 +0200 Ali-Z0 <107996590+Ali-Z0@users.noreply.github.com> 1659577 Mesures-putty
+2023-06-15 18:06:04 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 178293d Update-rapport
+2023-06-15 17:38:06 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 32cd1d2 Update-rapport
+2023-06-15 13:48:06 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 86493f6 Update-rapport
+2023-06-15 11:24:58 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> fe25d38 Update-rapport
+2023-06-15 10:43:02 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> f5456fe MAJ-UART
+2023-06-15 10:42:33 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> d54edc0 Update-Dev-MEAS.tex
+2023-06-15 10:40:17 +0200 Ali-Z0 <107996590+Ali-Z0@users.noreply.github.com> 8cdbbaf Mesure-UART
+2023-06-15 10:24:08 +0200 Ali-Z0 <107996590+Ali-Z0@users.noreply.github.com> ea4dc88 Mesure-analyseur
+2023-06-15 10:03:08 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> ed1baec Rapport-mesures-tension
+2023-06-15 09:23:01 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 66bbd2f Update-rapport
+2023-06-14 17:20:52 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> d3ec230 Dessin-trame
+2023-06-14 17:16:35 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 19edfd9 Update-rapport
+2023-06-14 16:33:05 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 32ced00 Optimisation-espace
+2023-06-14 16:31:43 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> e89f09d Update-rapport
+2023-06-14 15:57:01 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 026173d Update-code
+2023-06-14 15:39:26 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> e841e92 Big-updace-code
+2023-06-14 13:03:48 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 49c6d60 Am-lioration-du-code
+2023-06-14 12:33:50 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> ebb874f Commentaires-code
+2023-06-14 12:26:52 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> f4689bf Update-rapport-commentaires-code
+2023-06-14 11:21:42 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 74b8c3c Update-rapport
+2023-06-13 17:09:45 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> d4a887f Big-update-rapport
+2023-06-13 16:07:31 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> e480047 Update-rapport
+2023-06-13 14:27:36 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 579fa43 Update-rapport
+2023-06-13 13:50:41 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 7cd88d0 Code-V0-fonctionnel
+2023-06-13 11:39:42 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 9667ae5 New-code-plus-rapide
+2023-06-08 12:02:41 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 0a124d0 Update-TODO-MODIFS.txt
+2023-06-07 19:43:34 +0200 Ali-Z0 <107996590+Ali-Z0@users.noreply.github.com> f5a834a Code-fonctionnel-90ms-par-mesures
+2023-06-07 17:17:38 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> d498273 Mesures-chaques-90ms
+2023-06-07 17:05:21 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> d4c3d99 30min-logging-avec-160ms-moyenne
+2023-06-07 15:42:09 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> cf2a4a6 Code-mesures-rapide-20-100ms
+2023-05-31 16:43:08 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 35c7bdf Update-code
+2023-05-31 12:58:59 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 0f76e92 rapport-journal-de-travail
+2023-05-30 17:07:40 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 729ced2 Ajout-code-avec-ADC-pour-pression
+2023-05-30 17:02:43 +0200 Ali-Z0 <107996590+Ali-Z0@users.noreply.github.com> d6713a3 Update-README.md
+2023-05-24 19:04:40 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 21e7431 Correction-CSV
+2023-05-24 17:18:28 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 98a8ff0 Am-lioration-des-temps
+2023-05-24 15:54:15 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 504d725 Update-code-Carte-SD-Fonctionnelle
+2023-05-17 18:08:32 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 76cd463 New-code-UART-Debut-SPI-SD
+2023-05-16 10:37:08 +0200 Ali-Z0 <107996590+Ali-Z0@users.noreply.github.com> d82b82a Update-bno055_support.c
+2023-05-16 10:34:23 +0200 Ali-Z0 <107996590+Ali-Z0@users.noreply.github.com> fc7436d Update-private.xml
+2023-05-15 13:17:26 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 43cd953 Update-TODO-MODIFS.txt
+2023-05-11 21:49:19 +0200 Ali-Z0 <107996590+Ali-Z0@users.noreply.github.com> 8633d0a IMU-fonctionnelle
+2023-05-11 14:06:15 +0200 Ali-Z0 <107996590+Ali-Z0@users.noreply.github.com> 556f21c Update-README.md
+2023-05-11 09:22:56 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> c3997ce Merge-branch-main-of-https-github.com-Ali-Z0-2221_LocalisationSousMarine
+2023-05-11 09:22:43 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 279eb7e Create-Etats_diagramme.jpg
+2023-05-11 09:03:21 +0200 Ali-Z0 <107996590+Ali-Z0@users.noreply.github.com> b6fcc00 Update-README.md
+2023-05-11 08:57:31 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 666c1eb illustration
+2023-05-11 08:40:59 +0200 Ali-Z0 <107996590+Ali-Z0@users.noreply.github.com> 6a1a3aa Create-README.md
+2023-05-10 17:10:28 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 76c7e7d New-code
+2023-05-03 17:16:07 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 294eb72 Updace-code
+2023-05-03 16:54:44 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> ab36126 Update-all
+2023-04-26 17:29:09 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 7b2cca8 Update-TODO-MODIFS.txt
+2023-04-26 16:56:42 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 7e6a8ef Update-TODO-MODIFS.txt
+2023-04-26 16:54:55 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 2e7d41c TODO-MODIFS
+2023-04-26 16:52:48 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 7206816 MEC-files
+2023-04-26 16:51:56 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> c03a1e7 PATH
+2023-04-26 16:51:21 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 0fc7bf2 Added-code
+2023-04-26 16:50:26 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> debe539 Huge-update
+2023-04-05 16:56:55 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> cfa31a6 Update-all
+2023-04-03 09:24:32 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 5a3cb29 Update-bom
+2023-03-30 09:21:02 +0200 Ali-Z0 <ali.zoubir@bluewin.ch> 65dd4a2 BOM
+2023-03-22 16:49:22 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 671f6bb Update-Altium
+2023-03-22 15:14:06 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> b18fc90 Update-Logo
+2023-03-22 11:34:00 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 49d9dba Simuls
+2023-03-22 11:33:30 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> ee14900 Update-all
+2023-03-22 11:15:47 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> c54ebc4 Update-all
+2023-03-22 10:17:55 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> c7213fd Update-PCB
+2023-03-21 19:08:33 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 846f474 Update-sch
+2023-03-21 18:59:53 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 0cd778f Update-PCB
+2023-03-21 18:56:35 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 41fa6c4 Changed-boost-circuit
+2023-03-21 15:51:12 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 9eb31a1 Eurocircuit
+2023-03-21 15:41:53 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> d2716c3 Lib-PCB
+2023-03-21 15:21:43 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> c20b076 Update-PCB
+2023-03-21 10:06:48 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 4ed0522 Updated-stitichng
+2023-03-20 18:11:09 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> aa44c85 Update-outob
+2023-03-20 18:07:54 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 1f07dc2 Update-BOM-Projet
+2023-03-15 16:23:45 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 672a064 Updated-routing
+2023-03-15 16:09:46 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> bee3c3d Update-routage
+2023-03-15 14:57:13 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 8654efd Update-routage
+2023-03-15 11:15:13 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> af942b4 Update-routage
+2023-03-08 16:53:35 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> a623185 Update-all
+2023-03-08 15:09:36 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 497adee Update-footprint
+2023-03-08 13:02:30 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> c80a694 Update-DIMS
+2023-03-08 12:47:42 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 6f464b4 Update-placement
+2023-03-08 11:57:58 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 945a0ba Update-placement-et-taille
+2023-03-08 10:44:06 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 9027ee1 PCB-dimensions
+2023-03-08 09:37:18 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> b4cf5a6 Udate-placement
+2023-03-07 09:15:02 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> b4eaf53 Update-report
+2023-03-01 16:49:22 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 293c7d1 Update-placement-Schema
+2023-03-01 14:14:15 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> d581f5c Update-placement
+2023-03-01 11:30:30 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 4661b3d PCB-Placement
+2023-03-01 11:25:22 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> b722a7a PCB-Placement
+2023-03-01 10:47:33 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 2f5bc1b Update-PCB
+2023-03-01 09:30:58 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 5a04943 Annotations
+2023-03-01 09:19:53 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 8be3cba SCH-PCB
+2023-02-22 16:33:19 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> b105fa5 Update-SCH
+2023-02-22 15:32:47 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 2b581f0 Update-footprints
+2023-02-22 15:02:24 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 83b7b38 Update-footprints
+2023-02-22 14:43:52 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> e1c0d85 Update-PCB-Lib
+2023-02-22 13:58:27 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 7f219af Update-Sch-Ampli-Simu
+2023-02-22 11:27:40 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> faaf492 Update-SCH
+2023-02-22 11:26:14 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 01113cf Update-SCH-Simu
+2023-02-22 10:44:01 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> a6b07e0 Update-schematic
+2023-02-08 16:45:50 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 57245b8 Update-SCH
+2023-02-08 16:22:11 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> e14b282 Update-SCH
+2023-02-08 15:54:13 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 6cf71b9 Update-DOC
+2023-02-08 14:31:30 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 7c11d1c Update-doc
+2023-02-08 14:07:39 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 399d9a6 Update-SCH
+2023-02-08 13:47:09 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 104932e Update-SCH
+2023-02-08 13:37:43 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 9c55c03 Update-SCH
+2023-02-08 13:30:48 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 5a286cb Update-SCH
+2023-02-03 15:41:39 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 76e06f9 create-TODO
+2023-02-02 10:26:07 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> e1ce3ab Update-report
+2023-02-01 16:38:30 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> ff8a185 Update-report
+2023-02-01 15:08:02 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> d0fa1d2 Update-all
+2023-02-01 14:21:16 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> f179687 BOM-Prix
+2023-02-01 13:55:44 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 9bdb92e Update-pr-sentation
+2023-02-01 13:37:54 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 8ea993c Bom-with-prices
+2023-02-01 11:39:23 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> a372d1d Struct-git-et-altium
+2023-02-01 11:32:15 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 4a96ad3 Footprints-BOM
+2023-02-01 10:47:24 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> eb9bbc0 Added-pr-sentation
+2023-01-26 22:05:56 +0100 Ali-Z0 <ali.zoubir@bluewin.ch> 6952c8e Rendu-Rapport-Schema
+2023-01-26 21:53:19 +0100 Ali-Z0 <ali.zoubir@bluewin.ch> 5977fc5 Update-report
+2023-01-26 21:02:31 +0100 Ali-Z0 <ali.zoubir@bluewin.ch> 0ae5599 report
+2023-01-26 20:55:31 +0100 Ali-Z0 <ali.zoubir@bluewin.ch> 04e2b98 Update-Report
+2023-01-26 20:26:49 +0100 Ali-Z0 <ali.zoubir@bluewin.ch> 8f3a6cf Update-report-Sch-PDF
+2023-01-26 20:11:18 +0100 Ali-Z0 <ali.zoubir@bluewin.ch> 3ed2bea Update-report
+2023-01-26 16:52:17 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 06daf42 Update-SCH
+2023-01-26 16:19:30 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> bddbe3c Update-SCH
+2023-01-26 13:27:26 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> f8bf31b Update-report
+2023-01-26 11:14:39 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 1770058 Update-SCH
+2023-01-25 22:26:03 +0100 Ali-Z0 <ali.zoubir@bluewin.ch> 1c0fe3f Modif-SCH
+2023-01-25 19:22:19 +0100 Ali-Z0 <ali.zoubir@bluewin.ch> 5c259b2 Update-SCH
+2023-01-25 16:45:36 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 018dd79 Update-SCH-Report
+2023-01-25 15:14:06 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 3ac6def Update-SCH
+2023-01-25 15:08:34 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> f948c25 Update-SCH
+2023-01-25 14:04:10 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 61fa1eb Update-SCH
+2023-01-25 12:58:07 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 5127237 SCH-esthetique
+2023-01-25 12:39:08 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 3cf05bd Update-SCH-Estethique
+2023-01-25 12:18:40 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> d04f0be Update-SCH
+2023-01-25 11:46:54 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 6d2e64b Update-report-illustrations
+2023-01-25 11:07:04 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 0594d54 Update-SCH-report
+2023-01-25 10:10:42 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> a69b95b Update-SCH
+2023-01-25 09:36:31 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> d13cbe5 Update-SCH-Report
+2023-01-24 20:27:58 +0100 Ali-Z0 <ali.zoubir@bluewin.ch> 2e7a162 Update-SCH
+2023-01-24 20:22:27 +0100 Ali-Z0 <ali.zoubir@bluewin.ch> 3204f14 Update-SCH-Diagramme
+2023-01-24 19:59:49 +0100 Ali-Z0 <ali.zoubir@bluewin.ch> 9d1a1bc Update-report
+2023-01-24 13:53:10 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> ad80838 Update-MCU
+2023-01-24 11:19:01 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 9276895 Update-SCH
+2023-01-23 16:47:44 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> fc66740 Update-Report
+2023-01-23 08:14:25 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 7027cbb RMV-history
+2023-01-22 17:28:50 +0100 Ali-Z0 <ali.zoubir@bluewin.ch> 4667f15 Update-SCH
+2023-01-22 16:28:58 +0100 Ali-Z0 <ali.zoubir@bluewin.ch> 72a4cda Update-SCH
+2023-01-22 16:13:42 +0100 Ali-Z0 <ali.zoubir@bluewin.ch> a104945 gitignore
+2023-01-22 16:10:13 +0100 Ali-Z0 <ali.zoubir@bluewin.ch> 44a282c Update-gitignore
+2023-01-22 15:52:55 +0100 Ali-Z0 <ali.zoubir@bluewin.ch> b144bd9 Update-SCH-gitignore
+2023-01-22 15:35:18 +0100 Ali-Z0 <ali.zoubir@bluewin.ch> 4208450 Update-SCH
+2023-01-19 12:22:27 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 56ded79 Update-SCH
+2023-01-19 09:38:15 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 0c9f6b0 Update-SCH
+2023-01-18 19:41:25 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> bd6c8d3 Update-SCH
+2023-01-18 18:49:13 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> b48b2e9 Update-SCH
+2023-01-18 16:29:32 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 7a41100 Update-SCH
+2023-01-18 15:53:03 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> b55c1db Update-SCH
+2023-01-18 13:31:17 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 90773e7 Projet-template-ES
+2023-01-18 11:27:03 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> c38cd29 SCH-Interface
+2023-01-18 11:10:03 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 0680618 Schematic-big-update
+2023-01-18 08:43:36 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> e28c5eb MAJ-schematic
+2023-01-14 12:01:35 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> 1892159 Update
+2022-12-21 17:56:30 +0100 Ali Zoubir <ali.zoubir@bluewin.ch> d3e6093 Update-report-schematic
+2022-12-14 16:48:31 +0100 Ali-Z0 <ali.zoubir@bluewin.ch> 10d365b Moved-useless-files
+2022-12-14 16:48:18 +0100 Ali-Z0 <ali.zoubir@bluewin.ch> 08dd442 Gest-Fichiers
+2022-12-14 16:39:54 +0100 Ali-Z0 <ali.zoubir@bluewin.ch> d215c44 UpdateSchema-gitignore-history
+2022-12-14 16:02:30 +0100 Ali-Z0 <ali.zoubir@bluewin.ch> 6d4cbc6 Schema-presentation
+2022-12-14 15:43:48 +0100 Ali-Z0 <ali.zoubir@bluewin.ch> b924fb4 Update
+2022-12-14 10:24:41 +0100 Ali-Z0 <ali.zoubir@bluewin.ch> 1b1bcad Initial-files
