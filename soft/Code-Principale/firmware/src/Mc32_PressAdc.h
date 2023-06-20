@@ -46,7 +46,7 @@ extern "C" {
 #define     V_MAX               4
 #define     P_RANGE             10.0
 #define     OPAMP_GAIN          0.5913
-#define     ADC_RES             (3.3/1024.0)
+#define     ADC_RES             (3.3/1024)
 #define     ADC_AN_SCAN_ADDRES  0x0008
     /* ************************************************************************** */
     
