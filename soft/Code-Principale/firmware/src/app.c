@@ -110,8 +110,8 @@ void DisplayTimer_callback()
     }
      /* Do debounce every 10 ms */
      DoDebounce(&switchDescr, ButtonMFStateGet());
-    /* Start a measure set each 90ms */        
-    if ( ( timerData.TmrMeas % 9 ) == 0)
+    /* Start a measure set each 100ms */        
+    if ( ( timerData.TmrMeas % 10 ) == 0)
         timerData.measTodoFlag = true;
 }
 /* TODO:  Add any necessary callback functions.
