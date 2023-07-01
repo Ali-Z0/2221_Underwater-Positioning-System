@@ -29,7 +29,6 @@ propagent pas facilement.
 
 
 ## Fonctionnalités
-List the ready features here:
 - Sauvegarde dun set de donnée chaque 100ms.
 - Profondeur dutilisation maximum, de 60m.
 - 2 heure de logging dans carte SD.
