@@ -9,7 +9,7 @@
 * [Configuration](#configuration)
 * [Utilisation](#utilisation)
 * [Statut du projet](#statut-du-projet)
-* [Améliorations et correctifs](#améliorations-et-correctifs)
+* [Améliorations](#améliorations)
 * [Contact](#contact)
 <!-- * [License](#license) -->
 
