@@ -15,8 +15,7 @@
 
 
 ## Information générales
-Ce projet consiste en une carte éléctronique embarquée dont l'objectif est de stocker des données de mesures du déplacement d'un module sous-marin
-par une centrale inertielle et un capteur pression, afin de mathématiquement le localiser depuis son point de
+Ce projet consiste en une carte éléctronique embarquée dont l'objectif est de stocker des données de mesures du déplacement d'un module sous-marin par une centrale inertielle et un capteur de pression, afin de mathématiquement le localiser depuis son point de
 départ (référence). Ceci, car la localisation sous-marine nest pas une tâche aisée due aux différentes
 contraintes de communication sous-marine notamment que les ondes électromagnétiques ne s'y
 propagent pas facilement.
