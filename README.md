@@ -52,7 +52,7 @@ optionnel dans cette version).
 </p>
 
 ## Configuration
-La carte éléctronique doit être assemblée en considération des fichiers de fabrication et de la BOM (Bill of materials). Le firmware doit ensuite être implémenté sur dans microcntrôleur PIC et une carte SD doit être insérée, afin de lire les données de déplacement.
+La carte éléctronique doit être assemblée en considération des fichiers de fabrication et de la BOM (Bill of materials). Le firmware doit ensuite être implémenté dans microcntrôleur PIC et une carte SD doit être insérée, afin de lire les données de déplacement.
 
 
 ## Utilisation
